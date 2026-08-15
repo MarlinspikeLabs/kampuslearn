@@ -54,7 +54,8 @@ router.post('/register', async (req, res) => {
       role = 'student',
       // Student-specific fields
       institution_id, department_id, faculty_id,
-      school_id, level, matric_number, admission_year
+      school_id, level, matric_number, admission_year,
+      referral_code
     } = req.body;
 
     // ── Validation ───────────────────────────────────────────
