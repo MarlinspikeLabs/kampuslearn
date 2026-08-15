@@ -82,13 +82,21 @@ function MaterialCard({ mat, onDownload, onRead }) {
             )}
           </div>
         </div>
-        <button onClick={() => onDownload(mat)}
-                className="flex items-center gap-1.5 bg-blue-600 text-white text-xs
-                           font-medium px-3 py-2 rounded-lg hover:bg-blue-700
-                           transition-colors flex-shrink-0">
-          <Download className="w-3.5 h-3.5" />
-          Download
-        </button>
+        <div className="flex flex-col gap-2 flex-shrink-0">
+          <button onClick={() => onRead(mat)}
+                  className="flex items-center gap-1.5 bg-blue-600 text-white text-xs
+                             font-medium px-3 py-1.5 rounded-lg hover:bg-blue-700 transition-colors">
+            <Eye className="w-3.5 h-3.5" />
+            Read Free
+          </button>
+          <button onClick={() => onDownload(mat)}
+                  className="flex items-center gap-1.5 bg-white border border-gray-200
+                             text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg
+                             hover:bg-gray-50 transition-colors">
+            <Download className="w-3.5 h-3.5" />
+            Save (5 KP)
+          </button>
+        </div>
       </div>
     </div>
   );
