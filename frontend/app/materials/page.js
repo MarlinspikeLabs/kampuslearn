@@ -97,6 +97,14 @@ function MaterialCard({ mat, onDownload, onRead }) {
             Save (5 KP)
           </button>
         </div>
+          <button onClick={() => onDownload(mat)}
+                  className="flex items-center gap-1.5 bg-white border border-gray-200
+                             text-gray-700 text-xs font-medium px-3 py-1.5 rounded-lg
+                             hover:bg-gray-50 transition-colors">
+            <Download className="w-3.5 h-3.5" />
+            Save (5 KP)
+          </button>
+        </div>
       </div>
     </div>
   );
