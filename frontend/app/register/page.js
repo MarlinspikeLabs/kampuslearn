@@ -166,6 +166,7 @@ export default function RegisterPage() {
         department_id: form.department_id,
         level:         form.level,
         matric_number: form.matric_number || undefined,
+        referral_code: form.referral_code   || undefined,
       };
       await register(payload);
       toast.success('Account created! Welcome to KampusLearn.');
