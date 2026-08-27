@@ -172,7 +172,7 @@ export default function MaterialsPage() {
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-      toast.success(`Downloaded! ${data.kp_spent} KP spent. Balance: ${data.balance_after} KP`);
+      toast.success(`Downloaded! 5 KP spent. New balance: ${data.balance_after ?? 'updated'} KP`);
     } catch (err) {
       const msg = err.response?.data?.message || 'Download failed';
       if (err.response?.status === 402) {
