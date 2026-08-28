@@ -149,12 +149,10 @@ export default function MaterialsPage() {
     fetchMaterials();
   };
 
-  const handleRead = async (mat) => {
-    try {
-      const res = await api.get(`/materials/${mat.id}/read`);
-      const base = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '');
-      const url = `${base}${res.data.data.file_url}`;
-      window.open(url, '_blank');
+  const handleRead = (mat) => {
+    window.location.href = `/read?id=${mat.id}`;
+    return;
+    if (false) {
     } catch (err) {
       toast.error('Failed to open material');
     }
