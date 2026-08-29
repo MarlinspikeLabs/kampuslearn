@@ -152,10 +152,6 @@ export default function MaterialsPage() {
   const handleRead = (mat) => {
     window.location.href = `/read?id=${mat.id}`;
     return;
-    if (false) {
-    } catch (err) {
-      toast.error('Failed to open material');
-    }
   };
 
   const handleDownload = async (mat) => {
