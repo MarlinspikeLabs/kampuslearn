@@ -53,6 +53,8 @@ app.use('/api/past-questions', require('./routes/pastQuestions'));
 app.use('/api/questions',      require('./routes/questions'));
 app.use('/api/exams',          require('./routes/exams'));
 app.use('/api/tokens',         require('./routes/tokens'));
+app.use('/api/manage',        require('./routes/institution_manager'));
+app.use('/api/admin-upload',  require('./routes/admin_upload'));
 app.use('/api/admin',          require('./routes/admin'));
 app.use('/api/notifications',  require('./routes/notifications'));
 app.use('/api/subscriptions',  require('./routes/subscriptions'));

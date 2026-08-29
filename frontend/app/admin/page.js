@@ -7,22 +7,23 @@ import toast from 'react-hot-toast';
 import {
   Users, BookOpen, FileText, Brain, BarChart3,
   CheckCircle, XCircle, Shield, Crown, Loader2,
-  UserPlus, Clock, TrendingUp, AlertTriangle,
-  ChevronRight, Eye, Trash2, GraduationCap, LogOut
+  UserPlus, TrendingUp, AlertTriangle, ChevronRight,
+  Trash2, GraduationCap, LogOut, Building2, Upload,
+  Plus, ChevronDown, ChevronRight as CR, FolderOpen
 } from 'lucide-react';
 
-// ── Sidebar nav ───────────────────────────────────────────────
 const NAV = [
-  { id: 'overview',  icon: BarChart3,  label: 'Overview'        },
-  { id: 'content',   icon: FileText,   label: 'Content Approval' },
-  { id: 'users',     icon: Users,      label: 'Users'            },
-  { id: 'admins',    icon: Shield,     label: 'Manage Admins'    },
+  { id: 'overview',      icon: BarChart3,   label: 'Overview'          },
+  { id: 'content',       icon: FileText,    label: 'Content Approval'  },
+  { id: 'upload',        icon: Upload,      label: 'Upload Content'    },
+  { id: 'institutions',  icon: Building2,   label: 'Institutions'      },
+  { id: 'users',         icon: Users,       label: 'Users'             },
+  { id: 'admins',        icon: Shield,      label: 'Manage Admins'     },
 ];
 
 function Sidebar({ active, setActive, user, logout }) {
   return (
     <aside className="w-64 bg-gray-950 text-white flex flex-col flex-shrink-0 h-screen">
-      {/* Logo */}
       <div className="p-5 border-b border-gray-800">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-9 h-9 bg-blue-600 rounded-xl flex items-center justify-center">
@@ -33,7 +34,6 @@ function Sidebar({ active, setActive, user, logout }) {
             <p className="text-xs text-gray-400">Admin Portal</p>
           </div>
         </div>
-        {/* Admin badge */}
         <div className="flex items-center gap-2 bg-gray-900 rounded-xl p-3">
           <div className="w-9 h-9 bg-gradient-to-br from-yellow-400 to-orange-500
                           rounded-full flex items-center justify-center font-bold text-sm text-white">
@@ -43,13 +43,13 @@ function Sidebar({ active, setActive, user, logout }) {
             <p className="text-sm font-medium truncate">{user?.full_name}</p>
             <div className="flex items-center gap-1 mt-0.5">
               <Crown className="w-3 h-3 text-yellow-400" />
-              <span className="text-xs text-yellow-400 font-medium">Super Admin</span>
+              <span className="text-xs text-yellow-400 font-medium capitalize">
+                {user?.role?.replace('_', ' ')}
+              </span>
             </div>
           </div>
         </div>
       </div>
-
-      {/* Nav */}
       <nav className="flex-1 p-3 space-y-1">
         {NAV.map(item => (
           <button key={item.id} onClick={() => setActive(item.id)}
@@ -63,30 +63,26 @@ function Sidebar({ active, setActive, user, logout }) {
           </button>
         ))}
       </nav>
-
-      {/* Footer */}
       <div className="p-3 border-t border-gray-800">
         <a href="/dashboard"
            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm
                       text-gray-400 hover:bg-gray-900 hover:text-white transition-colors">
-          <GraduationCap className="w-5 h-5" />
-          Student View
+          <GraduationCap className="w-5 h-5" />Student View
         </a>
         <button onClick={logout}
                 className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm
                            text-gray-400 hover:bg-red-900/30 hover:text-red-400 transition-colors mt-1">
-          <LogOut className="w-5 h-5" />
-          Sign out
+          <LogOut className="w-5 h-5" />Sign out
         </button>
       </div>
     </aside>
   );
 }
 
-// ── Stat card ─────────────────────────────────────────────────
 function StatCard({ icon: Icon, label, value, sub, color, alert }) {
   return (
-    <div className={`bg-white rounded-2xl p-5 border ${alert ? 'border-amber-200 bg-amber-50' : 'border-gray-100'} shadow-sm`}>
+    <div className={`bg-white rounded-2xl p-5 border shadow-sm
+      ${alert ? 'border-amber-200 bg-amber-50' : 'border-gray-100'}`}>
       <div className="flex items-start justify-between">
         <div>
           <p className="text-sm text-gray-500 mb-1">{label}</p>
@@ -101,7 +97,7 @@ function StatCard({ icon: Icon, label, value, sub, color, alert }) {
   );
 }
 
-// ── Overview tab ──────────────────────────────────────────────
+// ── Overview ──────────────────────────────────────────────────
 function Overview({ stats, activity }) {
   if (!stats) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-blue-600" /></div>;
   return (
@@ -110,27 +106,21 @@ function Overview({ stats, activity }) {
         <h2 className="text-xl font-bold text-gray-900 mb-1">Platform Overview</h2>
         <p className="text-gray-500 text-sm">Live stats across all institutions</p>
       </div>
-
-      {/* Stats grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={Users}     label="Students"       value={stats.students}        color="bg-blue-100 text-blue-600"   sub={`+${stats.new_users_week} this week`} />
-        <StatCard icon={BookOpen}  label="Courses"        value={stats.courses}         color="bg-purple-100 text-purple-600" />
-        <StatCard icon={BarChart3} label="Exam Attempts"  value={stats.total_attempts}  color="bg-green-100 text-green-600" />
-        <StatCard icon={Brain}     label="AI Chats"       value={stats.ai_conversations} color="bg-orange-100 text-orange-600" sub={`${stats.total_tokens} tokens used`} />
+        <StatCard icon={Users}     label="Students"      value={stats.students}        color="bg-blue-100 text-blue-600"   sub={`+${stats.new_users_week} this week`} />
+        <StatCard icon={BookOpen}  label="Courses"       value={stats.courses}         color="bg-purple-100 text-purple-600" />
+        <StatCard icon={BarChart3} label="Exam Attempts" value={stats.total_attempts}  color="bg-green-100 text-green-600" />
+        <StatCard icon={Brain}     label="AI Chats"      value={stats.ai_conversations} color="bg-orange-100 text-orange-600" />
       </div>
-
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <StatCard icon={FileText}      label="Materials"       value={stats.total_materials}  color="bg-cyan-100 text-cyan-600" />
-        <StatCard icon={FileText}      label="Past Questions"  value={stats.total_pqs}         color="bg-indigo-100 text-indigo-600" />
-        <StatCard icon={Crown}         label="Premium Users"   value={stats.premium_users}     color="bg-yellow-100 text-yellow-600" />
+        <StatCard icon={FileText}      label="Materials"      value={stats.total_materials} color="bg-cyan-100 text-cyan-600" />
+        <StatCard icon={FileText}      label="Past Questions" value={stats.total_pqs}       color="bg-indigo-100 text-indigo-600" />
+        <StatCard icon={Crown}         label="Premium Users"  value={stats.premium_users}   color="bg-yellow-100 text-yellow-600" />
         <StatCard icon={AlertTriangle} label="Pending Review"
-          value={parseInt(stats.pending_materials) + parseInt(stats.pending_pqs)}
+          value={parseInt(stats.pending_materials||0)+parseInt(stats.pending_pqs||0)}
           color="bg-amber-100 text-amber-600"
-          alert={parseInt(stats.pending_materials) + parseInt(stats.pending_pqs) > 0}
-          sub="Materials + Past Qs" />
+          alert={parseInt(stats.pending_materials||0)+parseInt(stats.pending_pqs||0)>0} />
       </div>
-
-      {/* Recent activity */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm">
         <div className="p-5 border-b border-gray-100">
           <h3 className="font-semibold text-gray-900">Recent Activity</h3>
@@ -159,9 +149,9 @@ function Overview({ stats, activity }) {
   );
 }
 
-// ── Content approval tab ──────────────────────────────────────
-function ContentApproval({ onRefresh }) {
-  const [data, setData]     = useState(null);
+// ── Content Approval ──────────────────────────────────────────
+function ContentApproval() {
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const load = () => {
@@ -175,38 +165,27 @@ function ContentApproval({ onRefresh }) {
   useEffect(() => { load(); }, []);
 
   const approve = async (type, id) => {
-    try {
-      await api.patch(`/admin/content/${type}/${id}/approve`);
-      toast.success('Content approved and published');
-      load();
-    } catch { toast.error('Approval failed'); }
+    try { await api.patch(`/admin/content/${type}/${id}/approve`); toast.success('Approved'); load(); }
+    catch { toast.error('Failed'); }
   };
-
   const reject = async (type, id) => {
-    if (!confirm('Reject and delete this content?')) return;
-    try {
-      await api.patch(`/admin/content/${type}/${id}/reject`);
-      toast.success('Content rejected');
-      load();
-    } catch { toast.error('Rejection failed'); }
+    if (!confirm('Reject and delete?')) return;
+    try { await api.patch(`/admin/content/${type}/${id}/reject`); toast.success('Rejected'); load(); }
+    catch { toast.error('Failed'); }
   };
 
   if (loading) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-blue-600" /></div>;
-
-  const total = (data?.materials?.length || 0) + (data?.past_questions?.length || 0);
+  const total = (data?.materials?.length||0) + (data?.past_questions?.length||0);
 
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
           <h2 className="text-xl font-bold text-gray-900">Content Approval</h2>
-          <p className="text-gray-500 text-sm mt-1">
-            {total === 0 ? 'All content is up to date' : `${total} item${total !== 1 ? 's' : ''} awaiting review`}
-          </p>
+          <p className="text-gray-500 text-sm mt-1">{total === 0 ? 'All clear' : `${total} items pending`}</p>
         </div>
         <button onClick={load} className="btn-secondary text-sm">Refresh</button>
       </div>
-
       {total === 0 ? (
         <div className="text-center py-20 bg-white rounded-2xl border border-gray-100">
           <CheckCircle className="w-12 h-12 text-green-400 mx-auto mb-3" />
@@ -214,78 +193,54 @@ function ContentApproval({ onRefresh }) {
         </div>
       ) : (
         <>
-          {/* Materials */}
           {data.materials.length > 0 && (
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <h3 className="font-semibold text-gray-900">
-                  Course Materials ({data.materials.length})
-                </h3>
+              <div className="px-5 py-4 border-b bg-gray-50">
+                <h3 className="font-semibold text-gray-900">Materials ({data.materials.length})</h3>
               </div>
-              <div className="divide-y divide-gray-50">
-                {data.materials.map(m => (
-                  <div key={m.id} className="px-5 py-4 flex items-center justify-between gap-4">
-                    <div className="min-w-0">
-                      <p className="font-medium text-gray-900 truncate">{m.title}</p>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {m.course_code} · {m.material_type} · by {m.uploader}
-                      </p>
-                      <p className="text-xs text-gray-400">
-                        {m.file_size_kb > 0 ? `${m.file_size_kb} KB · ` : ''}{new Date(m.created_at).toLocaleDateString()}
-                      </p>
-                    </div>
-                    <div className="flex gap-2 flex-shrink-0">
-                      <button onClick={() => approve('material', m.id)}
-                              className="flex items-center gap-1.5 bg-green-600 text-white
-                                         text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-green-700">
-                        <CheckCircle className="w-3.5 h-3.5" /> Approve
-                      </button>
-                      <button onClick={() => reject('material', m.id)}
-                              className="flex items-center gap-1.5 bg-red-50 text-red-600
-                                         text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-red-100">
-                        <XCircle className="w-3.5 h-3.5" /> Reject
-                      </button>
-                    </div>
+              {data.materials.map(m => (
+                <div key={m.id} className="px-5 py-4 flex items-center justify-between gap-4 border-b last:border-0">
+                  <div className="min-w-0">
+                    <p className="font-medium text-gray-900 truncate">{m.title}</p>
+                    <p className="text-xs text-gray-500">{m.course_code} · {m.material_type} · by {m.uploader}</p>
                   </div>
-                ))}
-              </div>
+                  <div className="flex gap-2 flex-shrink-0">
+                    <button onClick={() => approve('material', m.id)}
+                            className="flex items-center gap-1 bg-green-600 text-white text-xs px-3 py-1.5 rounded-lg">
+                      <CheckCircle className="w-3.5 h-3.5" /> Approve
+                    </button>
+                    <button onClick={() => reject('material', m.id)}
+                            className="flex items-center gap-1 bg-red-50 text-red-600 text-xs px-3 py-1.5 rounded-lg">
+                      <XCircle className="w-3.5 h-3.5" /> Reject
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
-
-          {/* Past Questions */}
           {data.past_questions.length > 0 && (
             <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-              <div className="px-5 py-4 border-b border-gray-100 bg-gray-50">
-                <h3 className="font-semibold text-gray-900">
-                  Past Questions ({data.past_questions.length})
-                </h3>
+              <div className="px-5 py-4 border-b bg-gray-50">
+                <h3 className="font-semibold text-gray-900">Past Questions ({data.past_questions.length})</h3>
               </div>
-              <div className="divide-y divide-gray-50">
-                {data.past_questions.map(pq => (
-                  <div key={pq.id} className="px-5 py-4 flex items-center justify-between gap-4">
-                    <div className="min-w-0">
-                      <p className="font-medium text-gray-900">
-                        {pq.course_code} — {pq.title} {pq.exam_type} Exam
-                      </p>
-                      <p className="text-xs text-gray-500 mt-0.5">
-                        {pq.course_title} · uploaded by {pq.uploader}
-                      </p>
-                    </div>
-                    <div className="flex gap-2 flex-shrink-0">
-                      <button onClick={() => approve('past_question', pq.id)}
-                              className="flex items-center gap-1.5 bg-green-600 text-white
-                                         text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-green-700">
-                        <CheckCircle className="w-3.5 h-3.5" /> Approve
-                      </button>
-                      <button onClick={() => reject('past_question', pq.id)}
-                              className="flex items-center gap-1.5 bg-red-50 text-red-600
-                                         text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-red-100">
-                        <XCircle className="w-3.5 h-3.5" /> Reject
-                      </button>
-                    </div>
+              {data.past_questions.map(pq => (
+                <div key={pq.id} className="px-5 py-4 flex items-center justify-between gap-4 border-b last:border-0">
+                  <div className="min-w-0">
+                    <p className="font-medium text-gray-900">{pq.course_code} — {pq.title} {pq.exam_type}</p>
+                    <p className="text-xs text-gray-500">by {pq.uploader}</p>
                   </div>
-                ))}
-              </div>
+                  <div className="flex gap-2 flex-shrink-0">
+                    <button onClick={() => approve('past_question', pq.id)}
+                            className="flex items-center gap-1 bg-green-600 text-white text-xs px-3 py-1.5 rounded-lg">
+                      <CheckCircle className="w-3.5 h-3.5" /> Approve
+                    </button>
+                    <button onClick={() => reject('past_question', pq.id)}
+                            className="flex items-center gap-1 bg-red-50 text-red-600 text-xs px-3 py-1.5 rounded-lg">
+                      <XCircle className="w-3.5 h-3.5" /> Reject
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           )}
         </>
@@ -294,14 +249,565 @@ function ContentApproval({ onRefresh }) {
   );
 }
 
-// ── Users tab ─────────────────────────────────────────────────
+// ── Upload Content ────────────────────────────────────────────
+function UploadContent() {
+  const [uploadType, setUploadType] = useState('material');
+  const [institutions, setInstitutions] = useState([]);
+  const [faculties, setFaculties]       = useState([]);
+  const [departments, setDepartments]   = useState([]);
+  const [courses, setCourses]           = useState([]);
+  const [selInst, setSelInst]   = useState('');
+  const [selFac, setSelFac]     = useState('');
+  const [selDept, setSelDept]   = useState('');
+  const [selCourse, setSelCourse] = useState('');
+  const [file, setFile]         = useState(null);
+  const [form, setForm]         = useState({
+    title: '', material_type: 'lecture_note', description: '', tags: '',
+    year: new Date().getFullYear(), exam_type: 'semester', has_answers: false
+  });
+  const [uploading, setUploading] = useState(false);
+
+  useEffect(() => {
+    api.get('/manage/institutions').then(r => setInstitutions(r.data.data)).catch(() => {});
+  }, []);
+
+  useEffect(() => {
+    if (!selInst) { setFaculties([]); setSelFac(''); return; }
+    const inst = institutions.find(i => i.id === selInst);
+    if (inst?.type === 'university') {
+      api.get(`/manage/institutions/${selInst}/faculties`).then(r => setFaculties(r.data.data)).catch(() => {});
+    } else {
+      api.get(`/manage/institutions/${selInst}/schools`).then(r => setFaculties(r.data.data)).catch(() => {});
+    }
+    setSelFac(''); setDepartments([]); setSelDept(''); setCourses([]); setSelCourse('');
+  }, [selInst]);
+
+  useEffect(() => {
+    if (!selFac) { setDepartments([]); setSelDept(''); return; }
+    const inst = institutions.find(i => i.id === selInst);
+    const endpoint = inst?.type === 'university'
+      ? `/manage/faculties/${selFac}/departments`
+      : `/manage/schools/${selFac}/departments`;
+    api.get(endpoint).then(r => setDepartments(r.data.data)).catch(() => {});
+    setSelDept(''); setCourses([]); setSelCourse('');
+  }, [selFac]);
+
+  useEffect(() => {
+    if (!selDept) { setCourses([]); setSelCourse(''); return; }
+    api.get(`/manage/departments/${selDept}/courses`).then(r => setCourses(r.data.data)).catch(() => {});
+    setSelCourse('');
+  }, [selDept]);
+
+  const handleUpload = async () => {
+    if (!file || !selCourse) { toast.error('Select a course and file'); return; }
+    setUploading(true);
+    try {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('course_id', selCourse);
+      if (uploadType === 'material') {
+        fd.append('title', form.title || file.name);
+        fd.append('material_type', form.material_type);
+        fd.append('description', form.description);
+        fd.append('tags', form.tags);
+        await api.post('/admin-upload/material', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+        toast.success('Material uploaded and published!');
+      } else {
+        fd.append('year', form.year);
+        fd.append('exam_type', form.exam_type);
+        fd.append('has_answers', form.has_answers);
+        await api.post('/admin-upload/past-question', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
+        toast.success('Past question uploaded and published!');
+      }
+      setFile(null);
+      setForm({ title: '', material_type: 'lecture_note', description: '', tags: '',
+                year: new Date().getFullYear(), exam_type: 'semester', has_answers: false });
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Upload failed');
+    } finally {
+      setUploading(false);
+    }
+  };
+
+  return (
+    <div className="space-y-6 max-w-2xl">
+      <div>
+        <h2 className="text-xl font-bold text-gray-900">Upload Content</h2>
+        <p className="text-gray-500 text-sm mt-1">Upload materials and past questions — published immediately</p>
+      </div>
+
+      {/* Upload type */}
+      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
+        {[['material','Course Material'],['past_question','Past Question']].map(([v,l]) => (
+          <button key={v} onClick={() => setUploadType(v)}
+                  className={`px-5 py-2 rounded-lg text-sm font-medium transition-all
+                    ${uploadType === v ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>
+            {l}
+          </button>
+        ))}
+      </div>
+
+      <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
+        {/* Institution cascade */}
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <label className="label">Institution</label>
+            <select className="input" value={selInst} onChange={e => setSelInst(e.target.value)}>
+              <option value="">Select institution</option>
+              {institutions.map(i => <option key={i.id} value={i.id}>{i.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="label">Faculty / School</label>
+            <select className="input" value={selFac} onChange={e => setSelFac(e.target.value)} disabled={!selInst}>
+              <option value="">Select faculty/school</option>
+              {faculties.map(f => <option key={f.id} value={f.id}>{f.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="label">Department</label>
+            <select className="input" value={selDept} onChange={e => setSelDept(e.target.value)} disabled={!selFac}>
+              <option value="">Select department</option>
+              {departments.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+            </select>
+          </div>
+          <div>
+            <label className="label">Course</label>
+            <select className="input" value={selCourse} onChange={e => setSelCourse(e.target.value)} disabled={!selDept}>
+              <option value="">Select course</option>
+              {courses.map(c => <option key={c.id} value={c.id}>{c.code} — {c.title}</option>)}
+            </select>
+          </div>
+        </div>
+
+        {/* Material fields */}
+        {uploadType === 'material' && (
+          <>
+            <div>
+              <label className="label">Title</label>
+              <input className="input" placeholder="e.g. Introduction to Computing — Lecture Note 1"
+                     value={form.title} onChange={e => setForm({...form, title: e.target.value})} />
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">Material Type</label>
+                <select className="input" value={form.material_type}
+                        onChange={e => setForm({...form, material_type: e.target.value})}>
+                  <option value="lecture_note">Lecture Note</option>
+                  <option value="slide">Slide</option>
+                  <option value="textbook">Textbook</option>
+                  <option value="summary">Summary</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <div>
+                <label className="label">Tags (comma separated)</label>
+                <input className="input" placeholder="e.g. circuits, week1"
+                       value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} />
+              </div>
+            </div>
+            <div>
+              <label className="label">Description (optional)</label>
+              <textarea className="input" rows={2} placeholder="Brief description..."
+                        value={form.description} onChange={e => setForm({...form, description: e.target.value})} />
+            </div>
+          </>
+        )}
+
+        {/* Past question fields */}
+        {uploadType === 'past_question' && (
+          <div className="grid grid-cols-3 gap-4">
+            <div>
+              <label className="label">Year</label>
+              <input className="input" type="number" min="2000" max="2030"
+                     value={form.year} onChange={e => setForm({...form, year: e.target.value})} />
+            </div>
+            <div>
+              <label className="label">Exam Type</label>
+              <select className="input" value={form.exam_type}
+                      onChange={e => setForm({...form, exam_type: e.target.value})}>
+                <option value="semester">Semester</option>
+                <option value="mock">Mock</option>
+                <option value="carry_over">Carry Over</option>
+                <option value="supplementary">Supplementary</option>
+              </select>
+            </div>
+            <div className="flex items-end pb-2">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="checkbox" checked={form.has_answers}
+                       onChange={e => setForm({...form, has_answers: e.target.checked})}
+                       className="w-4 h-4 rounded" />
+                <span className="text-sm text-gray-700">Has answers</span>
+              </label>
+            </div>
+          </div>
+        )}
+
+        {/* File upload */}
+        <div>
+          <label className="label">File (PDF, DOC, DOCX, PPT, TXT — max 50MB)</label>
+          <div className={`border-2 border-dashed rounded-xl p-6 text-center cursor-pointer
+                           transition-colors ${file ? 'border-green-400 bg-green-50' : 'border-gray-200 hover:border-blue-400'}`}
+               onClick={() => document.getElementById('admin-file-input').click()}>
+            <input id="admin-file-input" type="file" className="hidden"
+                   accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.md"
+                   onChange={e => setFile(e.target.files[0])} />
+            {file ? (
+              <div>
+                <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                <p className="text-green-700 font-medium text-sm">{file.name}</p>
+                <p className="text-green-600 text-xs">{(file.size / 1024 / 1024).toFixed(2)} MB</p>
+              </div>
+            ) : (
+              <div>
+                <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2" />
+                <p className="text-gray-500 text-sm">Click to select file</p>
+                <p className="text-gray-400 text-xs mt-1">PDF, DOC, DOCX, PPT, PPTX, TXT</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <button onClick={handleUpload} disabled={uploading || !file || !selCourse}
+                className="w-full btn-primary flex items-center justify-center gap-2 py-3">
+          {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
+          {uploading ? 'Uploading...' : `Upload ${uploadType === 'material' ? 'Material' : 'Past Question'}`}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ── Institution Manager ───────────────────────────────────────
+function InstitutionManager() {
+  const [institutions, setInstitutions] = useState([]);
+  const [expanded, setExpanded]   = useState({});
+  const [faculties, setFaculties] = useState({});
+  const [departments, setDepartments] = useState({});
+  const [courses, setCourses]     = useState({});
+  const [loading, setLoading]     = useState(true);
+  const [showForm, setShowForm]   = useState(null); // {type, parentId, instType}
+  const [form, setForm]           = useState({});
+  const [saving, setSaving]       = useState(false);
+
+  useEffect(() => {
+    api.get('/manage/institutions')
+      .then(r => setInstitutions(r.data.data))
+      .catch(() => toast.error('Failed to load institutions'))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const toggle = async (type, id, instType) => {
+    const key = `${type}-${id}`;
+    if (expanded[key]) {
+      setExpanded(p => ({ ...p, [key]: false }));
+      return;
+    }
+    setExpanded(p => ({ ...p, [key]: true }));
+    try {
+      if (type === 'institution') {
+        const endpoint = instType === 'university'
+          ? `/manage/institutions/${id}/faculties`
+          : `/manage/institutions/${id}/schools`;
+        const r = await api.get(endpoint);
+        setFaculties(p => ({ ...p, [id]: r.data.data }));
+      } else if (type === 'faculty') {
+        const inst = institutions.find(i =>
+          (faculties[i.id] || []).some(f => f.id === id)
+        );
+        const endpoint = inst?.type === 'university'
+          ? `/manage/faculties/${id}/departments`
+          : `/manage/schools/${id}/departments`;
+        const r = await api.get(endpoint);
+        setDepartments(p => ({ ...p, [id]: r.data.data }));
+      } else if (type === 'dept') {
+        const r = await api.get(`/manage/departments/${id}/courses`);
+        setCourses(p => ({ ...p, [id]: r.data.data }));
+      }
+    } catch { toast.error('Failed to load'); }
+  };
+
+  const save = async () => {
+    if (!showForm) return;
+    setSaving(true);
+    try {
+      const { type, parentId, instType } = showForm;
+      if (type === 'institution') {
+        const r = await api.post('/manage/institutions', form);
+        setInstitutions(p => [...p, r.data.data]);
+      } else if (type === 'faculty') {
+        const endpoint = instType === 'university'
+          ? `/manage/institutions/${parentId}/faculties`
+          : `/manage/institutions/${parentId}/schools`;
+        const r = await api.post(endpoint, form);
+        setFaculties(p => ({ ...p, [parentId]: [...(p[parentId]||[]), r.data.data] }));
+      } else if (type === 'dept') {
+        const inst = institutions.find(i =>
+          (faculties[i.id] || []).some(f => f.id === parentId)
+        );
+        const endpoint = inst?.type === 'university'
+          ? `/manage/faculties/${parentId}/departments`
+          : `/manage/schools/${parentId}/departments`;
+        const r = await api.post(endpoint, form);
+        setDepartments(p => ({ ...p, [parentId]: [...(p[parentId]||[]), r.data.data] }));
+      } else if (type === 'course') {
+        const r = await api.post(`/manage/departments/${parentId}/courses`, form);
+        setCourses(p => ({ ...p, [parentId]: [...(p[parentId]||[]), r.data.data] }));
+      }
+      toast.success('Created successfully');
+      setShowForm(null);
+      setForm({});
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed');
+    } finally { setSaving(false); }
+  };
+
+  const del = async (type, id, parentId) => {
+    if (!confirm(`Delete this ${type}? This will also delete all nested items.`)) return;
+    try {
+      await api.delete(`/manage/${type}s/${id}`);
+      if (type === 'institution') setInstitutions(p => p.filter(i => i.id !== id));
+      else if (type === 'faculty') setFaculties(p => ({ ...p, [parentId]: (p[parentId]||[]).filter(f => f.id !== id) }));
+      else if (type === 'department') setDepartments(p => ({ ...p, [parentId]: (p[parentId]||[]).filter(d => d.id !== id) }));
+      else if (type === 'course') setCourses(p => ({ ...p, [parentId]: (p[parentId]||[]).filter(c => c.id !== id) }));
+      toast.success('Deleted');
+    } catch { toast.error('Delete failed'); }
+  };
+
+  const AddForm = () => {
+    if (!showForm) return null;
+    const { type } = showForm;
+    return (
+      <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+        <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+          <h3 className="font-bold text-gray-900 mb-4 capitalize">
+            Add {type === 'faculty' ? (showForm.instType === 'university' ? 'Faculty' : 'School') : type}
+          </h3>
+          <div className="space-y-3">
+            {type === 'institution' && (
+              <>
+                <input className="input" placeholder="Full name e.g. University of Maiduguri"
+                       value={form.name||''} onChange={e => setForm({...form, name: e.target.value})} />
+                <input className="input" placeholder="Short name e.g. UNIMAID"
+                       value={form.short_name||''} onChange={e => setForm({...form, short_name: e.target.value})} />
+                <select className="input" value={form.type||'university'}
+                        onChange={e => setForm({...form, type: e.target.value})}>
+                  <option value="university">University</option>
+                  <option value="polytechnic">Polytechnic</option>
+                  <option value="college">College of Education</option>
+                </select>
+                <input className="input" placeholder="State e.g. Borno"
+                       value={form.state||''} onChange={e => setForm({...form, state: e.target.value})} />
+                <input className="input" placeholder="City e.g. Maiduguri"
+                       value={form.city||''} onChange={e => setForm({...form, city: e.target.value})} />
+              </>
+            )}
+            {(type === 'faculty' || type === 'dept') && (
+              <>
+                <input className="input" placeholder="Name"
+                       value={form.name||''} onChange={e => setForm({...form, name: e.target.value})} />
+                <input className="input" placeholder="Code e.g. ENG"
+                       value={form.code||''} onChange={e => setForm({...form, code: e.target.value})} />
+              </>
+            )}
+            {type === 'course' && (
+              <>
+                <input className="input" placeholder="Course title"
+                       value={form.title||''} onChange={e => setForm({...form, title: e.target.value})} />
+                <input className="input" placeholder="Course code e.g. CPE301"
+                       value={form.code||''} onChange={e => setForm({...form, code: e.target.value})} />
+                <div className="grid grid-cols-2 gap-3">
+                  <select className="input" value={form.level||'100'}
+                          onChange={e => setForm({...form, level: e.target.value})}>
+                    {['100','200','300','400','500','ND1','ND2','HND1','HND2'].map(l =>
+                      <option key={l} value={l}>{l}</option>
+                    )}
+                  </select>
+                  <select className="input" value={form.semester||'first'}
+                          onChange={e => setForm({...form, semester: e.target.value})}>
+                    <option value="first">1st Semester</option>
+                    <option value="second">2nd Semester</option>
+                  </select>
+                </div>
+                <div className="grid grid-cols-2 gap-3">
+                  <input className="input" type="number" placeholder="Credit units" min="1" max="6"
+                         value={form.credit_units||3} onChange={e => setForm({...form, credit_units: e.target.value})} />
+                  <label className="flex items-center gap-2 px-3">
+                    <input type="checkbox" checked={form.is_compulsory !== false}
+                           onChange={e => setForm({...form, is_compulsory: e.target.checked})} />
+                    <span className="text-sm">Compulsory</span>
+                  </label>
+                </div>
+              </>
+            )}
+          </div>
+          <div className="flex gap-3 mt-5">
+            <button onClick={save} disabled={saving}
+                    className="btn-primary flex-1 flex items-center justify-center gap-2">
+              {saving && <Loader2 className="w-4 h-4 animate-spin" />}
+              Save
+            </button>
+            <button onClick={() => { setShowForm(null); setForm({}); }}
+                    className="btn-secondary flex-1">Cancel</button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  if (loading) return <div className="flex justify-center py-20"><Loader2 className="w-8 h-8 animate-spin text-blue-600" /></div>;
+
+  return (
+    <div className="space-y-6">
+      <AddForm />
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-xl font-bold text-gray-900">Institution Manager</h2>
+          <p className="text-gray-500 text-sm mt-1">{institutions.length} institutions</p>
+        </div>
+        <button onClick={() => setShowForm({ type: 'institution' })}
+                className="btn-primary flex items-center gap-2 text-sm">
+          <Plus className="w-4 h-4" /> Add Institution
+        </button>
+      </div>
+
+      <div className="space-y-3">
+        {institutions.map(inst => (
+          <div key={inst.id} className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+            {/* Institution row */}
+            <div className="flex items-center justify-between px-5 py-4 hover:bg-gray-50 cursor-pointer"
+                 onClick={() => toggle('institution', inst.id, inst.type)}>
+              <div className="flex items-center gap-3">
+                {expanded[`institution-${inst.id}`]
+                  ? <ChevronDown className="w-4 h-4 text-gray-400" />
+                  : <CR className="w-4 h-4 text-gray-400" />}
+                <div className="w-9 h-9 bg-blue-100 rounded-xl flex items-center justify-center">
+                  <Building2 className="w-4 h-4 text-blue-600" />
+                </div>
+                <div>
+                  <p className="font-bold text-gray-900">{inst.name}</p>
+                  <p className="text-xs text-gray-400">{inst.short_name} · {inst.type} · {inst.faculty_count} faculties/schools</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                <button onClick={() => setShowForm({ type: 'faculty', parentId: inst.id, instType: inst.type })}
+                        className="text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100">
+                  + {inst.type === 'university' ? 'Faculty' : 'School'}
+                </button>
+                <button onClick={() => del('institution', inst.id, null)}
+                        className="p-1.5 text-gray-300 hover:text-red-500 hover:bg-red-50 rounded-lg">
+                  <Trash2 className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            {/* Faculties/Schools */}
+            {expanded[`institution-${inst.id}`] && (
+              <div className="border-t border-gray-100">
+                {(faculties[inst.id] || []).length === 0 ? (
+                  <p className="text-gray-400 text-sm px-14 py-3">No faculties/schools yet</p>
+                ) : (faculties[inst.id] || []).map(fac => (
+                  <div key={fac.id}>
+                    <div className="flex items-center justify-between px-14 py-3
+                                    hover:bg-gray-50 cursor-pointer border-b border-gray-50"
+                         onClick={() => toggle('faculty', fac.id, inst.type)}>
+                      <div className="flex items-center gap-2">
+                        {expanded[`faculty-${fac.id}`]
+                          ? <ChevronDown className="w-3.5 h-3.5 text-gray-400" />
+                          : <CR className="w-3.5 h-3.5 text-gray-400" />}
+                        <FolderOpen className="w-4 h-4 text-purple-500" />
+                        <span className="text-sm font-medium text-gray-800">{fac.name}</span>
+                        <span className="text-xs text-gray-400">({fac.code}) · {fac.dept_count} depts</span>
+                      </div>
+                      <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                        <button onClick={() => setShowForm({ type: 'dept', parentId: fac.id, instType: inst.type })}
+                                className="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-lg">
+                          + Dept
+                        </button>
+                        <button onClick={() => del('faculty', fac.id, inst.id)}
+                                className="p-1 text-gray-300 hover:text-red-500 rounded-lg">
+                          <Trash2 className="w-3.5 h-3.5" />
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Departments */}
+                    {expanded[`faculty-${fac.id}`] && (
+                      <div className="bg-gray-50">
+                        {(departments[fac.id] || []).length === 0 ? (
+                          <p className="text-gray-400 text-xs px-20 py-2">No departments yet</p>
+                        ) : (departments[fac.id] || []).map(dept => (
+                          <div key={dept.id}>
+                            <div className="flex items-center justify-between px-20 py-2.5
+                                            hover:bg-gray-100 cursor-pointer"
+                                 onClick={() => toggle('dept', dept.id)}>
+                              <div className="flex items-center gap-2">
+                                {expanded[`dept-${dept.id}`]
+                                  ? <ChevronDown className="w-3 h-3 text-gray-400" />
+                                  : <CR className="w-3 h-3 text-gray-400" />}
+                                <BookOpen className="w-3.5 h-3.5 text-green-600" />
+                                <span className="text-xs font-medium text-gray-700">{dept.name}</span>
+                                <span className="text-xs text-gray-400">({dept.code}) · {dept.course_count} courses</span>
+                              </div>
+                              <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                                <button onClick={() => setShowForm({ type: 'course', parentId: dept.id })}
+                                        className="text-xs bg-green-50 text-green-600 px-2 py-0.5 rounded-lg">
+                                  + Course
+                                </button>
+                                <button onClick={() => del('department', dept.id, fac.id)}
+                                        className="p-1 text-gray-300 hover:text-red-500 rounded-lg">
+                                  <Trash2 className="w-3 h-3" />
+                                </button>
+                              </div>
+                            </div>
+
+                            {/* Courses */}
+                            {expanded[`dept-${dept.id}`] && (
+                              <div className="px-24 py-2 space-y-1">
+                                {(courses[dept.id] || []).length === 0 ? (
+                                  <p className="text-gray-400 text-xs py-1">No courses yet</p>
+                                ) : (courses[dept.id] || []).map(course => (
+                                  <div key={course.id}
+                                       className="flex items-center justify-between py-1.5 px-3
+                                                  bg-white rounded-lg border border-gray-100">
+                                    <div>
+                                      <span className="text-xs font-bold text-blue-600 mr-2">{course.code}</span>
+                                      <span className="text-xs text-gray-700">{course.title}</span>
+                                      <span className="text-xs text-gray-400 ml-2">
+                                        {course.level} · {course.semester} sem · {course.credit_units} units
+                                      </span>
+                                    </div>
+                                    <button onClick={() => del('course', course.id, dept.id)}
+                                            className="p-1 text-gray-300 hover:text-red-500 rounded-lg">
+                                      <Trash2 className="w-3 h-3" />
+                                    </button>
+                                  </div>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ── Users Tab ─────────────────────────────────────────────────
 function UsersTab({ isSuperAdmin }) {
-  const [users, setUsers]   = useState([]);
+  const [users, setUsers]     = useState([]);
   const [loading, setLoading] = useState(true);
-  const [search, setSearch] = useState('');
+  const [search, setSearch]   = useState('');
   const [roleFilter, setRoleFilter] = useState('student');
   const [pagination, setPagination] = useState(null);
-  const [page, setPage]     = useState(1);
+  const [page, setPage]       = useState(1);
 
   const load = () => {
     setLoading(true);
@@ -310,34 +816,25 @@ function UsersTab({ isSuperAdmin }) {
     if (search) params.append('search', search);
     api.get(`/admin/users?${params}`)
       .then(r => { setUsers(r.data.data.users); setPagination(r.data.data.pagination); })
-      .catch(() => toast.error('Failed to load users'))
+      .catch(() => toast.error('Failed'))
       .finally(() => setLoading(false));
   };
 
   useEffect(() => { load(); }, [roleFilter, page]);
 
   const changeRole = async (id, role) => {
-    try {
-      await api.patch(`/admin/users/${id}/role`, { role });
-      toast.success('Role updated');
-      load();
-    } catch (err) { toast.error(err.response?.data?.message || 'Failed'); }
+    try { await api.patch(`/admin/users/${id}/role`, { role }); toast.success('Role updated'); load(); }
+    catch (err) { toast.error(err.response?.data?.message || 'Failed'); }
   };
-
   const deleteUser = async (id, name) => {
-    if (!confirm(`Delete ${name}? This cannot be undone.`)) return;
-    try {
-      await api.delete(`/admin/users/${id}`);
-      toast.success('User deleted');
-      load();
-    } catch (err) { toast.error(err.response?.data?.message || 'Failed'); }
+    if (!confirm(`Delete ${name}?`)) return;
+    try { await api.delete(`/admin/users/${id}`); toast.success('Deleted'); load(); }
+    catch (err) { toast.error(err.response?.data?.message || 'Failed'); }
   };
 
   const ROLE_COLORS = {
-    student:     'bg-blue-100 text-blue-700',
-    tutor:       'bg-purple-100 text-purple-700',
-    lecturer:    'bg-green-100 text-green-700',
-    admin:       'bg-orange-100 text-orange-700',
+    student: 'bg-blue-100 text-blue-700', tutor: 'bg-purple-100 text-purple-700',
+    lecturer: 'bg-green-100 text-green-700', admin: 'bg-orange-100 text-orange-700',
     super_admin: 'bg-yellow-100 text-yellow-700',
   };
 
@@ -345,12 +842,8 @@ function UsersTab({ isSuperAdmin }) {
     <div className="space-y-6">
       <div>
         <h2 className="text-xl font-bold text-gray-900">Users</h2>
-        <p className="text-gray-500 text-sm mt-1">
-          {pagination?.total ?? 0} total users
-        </p>
+        <p className="text-gray-500 text-sm mt-1">{pagination?.total ?? 0} total</p>
       </div>
-
-      {/* Filters */}
       <div className="flex flex-wrap gap-3">
         <div className="flex gap-1 bg-gray-100 p-1 rounded-xl">
           {['student','tutor','lecturer','admin'].map(r => (
@@ -361,24 +854,18 @@ function UsersTab({ isSuperAdmin }) {
             </button>
           ))}
         </div>
-        <input className="input flex-1 min-w-[200px] text-sm py-2"
-               placeholder="Search name or email..."
-               value={search}
-               onChange={e => setSearch(e.target.value)}
+        <input className="input flex-1 min-w-[200px] text-sm py-2" placeholder="Search..."
+               value={search} onChange={e => setSearch(e.target.value)}
                onKeyDown={e => e.key === 'Enter' && load()} />
         <button onClick={load} className="btn-primary text-sm px-4 py-2">Search</button>
       </div>
-
-      {/* Table */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
         {loading ? (
           <div className="flex justify-center py-12"><Loader2 className="w-6 h-6 animate-spin text-blue-600" /></div>
-        ) : users.length === 0 ? (
-          <p className="text-center text-gray-400 py-12 text-sm">No users found</p>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
-              <thead className="bg-gray-50 border-b border-gray-100">
+              <thead className="bg-gray-50 border-b">
                 <tr>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase">User</th>
                   <th className="text-left px-5 py-3 text-xs font-semibold text-gray-500 uppercase">Institution</th>
@@ -389,20 +876,17 @@ function UsersTab({ isSuperAdmin }) {
               </thead>
               <tbody className="divide-y divide-gray-50">
                 {users.map(u => (
-                  <tr key={u.id} className="hover:bg-gray-50 transition-colors">
+                  <tr key={u.id} className="hover:bg-gray-50">
                     <td className="px-5 py-3">
                       <p className="font-medium text-gray-900">{u.full_name}</p>
                       <p className="text-xs text-gray-400">{u.email}</p>
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-500">
-                      {u.short_name || '—'}
-                      {u.level && <span className="ml-1 text-gray-400">· {u.level}</span>}
+                      {u.short_name || '—'}{u.level && <span className="ml-1">· {u.level}</span>}
                     </td>
                     <td className="px-5 py-3">
                       <span className={`px-2 py-0.5 rounded-full text-xs font-medium
-                        ${ROLE_COLORS[u.role] || 'bg-gray-100 text-gray-600'}`}>
-                        {u.role}
-                      </span>
+                        ${ROLE_COLORS[u.role] || 'bg-gray-100 text-gray-600'}`}>{u.role}</span>
                     </td>
                     <td className="px-5 py-3 text-xs text-gray-400">
                       {new Date(u.created_at).toLocaleDateString()}
@@ -411,11 +895,8 @@ function UsersTab({ isSuperAdmin }) {
                       <td className="px-5 py-3">
                         <div className="flex items-center gap-2">
                           {u.role !== 'super_admin' && (
-                            <select
-                              value={u.role}
-                              onChange={e => changeRole(u.id, e.target.value)}
-                              className="text-xs border border-gray-200 rounded-lg px-2 py-1
-                                         focus:outline-none focus:ring-1 focus:ring-blue-500">
+                            <select value={u.role} onChange={e => changeRole(u.id, e.target.value)}
+                                    className="text-xs border border-gray-200 rounded-lg px-2 py-1 focus:outline-none">
                               <option value="student">student</option>
                               <option value="tutor">tutor</option>
                               <option value="lecturer">lecturer</option>
@@ -424,8 +905,7 @@ function UsersTab({ isSuperAdmin }) {
                           )}
                           {u.role !== 'super_admin' && (
                             <button onClick={() => deleteUser(u.id, u.full_name)}
-                                    className="p-1.5 text-gray-400 hover:text-red-500
-                                               hover:bg-red-50 rounded-lg transition-colors">
+                                    className="p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -438,22 +918,14 @@ function UsersTab({ isSuperAdmin }) {
             </table>
           </div>
         )}
-
-        {/* Pagination */}
-        {pagination && pagination.pages > 1 && (
-          <div className="flex items-center justify-between px-5 py-3 border-t border-gray-100">
-            <p className="text-xs text-gray-400">
-              Page {page} of {pagination.pages} · {pagination.total} users
-            </p>
+        {pagination?.pages > 1 && (
+          <div className="flex items-center justify-between px-5 py-3 border-t">
+            <p className="text-xs text-gray-400">Page {page} of {pagination.pages}</p>
             <div className="flex gap-2">
-              <button onClick={() => setPage(p => Math.max(1, p-1))} disabled={page === 1}
-                      className="px-3 py-1 text-xs border rounded-lg disabled:opacity-40 hover:bg-gray-50">
-                Prev
-              </button>
-              <button onClick={() => setPage(p => Math.min(pagination.pages, p+1))} disabled={page === pagination.pages}
-                      className="px-3 py-1 text-xs border rounded-lg disabled:opacity-40 hover:bg-gray-50">
-                Next
-              </button>
+              <button onClick={() => setPage(p => Math.max(1,p-1))} disabled={page===1}
+                      className="px-3 py-1 text-xs border rounded-lg disabled:opacity-40">Prev</button>
+              <button onClick={() => setPage(p => Math.min(pagination.pages,p+1))} disabled={page===pagination.pages}
+                      className="px-3 py-1 text-xs border rounded-lg disabled:opacity-40">Next</button>
             </div>
           </div>
         )}
@@ -462,12 +934,12 @@ function UsersTab({ isSuperAdmin }) {
   );
 }
 
-// ── Manage Admins tab (super_admin only) ──────────────────────
+// ── Manage Admins ─────────────────────────────────────────────
 function ManageAdmins({ isSuperAdmin }) {
-  const [admins, setAdmins] = useState([]);
+  const [admins, setAdmins]   = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [form, setForm] = useState({ full_name:'', email:'', password:'', role:'admin' });
+  const [form, setForm]       = useState({ full_name:'', email:'', password:'', role:'admin' });
   const [creating, setCreating] = useState(false);
 
   const load = () => {
@@ -477,35 +949,27 @@ function ManageAdmins({ isSuperAdmin }) {
       .catch(() => {})
       .finally(() => setLoading(false));
   };
-
   useEffect(() => { load(); }, []);
 
   const createAdmin = async () => {
-    if (!form.full_name || !form.email || !form.password) {
-      toast.error('All fields required'); return;
-    }
+    if (!form.full_name || !form.email || !form.password) { toast.error('All fields required'); return; }
     setCreating(true);
     try {
       await api.post('/admin/users', form);
-      toast.success(`${form.role} account created`);
+      toast.success('Admin account created');
       setShowForm(false);
       setForm({ full_name:'', email:'', password:'', role:'admin' });
       load();
-    } catch (err) {
-      toast.error(err.response?.data?.message || 'Failed');
-    } finally {
-      setCreating(false);
-    }
+    } catch (err) { toast.error(err.response?.data?.message || 'Failed'); }
+    finally { setCreating(false); }
   };
 
-  if (!isSuperAdmin) {
-    return (
-      <div className="text-center py-20">
-        <Shield className="w-12 h-12 text-gray-300 mx-auto mb-3" />
-        <p className="text-gray-500 font-medium">Super Admin access only</p>
-      </div>
-    );
-  }
+  if (!isSuperAdmin) return (
+    <div className="text-center py-20">
+      <Shield className="w-12 h-12 text-gray-300 mx-auto mb-3" />
+      <p className="text-gray-500 font-medium">Super Admin access only</p>
+    </div>
+  );
 
   return (
     <div className="space-y-6">
@@ -516,174 +980,121 @@ function ManageAdmins({ isSuperAdmin }) {
         </div>
         <button onClick={() => setShowForm(!showForm)}
                 className="btn-primary flex items-center gap-2 text-sm">
-          <UserPlus className="w-4 h-4" />
-          New Admin
+          <UserPlus className="w-4 h-4" />New Admin
         </button>
       </div>
-
-      {/* Create form */}
       {showForm && (
-        <div className="bg-white rounded-2xl border border-blue-200 shadow-sm p-6 space-y-4">
-          <h3 className="font-semibold text-gray-900">Create New Admin Account</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="label">Full Name</label>
-              <input className="input" placeholder="e.g. Ibrahim Musa"
-                     value={form.full_name} onChange={e => setForm({...form, full_name: e.target.value})} />
-            </div>
-            <div>
-              <label className="label">Email</label>
-              <input className="input" type="email" placeholder="admin@example.com"
-                     value={form.email} onChange={e => setForm({...form, email: e.target.value})} />
-            </div>
-            <div>
-              <label className="label">Password</label>
-              <input className="input" type="password" placeholder="Minimum 8 characters"
-                     value={form.password} onChange={e => setForm({...form, password: e.target.value})} />
-            </div>
-            <div>
-              <label className="label">Role</label>
-              <select className="input" value={form.role}
-                      onChange={e => setForm({...form, role: e.target.value})}>
-                <option value="admin">Admin — can approve content</option>
-                <option value="lecturer">Lecturer — can upload content</option>
-              </select>
-            </div>
+        <div className="bg-white rounded-2xl border border-blue-200 p-6 space-y-4">
+          <h3 className="font-semibold text-gray-900">Create Admin Account</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div><label className="label">Full Name</label>
+              <input className="input" value={form.full_name} onChange={e => setForm({...form, full_name: e.target.value})} /></div>
+            <div><label className="label">Email</label>
+              <input className="input" type="email" value={form.email} onChange={e => setForm({...form, email: e.target.value})} /></div>
+            <div><label className="label">Password</label>
+              <input className="input" type="password" value={form.password} onChange={e => setForm({...form, password: e.target.value})} /></div>
+            <div><label className="label">Role</label>
+              <select className="input" value={form.role} onChange={e => setForm({...form, role: e.target.value})}>
+                <option value="admin">Admin</option>
+                <option value="lecturer">Lecturer</option>
+              </select></div>
           </div>
           <div className="flex gap-3">
             <button onClick={createAdmin} disabled={creating}
                     className="btn-primary flex items-center gap-2 text-sm">
-              {creating && <Loader2 className="w-4 h-4 animate-spin" />}
-              Create Account
+              {creating && <Loader2 className="w-4 h-4 animate-spin" />}Create
             </button>
-            <button onClick={() => setShowForm(false)} className="btn-secondary text-sm">
-              Cancel
-            </button>
+            <button onClick={() => setShowForm(false)} className="btn-secondary text-sm">Cancel</button>
           </div>
         </div>
       )}
-
-      {/* Admin list */}
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-        <div className="px-5 py-4 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
+        <div className="px-5 py-4 border-b bg-gray-50 flex items-center justify-between">
           <h3 className="font-semibold text-gray-900">Admin Accounts</h3>
           <span className="text-xs text-gray-400">{admins.length} admins</span>
         </div>
         {loading ? (
-          <div className="flex justify-center py-10"><Loader2 className="w-6 h-6 animate-spin text-blue-600" /></div>
+          <div className="flex justify-center py-10"><Loader2 className="w-6 h-6 animate-spin" /></div>
         ) : admins.length === 0 ? (
           <p className="text-center text-gray-400 py-10 text-sm">No admin accounts yet</p>
-        ) : (
-          <div className="divide-y divide-gray-50">
-            {admins.map(a => (
-              <div key={a.id} className="px-5 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center
-                                  justify-center font-bold text-orange-600 text-sm">
-                    {a.full_name?.charAt(0)}
-                  </div>
-                  <div>
-                    <p className="font-medium text-gray-900 text-sm">{a.full_name}</p>
-                    <p className="text-xs text-gray-400">{a.email}</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-medium">
-                    {a.role}
-                  </span>
-                  <p className="text-xs text-gray-400">
-                    {new Date(a.created_at).toLocaleDateString()}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
-      </div>
-
-      {/* Super admins (read-only) */}
-      <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl
-                      border border-yellow-200 p-5">
-        <div className="flex items-center gap-2 mb-4">
-          <Crown className="w-5 h-5 text-yellow-600" />
-          <h3 className="font-semibold text-gray-900">Super Admins</h3>
-          <span className="text-xs text-gray-500">(cannot be modified)</span>
-        </div>
-        <div className="space-y-3">
-          {[
-            { name: 'Usman Waziri',        email: 'usmawaziri555@gmail.com' },
-            { name: 'Abdulazeez Mohammed', email: 'omomohmuhammed@gmail.com' },
-          ].map(sa => (
-            <div key={sa.email} className="flex items-center gap-3 bg-white rounded-xl p-3">
-              <div className="w-9 h-9 bg-gradient-to-br from-yellow-400 to-orange-500
-                              rounded-full flex items-center justify-center font-bold text-white text-sm">
-                {sa.name.charAt(0)}
+        ) : admins.map(a => (
+          <div key={a.id} className="px-5 py-4 flex items-center justify-between border-b last:border-0">
+            <div className="flex items-center gap-3">
+              <div className="w-9 h-9 bg-orange-100 rounded-full flex items-center justify-center font-bold text-orange-600 text-sm">
+                {a.full_name?.charAt(0)}
               </div>
               <div>
-                <p className="font-medium text-gray-900 text-sm">{sa.name}</p>
-                <p className="text-xs text-gray-400">{sa.email}</p>
+                <p className="font-medium text-gray-900 text-sm">{a.full_name}</p>
+                <p className="text-xs text-gray-400">{a.email}</p>
               </div>
-              <Crown className="w-4 h-4 text-yellow-500 ml-auto" />
             </div>
-          ))}
+            <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full">{a.role}</span>
+          </div>
+        ))}
+      </div>
+      <div className="bg-gradient-to-r from-yellow-50 to-orange-50 rounded-2xl border border-yellow-200 p-5">
+        <div className="flex items-center gap-2 mb-3">
+          <Crown className="w-5 h-5 text-yellow-600" />
+          <h3 className="font-semibold text-gray-900">Super Admins</h3>
         </div>
+        {[{name:'Usman Waziri',email:'usmawaziri555@gmail.com'},{name:'Abdulazeez Mohammed',email:'omomohmuhammed@gmail.com'}].map(sa => (
+          <div key={sa.email} className="flex items-center gap-3 bg-white rounded-xl p-3 mb-2 last:mb-0">
+            <div className="w-9 h-9 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center font-bold text-white text-sm">
+              {sa.name.charAt(0)}
+            </div>
+            <div>
+              <p className="font-medium text-gray-900 text-sm">{sa.name}</p>
+              <p className="text-xs text-gray-400">{sa.email}</p>
+            </div>
+            <Crown className="w-4 h-4 text-yellow-500 ml-auto" />
+          </div>
+        ))}
       </div>
     </div>
   );
 }
 
-// ── Main admin page ───────────────────────────────────────────
+// ── Main ──────────────────────────────────────────────────────
 export default function AdminPage() {
-  const router   = useRouter();
+  const router = useRouter();
   const { user, loading: authLoading, logout } = useAuth();
-  const [tab, setTab]         = useState('overview');
-  const [stats, setStats]     = useState(null);
+  const [tab, setTab]       = useState('overview');
+  const [stats, setStats]   = useState(null);
   const [activity, setActivity] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!authLoading && !user) { router.push('/login'); return; }
-    if (!authLoading && user && !['admin','super_admin'].includes(user.role)) {
-      router.push('/dashboard');
-    }
-  }, [user, authLoading, router]);
+    if (!authLoading && user && !['admin','super_admin'].includes(user.role)) router.push('/dashboard');
+  }, [user, authLoading]);
 
   useEffect(() => {
     if (!user) return;
-    Promise.all([
-      api.get('/admin/stats'),
-      api.get('/admin/activity'),
-    ]).then(([s, a]) => {
-      setStats(s.data.data);
-      setActivity(a.data.data);
-    }).catch(() => {})
-    .finally(() => setLoading(false));
+    Promise.all([api.get('/admin/stats'), api.get('/admin/activity')])
+      .then(([s, a]) => { setStats(s.data.data); setActivity(a.data.data); })
+      .catch(() => {})
+      .finally(() => setLoading(false));
   }, [user]);
 
-  if (authLoading || loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
-      </div>
-    );
-  }
+  if (authLoading || loading) return (
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+    </div>
+  );
 
   if (!user || !['admin','super_admin'].includes(user.role)) return null;
-
   const isSuperAdmin = user.role === 'super_admin';
 
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       <Sidebar active={tab} setActive={setTab} user={user} logout={logout} />
-
       <main className="flex-1 overflow-y-auto">
-        {/* Top bar */}
         <div className="sticky top-0 bg-white border-b border-gray-200 px-8 py-4 z-10">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm text-gray-500">
               <span>Admin</span>
               <ChevronRight className="w-4 h-4" />
-              <span className="text-gray-900 font-medium capitalize">{tab}</span>
+              <span className="text-gray-900 font-medium capitalize">{tab.replace('_',' ')}</span>
             </div>
             <div className="flex items-center gap-2">
               <Crown className="w-4 h-4 text-yellow-500" />
@@ -691,12 +1102,13 @@ export default function AdminPage() {
             </div>
           </div>
         </div>
-
         <div className="p-8">
-          {tab === 'overview' && <Overview stats={stats} activity={activity} />}
-          {tab === 'content'  && <ContentApproval />}
-          {tab === 'users'    && <UsersTab isSuperAdmin={isSuperAdmin} />}
-          {tab === 'admins'   && <ManageAdmins isSuperAdmin={isSuperAdmin} />}
+          {tab === 'overview'     && <Overview stats={stats} activity={activity} />}
+          {tab === 'content'      && <ContentApproval />}
+          {tab === 'upload'       && <UploadContent />}
+          {tab === 'institutions' && <InstitutionManager />}
+          {tab === 'users'        && <UsersTab isSuperAdmin={isSuperAdmin} />}
+          {tab === 'admins'       && <ManageAdmins isSuperAdmin={isSuperAdmin} />}
         </div>
       </main>
     </div>
