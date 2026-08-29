@@ -210,7 +210,7 @@ function ContentApproval() {
 // ── Upload Content ────────────────────────────────────────────
 function UploadContent() {
   const [uploadType, setUploadType] = useState('material');
-  const [scope, setScope]           = useState('generic');   // generic | specific
+  const [scope, setScope]           = useState('specific');
   const [institutions, setInstitutions] = useState([]);
   const [faculties, setFaculties]   = useState([]);
   const [departments, setDepartments] = useState([]);
@@ -218,87 +218,88 @@ function UploadContent() {
   const [selInst, setSelInst]       = useState('');
   const [selFac, setSelFac]         = useState('');
   const [selDept, setSelDept]       = useState('');
+  const [selCourse, setSelCourse]   = useState('');
   const [file, setFile]             = useState(null);
   const [form, setForm]             = useState({
     title:'', material_type:'lecture_note', description:'', tags:'',
     year: new Date().getFullYear(), exam_type:'semester', has_answers:false,
-    level:'100', course_code:'', course_title:''
+    level:'100', course_code:'', course_title:'', semester:'first', credit_units:3
   });
-  const [uploading, setUploading] = useState(false);
+  const [uploading, setUploading]   = useState(false);
+  const [creating, setCreating]     = useState(false);
+
+  const LEVELS = ['100','200','300','400','500','600','ND1','ND2','HND1','HND2'];
 
   useEffect(() => {
     api.get('/manage/institutions').then(r => setInstitutions(r.data.data)).catch(()=>{});
   }, []);
 
   useEffect(() => {
-    if (!selInst) { setFaculties([]); setSelFac(''); setDepartments([]); setCourses([]); return; }
+    if (!selInst) { setFaculties([]); setSelFac(''); setDepartments([]); setSelDept(''); setCourses([]); setSelCourse(''); return; }
     const inst = institutions.find(i => i.id === selInst);
     const ep = inst?.type==='university' ? `/manage/institutions/${selInst}/faculties` : `/manage/institutions/${selInst}/schools`;
     api.get(ep).then(r => setFaculties(r.data.data)).catch(()=>{});
-    setSelFac(''); setDepartments([]); setCourses([]);
+    setSelFac(''); setDepartments([]); setSelDept(''); setCourses([]); setSelCourse('');
   }, [selInst]);
 
   useEffect(() => {
-    if (!selFac) { setDepartments([]); setCourses([]); return; }
+    if (!selFac) { setDepartments([]); setSelDept(''); setCourses([]); setSelCourse(''); return; }
     const inst = institutions.find(i => i.id === selInst);
     const ep = inst?.type==='university' ? `/manage/faculties/${selFac}/departments` : `/manage/schools/${selFac}/departments`;
     api.get(ep).then(r => setDepartments(r.data.data)).catch(()=>{});
-    setCourses([]);
+    setSelDept(''); setCourses([]); setSelCourse('');
   }, [selFac]);
 
   useEffect(() => {
-    if (!selDept) { setCourses([]); return; }
+    if (!selDept) { setCourses([]); setSelCourse(''); return; }
     api.get(`/manage/departments/${selDept}/courses`).then(r => setCourses(r.data.data)).catch(()=>{});
+    setSelCourse('');
   }, [selDept]);
 
-  // Find or create course ID for generic uploads
-  const resolveCourseId = async () => {
-    if (scope === 'specific' && selDept) {
-      // Check if course code exists in dept
-      const existing = courses.find(c => c.code.toUpperCase() === form.course_code.toUpperCase());
-      if (existing) return existing.id;
-      // Create it
-      const r = await api.post(`/manage/departments/${selDept}/courses`, {
-        title: form.course_title,
-        code:  form.course_code,
-        level: form.level,
-        semester: 'first',
-        credit_units: 3
-      });
-      return r.data.data.id;
+  // Resolve or create course, return course_id
+  const resolveCourse = async () => {
+    if (scope === 'specific') {
+      if (selCourse) return selCourse;
+      // Create course in selected department
+      if (!selDept || !form.course_code || !form.course_title) {
+        toast.error('Select department and enter course code + title'); return null;
+      }
+      setCreating(true);
+      try {
+        const r = await api.post(`/manage/departments/${selDept}/courses`, {
+          title:        form.course_title,
+          code:         form.course_code,
+          level:        form.level,
+          semester:     form.semester,
+          credit_units: form.credit_units,
+        });
+        return r.data.data.id;
+      } catch (err) {
+        toast.error(err.response?.data?.message || 'Failed to create course');
+        return null;
+      } finally { setCreating(false); }
+    } else {
+      // Generic — find existing by code or create in a generic department
+      // Search all courses by code
+      if (!form.course_code || !form.course_title) {
+        toast.error('Enter course code and title'); return null;
+      }
+      try {
+        const r = await api.get(`/institutions/courses/by-code?code=${form.course_code}`);
+        if (r.data.data?.id) return r.data.data.id;
+      } catch {}
+      // Not found — need dept to create. Prompt admin to use specific mode.
+      toast.error('Course code not found in database. Use "Institution Specific" to add new courses.');
+      return null;
     }
-    return null;
   };
 
   const handleUpload = async () => {
     if (!file) { toast.error('Select a file'); return; }
-    if (scope === 'specific' && (!selDept || !form.course_code)) {
-      toast.error('Select department and enter course code'); return;
-    }
-    if (scope === 'generic' && (!form.course_code || !form.course_title)) {
-      toast.error('Enter course code and title'); return;
-    }
-
     setUploading(true);
     try {
-      let courseId = null;
-
-      if (scope === 'specific') {
-        courseId = await resolveCourseId();
-      } else {
-        // Generic — find course by code across all courses or prompt admin to pick dept
-        // For generic uploads we still need a course_id — use a special lookup
-        const r = await api.get(`/institutions/courses/by-code?code=${form.course_code}`).catch(() => null);
-        if (r?.data?.data?.id) {
-          courseId = r.data.data.id;
-        } else {
-          toast.error('Course code not found. Use Institution Specific for new courses.');
-          setUploading(false);
-          return;
-        }
-      }
-
-      if (!courseId) { toast.error('Could not resolve course'); setUploading(false); return; }
+      const courseId = await resolveCourse();
+      if (!courseId) { setUploading(false); return; }
 
       const fd = new FormData();
       fd.append('file', file);
@@ -318,17 +319,13 @@ function UploadContent() {
         await api.post('/admin-upload/past-question', fd, { headers: { 'Content-Type': 'multipart/form-data' } });
         toast.success('Past question uploaded!');
       }
-
       setFile(null);
-      setForm({ title:'', material_type:'lecture_note', description:'', tags:'',
-                year: new Date().getFullYear(), exam_type:'semester', has_answers:false,
-                level:'100', course_code:'', course_title:'' });
+      setSelCourse('');
+      setForm(f => ({ ...f, title:'', description:'', tags:'', course_code:'', course_title:'' }));
     } catch (err) {
       toast.error(err.response?.data?.message || 'Upload failed');
     } finally { setUploading(false); }
   };
-
-  const LEVELS = ['100','200','300','400','500','600','ND1','ND2','HND1','HND2'];
 
   return (
     <div className="space-y-6 max-w-2xl">
@@ -337,50 +334,29 @@ function UploadContent() {
         <p className="text-gray-500 text-sm mt-1">Upload materials and past questions — published immediately</p>
       </div>
 
-      {/* Upload type */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
-        {[['material','Course Material'],['past_question','Past Question']].map(([v,l]) => (
-          <button key={v} onClick={() => setUploadType(v)}
-                  className={`px-5 py-2 rounded-lg text-sm font-medium transition-all
-                    ${uploadType===v ? 'bg-white text-blue-600 shadow-sm' : 'text-gray-500'}`}>{l}</button>
-        ))}
-      </div>
+      <div className="grid grid-cols-2 gap-4">
+        {/* Upload type dropdown */}
+        <div>
+          <label className="label">Content Type</label>
+          <select className="input" value={uploadType} onChange={e => setUploadType(e.target.value)}>
+            <option value="material">Course Material</option>
+            <option value="past_question">Past Question</option>
+          </select>
+        </div>
 
-      {/* Scope toggle */}
-      <div className="flex gap-1 bg-gray-100 p-1 rounded-xl w-fit">
-        {[['generic','Generic (All institutions)'],['specific','Institution Specific']].map(([v,l]) => (
-          <button key={v} onClick={() => setScope(v)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all
-                    ${scope===v ? 'bg-white text-purple-600 shadow-sm' : 'text-gray-500'}`}>{l}</button>
-        ))}
+        {/* Scope dropdown */}
+        <div>
+          <label className="label">Scope</label>
+          <select className="input" value={scope} onChange={e => setScope(e.target.value)}>
+            <option value="specific">Institution Specific</option>
+            <option value="generic">Generic (All Institutions)</option>
+          </select>
+        </div>
       </div>
 
       <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-4">
 
-        {/* Generic scope */}
-        {scope === 'generic' && (
-          <div className="space-y-4">
-            <div className="bg-blue-50 rounded-xl p-3 text-xs text-blue-700 border border-blue-100">
-              Generic uploads attach to a course by code across all institutions. The course code must already exist in the database.
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="label">Level</label>
-                <select className="input" value={form.level} onChange={e => setForm({...form, level: e.target.value})}>
-                  {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
-                </select>
-              </div>
-              <div>
-                <label className="label">Course Code</label>
-                <input className="input" placeholder="e.g. CPE301"
-                       value={form.course_code}
-                       onChange={e => setForm({...form, course_code: e.target.value.toUpperCase()})} />
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Institution specific scope */}
+        {/* Institution Specific cascade */}
         {scope === 'specific' && (
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
@@ -407,7 +383,67 @@ function UploadContent() {
               </div>
               <div>
                 <label className="label">Level</label>
-                <select className="input" value={form.level} onChange={e => setForm({...form, level: e.target.value})}>
+                <select className="input" value={form.level} onChange={e => setForm(f => ({...f, level: e.target.value}))}>
+                  {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
+                </select>
+              </div>
+            </div>
+
+            {/* Course — pick existing or create new */}
+            <div>
+              <label className="label">Course</label>
+              <select className="input" value={selCourse} onChange={e => setSelCourse(e.target.value)} disabled={!selDept}>
+                <option value="">— Select existing course or enter new below —</option>
+                {courses.filter(c => !form.level || c.level === form.level)
+                        .map(c => <option key={c.id} value={c.id}>{c.code} — {c.title}</option>)}
+              </select>
+            </div>
+
+            {/* New course entry — only if none selected */}
+            {!selCourse && selDept && (
+              <div className="bg-blue-50 rounded-xl p-4 border border-blue-100 space-y-3">
+                <p className="text-xs text-blue-700 font-medium">New course — will be created automatically on upload</p>
+                <div className="grid grid-cols-2 gap-3">
+                  <div>
+                    <label className="label">Course Code</label>
+                    <input className="input" placeholder="e.g. CPE301"
+                           value={form.course_code}
+                           onChange={e => setForm(f => ({...f, course_code: e.target.value.toUpperCase()}))} />
+                  </div>
+                  <div>
+                    <label className="label">Course Title</label>
+                    <input className="input" placeholder="e.g. Digital Electronics"
+                           value={form.course_title}
+                           onChange={e => setForm(f => ({...f, course_title: e.target.value}))} />
+                  </div>
+                  <div>
+                    <label className="label">Semester</label>
+                    <select className="input" value={form.semester} onChange={e => setForm(f => ({...f, semester: e.target.value}))}>
+                      <option value="first">1st Semester</option>
+                      <option value="second">2nd Semester</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="label">Credit Units</label>
+                    <input className="input" type="number" min="1" max="6" value={form.credit_units}
+                           onChange={e => setForm(f => ({...f, credit_units: e.target.value}))} />
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Generic scope */}
+        {scope === 'generic' && (
+          <div className="space-y-4">
+            <div className="bg-amber-50 rounded-xl p-3 text-xs text-amber-700 border border-amber-100">
+              Generic uploads search for the course by code. If found, the material is attached to all matching courses. If not found, switch to Institution Specific.
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="label">Level</label>
+                <select className="input" value={form.level} onChange={e => setForm(f => ({...f, level: e.target.value}))}>
                   {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
                 </select>
               </div>
@@ -415,30 +451,24 @@ function UploadContent() {
                 <label className="label">Course Code</label>
                 <input className="input" placeholder="e.g. CPE301"
                        value={form.course_code}
-                       onChange={e => setForm({...form, course_code: e.target.value.toUpperCase()})} />
-              </div>
-              <div>
-                <label className="label">Course Title</label>
-                <input className="input" placeholder="e.g. Digital Electronics"
-                       value={form.course_title}
-                       onChange={e => setForm({...form, course_title: e.target.value})} />
+                       onChange={e => setForm(f => ({...f, course_code: e.target.value.toUpperCase()}))} />
               </div>
             </div>
           </div>
         )}
 
-        {/* Material specific fields */}
+        {/* Material fields */}
         {uploadType === 'material' && (
           <>
             <div>
               <label className="label">Material Title</label>
               <input className="input" placeholder="e.g. Introduction to Computing — Lecture Note 1"
-                     value={form.title} onChange={e => setForm({...form, title: e.target.value})} />
+                     value={form.title} onChange={e => setForm(f => ({...f, title: e.target.value}))} />
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="label">Material Type</label>
-                <select className="input" value={form.material_type} onChange={e => setForm({...form, material_type: e.target.value})}>
+                <select className="input" value={form.material_type} onChange={e => setForm(f => ({...f, material_type: e.target.value}))}>
                   <option value="lecture_note">Lecture Note</option>
                   <option value="slide">Slide</option>
                   <option value="textbook">Textbook</option>
@@ -449,28 +479,28 @@ function UploadContent() {
               <div>
                 <label className="label">Tags (comma separated)</label>
                 <input className="input" placeholder="e.g. week1, circuits"
-                       value={form.tags} onChange={e => setForm({...form, tags: e.target.value})} />
+                       value={form.tags} onChange={e => setForm(f => ({...f, tags: e.target.value}))} />
               </div>
             </div>
             <div>
               <label className="label">Description (optional)</label>
               <textarea className="input" rows={2}
-                        value={form.description} onChange={e => setForm({...form, description: e.target.value})} />
+                        value={form.description} onChange={e => setForm(f => ({...f, description: e.target.value}))} />
             </div>
           </>
         )}
 
-        {/* Past question specific fields */}
+        {/* Past question fields */}
         {uploadType === 'past_question' && (
           <div className="grid grid-cols-3 gap-4">
             <div>
               <label className="label">Year</label>
               <input className="input" type="number" min="2000" max="2030"
-                     value={form.year} onChange={e => setForm({...form, year: e.target.value})} />
+                     value={form.year} onChange={e => setForm(f => ({...f, year: e.target.value}))} />
             </div>
             <div>
               <label className="label">Exam Type</label>
-              <select className="input" value={form.exam_type} onChange={e => setForm({...form, exam_type: e.target.value})}>
+              <select className="input" value={form.exam_type} onChange={e => setForm(f => ({...f, exam_type: e.target.value}))}>
                 <option value="semester">Semester</option>
                 <option value="mock">Mock</option>
                 <option value="carry_over">Carry Over</option>
@@ -480,7 +510,7 @@ function UploadContent() {
             <div className="flex items-end pb-2">
               <label className="flex items-center gap-2 cursor-pointer">
                 <input type="checkbox" checked={form.has_answers}
-                       onChange={e => setForm({...form, has_answers: e.target.checked})} className="w-4 h-4" />
+                       onChange={e => setForm(f => ({...f, has_answers: e.target.checked}))} className="w-4 h-4" />
                 <span className="text-sm text-gray-700">Has answers</span>
               </label>
             </div>
@@ -497,20 +527,24 @@ function UploadContent() {
                    accept=".pdf,.doc,.docx,.ppt,.pptx,.txt,.md"
                    onChange={e => setFile(e.target.files[0])} />
             {file ? (
-              <div><CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2"/>
+              <div>
+                <CheckCircle className="w-8 h-8 text-green-500 mx-auto mb-2"/>
                 <p className="text-green-700 font-medium text-sm">{file.name}</p>
-                <p className="text-green-600 text-xs">{(file.size/1024/1024).toFixed(2)} MB</p></div>
+                <p className="text-green-600 text-xs">{(file.size/1024/1024).toFixed(2)} MB</p>
+              </div>
             ) : (
-              <div><Upload className="w-8 h-8 text-gray-300 mx-auto mb-2"/>
-                <p className="text-gray-500 text-sm">Click to select file</p></div>
+              <div>
+                <Upload className="w-8 h-8 text-gray-300 mx-auto mb-2"/>
+                <p className="text-gray-500 text-sm">Click to select file</p>
+              </div>
             )}
           </div>
         </div>
 
-        <button onClick={handleUpload} disabled={uploading || !file}
+        <button onClick={handleUpload} disabled={uploading || creating || !file}
                 className="w-full btn-primary flex items-center justify-center gap-2 py-3">
-          {uploading ? <Loader2 className="w-4 h-4 animate-spin"/> : <Upload className="w-4 h-4"/>}
-          {uploading ? 'Uploading...' : `Upload ${uploadType==='material' ? 'Material' : 'Past Question'}`}
+          {(uploading || creating) ? <Loader2 className="w-4 h-4 animate-spin"/> : <Upload className="w-4 h-4"/>}
+          {creating ? 'Creating course...' : uploading ? 'Uploading...' : `Upload ${uploadType==='material'?'Material':'Past Question'}`}
         </button>
       </div>
     </div>
@@ -518,101 +552,7 @@ function UploadContent() {
 }
 
 // ── Add Form Modal — defined OUTSIDE InstitutionManager to prevent remount ──
-function AddFormModal({ showForm, setShowForm, form, setForm, onSave, saving }) {
-  if (!showForm) return null;
-  const { type, instType } = showForm;
-  const LEVELS = ['100','200','300','400','500','600','ND1','ND2','HND1','HND2'];
 
-  return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
-        <h3 className="font-bold text-gray-900 mb-4 text-lg">
-          {type === 'institution' ? 'Add Institution' :
-           type === 'faculty'     ? (instType === 'university' ? 'Add Faculty' : 'Add School') :
-           type === 'dept'        ? 'Add Department' : 'Add Course'}
-        </h3>
-        <div className="space-y-3">
-          {type === 'institution' && (<>
-            <div><label className="label">Full Name</label>
-              <input className="input" placeholder="e.g. University of Maiduguri"
-                     value={form.name||''} onChange={e => setForm(f => ({...f, name: e.target.value}))} /></div>
-            <div><label className="label">Short Name</label>
-              <input className="input" placeholder="e.g. UNIMAID"
-                     value={form.short_name||''} onChange={e => setForm(f => ({...f, short_name: e.target.value}))} /></div>
-            <div><label className="label">Type</label>
-              <select className="input" value={form.type||'university'}
-                      onChange={e => setForm(f => ({...f, type: e.target.value}))}>
-                <option value="university">University</option>
-                <option value="polytechnic">Polytechnic</option>
-                <option value="college">College of Education</option>
-              </select></div>
-            <div className="grid grid-cols-2 gap-3">
-              <div><label className="label">State</label>
-                <input className="input" placeholder="e.g. Borno"
-                       value={form.state||''} onChange={e => setForm(f => ({...f, state: e.target.value}))} /></div>
-              <div><label className="label">City</label>
-                <input className="input" placeholder="e.g. Maiduguri"
-                       value={form.city||''} onChange={e => setForm(f => ({...f, city: e.target.value}))} /></div>
-            </div>
-          </>)}
-
-          {(type === 'faculty' || type === 'dept') && (<>
-            <div><label className="label">Name</label>
-              <input className="input" placeholder={type === 'faculty' ? 'e.g. Faculty of Engineering' : 'e.g. Computer Engineering'}
-                     value={form.name||''} onChange={e => setForm(f => ({...f, name: e.target.value}))} /></div>
-            <div><label className="label">Code</label>
-              <input className="input" placeholder="e.g. ENG"
-                     value={form.code||''} onChange={e => setForm(f => ({...f, code: e.target.value}))} /></div>
-          </>)}
-
-          {type === 'course' && (<>
-            <div><label className="label">Course Title</label>
-              <input className="input" placeholder="e.g. Digital Electronics"
-                     value={form.title||''} onChange={e => setForm(f => ({...f, title: e.target.value}))} /></div>
-            <div><label className="label">Course Code</label>
-              <input className="input" placeholder="e.g. CPE301"
-                     value={form.code||''} onChange={e => setForm(f => ({...f, code: e.target.value}))} /></div>
-            <div className="grid grid-cols-2 gap-3">
-              <div><label className="label">Level</label>
-                <select className="input" value={form.level||'100'}
-                        onChange={e => setForm(f => ({...f, level: e.target.value}))}>
-                  {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
-                </select></div>
-              <div><label className="label">Semester</label>
-                <select className="input" value={form.semester||'first'}
-                        onChange={e => setForm(f => ({...f, semester: e.target.value}))}>
-                  <option value="first">1st Semester</option>
-                  <option value="second">2nd Semester</option>
-                </select></div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div><label className="label">Credit Units</label>
-                <input className="input" type="number" min="1" max="6" value={form.credit_units||3}
-                       onChange={e => setForm(f => ({...f, credit_units: e.target.value}))} /></div>
-              <div className="flex items-end pb-2">
-                <label className="flex items-center gap-2 cursor-pointer">
-                  <input type="checkbox" checked={form.is_compulsory!==false}
-                         onChange={e => setForm(f => ({...f, is_compulsory: e.target.checked}))} className="w-4 h-4" />
-                  <span className="text-sm">Compulsory</span>
-                </label>
-              </div>
-            </div>
-          </>)}
-        </div>
-        <div className="flex gap-3 mt-5">
-          <button onClick={onSave} disabled={saving}
-                  className="btn-primary flex-1 flex items-center justify-center gap-2">
-            {saving && <Loader2 className="w-4 h-4 animate-spin"/>} Save
-          </button>
-          <button onClick={() => { setShowForm(null); setForm({}); }}
-                  className="btn-secondary flex-1">Cancel</button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-// ── Institution Manager ───────────────────────────────────────
 function InstitutionManager() {
   const [institutions, setInstitutions] = useState([]);
   const [expanded, setExpanded]         = useState({});
