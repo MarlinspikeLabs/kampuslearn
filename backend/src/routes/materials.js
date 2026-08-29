@@ -208,15 +208,34 @@ router.get('/:id/download', authenticate, async (req, res) => {
     if (result.rows.length === 0) return error(res, 'Material not found', 404);
     if (!result.rows[0].is_approved) return error(res, 'Material not yet approved', 403);
 
+    const DOWNLOAD_COST = 5;
+    const wallet = await tokenService.getBalance(req.user.id);
+
+    if (wallet.balance < DOWNLOAD_COST) {
+      return error(res,
+        `You need ${DOWNLOAD_COST} KP to download. You have ${wallet.balance} KP. Earn more by logging in daily or referring friends.`,
+        402
+      );
+    }
+
+    const debit = await tokenService.debitTokens(
+      req.user.id, DOWNLOAD_COST, 'download_spend',
+      `Downloaded: ${result.rows[0].file_name}`
+    );
+
     await query(
       'UPDATE course_materials SET download_count = download_count + 1 WHERE id = $1',
       [req.params.id]
     );
+
     return success(res, {
-      file_url:  result.rows[0].file_url,
-      file_name: result.rows[0].file_name
+      file_url:      result.rows[0].file_url,
+      file_name:     result.rows[0].file_name,
+      kp_spent:      DOWNLOAD_COST,
+      balance_after: debit.balance
     }, 'Download ready');
   } catch (err) {
+    console.error('Download error:', err.message);
     return error(res, 'Download failed', 500);
   }
 });
