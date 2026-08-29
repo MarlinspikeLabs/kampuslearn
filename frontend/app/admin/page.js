@@ -553,6 +553,102 @@ function UploadContent() {
 
 // ── Add Form Modal — defined OUTSIDE InstitutionManager to prevent remount ──
 
+// ── Add Form Modal ────────────────────────────────────────────
+function AddFormModal({ showForm, setShowForm, form, setForm, onSave, saving }) {
+  if (!showForm) return null;
+  const { type, instType } = showForm;
+  const LEVELS = ['100','200','300','400','500','600','ND1','ND2','HND1','HND2'];
+  return (
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl p-6 w-full max-w-md shadow-2xl">
+        <h3 className="font-bold text-gray-900 mb-4 text-lg">
+          {type === 'institution' ? 'Add Institution' :
+           type === 'faculty'     ? (instType === 'university' ? 'Add Faculty' : 'Add School') :
+           type === 'dept'        ? 'Add Department' : 'Add Course'}
+        </h3>
+        <div className="space-y-3">
+          {type === 'institution' && (<>
+            <div><label className="label">Full Name</label>
+              <input className="input" placeholder="e.g. University of Maiduguri"
+                     value={form.name||''} onChange={e => setForm(f => ({...f, name: e.target.value}))} /></div>
+            <div><label className="label">Short Name</label>
+              <input className="input" placeholder="e.g. UNIMAID"
+                     value={form.short_name||''} onChange={e => setForm(f => ({...f, short_name: e.target.value}))} /></div>
+            <div><label className="label">Type</label>
+              <select className="input" value={form.type||'university'}
+                      onChange={e => setForm(f => ({...f, type: e.target.value}))}>
+                <option value="university">University</option>
+                <option value="polytechnic">Polytechnic</option>
+                <option value="college">College of Education</option>
+              </select></div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><label className="label">State</label>
+                <input className="input" placeholder="e.g. Borno"
+                       value={form.state||''} onChange={e => setForm(f => ({...f, state: e.target.value}))} /></div>
+              <div><label className="label">City</label>
+                <input className="input" placeholder="e.g. Maiduguri"
+                       value={form.city||''} onChange={e => setForm(f => ({...f, city: e.target.value}))} /></div>
+            </div>
+          </>)}
+          {(type === 'faculty' || type === 'dept') && (<>
+            <div><label className="label">Name</label>
+              <input className="input"
+                     placeholder={type === 'faculty' ? 'e.g. Faculty of Engineering' : 'e.g. Computer Engineering'}
+                     value={form.name||''} onChange={e => setForm(f => ({...f, name: e.target.value}))} /></div>
+            <div><label className="label">Code</label>
+              <input className="input" placeholder="e.g. ENG"
+                     value={form.code||''} onChange={e => setForm(f => ({...f, code: e.target.value}))} /></div>
+          </>)}
+          {type === 'course' && (<>
+            <div><label className="label">Course Title</label>
+              <input className="input" placeholder="e.g. Digital Electronics"
+                     value={form.title||''} onChange={e => setForm(f => ({...f, title: e.target.value}))} /></div>
+            <div><label className="label">Course Code</label>
+              <input className="input" placeholder="e.g. CPE301"
+                     value={form.code||''} onChange={e => setForm(f => ({...f, code: e.target.value}))} /></div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><label className="label">Level</label>
+                <select className="input" value={form.level||'100'}
+                        onChange={e => setForm(f => ({...f, level: e.target.value}))}>
+                  {LEVELS.map(l => <option key={l} value={l}>{l}</option>)}
+                </select></div>
+              <div><label className="label">Semester</label>
+                <select className="input" value={form.semester||'first'}
+                        onChange={e => setForm(f => ({...f, semester: e.target.value}))}>
+                  <option value="first">1st Semester</option>
+                  <option value="second">2nd Semester</option>
+                </select></div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div><label className="label">Credit Units</label>
+                <input className="input" type="number" min="1" max="6"
+                       value={form.credit_units||3}
+                       onChange={e => setForm(f => ({...f, credit_units: e.target.value}))} /></div>
+              <div className="flex items-end pb-2">
+                <label className="flex items-center gap-2 cursor-pointer">
+                  <input type="checkbox" checked={form.is_compulsory!==false}
+                         onChange={e => setForm(f => ({...f, is_compulsory: e.target.checked}))}
+                         className="w-4 h-4" />
+                  <span className="text-sm">Compulsory</span>
+                </label>
+              </div>
+            </div>
+          </>)}
+        </div>
+        <div className="flex gap-3 mt-5">
+          <button onClick={onSave} disabled={saving}
+                  className="btn-primary flex-1 flex items-center justify-center gap-2">
+            {saving && <Loader2 className="w-4 h-4 animate-spin"/>} Save
+          </button>
+          <button onClick={() => { setShowForm(null); setForm({}); }}
+                  className="btn-secondary flex-1">Cancel</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
 function InstitutionManager() {
   const [institutions, setInstitutions] = useState([]);
   const [expanded, setExpanded]         = useState({});
