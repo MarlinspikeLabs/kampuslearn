@@ -30,7 +30,7 @@ router.get('/institutions', authenticate, superOnly, async (req, res) => {
 // POST /api/manage/institutions
 router.post('/institutions', authenticate, superOnly, async (req, res) => {
   try {
-    const { name, short_name, type, state, city, website_url } = req.body;
+const { name, short_name, type, state, city, website_url } = req.body;
     if (!name || !short_name || !type) {
       return error(res, 'name, short_name and type are required', 400);
     }
@@ -206,7 +206,7 @@ router.get('/departments/:id/courses', authenticate, superOnly, async (req, res)
 
 router.post('/departments/:id/courses', authenticate, superOnly, async (req, res) => {
   try {
-    const { title, code, level, semester, credit_units, is_compulsory } = req.body;
+const { title, code, level, semester, credit_units, is_compulsory } = req.body;
     if (!title || !code || !level || !semester) {
       return error(res, 'title, code, level and semester are required', 400);
     }

@@ -702,8 +702,10 @@ function InstitutionManager() {
     try {
       const { type, parentId, instType } = showForm;
       if (type === 'institution') {
-        const r = await api.post('/manage/institutions', form);
+        const payload = { ...form, type: form.type || 'university' };
+        const r = await api.post('/manage/institutions', payload);
         setInstitutions(p => [...p, r.data.data]);
+        // fix reference
       } else if (type === 'faculty') {
         const ep = instType==='university'
           ? `/manage/institutions/${parentId}/faculties`
@@ -757,7 +759,7 @@ function InstitutionManager() {
           <h2 className="text-xl font-bold text-gray-900">Institution Manager</h2>
           <p className="text-gray-500 text-sm mt-1">{institutions.length} institutions</p>
         </div>
-        <button onClick={() => { setForm({}); setShowForm({ type:'institution' }); }}
+        <button onClick={() => { setForm({ type:'university', state:'Borno', city:'Maiduguri' }); setShowForm({ type:'institution' }); }}
                 className="btn-primary flex items-center gap-2 text-sm">
           <Plus className="w-4 h-4"/> Add Institution
         </button>
@@ -781,7 +783,7 @@ function InstitutionManager() {
                 </div>
               </div>
               <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                <button onClick={() => { setForm({}); setShowForm({type:'faculty', parentId:inst.id, instType:inst.type}); }}
+                <button onClick={() => { setForm({ level:'100', semester:'first', credit_units:3, is_compulsory:true }); setShowForm({type:'faculty', parentId:inst.id, instType:inst.type}); }}
                         className="text-xs bg-blue-50 text-blue-600 px-3 py-1.5 rounded-lg hover:bg-blue-100">
                   + {inst.type==='university' ? 'Faculty' : 'School'}
                 </button>
@@ -810,7 +812,7 @@ function InstitutionManager() {
                         <span className="text-xs text-gray-400">({fac.code}) · {fac.dept_count} depts</span>
                       </div>
                       <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                        <button onClick={() => { setForm({}); setShowForm({type:'dept', parentId:fac.id, instType:inst.type}); }}
+                        <button onClick={() => { setForm({ level:'100', semester:'first', credit_units:3, is_compulsory:true }); setShowForm({type:'dept', parentId:fac.id, instType:inst.type}); }}
                                 className="text-xs bg-purple-50 text-purple-600 px-2 py-1 rounded-lg">+ Dept</button>
                         <button onClick={() => del('faculty', fac.id, inst.id)}
                                 className="p-1 text-gray-300 hover:text-red-500 rounded-lg"><Trash2 className="w-3.5 h-3.5"/></button>
@@ -835,7 +837,7 @@ function InstitutionManager() {
                                 <span className="text-xs text-gray-400">({dept.code}) · {dept.course_count} courses</span>
                               </div>
                               <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                                <button onClick={() => { setForm({}); setShowForm({type:'course', parentId:dept.id}); }}
+                                <button onClick={() => { setForm({ level:'100', semester:'first', credit_units:3, is_compulsory:true }); setShowForm({type:'course', parentId:dept.id}); }}
                                         className="text-xs bg-green-50 text-green-600 px-2 py-0.5 rounded-lg">+ Course</button>
                                 <button onClick={() => del('department', dept.id, fac.id)}
                                         className="p-1 text-gray-300 hover:text-red-500 rounded-lg"><Trash2 className="w-3 h-3"/></button>
