@@ -158,6 +158,8 @@ router.delete('/users/:id', authenticate, superOnly, async (req, res) => {
     if (target.rows[0]?.role === 'super_admin') {
       return error(res, 'Cannot delete a super admin account', 403);
     }
+    // Clean up referral records before deleting user
+    await query('DELETE FROM referrals WHERE referrer_id = $1 OR referred_id = $1', [req.params.id]);
     await query('DELETE FROM users WHERE id = $1', [req.params.id]);
     return success(res, {}, 'User deleted');
   } catch (err) {

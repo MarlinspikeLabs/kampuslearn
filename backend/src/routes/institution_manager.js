@@ -49,9 +49,14 @@ const { name, short_name, type, state, city, website_url } = req.body;
 // DELETE /api/manage/institutions/:id
 router.delete('/institutions/:id', authenticate, superOnly, async (req, res) => {
   try {
+    // Delete student profiles first to avoid FK constraint
+    await query('DELETE FROM student_profiles WHERE institution_id = $1', [req.params.id]);
     await query('DELETE FROM institutions WHERE id = $1', [req.params.id]);
     return success(res, {}, 'Institution deleted');
-  } catch (err) { return error(res, 'Delete failed', 500); }
+  } catch (err) {
+    console.error('Institution delete error:', err.message);
+    return error(res, 'Delete failed: ' + err.message, 500);
+  }
 });
 
 // ── FACULTIES ────────────────────────────────────────────────
@@ -153,14 +158,15 @@ router.get('/schools/:id/departments', authenticate, superOnly, async (req, res)
 
 router.post('/faculties/:id/departments', authenticate, superOnly, async (req, res) => {
   try {
+    console.log('DEPT POST body:', JSON.stringify(req.body), 'faculty_id:', req.params.id);
     const { name, code } = req.body;
     if (!name || !code) return error(res, 'name and code required', 400);
     const fac = await query('SELECT institution_id FROM faculties WHERE id = $1', [req.params.id]);
     if (!fac.rows.length) return error(res, 'Faculty not found', 404);
     const result = await query(`
-      INSERT INTO departments (institution_id, faculty_id, name, code)
-      VALUES ($1, $2, $3, $4) RETURNING *
-    `, [fac.rows[0].institution_id, req.params.id, name, code.toUpperCase()]);
+      INSERT INTO departments (faculty_id, name, code)
+      VALUES ($1, $2, $3) RETURNING *
+    `, [req.params.id, name, code.toUpperCase()]);
     return success(res, result.rows[0], 'Department created', 201);
   } catch (err) {
     if (err.code === '23505') return error(res, 'Department code already exists', 409);
@@ -175,9 +181,9 @@ router.post('/schools/:id/departments', authenticate, superOnly, async (req, res
     const school = await query('SELECT institution_id FROM schools WHERE id = $1', [req.params.id]);
     if (!school.rows.length) return error(res, 'School not found', 404);
     const result = await query(`
-      INSERT INTO departments (institution_id, school_id, name, code)
-      VALUES ($1, $2, $3, $4) RETURNING *
-    `, [school.rows[0].institution_id, req.params.id, name, code.toUpperCase()]);
+      INSERT INTO departments (school_id, name, code)
+      VALUES ($1, $2, $3) RETURNING *
+    `, [req.params.id, name, code.toUpperCase()]);
     return success(res, result.rows[0], 'Department created', 201);
   } catch (err) {
     if (err.code === '23505') return error(res, 'Department code already exists', 409);
@@ -211,21 +217,20 @@ const { title, code, level, semester, credit_units, is_compulsory } = req.body;
       return error(res, 'title, code, level and semester are required', 400);
     }
     const dept = await query(
-      'SELECT institution_id FROM departments WHERE id = $1', [req.params.id]
+      'SELECT id FROM departments WHERE id = $1', [req.params.id]
     );
     if (!dept.rows.length) return error(res, 'Department not found', 404);
     const result = await query(`
       INSERT INTO courses
-        (department_id, institution_id, title, code, level, semester, credit_units, is_compulsory)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+        (department_id, title, code, level, semester, credit_units, is_active)
+      VALUES ($1, $2, $3, $4, $5, $6, $7)
       RETURNING *
     `, [
       req.params.id,
-      dept.rows[0].institution_id,
       title, code.toUpperCase(),
       level, semester,
-      credit_units || 3,
-      is_compulsory !== false
+      parseInt(credit_units) || 3,
+      true
     ]);
     return success(res, result.rows[0], 'Course created', 201);
   } catch (err) {
