@@ -734,7 +734,9 @@ function InstitutionManager() {
   const del = async (type, id, parentId) => {
     if (!confirm(`Delete this ${type}? All nested items will be removed.`)) return;
     try {
-      await api.delete(`/manage/${type}s/${id}`);
+      const typeToPath = { faculty: 'faculties', department: 'departments', institution: 'institutions', course: 'courses' };
+      const delPath = `/manage/${typeToPath[type] || type + 's'}/${id}`;
+      await api.delete(delPath);
       if (type==='institution') setInstitutions(p=>p.filter(i=>i.id!==id));
       else if (type==='faculty') setFaculties(p=>({...p,[parentId]:(p[parentId]||[]).filter(f=>f.id!==id)}));
       else if (type==='department') setDepartments(p=>({...p,[parentId]:(p[parentId]||[]).filter(d=>d.id!==id)}));
