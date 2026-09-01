@@ -212,7 +212,7 @@ router.get('/departments/:id/courses', authenticate, superOnly, async (req, res)
 
 router.post('/departments/:id/courses', authenticate, superOnly, async (req, res) => {
   try {
-const { title, code, level, semester, credit_units, is_compulsory } = req.body;
+const { title, code, level, semester, credit_units } = req.body;
     if (!title || !code || !level || !semester) {
       return error(res, 'title, code, level and semester are required', 400);
     }

@@ -16,7 +16,7 @@ const superOnly = (req, res, next) => {
 // File storage
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    const dir = path.join(__dirname, '../../uploads');
+    const dir = path.resolve(process.env.UPLOAD_DIR || './uploads');
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
@@ -70,9 +70,9 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
     const result = await query(`
       INSERT INTO course_materials
         (course_id, uploaded_by, title, description, material_type,
-         file_url, file_name, file_size_kb, file_type, tags,
+         file_url, file_name, file_size_kb, tags,
          is_approved, is_featured)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, TRUE, FALSE)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, TRUE, FALSE)
       RETURNING id, title, file_url, material_type, is_approved
     `, [
       course_id,
@@ -83,8 +83,7 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       fileUrl,
       req.file.originalname,
       fileSizeKb,
-      path.extname(req.file.originalname).slice(1),
-      JSON.stringify(tagsArr)
+      tagsArr.length > 0 ? tagsArr : null
     ]);
 
     return success(res, result.rows[0], 'Material uploaded and published', 201);

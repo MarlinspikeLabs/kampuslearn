@@ -279,10 +279,9 @@ function UploadContent() {
         return null;
       } finally { setCreating(false); }
     } else {
-      // Generic — find existing by code or create in a generic department
-      // Search all courses by code
-      if (!form.course_code || !form.course_title) {
-        toast.error('Enter course code and title'); return null;
+      // Generic — find existing by code across all departments
+      if (!form.course_code) {
+        toast.error('Enter a course code'); return null;
       }
       try {
         const r = await api.get(`/institutions/courses/by-code?code=${form.course_code}`);
@@ -438,7 +437,7 @@ function UploadContent() {
         {scope === 'generic' && (
           <div className="space-y-4">
             <div className="bg-amber-50 rounded-xl p-3 text-xs text-amber-700 border border-amber-100">
-              Generic uploads search for the course by code. If found, the material is attached to all matching courses. If not found, switch to Institution Specific.
+              Generic uploads search for the course by code across all institutions. Course code must already exist in the database.
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div>
