@@ -206,14 +206,34 @@ export default function ReaderPage() {
                 ))
               ) : (
                 // Single page
-                <div className="shadow-2xl">
-                  <Page
-                    pageNumber={pageNumber}
-                    scale={scale}
-                    renderTextLayer={false}
-                    renderAnnotationLayer={false}
-                    className="rounded-lg overflow-hidden"
-                  />
+                <div className="flex flex-col items-center gap-4">
+                  <div className="shadow-2xl rounded-lg overflow-hidden">
+                    <Page
+                      key={pageNumber}
+                      pageNumber={pageNumber}
+                      scale={scale}
+                      renderTextLayer={false}
+                      renderAnnotationLayer={false}
+                    />
+                  </div>
+                  {/* Page navigation below the page */}
+                  <div className="flex items-center gap-4 pb-6">
+                    <button onClick={() => setPageNumber(p => Math.max(1, p - 1))}
+                            disabled={pageNumber === 1}
+                            className="flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white
+                                       rounded-xl hover:bg-white/20 disabled:opacity-30 transition-colors text-sm">
+                      <ChevronLeft className="w-4 h-4" /> Previous
+                    </button>
+                    <span className="text-gray-400 text-sm font-mono">
+                      {pageNumber} / {numPages}
+                    </span>
+                    <button onClick={() => setPageNumber(p => Math.min(numPages, p + 1))}
+                            disabled={pageNumber === numPages}
+                            className="flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white
+                                       rounded-xl hover:bg-white/20 disabled:opacity-30 transition-colors text-sm">
+                      Next <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               )}
             </Document>
