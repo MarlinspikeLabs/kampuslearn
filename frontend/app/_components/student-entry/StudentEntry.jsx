@@ -36,7 +36,7 @@ const EMPTY_PROFILE = { institution:'', institutionName:'', faculty:'', departme
 const HEADINGS = ['A good place to begin.', 'Where do you study?', 'What matters to you?', 'Make room for your courses.', 'Find your study rhythm.', 'Your space is taking shape.'];
 const SUPPORT = ['Let’s make KampusLearn feel like your learning space, one small step at a time.', 'Help us bring the right academic context into your study space.', 'Choose the goals you want your study space to support.', 'Start with the courses you’re studying this semester. You can change these later.', 'Choose the ways you enjoy learning. There’s no single right answer.', 'Take a moment to check your choices before you explore your dashboard.'];
 
-function Icon({ name, size=20, ...props }) {
+export function Icon({ name, size=20, ...props }) {
   const paths = {
     arrow:<path d="M4 12h16m-6-6 6 6-6 6"/>, back:<path d="M20 12H4m6-6-6 6 6 6"/>,
     check:<path d="m5 12 4 4L19 6"/>, close:<path d="m6 6 12 12M18 6 6 18"/>, plus:<path d="M12 5v14M5 12h14"/>,
@@ -64,7 +64,7 @@ function Icon({ name, size=20, ...props }) {
   return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.65" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" {...props}>{paths[name] || paths.book}</svg>;
 }
 
-function Brand({ onClick }) {
+export function Brand({ onClick }) {
   return <button type="button" className={styles.brand} aria-label="KampusLearn landing page" onClick={onClick}>
     <svg className={styles.cap} viewBox="0 0 64 52" fill="none" aria-hidden="true"><path d="M12 24v13c0 9 32 9 32 0V24" fill="currentColor" fillOpacity=".07" stroke="currentColor" strokeWidth="2.8"/><path d="M3 18 29 6a4 4 0 0 1 4 0l27 12-29 13Z" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round"/><path d="m31 17 17 6c4 1 5 4 5 8v5m-2 4-2 9h8l-2-9" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" strokeLinejoin="round"/><circle cx="31" cy="17" r="2.8" fill="currentColor"/><circle cx="53" cy="37" r="3" fill="currentColor"/></svg>
     <span><span className={styles.kampus}>Kampus</span><span>Learn</span></span>
@@ -89,7 +89,7 @@ function ProductWindow({ onStart }) {
   </div>;
 }
 
-export default function StudentEntry({ startAt='landing', dashboardHref='/dashboard-preview', assetBase='/student-entry' }) {
+export default function StudentEntry({ startAt='landing', dashboardHref='/dashboard-preview', assetBase='/student-entry', onAccountNavigate }) {
   const [screen,setScreen] = useState(startAt);
   const [authInitialMode,setAuthInitialMode] = useState('login');
   const [institutionsPaused,setInstitutionsPaused] = useState(false);
@@ -128,7 +128,7 @@ export default function StudentEntry({ startAt='landing', dashboardHref='/dashbo
   },[screen,step]);
 
   function openScreen(next){setError('');setScreen(next);}
-  function openAuth(mode){setAuthInitialMode(mode);openScreen('auth');}
+  function openAuth(mode){if(onAccountNavigate){onAccountNavigate(mode);return;}setAuthInitialMode(mode);openScreen('auth');}
   function move(next){setError('');setCourseError('');setStep(next);}
   function updateProfile(key,value){
     setProfile(p=>{
@@ -266,3 +266,4 @@ export default function StudentEntry({ startAt='landing', dashboardHref='/dashbo
     </main>}
   </div>;
 }
+

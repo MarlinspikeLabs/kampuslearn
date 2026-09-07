@@ -38,16 +38,7 @@ export default function StudentAuth({ initialMode='login', Icon, onOnboard, dash
 
   return <main id="entry-main" className={styles.authPage}>
     <div className={styles.authShell}>
-      <aside className={styles.authStory} aria-label="Your KampusLearn study space">
-        <div className={styles.authOrbit} aria-hidden="true">
-          <div className={`${styles.orbitNote} ${styles.orbitMaterials}`}><span><Icon name="file" size={17}/></span><div><strong>Course notes</strong><small>CPE 301</small></div></div>
-          <div className={`${styles.orbitNote} ${styles.orbitQuestions}`}><span><Icon name="check" size={17}/></span><div><strong>Past questions</strong><small>One question at a time</small></div></div>
-          <div className={`${styles.orbitNote} ${styles.orbitAi}`}><span><Icon name="spark" size={17}/></span><div><strong>Ask your AI tutor</strong><small>Make the difficult click.</small></div></div>
-          <div className={styles.orbitHub}><div><span><Icon name="book" size={17}/></span><span><Icon name="check" size={17}/></span><span><Icon name="spark" size={17}/></span></div><strong>Your learning space</strong><span className={styles.orbitProgress}><span/></span><small>A little progress, every day.</small></div>
-        </div>
-        <h2>Everything you need to stay ahead academically.</h2>
-        <p className={styles.authStoryFoot}>Your courses. Your goals. Your own pace.</p>
-      </aside>
+      <AuthStory Icon={Icon}/>
 
       <section className={styles.authFormPane} aria-labelledby="auth-title">
         {isForm&&<div className={styles.authTabs} data-mode={view} role="group" aria-label="Account action"><button type="button" aria-pressed={view==='login'} onClick={()=>changeView('login')}>Log in</button><button type="button" aria-pressed={isSignup} onClick={()=>changeView('signup')}>Create account</button></div>}
@@ -81,4 +72,18 @@ export default function StudentAuth({ initialMode='login', Icon, onOnboard, dash
     </div>
     <p className={styles.authFooter}>KampusLearn · Your courses, your possibilities.</p>
   </main>;
+}
+
+
+export function AuthStory({ Icon }) {
+  return <aside className={styles.authStory} aria-label="Your KampusLearn study space">
+        <div className={styles.authOrbit} aria-hidden="true">
+          <div className={`${styles.orbitNote} ${styles.orbitMaterials}`}><span><Icon name="file" size={17}/></span><div><strong>Course notes</strong><small>CPE 301</small></div></div>
+          <div className={`${styles.orbitNote} ${styles.orbitQuestions}`}><span><Icon name="check" size={17}/></span><div><strong>Past questions</strong><small>One question at a time</small></div></div>
+          <div className={`${styles.orbitNote} ${styles.orbitAi}`}><span><Icon name="spark" size={17}/></span><div><strong>Ask your AI tutor</strong><small>Make the difficult click.</small></div></div>
+          <div className={styles.orbitHub}><div><span><Icon name="book" size={17}/></span><span><Icon name="check" size={17}/></span><span><Icon name="spark" size={17}/></span></div><strong>Your learning space</strong><span className={styles.orbitProgress}><span/></span><small>A little progress, every day.</small></div>
+        </div>
+        <h2>Everything you need to stay ahead academically.</h2>
+        <p className={styles.authStoryFoot}>Your courses. Your goals. Your own pace.</p>
+      </aside>;
 }
