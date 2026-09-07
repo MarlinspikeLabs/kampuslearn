@@ -110,7 +110,7 @@ export default function ExamsPage() {
 
   useEffect(() => {
     Promise.all([
-      api.get('/exams'),
+      api.get('/exams' + (new URLSearchParams(window.location.search).get('course_id') ? '?course_id=' + encodeURIComponent(new URLSearchParams(window.location.search).get('course_id')) : '')),
       api.get('/exams/attempts/history')
     ])
       .then(([exRes, histRes]) => {
@@ -462,3 +462,4 @@ export default function ExamsPage() {
     </AppLayout>
   );
 }
+

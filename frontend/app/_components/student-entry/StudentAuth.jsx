@@ -81,9 +81,10 @@ export function AuthStory({ Icon }) {
           <div className={`${styles.orbitNote} ${styles.orbitMaterials}`}><span><Icon name="file" size={17}/></span><div><strong>Course notes</strong><small>CPE 301</small></div></div>
           <div className={`${styles.orbitNote} ${styles.orbitQuestions}`}><span><Icon name="check" size={17}/></span><div><strong>Past questions</strong><small>One question at a time</small></div></div>
           <div className={`${styles.orbitNote} ${styles.orbitAi}`}><span><Icon name="spark" size={17}/></span><div><strong>Ask your AI tutor</strong><small>Make the difficult click.</small></div></div>
-          <div className={styles.orbitHub}><div><span><Icon name="book" size={17}/></span><span><Icon name="check" size={17}/></span><span><Icon name="spark" size={17}/></span></div><strong>Your learning space</strong><span className={styles.orbitProgress}><span/></span><small>A little progress, every day.</small></div>
+          <div className={styles.orbitHub}><div><span><Icon name="book" size={17}/></span><span><Icon name="check" size={17}/></span><span><Icon name="spark" size={17}/></span></div><strong>Your study mate</strong><span className={styles.orbitProgress}><span/></span><small>A little progress, every day.</small></div>
         </div>
-        <h2>Everything you need to stay ahead academically.</h2>
-        <p className={styles.authStoryFoot}>Your courses. Your goals. Your own pace.</p>
+        <h2>Your study mate. Get exam-ready.</h2>
+        <p className={styles.authStoryFoot}>Your materials, supplied. Your revision, focused.</p>
       </aside>;
 }
+

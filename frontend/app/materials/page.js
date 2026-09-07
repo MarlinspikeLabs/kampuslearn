@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AppLayout from '@/components/layout/AppLayout';
 import api from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
@@ -103,6 +103,7 @@ function MaterialCard({ mat, onDownload, onRead }) {
 }
 
 export default function MaterialsPage() {
+  const latestListRequest = useRef(0);
   const { profile } = useAuth();
   const [materials, setMaterials] = useState([]);
   const [loading, setLoading]   = useState(true);
@@ -117,7 +118,11 @@ export default function MaterialsPage() {
   useEffect(() => {
     if (profile?.department_id) {
       api.get(`/institutions/departments/${profile.department_id}/courses?level=${profile.level}`)
-        .then(r => setCourses(r.data.data))
+        .then(r => {
+          setCourses(r.data.data);
+          const requested = new URLSearchParams(window.location.search).get('course_id');
+          if (requested && r.data.data.some(c => c.id === requested)) setCourseFilter(requested);
+        })
         .catch(() => {});
     }
   }, [profile]);
@@ -127,6 +132,7 @@ export default function MaterialsPage() {
   }, [courseFilter, typeFilter, page]);
 
   const fetchMaterials = async () => {
+    const request = ++latestListRequest.current;
     setLoading(true);
     try {
       const params = new URLSearchParams({ page, limit: LIMIT });
@@ -134,12 +140,13 @@ export default function MaterialsPage() {
       if (typeFilter)   params.append('type', typeFilter);
       if (search)       params.append('search', search);
       const res = await api.get(`/materials?${params}`);
+      if (request !== latestListRequest.current) return;
       setMaterials(res.data.data.materials);
       setPagination(res.data.data.pagination);
     } catch {
-      toast.error('Failed to load materials');
+      if (request === latestListRequest.current) toast.error('Failed to load materials');
     } finally {
-      setLoading(false);
+      if (request === latestListRequest.current) setLoading(false);
     }
   };
 
@@ -282,3 +289,4 @@ export default function MaterialsPage() {
     </AppLayout>
   );
 }
+

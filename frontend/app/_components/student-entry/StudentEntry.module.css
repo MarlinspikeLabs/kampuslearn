@@ -175,7 +175,6 @@
 .institutionTrack { display:flex; width:max-content; animation:campusDrift 38s linear infinite; will-change:transform; }
 /* Two equal groups make a seamless left-to-right loop. */
 @keyframes campusDrift { from { transform:translateX(-50%); } to { transform:translateX(0); } }
-.institutionTrack[data-paused='true'],.institutionViewport:hover .institutionTrack,.institutionViewport:focus-within .institutionTrack { animation-play-state:paused; }
 .institutionGroup { display:flex; flex-shrink:0; gap:16px; margin:0; padding:0 16px 0 0; list-style:none; }
 .institutionCard { display:flex; align-items:center; gap:14px; width:285px; min-height:104px; padding:17px; border:1px solid var(--line); background:var(--panel); border-radius:20px; }
 .institutionLogo { display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; flex-shrink:0; width:64px; height:64px; border-radius:12px; background:#fff; }
@@ -263,3 +262,4 @@
   .institutionViewport { overflow-x:auto; }.institutionTrack { transform:none; will-change:auto; }
   .institutionGroup[aria-hidden='true'],.marqueeControl { display:none; }
 }
+

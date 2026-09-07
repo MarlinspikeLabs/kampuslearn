@@ -46,6 +46,7 @@ app.use('/api/auth/login', rateLimit({
 }));
 
 // ── Routes (we will add these one by one in next tasks) ───────
+app.use('/api/student', require('./routes/student'));
 app.use('/api/auth',           require('./routes/auth'));
 app.use('/api/institutions',   require('./routes/institutions'));
 app.use('/api/materials',      require('./routes/materials'));
@@ -121,3 +122,4 @@ app.listen(PORT, '0.0.0.0', () => {
 });
 
 module.exports = app;
+

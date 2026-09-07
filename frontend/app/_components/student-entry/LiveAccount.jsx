@@ -167,7 +167,7 @@ export default function LiveAccount({ mode='login' }) {
       }
       if (!mounted.current) return;
       setForm(current => ({ ...current, password:'' })); setVisible(false);
-      const destination = ['admin','super_admin'].includes(user.role) ? '/admin' : '/dashboard';
+      const destination = ['admin','super_admin'].includes(user.role) ? '/admin' : signup && user.role === 'student' ? '/onboarding' : '/dashboard';
       setComplete(destination); router.replace(destination);
     } catch (error) {
       if (!mounted.current) return;
@@ -209,8 +209,8 @@ export default function LiveAccount({ mode='login' }) {
           </div>}
           {signup && !complete && <ol className={live.steps} aria-label="Registration progress">{['Account','Academic profile','Confirm'].map((label,index) => <li key={label} aria-current={index === step ? 'step' : undefined}><span>{index < step ? <Icon name="check" size={14}/> : index + 1}</span>{label}</li>)}</ol>}
           <h1 ref={titleRef} tabIndex={-1} id="account-heading">{heading}</h1>
-          <p className={styles.authSupport}>{complete ? 'Opening your learning space…' : !signup ? 'Log in to your learning space and pick up where you left off.' : ['Create your KampusLearn account and build your personalised academic experience.','Choose your institution and department so we can find the right courses for you.','Check your details before creating your account.'][step]}</p>
-          {complete ? <div className={live.success}><a href={complete}>Continue to {complete === '/admin' ? 'admin' : 'your dashboard'} <Icon name="arrow" size={17}/></a></div> : <form className={styles.authForm} onSubmit={submit} noValidate aria-busy={busy}>
+          <p className={styles.authSupport}>{complete ? 'Opening your learning space…' : !signup ? 'Log in to your learning space and pick up where you left off.' : ['Meet your study mate. Choose your courses and start preparing for exams — no material uploads needed.','Choose your institution and department so we can find the right courses for you.','Check your details before creating your account.'][step]}</p>
+          {complete ? <div className={live.success}><a href={complete}>Continue to {complete === '/admin' ? 'admin' : complete === '/onboarding' ? 'your study setup' : 'your dashboard'} <Icon name="arrow" size={17}/></a></div> : <form className={styles.authForm} onSubmit={submit} noValidate aria-busy={busy}>
             {message && <p ref={errorRef} tabIndex={-1} role="alert" className={styles.error}>{message}</p>}
             {(!signup || step === 0) && <>
               {signup && <label className={styles.field}>Full name<input {...fieldProps('full_name')} autoComplete="name" maxLength={120} placeholder="e.g. Usman Waziri"/>{fieldError('full_name')}</label>}
@@ -253,3 +253,4 @@ export default function LiveAccount({ mode='login' }) {
     </main>
   </div>;
 }
+

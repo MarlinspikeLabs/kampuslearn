@@ -112,7 +112,11 @@ export default function AIChatPage() {
     // Load courses for context selector
     if (profile?.department_id) {
       api.get(`/institutions/departments/${profile.department_id}/courses?level=${profile.level}`)
-        .then(r => setCourses(r.data.data))
+        .then(r => {
+          setCourses(r.data.data);
+          const requested = new URLSearchParams(window.location.search).get('course_id');
+          if (requested && r.data.data.some(c => c.id === requested)) setSelectedCourse(requested);
+        })
         .catch(() => {});
     }
   }, [profile]);
@@ -361,3 +365,4 @@ export default function AIChatPage() {
     </AppLayout>
   );
 }
+

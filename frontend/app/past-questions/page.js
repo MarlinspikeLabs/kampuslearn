@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import AppLayout from '@/components/layout/AppLayout';
 import api from '@/lib/api';
 import { useAuth } from '@/context/AuthContext';
@@ -70,6 +70,7 @@ function PQCard({ pq, onDownload }) {
 }
 
 export default function PastQuestionsPage() {
+  const latestListRequest = useRef(0);
   const { profile } = useAuth();
   const [pqs, setPqs]           = useState([]);
   const [loading, setLoading]   = useState(true);
@@ -87,7 +88,11 @@ export default function PastQuestionsPage() {
   useEffect(() => {
     if (profile?.department_id) {
       api.get(`/institutions/departments/${profile.department_id}/courses?level=${profile.level}`)
-        .then(r => setCourses(r.data.data))
+        .then(r => {
+          setCourses(r.data.data);
+          const requested = new URLSearchParams(window.location.search).get('course_id');
+          if (requested && r.data.data.some(c => c.id === requested)) setCourseFilter(requested);
+        })
         .catch(() => {});
     }
   }, [profile]);
@@ -107,6 +112,7 @@ export default function PastQuestionsPage() {
   }, [courseFilter, yearFilter, typeFilter, page]);
 
   const fetchPQs = async () => {
+    const request = ++latestListRequest.current;
     setLoading(true);
     try {
       const params = new URLSearchParams({ page, limit: LIMIT });
@@ -114,12 +120,13 @@ export default function PastQuestionsPage() {
       if (yearFilter)   params.append('year', yearFilter);
       if (typeFilter)   params.append('exam_type', typeFilter);
       const res = await api.get(`/past-questions?${params}`);
+      if (request !== latestListRequest.current) return;
       setPqs(res.data.data.past_questions);
       setTotal(res.data.data.pagination.total);
     } catch {
-      toast.error('Failed to load past questions');
+      if (request === latestListRequest.current) toast.error('Failed to load past questions');
     } finally {
-      setLoading(false);
+      if (request === latestListRequest.current) setLoading(false);
     }
   };
 
@@ -262,3 +269,4 @@ export default function PastQuestionsPage() {
     </AppLayout>
   );
 }
+

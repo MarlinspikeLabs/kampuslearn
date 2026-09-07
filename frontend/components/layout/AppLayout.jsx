@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAuth } from '@/context/AuthContext';
 import Sidebar from './Sidebar';
+import StudentShell from '@/app/_components/student-journey/StudentShell';
 import TopBar from './TopBar';
 import { Loader2 } from 'lucide-react';
 
@@ -31,6 +32,8 @@ export default function AppLayout({ children, title = 'Dashboard' }) {
 
   if (!user) return null;
 
+  if (user.role === 'student') return <StudentShell title={title === 'Dashboard' ? undefined : title} legacy>{children}</StudentShell>;
+
   return (
     <div className="flex h-screen bg-gray-50 overflow-hidden">
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -43,3 +46,4 @@ export default function AppLayout({ children, title = 'Dashboard' }) {
     </div>
   );
 }
+
