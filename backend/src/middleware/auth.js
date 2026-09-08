@@ -14,7 +14,7 @@ const authenticate = async (req, res, next) => {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
     const result = await query(
-      'SELECT id, full_name, email, role, is_verified FROM users WHERE id = $1',
+      'SELECT id, full_name, email, role, is_verified, is_suspended FROM users WHERE id = $1',
       [decoded.userId]
     );
 
@@ -22,6 +22,7 @@ const authenticate = async (req, res, next) => {
       return error(res, 'User no longer exists', 401);
     }
 
+    if (result.rows[0].is_suspended) return error(res, 'This account is suspended. Contact KampusLearn support.', 403);
     req.user = result.rows[0];
     next();
   } catch (err) {
@@ -58,10 +59,11 @@ const optionalAuth = async (req, res, next) => {
       const token = header.split(' ')[1];
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
       const result = await query(
-        'SELECT id, full_name, email, role FROM users WHERE id = $1',
+        'SELECT id, full_name, email, role FROM users WHERE id = $1 AND is_suspended = FALSE',
         [decoded.userId]
       );
-      if (result.rows.length > 0) req.user = result.rows[0];
+      if (result.rows.length > 0) if (result.rows[0].is_suspended) return error(res, 'This account is suspended. Contact KampusLearn support.', 403);
+    req.user = result.rows[0];
     }
   } catch (_) {
     // silently ignore — optional

@@ -185,7 +185,7 @@ router.post('/login', async (req, res) => {
     // ── Fetch user ────────────────────────────────────────────
     const result = await query(`
       SELECT id, full_name, email, phone, password_hash,
-             role, is_verified, avatar_url, created_at
+             role, is_verified, is_suspended, avatar_url, created_at
       FROM users WHERE email = $1
     `, [email.toLowerCase().trim()]);
 
@@ -199,6 +199,8 @@ router.post('/login', async (req, res) => {
     if (!valid) {
       return error(res, 'Invalid email or password', 401);
     }
+
+    if (user.is_suspended) return error(res, 'This account is suspended. Contact KampusLearn support.', 403);
 
     // ── Update last login ─────────────────────────────────────
     await query(

@@ -173,7 +173,7 @@ router.post('/upload', authenticate, upload.single('file'), async (req, res) => 
     const fileUrl        = `/uploads/${req.file.filename}`;
     const fileSizeKb     = Math.round(req.file.size / 1024);
     const tagArray       = tags ? JSON.parse(tags) : [];
-    const isAutoApproved = ['admin', 'lecturer'].includes(req.user.role);
+    const isAutoApproved = ['admin', 'super_admin', 'lecturer'].includes(req.user.role);
 
     const result = await query(`
       INSERT INTO course_materials
@@ -276,14 +276,15 @@ router.delete('/:id', authenticate, async (req, res) => {
     if (result.rows.length === 0) return error(res, 'Material not found', 404);
 
     const material = result.rows[0];
-    if (req.user.role !== 'admin' && material.uploaded_by !== req.user.id) {
+    if (!['admin', 'super_admin'].includes(req.user.role) && material.uploaded_by !== req.user.id) {
       return error(res, 'You can only delete your own uploads', 403);
     }
 
-    const filePath = path.resolve('.' + material.file_url);
-    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-
     await query('DELETE FROM course_materials WHERE id = $1', [req.params.id]);
+    const filePath = path.resolve('.' + material.file_url);
+    try { if (fs.existsSync(filePath)) fs.unlinkSync(filePath); } catch (_) { console.warn('Removed content record; file cleanup pending'); }
+
+
     return success(res, {}, 'Material deleted successfully');
   } catch (err) {
     return error(res, 'Delete failed', 500);

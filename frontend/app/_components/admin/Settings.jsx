@@ -1,0 +1,10 @@
+'use client';
+import {useState} from 'react';
+import {useAuth} from '@/context/AuthContext';
+import {s,api,Form,saved} from './shared';
+import People from './People';
+export default function AdminSettings({dark,theme}){
+ const {user,setUser}=useAuth();const [tab,setTab]=useState('account');
+ return <><div className={s.heading}><div><small>WORKSPACE PREFERENCES</small><h1>Settings</h1><p>Your account, team access and workspace appearance.</p></div></div><div className={s.tabs} role="navigation" aria-label="Settings sections">{[['account','My account'],['team','Team & roles'],['appearance','Appearance']].map(([id,label])=><button key={id} aria-current={tab===id?'page':undefined} className={tab===id?s.selected:''} onClick={()=>setTab(id)}>{label}</button>)}</div>{tab==='team'?<People team/>:tab==='appearance'?<section className={s.card}><h2>Make yourself at home</h2><p>Choose the appearance of this admin workspace on this device.</p><div className={s.themeSwatches}><div>Off-white<br/><small>Sea green accents</small></div><div>Evening blue<br/><small>Soft green glow</small></div></div><button className={s.primary} onClick={theme}>Switch to {dark?'light':'dark'} mode</button></section>:<div className={s.grid}><section className={s.card}><h2>Profile information</h2><p>{user.email} · {user.role.replaceAll('_',' ')}</p><Form initial={user} fields={[{key:'full_name',label:'Full name'},{key:'phone',label:'Phone',optional:true}]} onCancel={()=>setTab('appearance')} onSave={async v=>{await api.patch('/admin-console/users/'+user.id,v);setUser({...user,full_name:v.full_name,phone:v.phone});saved('Profile saved');}}/></section><section className={s.card}><h2>Change password</h2><PasswordForm/></section></div>}</>;
+}
+function PasswordForm(){const [key,setKey]=useState(0);return <Form key={key} fields={[{key:'current_password',label:'Current password',type:'password',maxLength:72},{key:'new_password',label:'New password',type:'password',minLength:8,maxLength:72}]} initial={{}} submit="Update password" onCancel={()=>setKey(v=>v+1)} onSave={async v=>{await api.put('/auth/change-password',v);saved('Password updated');setKey(k=>k+1);}}/>;}

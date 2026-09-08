@@ -48,13 +48,13 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       description, tags
     } = req.body;
 
-    if (!title || !course_id) {
+    if (typeof title !== 'string' || !title.trim() || title.length > 250 || !/^[0-9a-f-]{36}$/i.test(String(course_id)) || !['lecture_note','slide','textbook','summary','other'].includes(material_type)) {
       fs.unlinkSync(req.file.path);
-      return error(res, 'title and course_id are required', 400);
+      return error(res, 'Choose a course, a valid title and material category', 400);
     }
 
     // Verify course exists
-    const course = await query('SELECT id FROM courses WHERE id = $1', [course_id]);
+    const course = await query('SELECT id FROM courses WHERE id = $1 AND is_active = TRUE', [course_id]);
     if (!course.rows.length) {
       fs.unlinkSync(req.file.path);
       return error(res, 'Course not found', 404);
@@ -92,7 +92,7 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       try { fs.unlinkSync(req.file.path); } catch {}
     }
     console.error('Upload error:', err.message);
-    return error(res, err.message || 'Upload failed', 500);
+    return error(res, 'Upload failed. Check the file and course, then retry.', 500);
   }
 });
 
@@ -103,13 +103,13 @@ router.post('/past-question', authenticate, superOnly, upload.single('file'), as
 
     const { course_id, year, exam_type = 'semester', has_answers = false } = req.body;
 
-    if (!course_id || !year) {
+    if (!/^[0-9a-f-]{36}$/i.test(String(course_id)) || !Number.isInteger(Number(year)) || Number(year) < 1960 || Number(year) > new Date().getFullYear()+1 || !['semester','mock','carry_over','supplementary'].includes(exam_type)) {
       fs.unlinkSync(req.file.path);
-      return error(res, 'course_id and year are required', 400);
+      return error(res, 'Choose a course, valid exam year and exam type', 400);
     }
 
     const course = await query(
-      'SELECT id, department_id FROM courses WHERE id = $1', [course_id]
+      'SELECT id, department_id FROM courses WHERE id = $1 AND is_active = TRUE', [course_id]
     );
     if (!course.rows.length) {
       fs.unlinkSync(req.file.path);
@@ -142,6 +142,11 @@ router.post('/past-question', authenticate, superOnly, upload.single('file'), as
     console.error('PQ upload error:', err.message);
     return error(res, 'Upload failed', 500);
   }
+});
+
+router.use((err, req, res, next) => {
+  if (!err) return next();
+  return error(res, err.code === 'LIMIT_FILE_SIZE' ? 'Each file must be 50 MB or smaller' : 'Upload rejected. Use PDF, Word, PowerPoint or text files.', 400);
 });
 
 module.exports = router;

@@ -167,7 +167,7 @@ router.post('/upload', authenticate, upload.single('file'), async (req, res) => 
     }
 
     const fileUrl        = req.file ? `/uploads/${req.file.filename}` : null;
-    const isAutoApproved = ['admin', 'lecturer'].includes(req.user.role);
+    const isAutoApproved = ['admin', 'super_admin', 'lecturer'].includes(req.user.role);
 
     const result = await query(`
       INSERT INTO past_questions
@@ -352,16 +352,17 @@ router.delete('/:id', authenticate, async (req, res) => {
     if (result.rows.length === 0) return error(res, 'Not found', 404);
 
     const pq = result.rows[0];
-    if (req.user.role !== 'admin' && pq.uploaded_by !== req.user.id) {
+    if (!['admin', 'super_admin'].includes(req.user.role) && pq.uploaded_by !== req.user.id) {
       return error(res, 'You can only delete your own uploads', 403);
     }
 
+    await query('DELETE FROM past_questions WHERE id = $1', [req.params.id]);
     if (pq.file_url) {
       const filePath = path.resolve('.' + pq.file_url);
-      if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+      try { if (fs.existsSync(filePath)) fs.unlinkSync(filePath); } catch (_) { console.warn('Removed content record; file cleanup pending'); }
     }
 
-    await query('DELETE FROM past_questions WHERE id = $1', [req.params.id]);
+
     return success(res, {}, 'Past question deleted');
   } catch (err) {
     return error(res, 'Delete failed', 500);

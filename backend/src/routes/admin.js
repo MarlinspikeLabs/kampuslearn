@@ -48,7 +48,9 @@ router.get('/stats', authenticate, authorize('admin', 'super_admin'), async (req
 // ════════════════════════════════════════════════════════════
 router.get('/users', authenticate, authorize('admin', 'super_admin'), async (req, res) => {
   try {
-    const { role, search, page = 1, limit = 20 } = req.query;
+    const { role, search } = req.query;
+    const page = Math.max(1, Math.min(100000, parseInt(req.query.page) || 1));
+    const limit = Math.max(1, Math.min(100, parseInt(req.query.limit) || 20));
     const offset = (parseInt(page) - 1) * parseInt(limit);
     const params = [];
     let conditions = [];
@@ -76,7 +78,7 @@ router.get('/users', authenticate, authorize('admin', 'super_admin'), async (req
       LEFT JOIN student_profiles sp ON sp.user_id = u.id
       LEFT JOIN institutions i ON i.id = sp.institution_id
       LEFT JOIN departments d ON d.id = sp.department_id
-      LEFT JOIN subscriptions s ON s.user_id = u.id AND s.status = 'active'
+      LEFT JOIN LATERAL (SELECT plan FROM subscriptions WHERE user_id = u.id AND status = 'active' ORDER BY created_at DESC LIMIT 1) s ON TRUE
       ${where}
       ORDER BY u.created_at DESC
       LIMIT $${params.length - 1} OFFSET $${params.length}
@@ -97,7 +99,10 @@ router.get('/users', authenticate, authorize('admin', 'super_admin'), async (req
 // ════════════════════════════════════════════════════════════
 router.post('/users', authenticate, superOnly, async (req, res) => {
   try {
-    const { full_name, email, password, role = 'admin' } = req.body;
+    const { password, role = 'admin' } = req.body;
+    const full_name = String(req.body.full_name || '').trim();
+    const email = String(req.body.email || '').trim().toLowerCase();
+    if (!/^\S+@\S+\.\S+$/.test(email) || typeof password !== 'string' || password.length < 8 || Buffer.byteLength(password) > 72) return error(res, 'Use a valid email and a password of 8–72 bytes', 400);
     if (!full_name || !email || !password) {
       return error(res, 'full_name, email and password are required', 400);
     }
@@ -109,18 +114,19 @@ router.post('/users', authenticate, superOnly, async (req, res) => {
 
     const hash = await bcrypt.hash(password, 12);
     const result = await query(`
-      INSERT INTO users (full_name, email, password_hash, role, is_verified)
-      VALUES ($1, $2, $3, $4, TRUE)
-      RETURNING id, full_name, email, role, created_at
+      WITH new_user AS (
+        INSERT INTO users (full_name, email, password_hash, role, is_verified)
+        VALUES ($1, $2, $3, $4, TRUE)
+        RETURNING id, full_name, email, role, created_at
+      ), subscription AS (
+        INSERT INTO subscriptions (user_id, plan, status)
+        SELECT id, 'premium', 'active' FROM new_user
+      ) SELECT * FROM new_user
     `, [full_name, email, hash, role]);
-
-    await query(`
-      INSERT INTO subscriptions (user_id, plan, status) VALUES ($1, 'premium', 'active')
-    `, [result.rows[0].id]);
 
     return success(res, result.rows[0], `${role} account created`, 201);
   } catch (err) {
-    return error(res, 'Failed to create user', 500);
+    return error(res, err.code === '23505' ? 'Email already exists' : 'Failed to create user', err.code === '23505' ? 409 : 500);
   }
 });
 
@@ -132,12 +138,13 @@ router.patch('/users/:id/role', authenticate, superOnly, async (req, res) => {
     const { role } = req.body;
     const allowed = ['student', 'tutor', 'lecturer', 'admin'];
     if (!allowed.includes(role)) return error(res, 'Invalid role', 400);
+    if (req.params.id === req.user.id) return error(res, 'You cannot change your own role', 403);
 
     const result = await query(`
       UPDATE users SET role = $1, updated_at = NOW()
-      WHERE id = $2 RETURNING id, full_name, email, role
+      WHERE id = $2 AND role <> 'super_admin' RETURNING id, full_name, email, role
     `, [role, req.params.id]);
-    if (result.rows.length === 0) return error(res, 'User not found', 404);
+    if (result.rows.length === 0) return error(res, 'User not found or protected Super Admin', 404);
     return success(res, result.rows[0], 'Role updated');
   } catch (err) {
     return error(res, 'Update failed', 500);
@@ -147,25 +154,7 @@ router.patch('/users/:id/role', authenticate, superOnly, async (req, res) => {
 // ════════════════════════════════════════════════════════════
 // DELETE /api/admin/users/:id — delete user (super_admin only)
 // ════════════════════════════════════════════════════════════
-router.delete('/users/:id', authenticate, superOnly, async (req, res) => {
-  try {
-    // Prevent self-deletion
-    if (req.params.id === req.user.id) {
-      return error(res, 'Cannot delete your own account', 400);
-    }
-    // Prevent deleting other super_admins
-    const target = await query('SELECT role FROM users WHERE id = $1', [req.params.id]);
-    if (target.rows[0]?.role === 'super_admin') {
-      return error(res, 'Cannot delete a super admin account', 403);
-    }
-    // Clean up referral records before deleting user
-    await query('DELETE FROM referrals WHERE referrer_id = $1 OR referred_id = $1', [req.params.id]);
-    await query('DELETE FROM users WHERE id = $1', [req.params.id]);
-    return success(res, {}, 'User deleted');
-  } catch (err) {
-    return error(res, 'Delete failed', 500);
-  }
-});
+router.delete('/users/:id', authenticate, superOnly, (req, res) => error(res, 'Suspend the account instead to preserve academic and wallet records', 409));
 
 // ════════════════════════════════════════════════════════════
 // GET /api/admin/content/pending — all pending approvals
@@ -213,9 +202,11 @@ router.patch('/content/:type/:id/approve', authenticate, authorize('admin', 'sup
   try {
     const { type, id } = req.params;
     if (type === 'material') {
-      await query('UPDATE course_materials SET is_approved = TRUE WHERE id = $1', [id]);
+      const updated = await query('UPDATE course_materials SET is_approved = TRUE WHERE id = $1 RETURNING id', [id]);
+      if (!updated.rows.length) return error(res, 'Content not found', 404);
     } else if (type === 'past_question') {
-      await query('UPDATE past_questions SET is_approved = TRUE WHERE id = $1', [id]);
+      const updated = await query('UPDATE past_questions SET is_approved = TRUE WHERE id = $1 RETURNING id', [id]);
+      if (!updated.rows.length) return error(res, 'Content not found', 404);
     } else {
       return error(res, 'Invalid content type', 400);
     }
@@ -232,13 +223,15 @@ router.patch('/content/:type/:id/reject', authenticate, authorize('admin', 'supe
   try {
     const { type, id } = req.params;
     if (type === 'material') {
-      await query('DELETE FROM course_materials WHERE id = $1', [id]);
+      const updated = await query('UPDATE course_materials SET is_approved = FALSE WHERE id = $1 RETURNING id', [id]);
+      if (!updated.rows.length) return error(res, 'Content not found', 404);
     } else if (type === 'past_question') {
-      await query('DELETE FROM past_questions WHERE id = $1', [id]);
+      const updated = await query('UPDATE past_questions SET is_approved = FALSE WHERE id = $1 RETURNING id', [id]);
+      if (!updated.rows.length) return error(res, 'Content not found', 404);
     } else {
       return error(res, 'Invalid content type', 400);
     }
-    return success(res, {}, 'Content rejected and removed');
+    return success(res, {}, 'Content unpublished; file and history retained');
   } catch (err) {
     return error(res, 'Rejection failed', 500);
   }
@@ -269,7 +262,7 @@ router.get('/activity', authenticate, authorize('admin', 'super_admin'), async (
       UNION ALL
       SELECT * FROM (
         SELECT 'Exam attempted' AS event, u.full_name AS actor,
-               e.title AS detail, ea.started_at AS time
+               e.title AS detail, ea.submitted_at AS time
         FROM exam_attempts ea
         JOIN users u ON u.id = ea.student_id
         JOIN exams e ON e.id = ea.exam_id
