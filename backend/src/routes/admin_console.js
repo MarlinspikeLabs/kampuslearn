@@ -80,4 +80,8 @@ router.patch('/content/:kind/:id',run(async(req,res)=>{
  }
  if(!r.rows.length)fail('Content not found',404);success(res,r.rows[0],'Content updated');
 }));
+router.delete('/content/:kind/:id',run(async(req,res)=>{
+ const result=await require('../services/deleteContent')(req.params.kind,req.params.id);
+ success(res,result,'Content deleted');
+}));
 module.exports=router;
