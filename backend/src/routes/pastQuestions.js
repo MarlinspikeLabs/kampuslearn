@@ -41,10 +41,11 @@ router.get('/', optionalAuth, async (req, res) => {
     const offset = (parseInt(page) - 1) * parseInt(limit);
     const params = [];
     let conditions = ['pq.is_approved = TRUE'];
+    if (['institution','generic'].includes(req.query.scope)) { params.push(req.query.scope); conditions.push(`pq.content_scope = $${params.length}`); }
 
     if (course_id) {
       params.push(course_id);
-      conditions.push(`pq.course_id = $${params.length}`);
+      conditions.push(`(pq.course_id = $${params.length} OR pq.content_scope = 'generic')`);
     }
     if (year) {
       params.push(parseInt(year));
@@ -65,11 +66,11 @@ router.get('/', optionalAuth, async (req, res) => {
     params.push(parseInt(limit), offset);
     const result = await query(`
       SELECT
-        pq.id, pq.year, pq.exam_type, pq.file_url,
+        pq.id, pq.year, pq.exam_type, pq.file_url, pq.content_scope, pq.generic_subject,
         pq.has_answers, pq.download_count, pq.created_at,
         c.id         AS course_id,
-        c.title      AS course_title,
-        c.code       AS course_code,
+        COALESCE(c.title, pq.generic_subject)      AS course_title,
+        COALESCE(c.code, 'GENERIC')       AS course_code,
         c.level      AS course_level,
         c.level_type AS course_level_type,
         u.full_name  AS uploader_name,
@@ -77,7 +78,7 @@ router.get('/', optionalAuth, async (req, res) => {
          WHERE q.past_question_id = pq.id
            AND q.is_approved = TRUE) AS question_count
       FROM past_questions pq
-      JOIN courses c ON c.id = pq.course_id
+      LEFT JOIN courses c ON c.id = pq.course_id
       JOIN users   u ON u.id = pq.uploaded_by
       ${whereClause}
       ORDER BY pq.year DESC, pq.created_at DESC
@@ -108,8 +109,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
     const result = await query(`
       SELECT
         pq.*,
-        c.title      AS course_title,
-        c.code       AS course_code,
+        COALESCE(c.title, pq.generic_subject)      AS course_title,
+        COALESCE(c.code, 'GENERIC')       AS course_code,
         c.level      AS course_level,
         c.level_type AS course_level_type,
         d.name       AS department_name,
@@ -118,8 +119,8 @@ router.get('/:id', optionalAuth, async (req, res) => {
          WHERE q.past_question_id = pq.id
            AND q.is_approved = TRUE) AS question_count
       FROM past_questions pq
-      JOIN courses     c ON c.id = pq.course_id
-      JOIN departments d ON d.id = c.department_id
+      LEFT JOIN courses     c ON c.id = pq.course_id
+      LEFT JOIN departments d ON d.id = c.department_id
       JOIN users       u ON u.id = pq.uploaded_by
       WHERE pq.id = $1 AND pq.is_approved = TRUE
     `, [req.params.id]);
@@ -265,6 +266,7 @@ router.post('/:id/questions', authenticate, authorize('admin', 'lecturer'), asyn
       [req.params.id]
     );
     if (pq.rows.length === 0) return error(res, 'Past question paper not found', 404);
+    if (!pq.rows[0].course_id) return error(res, 'Generic papers are shared reading resources. Select an institution paper to add course-specific CBT questions.', 400);
 
     // Validate MCQ options format
     if (question_type === 'mcq') {
@@ -313,7 +315,7 @@ router.get('/course/:courseId/years', optionalAuth, async (req, res) => {
          WHERE q.past_question_id = pq2.id
            AND q.is_approved = TRUE) AS question_count
       FROM past_questions pq2
-      WHERE course_id = $1 AND is_approved = TRUE
+      WHERE (course_id = $1 OR content_scope = 'generic') AND is_approved = TRUE
       ORDER BY year DESC
     `, [req.params.courseId]);
 

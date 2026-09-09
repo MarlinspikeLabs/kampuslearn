@@ -168,7 +168,7 @@ router.get('/content/pending', authenticate, authorize('admin', 'super_admin'), 
              c.title AS course_title, c.code AS course_code
       FROM course_materials cm
       JOIN users u ON u.id = cm.uploaded_by
-      JOIN courses c ON c.id = cm.course_id
+      LEFT JOIN courses c ON c.id = cm.course_id
       WHERE cm.is_approved = FALSE
       ORDER BY cm.created_at ASC
     `);
@@ -180,7 +180,7 @@ router.get('/content/pending', authenticate, authorize('admin', 'super_admin'), 
              c.title AS course_title, c.code AS course_code
       FROM past_questions pq
       JOIN users u ON u.id = pq.uploaded_by
-      JOIN courses c ON c.id = pq.course_id
+      LEFT JOIN courses c ON c.id = pq.course_id
       WHERE pq.is_approved = FALSE
       ORDER BY pq.created_at ASC
     `);

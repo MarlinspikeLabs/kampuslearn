@@ -45,7 +45,7 @@ function MaterialCard({ mat, onDownload, onRead }) {
               )}
             </div>
             <p className="text-sm text-gray-500 mt-0.5 truncate">
-              {mat.course_code} — {mat.course_title}
+              {mat.content_scope === 'generic' ? `Generic · ${mat.generic_subject} · All institutions` : `${mat.course_code} — ${mat.course_title}`} 
             </p>
             {mat.description && (
               <p className="text-xs text-gray-400 mt-1 line-clamp-2">{mat.description}</p>
@@ -110,6 +110,7 @@ export default function MaterialsPage() {
   const [search, setSearch]     = useState('');
   const [typeFilter, setTypeFilter] = useState('');
   const [courseFilter, setCourseFilter] = useState('');
+  const [scopeFilter, setScopeFilter] = useState('');
   const [courses, setCourses]   = useState([]);
   const [page, setPage]         = useState(1);
   const [pagination, setPagination] = useState(null);
@@ -129,13 +130,14 @@ export default function MaterialsPage() {
 
   useEffect(() => {
     fetchMaterials();
-  }, [courseFilter, typeFilter, page]);
+  }, [courseFilter, typeFilter, scopeFilter, page]);
 
   const fetchMaterials = async () => {
     const request = ++latestListRequest.current;
     setLoading(true);
     try {
       const params = new URLSearchParams({ page, limit: LIMIT });
+      if (scopeFilter) params.append('scope', scopeFilter);
       if (courseFilter) params.append('course_id', courseFilter);
       if (typeFilter)   params.append('type', typeFilter);
       if (search)       params.append('search', search);
@@ -214,6 +216,9 @@ export default function MaterialsPage() {
           </form>
 
           <div className="flex flex-wrap gap-3">
+            <select className="input" aria-label="Content scope" value={scopeFilter} onChange={e=>{setScopeFilter(e.target.value);setPage(1);}}>
+              <option value="">All content</option><option value="institution">Institution based</option><option value="generic">Generic · all institutions</option>
+            </select>
             <select className="input flex-1 min-w-[180px]" value={courseFilter}
                     onChange={e => { setCourseFilter(e.target.value); setPage(1); }}>
               <option value="">All courses</option>

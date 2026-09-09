@@ -20,9 +20,9 @@ function PQCard({ pq, onDownload }) {
           </div>
           <div className="min-w-0">
             <p className="font-semibold text-gray-900 truncate">
-              {pq.course_code} — {pq.year} {pq.exam_type.replace('_', ' ')} Exam
+              {pq.content_scope === 'generic' ? pq.generic_subject : pq.course_code} — {pq.year} {pq.exam_type.replace('_', ' ')} Exam
             </p>
-            <p className="text-sm text-gray-500 mt-0.5 truncate">{pq.course_title}</p>
+            <p className="text-sm text-gray-500 mt-0.5 truncate">{pq.content_scope === 'generic' ? 'Generic · All institutions' : pq.course_title}</p>
             <div className="flex items-center flex-wrap gap-3 mt-2 text-xs text-gray-400">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" />
@@ -55,7 +55,7 @@ function PQCard({ pq, onDownload }) {
               Download
             </button>
           )}
-          {pq.question_count > 0 && (
+          {pq.course_id && pq.question_count > 0 && (
             <a href={`/exams?course_id=${pq.course_id}`}
                className="flex items-center gap-1.5 bg-white border border-purple-200 text-purple-600
                           text-xs font-medium px-3 py-1.5 rounded-lg hover:bg-purple-50 transition-colors">
@@ -79,6 +79,7 @@ export default function PastQuestionsPage() {
   const [typeFilter, setTypeFilter] = useState('');
   const [courses, setCourses]   = useState([]);
   const [courseFilter, setCourseFilter] = useState('');
+  const [scopeFilter, setScopeFilter] = useState('');
   const [years, setYears]       = useState([]);
   const [page, setPage]         = useState(1);
   const [total, setTotal]       = useState(0);
@@ -109,13 +110,14 @@ export default function PastQuestionsPage() {
 
   useEffect(() => {
     fetchPQs();
-  }, [courseFilter, yearFilter, typeFilter, page]);
+  }, [courseFilter, yearFilter, typeFilter, scopeFilter, page]);
 
   const fetchPQs = async () => {
     const request = ++latestListRequest.current;
     setLoading(true);
     try {
       const params = new URLSearchParams({ page, limit: LIMIT });
+      if (scopeFilter) params.append('scope', scopeFilter);
       if (courseFilter) params.append('course_id', courseFilter);
       if (yearFilter)   params.append('year', yearFilter);
       if (typeFilter)   params.append('exam_type', typeFilter);
@@ -177,6 +179,9 @@ export default function PastQuestionsPage() {
 
           {/* Filter row */}
           <div className="flex flex-wrap gap-3">
+            <select className="input" aria-label="Content scope" value={scopeFilter} onChange={e=>{setScopeFilter(e.target.value);setPage(1);}}>
+              <option value="">All content</option><option value="institution">Institution based</option><option value="generic">Generic · all institutions</option>
+            </select>
             {/* Course filter */}
             <select className="input flex-1 min-w-[180px]" value={courseFilter}
                     onChange={e => { setCourseFilter(e.target.value); setYearFilter(''); setPage(1); }}>

@@ -44,10 +44,11 @@ router.get('/', optionalAuth, async (req, res) => {
     const offset = (parseInt(page) - 1) * parseInt(limit);
     const params = [];
     let conditions = ['cm.is_approved = TRUE'];
+    if (['institution','generic'].includes(req.query.scope)) { params.push(req.query.scope); conditions.push(`cm.content_scope = $${params.length}`); }
 
     if (course_id) {
       params.push(course_id);
-      conditions.push(`cm.course_id = $${params.length}`);
+      conditions.push(`(cm.course_id = $${params.length} OR cm.content_scope = 'generic')`);
     }
     if (type) {
       params.push(type);
@@ -55,7 +56,7 @@ router.get('/', optionalAuth, async (req, res) => {
     }
     if (search) {
       params.push(`%${search}%`);
-      conditions.push(`(cm.title ILIKE $${params.length} OR cm.description ILIKE $${params.length})`);
+      conditions.push(`(cm.title ILIKE $${params.length} OR cm.description ILIKE $${params.length} OR cm.generic_subject ILIKE $${params.length})`);
     }
 
     const whereClause = 'WHERE ' + conditions.join(' AND ');
@@ -68,18 +69,18 @@ router.get('/', optionalAuth, async (req, res) => {
     params.push(parseInt(limit), offset);
     const result = await query(`
       SELECT
-        cm.id, cm.title, cm.description, cm.material_type,
+        cm.id, cm.title, cm.description, cm.material_type, cm.content_scope, cm.generic_subject,
         cm.file_url, cm.file_name, cm.file_size_kb,
         cm.download_count, cm.view_count,
         cm.is_featured, cm.tags, cm.created_at,
         u.full_name  AS uploader_name,
-        c.title      AS course_title,
-        c.code       AS course_code,
+        COALESCE(c.title, cm.generic_subject)      AS course_title,
+        COALESCE(c.code, 'GENERIC')       AS course_code,
         c.level      AS course_level,
         c.level_type AS course_level_type
       FROM course_materials cm
       JOIN users   u ON u.id = cm.uploaded_by
-      JOIN courses c ON c.id = cm.course_id
+      LEFT JOIN courses c ON c.id = cm.course_id
       ${whereClause}
       ORDER BY cm.is_featured DESC, cm.created_at DESC
       LIMIT $${params.length - 1} OFFSET $${params.length}
@@ -108,11 +109,11 @@ router.get('/admin/pending', authenticate, authorize('admin'), async (req, res) 
         cm.file_size_kb, cm.created_at,
         u.full_name AS uploader_name,
         u.email     AS uploader_email,
-        c.title     AS course_title,
-        c.code      AS course_code
+        COALESCE(c.title, cm.generic_subject)     AS course_title,
+        COALESCE(c.code, 'GENERIC')      AS course_code
       FROM course_materials cm
       JOIN users   u ON u.id = cm.uploaded_by
-      JOIN courses c ON c.id = cm.course_id
+      LEFT JOIN courses c ON c.id = cm.course_id
       WHERE cm.is_approved = FALSE
       ORDER BY cm.created_at ASC
     `);
@@ -128,15 +129,15 @@ router.get('/:id', optionalAuth, async (req, res) => {
       SELECT
         cm.*,
         u.full_name  AS uploader_name,
-        c.title      AS course_title,
-        c.code       AS course_code,
+        COALESCE(c.title, cm.generic_subject)      AS course_title,
+        COALESCE(c.code, 'GENERIC')       AS course_code,
         c.level      AS course_level,
         c.level_type AS course_level_type,
         d.name       AS department_name
       FROM course_materials cm
       JOIN users       u ON u.id = cm.uploaded_by
-      JOIN courses     c ON c.id = cm.course_id
-      JOIN departments d ON d.id = c.department_id
+      LEFT JOIN courses     c ON c.id = cm.course_id
+      LEFT JOIN departments d ON d.id = c.department_id
       WHERE cm.id = $1 AND cm.is_approved = TRUE
     `, [req.params.id]);
 

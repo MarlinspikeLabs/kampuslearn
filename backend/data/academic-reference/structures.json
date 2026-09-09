@@ -1,0 +1,804 @@
+{
+  "checked_at": "2026-09-09",
+  "coverage": "Official UNIMAID faculty pages and Ramat school pages only. No national completeness claim; no individual course modules imported without a verified curriculum.",
+  "structures": [
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Agriculture",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Agric.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Agricultural Economics",
+          "aliases": []
+        },
+        {
+          "name": "Agricultural Extension",
+          "aliases": []
+        },
+        {
+          "name": "Animal Science",
+          "aliases": []
+        },
+        {
+          "name": "Crop Production",
+          "aliases": []
+        },
+        {
+          "name": "Crop Protection",
+          "aliases": []
+        },
+        {
+          "name": "Fisheries",
+          "aliases": []
+        },
+        {
+          "name": "Forestry and Wildlife",
+          "aliases": []
+        },
+        {
+          "name": "Soil Science",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Allied Health Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Allied_Health.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Medical Laboratory Science",
+          "aliases": []
+        },
+        {
+          "name": "Medical Radiography",
+          "aliases": []
+        },
+        {
+          "name": "Nursing",
+          "aliases": [
+            "Nursing Science"
+          ]
+        },
+        {
+          "name": "Physiotherapy",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Arts",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Arts.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Arabic Studies",
+          "aliases": []
+        },
+        {
+          "name": "English and Literary Studies",
+          "aliases": []
+        },
+        {
+          "name": "History and Strategic Studies",
+          "aliases": [
+            "History & International Studies"
+          ]
+        },
+        {
+          "name": "Islamic Studies",
+          "aliases": []
+        },
+        {
+          "name": "Languages and Linguistics",
+          "aliases": []
+        },
+        {
+          "name": "Theatre Arts",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Basic Clinical Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Basic_Clinical_Sci.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Anatomic Pathology and Forensic Medicine",
+          "aliases": []
+        },
+        {
+          "name": "Chemical Pathology",
+          "aliases": []
+        },
+        {
+          "name": "Clinical Pharmacology and Therapeutics",
+          "aliases": []
+        },
+        {
+          "name": "Haematology",
+          "aliases": []
+        },
+        {
+          "name": "Medical Microbiology",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Basic Medical Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Basic_Med_Sci.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Human Anatomy",
+          "aliases": []
+        },
+        {
+          "name": "Human Physiology",
+          "aliases": []
+        },
+        {
+          "name": "Nutrition and Dietetics",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Clinical Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Clinical_Sci.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Anaesthesia",
+          "aliases": []
+        },
+        {
+          "name": "Community Medicine",
+          "aliases": []
+        },
+        {
+          "name": "ENT Surgery",
+          "aliases": []
+        },
+        {
+          "name": "Internal Medicine",
+          "aliases": []
+        },
+        {
+          "name": "Mental Health",
+          "aliases": []
+        },
+        {
+          "name": "Obstetrics and Gynacology",
+          "aliases": []
+        },
+        {
+          "name": "Opthalmology",
+          "aliases": []
+        },
+        {
+          "name": "Orthopaedics and Trauma",
+          "aliases": []
+        },
+        {
+          "name": "Paediatrics",
+          "aliases": []
+        },
+        {
+          "name": "Radiology",
+          "aliases": []
+        },
+        {
+          "name": "Surgery",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Dentistry",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Dentistry.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Child Dental Health",
+          "aliases": []
+        },
+        {
+          "name": "Oral & Maxillofacial Surgery & Pathology",
+          "aliases": []
+        },
+        {
+          "name": "Preventive Dentistry",
+          "aliases": []
+        },
+        {
+          "name": "Restorative Dentistry",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Education",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Edu.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Arts Education",
+          "aliases": []
+        },
+        {
+          "name": "Continuing Education and Extension Services",
+          "aliases": []
+        },
+        {
+          "name": "Library and Information Science",
+          "aliases": []
+        },
+        {
+          "name": "Physical and Health Education",
+          "aliases": []
+        },
+        {
+          "name": "Science Education",
+          "aliases": []
+        },
+        {
+          "name": "Social Science Education",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Engineering",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Engr.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Agricultural and Environmental Resource Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Chemical Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Civil and Water Resources Engineering",
+          "aliases": [
+            "Civil Engineering"
+          ]
+        },
+        {
+          "name": "Computer Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Electrical and Electronics Engineering",
+          "aliases": [
+            "Electrical Engineering"
+          ]
+        },
+        {
+          "name": "Food Science and Technology",
+          "aliases": []
+        },
+        {
+          "name": "Mechanical Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Petroleum and Gas Engineering",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Environmental Studies",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Env.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Architecture",
+          "aliases": []
+        },
+        {
+          "name": "Building",
+          "aliases": []
+        },
+        {
+          "name": "Fine Arts",
+          "aliases": []
+        },
+        {
+          "name": "Geomatics",
+          "aliases": []
+        },
+        {
+          "name": "Industrial Design",
+          "aliases": []
+        },
+        {
+          "name": "Urban and Regional Planning",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Law",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Law.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Private Law",
+          "aliases": []
+        },
+        {
+          "name": "Public Law",
+          "aliases": []
+        },
+        {
+          "name": "Sharia Law",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Life Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Life_Science.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Biochemistry",
+          "aliases": []
+        },
+        {
+          "name": "Biology",
+          "aliases": []
+        },
+        {
+          "name": "Biotechnology",
+          "aliases": []
+        },
+        {
+          "name": "Microbiology",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Pharmacy",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Pharmacy.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Clinical Pharmacy & Pharmacy Administration",
+          "aliases": []
+        },
+        {
+          "name": "Pharmaceutical Chemistry",
+          "aliases": []
+        },
+        {
+          "name": "Pharmaceutics & Pharmaceutical Technology",
+          "aliases": []
+        },
+        {
+          "name": "Pharmacognosy",
+          "aliases": []
+        },
+        {
+          "name": "Pharmacology and Toxicology",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Social Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Soc.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Economics",
+          "aliases": []
+        },
+        {
+          "name": "Geography",
+          "aliases": []
+        },
+        {
+          "name": "Political Science",
+          "aliases": []
+        },
+        {
+          "name": "Sociology and Anthropology",
+          "aliases": [
+            "Sociology"
+          ]
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Veterinary Medicine",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_Vet.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Pharmacology & Toxicology",
+          "aliases": []
+        },
+        {
+          "name": "Theriogenology",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Anatomy",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Medicine",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Microbiology",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Parasitology & Entomology",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Pathology",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Physiology and Biochemistry",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Public Health & Prev. Medicine",
+          "aliases": []
+        },
+        {
+          "name": "Veterinary Surgery & Radiology",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Management Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_mgt.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Accounting",
+          "aliases": []
+        },
+        {
+          "name": "Banking and Finance",
+          "aliases": []
+        },
+        {
+          "name": "Business Administration",
+          "aliases": []
+        },
+        {
+          "name": "Marketing",
+          "aliases": []
+        },
+        {
+          "name": "Public Administration",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "University of Maiduguri",
+      "institution_aliases": [],
+      "table": "faculties",
+      "name": "Faculty of Physical Sciences",
+      "aliases": [],
+      "source_url": "https://www.unimaid.edu.ng/Fac_of_physical_Sci.php",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Computer Science",
+          "aliases": []
+        },
+        {
+          "name": "Environmental Management and Toxicology",
+          "aliases": []
+        },
+        {
+          "name": "Forensic Science",
+          "aliases": []
+        },
+        {
+          "name": "Geology",
+          "aliases": []
+        },
+        {
+          "name": "Mathematics",
+          "aliases": []
+        },
+        {
+          "name": "Physics",
+          "aliases": []
+        },
+        {
+          "name": "Pure and Applied Chemistry",
+          "aliases": [
+            "Chemistry"
+          ]
+        },
+        {
+          "name": "Statistics",
+          "aliases": []
+        },
+        {
+          "name": "Water Sanitation and Hygiene",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of Engineering",
+      "aliases": [],
+      "source_url": "https://ramatpoly.edu.ng/engineering/",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Agric and Bio. Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Civil Engineering",
+          "aliases": []
+        },
+        {
+          "name": "Computer Engineering",
+          "aliases": [
+            "Computer Engineering Technology"
+          ]
+        },
+        {
+          "name": "Electrical and Electronics Engineering",
+          "aliases": [
+            "Electrical Engineering Technology"
+          ]
+        },
+        {
+          "name": "Mechanical Engineering",
+          "aliases": [
+            "Mechanical Engineering Technology"
+          ]
+        }
+      ]
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of Management",
+      "aliases": [],
+      "source_url": "https://ramatpoly.edu.ng/management/",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Accountancy",
+          "aliases": []
+        },
+        {
+          "name": "Banking and Finance",
+          "aliases": []
+        },
+        {
+          "name": "Business Administration and Management",
+          "aliases": [
+            "Business Administration"
+          ]
+        },
+        {
+          "name": "Industrial and Labour Relations",
+          "aliases": []
+        },
+        {
+          "name": "Marketing",
+          "aliases": []
+        },
+        {
+          "name": "Office Technology and Management",
+          "aliases": []
+        },
+        {
+          "name": "Purchasing and Supply",
+          "aliases": []
+        },
+        {
+          "name": "Public Administration",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of Environmental",
+      "aliases": [
+        "School of Environmental Studies"
+      ],
+      "source_url": "https://ramatpoly.edu.ng/environmental/",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Architectural Technology",
+          "aliases": []
+        },
+        {
+          "name": "Building Technology",
+          "aliases": []
+        },
+        {
+          "name": "Estate Management",
+          "aliases": []
+        },
+        {
+          "name": "Quantity Surveying",
+          "aliases": []
+        },
+        {
+          "name": "Survey and Geoinformatics",
+          "aliases": []
+        },
+        {
+          "name": "Urban and Regional Planning",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of Agriculture and Applied Sciences",
+      "aliases": [],
+      "source_url": "https://ramatpoly.edu.ng/agriculture-and-applied-sciences/",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Agricultural Technology",
+          "aliases": []
+        },
+        {
+          "name": "Computer Science",
+          "aliases": []
+        },
+        {
+          "name": "Hospitality Management",
+          "aliases": []
+        },
+        {
+          "name": "Mathematics and Statistics",
+          "aliases": []
+        },
+        {
+          "name": "Nutrition and Dietetics",
+          "aliases": []
+        },
+        {
+          "name": "Science Lab Technology",
+          "aliases": []
+        }
+      ]
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of General Studies",
+      "aliases": [],
+      "source_url": "https://ramatpoly.edu.ng/general-studies/",
+      "checked_at": "2026-09-09",
+      "departments": []
+    },
+    {
+      "institution_name": "Ramat Polytechnic",
+      "institution_aliases": [
+        "Ramat Polytechnic, Maiduguri"
+      ],
+      "table": "schools",
+      "name": "School of Vocational/Technical Education",
+      "aliases": [],
+      "source_url": "https://ramatpoly.edu.ng/vocational/",
+      "checked_at": "2026-09-09",
+      "departments": [
+        {
+          "name": "Business Education",
+          "aliases": []
+        },
+        {
+          "name": "Technical Education",
+          "aliases": []
+        }
+      ]
+    }
+  ]
+}

@@ -49,17 +49,18 @@ router.patch('/users/:id/suspension',run(async(req,res)=>{
  const r=await query(`UPDATE users SET is_suspended=$1,updated_at=NOW() WHERE id=$2 AND (role='student' OR (role<>'super_admin' AND $3::boolean)) RETURNING id,is_suspended`,[req.body.is_suspended,req.params.id,req.user.role==='super_admin']);
  if(!r.rows.length)fail('Account missing or protected',403);success(res,r.rows[0],req.body.is_suspended?'Account suspended':'Account reactivated');
 }));
-const content=`SELECT cm.id,'material'::text kind,cm.title,cm.material_type::text category,cm.file_url,cm.is_approved,cm.created_at,cm.course_id,cm.uploaded_by,NULL::int AS year,NULL::text exam_type,cm.description FROM course_materials cm UNION ALL SELECT pq.id,'past_question',c.code||' · '||pq.year::text||' past questions',pq.exam_type::text,pq.file_url,pq.is_approved,pq.created_at,pq.course_id,pq.uploaded_by,pq.year,pq.exam_type::text,NULL::text FROM past_questions pq JOIN courses c ON c.id=pq.course_id`;
+const content=`SELECT cm.id,'material'::text kind,cm.title,cm.material_type::text category,cm.file_url,cm.is_approved,cm.created_at,cm.course_id,cm.uploaded_by,NULL::int AS year,NULL::text exam_type,cm.description,cm.content_scope,cm.generic_subject FROM course_materials cm UNION ALL SELECT pq.id,'past_question',COALESCE(c.code,pq.generic_subject)||' · '||pq.year::text||' past questions',pq.exam_type::text,pq.file_url,pq.is_approved,pq.created_at,pq.course_id,pq.uploaded_by,pq.year,pq.exam_type::text,NULL::text,pq.content_scope,pq.generic_subject FROM past_questions pq LEFT JOIN courses c ON c.id=pq.course_id`;
 router.get('/content',run(async(req,res)=>{
  const {page,limit}=pagination(req);const p=[];const cond=['TRUE'];
  if(['material','past_question'].includes(req.query.kind)){p.push(req.query.kind);cond.push(`x.kind=$${p.length}`);}
  if(req.query.status==='published')cond.push('x.is_approved=TRUE');
  if(req.query.status==='unpublished')cond.push('x.is_approved=FALSE');
- if(req.query.search){p.push('%'+String(req.query.search).slice(0,160)+'%');cond.push(`(x.title ILIKE $${p.length} OR c.code ILIKE $${p.length})`);}
- if(req.query.institution){p.push(req.query.institution);cond.push(`i.id::text=$${p.length}`);}
- const from=`FROM (${content}) x JOIN courses c ON c.id=x.course_id JOIN departments d ON d.id=c.department_id LEFT JOIN faculties f ON f.id=d.faculty_id LEFT JOIN schools s ON s.id=d.school_id LEFT JOIN institutions i ON i.id=COALESCE(f.institution_id,s.institution_id) LEFT JOIN users u ON u.id=x.uploaded_by WHERE ${cond.join(' AND ')}`;
+ if(req.query.search){p.push('%'+String(req.query.search).slice(0,160)+'%');cond.push(`(x.title ILIKE $${p.length} OR c.code ILIKE $${p.length} OR x.generic_subject ILIKE $${p.length})`);}
+ if(req.query.institution){p.push(req.query.institution);cond.push(`(i.id::text=$${p.length} OR x.content_scope='generic')`);}
+ if(['institution','generic'].includes(req.query.scope)){p.push(req.query.scope);cond.push(`x.content_scope=$${p.length}`);}
+ const from=`FROM (${content}) x LEFT JOIN courses c ON c.id=x.course_id LEFT JOIN departments d ON d.id=c.department_id LEFT JOIN faculties f ON f.id=d.faculty_id LEFT JOIN schools s ON s.id=d.school_id LEFT JOIN institutions i ON i.id=COALESCE(f.institution_id,s.institution_id) LEFT JOIN users u ON u.id=x.uploaded_by WHERE ${cond.join(' AND ')}`;
  const total=Number((await query(`SELECT count(*) ${from}`,p)).rows[0].count);
- const r=await query(`SELECT x.*,c.code course_code,c.title course_title,i.name institution_name,u.full_name uploader ${from} ORDER BY x.created_at DESC,x.id LIMIT $${p.length+1} OFFSET $${p.length+2}`,[...p,limit,(page-1)*limit]);
+ const r=await query(`SELECT x.*,COALESCE(c.code,'GENERIC') course_code,COALESCE(c.title,x.generic_subject) course_title,CASE WHEN x.content_scope='generic' THEN 'All institutions' ELSE i.name END institution_name,u.full_name uploader ${from} ORDER BY x.created_at DESC,x.id LIMIT $${p.length+1} OFFSET $${p.length+2}`,[...p,limit,(page-1)*limit]);
  success(res,{rows:r.rows,total,page,pages:Math.max(1,Math.ceil(total/limit))});
 }));
 router.patch('/content/:kind/:id',run(async(req,res)=>{

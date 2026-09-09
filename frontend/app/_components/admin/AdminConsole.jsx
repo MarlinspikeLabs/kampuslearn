@@ -2,13 +2,14 @@
 import {useEffect,useState,useRef} from 'react';
 import {useRouter} from 'next/navigation';
 import {useAuth} from '@/context/AuthContext';
-import {LayoutDashboard,Building2,Users,Library,Upload,Settings,LogOut,Menu,Moon,Sun,ArrowUpRight,FileText,BookOpen,GraduationCap} from 'lucide-react';
+import {LayoutDashboard,Building2,Users,Library,Upload,Settings,LogOut,Menu,Moon,Sun,ArrowUpRight,FileText,BookOpen,GraduationCap,Store} from 'lucide-react';
 import {s,useData,State,number,date,Empty} from './shared';
 import Institutions from './Institutions';
 import People from './People';
 import Content,{UploadContent} from './Content';
+import Marketplace from './Marketplace';
 import AdminSettings from './Settings';
-const nav=[['overview','Dashboard',LayoutDashboard],['institutions','Institutions',Building2],['students','Students',Users],['content','Content library',Library],['upload','Upload content',Upload],['settings','Settings',Settings]];
+const nav=[['overview','Dashboard',LayoutDashboard],['institutions','Institutions',Building2],['students','Students',Users],['content','Content library',Library],['upload','Upload content',Upload],['marketplace','Marketplace',Store],['settings','Settings',Settings]];
 function Brand(){return <div className={s.brand}><svg viewBox="0 0 64 52" fill="none" aria-hidden="true"><path d="M12 24v13c0 9 32 9 32 0V24M3 18 29 6a4 4 0 0 1 4 0l27 12-29 13ZM31 17l17 6c4 1 5 4 5 8v5m-2 4-2 9h8l-2-9" stroke="currentColor" strokeWidth="2.8" strokeLinejoin="round"/><circle cx="31" cy="17" r="2.8" fill="currentColor"/><circle cx="53" cy="37" r="3" fill="currentColor"/></svg><span><b>Kampus</b>Learn</span></div>;}
 export default function AdminConsole(){
  const {user,loading,logout}=useAuth();const router=useRouter();const [tab,setTab]=useState('overview');const [open,setOpen]=useState(false);const [dark,setDark]=useState(false);const [contentStatus,setStatus]=useState('');const [uploadBusy,setUploadBusy]=useState(false);const busyRef=useRef(false);busyRef.current=uploadBusy;
@@ -18,7 +19,7 @@ export default function AdminConsole(){
  function theme(){setDark(v=>{try{localStorage.setItem('kl_admin_theme',v?'light':'dark');}catch{}return !v;});}
  if(loading||!user||!['admin','super_admin'].includes(user.role))return <div className={s.empty}>Loading your admin workspace…</div>;
  return <div className={s.app} data-theme={dark?'dark':'light'}><a className={s.skip} href="#admin-main">Skip to content</a>{open&&<button className={s.scrim} aria-label="Close navigation" onClick={()=>setOpen(false)}/>}<aside className={`${s.sidebar} ${open?s.navOpen:''}`}><Brand/><small className={s.navLabel}>WORKSPACE</small><nav aria-label="Admin sections">{nav.map(([id,label,Icon])=><button key={id} className={tab===id?s.active:''} aria-current={tab===id?'page':undefined} onClick={()=>go(id)}><Icon size={18}/>{label}</button>)}</nav><div className={s.sideNote}><GraduationCap size={24}/><p>Your study mate.</p><small>Helping students arrive exam-ready.</small></div><button className={s.account} onClick={()=>go('settings')}><span className={s.avatar}>{user.full_name?.slice(0,1)}</span><span><b>{user.full_name}</b><small>{user.role==='super_admin'?'Super Admin':'Admin'}</small></span></button><button className={s.logout} disabled={uploadBusy} onClick={logout}><LogOut size={17}/> Log out</button></aside><div className={s.main}><header className={s.topbar}><button className={s.menu} onClick={()=>setOpen(!open)} aria-label="Toggle navigation" aria-expanded={open}><Menu size={20}/></button><span>Workspace <span className={s.muted}>/</span> <b>{nav.find(n=>n[0]===tab)?.[1]}</b></span><div className={s.actions}><span className={s.badge}>{user.role==='super_admin'?'Super Admin':'Admin'}</span><button aria-label={dark?'Use light mode':'Use dark mode'} onClick={theme}>{dark?<Sun size={19}/>:<Moon size={19}/>}</button><button className={s.avatar} aria-label="Account settings" onClick={()=>go('settings')}>{user.full_name?.slice(0,1)}</button></div></header><main id="admin-main" className={s.workspace}>
- {tab==='overview'&&<Overview go={go} user={user}/>}{tab==='institutions'&&<Institutions superAdmin={user.role==='super_admin'}/>}{tab==='students'&&<People/>}{tab==='content'&&<Content initialStatus={contentStatus} go={go}/>}{tab==='upload'&&<UploadContent go={go} onBusyChange={setUploadBusy}/>}{tab==='settings'&&<AdminSettings dark={dark} theme={theme}/>}
+ {tab==='overview'&&<Overview go={go} user={user}/>}{tab==='institutions'&&<Institutions superAdmin={user.role==='super_admin'}/>}{tab==='students'&&<People/>}{tab==='content'&&<Content initialStatus={contentStatus} go={go}/>}{tab==='upload'&&<UploadContent go={go} onBusyChange={setUploadBusy}/>}{tab==='marketplace'&&<Marketplace/>}{tab==='settings'&&<AdminSettings dark={dark} theme={theme}/>}
  </main></div></div>;
 }
 function Overview({go,user}){

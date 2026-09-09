@@ -38,23 +38,38 @@ const upload = multer({
   }
 });
 
+// Generic items belong to the shared library and never to a placeholder institution.
+function destination(body) {
+  const scope = body.content_scope || 'institution';
+  if (!['institution', 'generic'].includes(scope)) throw Object.assign(new Error('Choose Institution based or Generic'), {status:400});
+  if (scope === 'generic') {
+    const subject = typeof body.generic_subject === 'string' ? body.generic_subject.trim() : '';
+    if (!subject || subject.length > 180) throw Object.assign(new Error('Enter a subject of 1–180 characters for shared content'), {status:400});
+    if (body.course_id) throw Object.assign(new Error('Generic content cannot have an institution course assignment'), {status:400});
+    return {scope, subject, courseId:null};
+  }
+  if (!/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(String(body.course_id))) throw Object.assign(new Error('Choose an institution course'), {status:400});
+  return {scope, subject:null, courseId:body.course_id};
+}
+
 // POST /api/admin-upload/material
 router.post('/material', authenticate, superOnly, upload.single('file'), async (req, res) => {
   try {
     if (!req.file) return error(res, 'No file uploaded', 400);
+    const target = destination(req.body);
 
     const {
       title, course_id, material_type = 'lecture_note',
       description, tags
     } = req.body;
 
-    if (typeof title !== 'string' || !title.trim() || title.length > 250 || !/^[0-9a-f-]{36}$/i.test(String(course_id)) || !['lecture_note','slide','textbook','summary','other'].includes(material_type)) {
+    if (typeof title !== 'string' || !title.trim() || title.length > 250 || !['lecture_note','slide','textbook','summary','other'].includes(material_type)) {
       fs.unlinkSync(req.file.path);
       return error(res, 'Choose a course, a valid title and material category', 400);
     }
 
     // Verify course exists
-    const course = await query('SELECT id FROM courses WHERE id = $1 AND is_active = TRUE', [course_id]);
+    const course = target.courseId ? await query('SELECT id FROM courses WHERE id = $1 AND is_active = TRUE', [target.courseId]) : {rows:[{}]};
     if (!course.rows.length) {
       fs.unlinkSync(req.file.path);
       return error(res, 'Course not found', 404);
@@ -71,11 +86,11 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       INSERT INTO course_materials
         (course_id, uploaded_by, title, description, material_type,
          file_url, file_name, file_size_kb, tags,
-         is_approved, is_featured)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, TRUE, FALSE)
-      RETURNING id, title, file_url, material_type, is_approved
+         is_approved, is_featured, content_scope, generic_subject)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, TRUE, FALSE, $10, $11)
+      RETURNING id, title, file_url, material_type, is_approved, content_scope, generic_subject
     `, [
-      course_id,
+      target.courseId,
       req.user.id,
       title,
       description || null,
@@ -83,7 +98,8 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       fileUrl,
       req.file.originalname,
       fileSizeKb,
-      tagsArr.length > 0 ? tagsArr : null
+      tagsArr.length > 0 ? tagsArr : null,
+      target.scope, target.subject
     ]);
 
     return success(res, result.rows[0], 'Material uploaded and published', 201);
@@ -92,7 +108,7 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
       try { fs.unlinkSync(req.file.path); } catch {}
     }
     console.error('Upload error:', err.message);
-    return error(res, 'Upload failed. Check the file and course, then retry.', 500);
+    return error(res, err.status ? err.message : 'Upload failed. Check the file and destination, then retry.', err.status || 500);
   }
 });
 
@@ -100,17 +116,18 @@ router.post('/material', authenticate, superOnly, upload.single('file'), async (
 router.post('/past-question', authenticate, superOnly, upload.single('file'), async (req, res) => {
   try {
     if (!req.file) return error(res, 'No file uploaded', 400);
+    const target = destination(req.body);
 
     const { course_id, year, exam_type = 'semester', has_answers = false } = req.body;
 
-    if (!/^[0-9a-f-]{36}$/i.test(String(course_id)) || !Number.isInteger(Number(year)) || Number(year) < 1960 || Number(year) > new Date().getFullYear()+1 || !['semester','mock','carry_over','supplementary'].includes(exam_type)) {
+    if (!Number.isInteger(Number(year)) || Number(year) < 1960 || Number(year) > new Date().getFullYear()+1 || !['semester','mock','carry_over','supplementary'].includes(exam_type)) {
       fs.unlinkSync(req.file.path);
       return error(res, 'Choose a course, valid exam year and exam type', 400);
     }
 
-    const course = await query(
-      'SELECT id, department_id FROM courses WHERE id = $1 AND is_active = TRUE', [course_id]
-    );
+    const course = target.courseId ? await query(
+      'SELECT id, department_id FROM courses WHERE id = $1 AND is_active = TRUE', [target.courseId]
+    ) : {rows:[{department_id:null}]};
     if (!course.rows.length) {
       fs.unlinkSync(req.file.path);
       return error(res, 'Course not found', 404);
@@ -121,17 +138,18 @@ router.post('/past-question', authenticate, superOnly, upload.single('file'), as
     const result = await query(`
       INSERT INTO past_questions
         (course_id, department_id, uploaded_by, year, exam_type,
-         file_url, has_answers, is_approved)
-      VALUES ($1, $2, $3, $4, $5, $6, $7, TRUE)
-      RETURNING id, year, exam_type, file_url, is_approved
+         file_url, has_answers, is_approved, content_scope, generic_subject)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, TRUE, $8, $9)
+      RETURNING id, year, exam_type, file_url, is_approved, content_scope, generic_subject
     `, [
-      course_id,
+      target.courseId,
       course.rows[0].department_id,
       req.user.id,
       parseInt(year),
       exam_type,
       fileUrl,
-      has_answers === 'true' || has_answers === true
+      has_answers === 'true' || has_answers === true,
+      target.scope, target.subject
     ]);
 
     return success(res, result.rows[0], 'Past question uploaded and published', 201);
@@ -140,7 +158,7 @@ router.post('/past-question', authenticate, superOnly, upload.single('file'), as
       try { fs.unlinkSync(req.file.path); } catch {}
     }
     console.error('PQ upload error:', err.message);
-    return error(res, 'Upload failed', 500);
+    return error(res, err.status ? err.message : 'Upload failed', err.status || 500);
   }
 });
 

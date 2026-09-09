@@ -1,0 +1,4 @@
+'use client';
+import Link from 'next/link';
+import StudentShell from '../_components/student-journey/StudentShell';
+export default function MarketplacePage(){return <StudentShell title="Marketplace"><section style={{maxWidth:760,margin:'24px auto',padding:'clamp(24px,6vw,64px)',borderRadius:28,background:'linear-gradient(125deg,#173d40,#2c7161)',color:'#f7f8f2'}}><span style={{letterSpacing:2,fontSize:12}}>COMING SOON</span><h2 style={{fontSize:'clamp(28px,5vw,44px)',lineHeight:1.15,margin:'24px 0'}}>More for your campus life.</h2><p style={{lineHeight:1.8,maxWidth:480}}>A new space for useful finds and study essentials is on its way. Until then, your course materials, past questions and practice tools are ready in Learn.</p><Link href="/learn" style={{display:'inline-block',marginTop:20,padding:'14px 24px',borderRadius:16,background:'#e7f3eb',color:'#173d40',fontWeight:700}}>Continue learning →</Link></section></StudentShell>;}
