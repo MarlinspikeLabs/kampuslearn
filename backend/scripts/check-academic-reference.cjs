@@ -1,13 +1,19 @@
 'use strict';
 // Dependency-free offline checks. Does not connect to PostgreSQL or modify files.
 const assert=require('node:assert/strict');
-const {plan}=require('./academic-plan.cjs');
+const {plan,fieldIssues}=require('./academic-plan.cjs');
 const {planStructures}=require('./structure-plan.cjs');
 const snapshot=require('../data/academic-snapshots/2026-09-09.json');
 const dataset=require('../data/academic-reference/institutions.json');
 const structures=require('../data/academic-reference/structures.json');
 const original=JSON.stringify(snapshot);
 const first=plan(snapshot.institutions,dataset);
+for(const item of dataset.institutions){
+ assert.ok(!/^REF[-_]/i.test(item.short_name||''),'Generated reference labels must never be public short names');
+ if(item.short_name)assert.match(item.short_name_source_url||'',/^https:\/\//,'Short label must have an official source');
+}
+for(const x of first.inserts){const issues=fieldIssues(x.record);assert.equal(issues.missing_fields.length,0);assert.equal(issues.invalid_fields.length,0);}
+
 assert.equal(JSON.stringify(snapshot),original,'Planning must not mutate the snapshot');
 const next=snapshot.institutions.map(x=>({...x,...first.updates.find(u=>u.id===x.id)?.values})).concat(first.inserts.map(x=>x.record));
 const second=plan(next,dataset);

@@ -12,11 +12,12 @@ if((apply&&process.argv.includes('--dry-run'))||process.argv.slice(2).some(a=>![
  // Blocks concurrent academic edits only during this short transaction.
  await c.query('LOCK TABLE institutions, faculties, schools, departments IN SHARE ROW EXCLUSIVE MODE');
  const rows=(await c.query('SELECT id,name,short_name,type,state,city,website_url FROM institutions ORDER BY id')).rows;
- const result=plan(rows,dataset);
+ const constraints=(await c.query("SELECT column_name,is_nullable,character_maximum_length FROM information_schema.columns WHERE table_schema='public' AND table_name='institutions' AND column_name IN ('name','type','short_name','state','city','website_url')")).rows;
+ if(constraints.length!==6)throw new Error('Unexpected institutions schema; no import performed');
+ const result=plan(rows,dataset,constraints);
+ result.database_constraints=constraints;
  const academic={institutions:rows,faculties:(await c.query('SELECT id,institution_id,name,code FROM faculties')).rows,schools:(await c.query('SELECT id,institution_id,name,code FROM schools')).rows,departments:(await c.query('SELECT id,faculty_id,school_id,name,code FROM departments')).rows};
  result.structures=planStructures(academic,structures);
- const constraints=(await c.query("SELECT column_name FROM information_schema.columns WHERE table_schema='public' AND table_name='institutions' AND is_nullable='NO' AND column_name IN ('state','city','website_url')")).rows.map(x=>x.column_name);
- result.inserts=result.inserts.filter(x=>{const missing=constraints.filter(k=>x.record[k]==null);if(missing.length){result.held.push({source_key:x.source_key,name:x.name,reason:'Database requires unverified fields: '+missing.join(', ')});return false;}return true;});
  const reportDir=path.join(os.homedir(),'kampuslearn-import-reports');fs.mkdirSync(reportDir,{recursive:true,mode:0o700});
  const stamp=Date.now();const file=path.join(reportDir,`academic-${stamp}-${apply?'apply':'dry-run'}.json`);
  const backup=path.join(reportDir,`academic-before-${stamp}.json`);

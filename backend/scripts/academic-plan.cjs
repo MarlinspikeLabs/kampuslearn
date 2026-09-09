@@ -4,7 +4,23 @@ const norm=s=>String(s||'').normalize('NFKD').toLowerCase().replace(/&/g,'and').
 const empty=v=>v==null||String(v).trim()==='';
 const host=s=>{try{return new URL(s).hostname.replace(/^www\./,'').toLowerCase();}catch{return '';}};
 const stableId=s=>{const b=crypto.createHash('sha256').update('kampuslearn-academic:'+s).digest().subarray(0,16);b[6]=(b[6]&15)|80;b[8]=(b[8]&63)|128;const h=b.toString('hex');return `${h.slice(0,8)}-${h.slice(8,12)}-${h.slice(12,16)}-${h.slice(16,20)}-${h.slice(20)}`;};
-function plan(current,dataset){
+// Offline defaults match the inspected production schema. The importer passes live constraints.
+const defaultConstraints=[
+ {column_name:'short_name',is_nullable:'NO',character_maximum_length:20},
+ {column_name:'state',is_nullable:'NO',character_maximum_length:60},
+ {column_name:'city',is_nullable:'NO',character_maximum_length:80},
+ {column_name:'website_url',is_nullable:'YES',character_maximum_length:null}
+];
+function fieldIssues(record,constraints=defaultConstraints,partial=false){
+ const missing_fields=[],invalid_fields=[];
+ for(const c of constraints){
+  const k=c.column_name;if(partial&&!Object.hasOwn(record,k))continue;
+  if(c.is_nullable==='NO'&&empty(record[k]))missing_fields.push(k);
+  if(!empty(record[k])&&c.character_maximum_length!=null&&Array.from(String(record[k])).length>Number(c.character_maximum_length))invalid_fields.push(k);
+ }
+ return {missing_fields,invalid_fields};
+}
+function plan(current,dataset,constraints=defaultConstraints){
  const result={inserts:[],updates:[],held:[],unchanged:[],duplicates:[],coverage:[]};
  const rows=current.map(r=>({...r}));const groups=new Map();
  for(const r of current){const n=norm(r.name);groups.set(n,[...(groups.get(n)||[]),r.id]);}
@@ -23,6 +39,7 @@ function plan(current,dataset){
   if(matches.length===1){
    const r=matches[0];if(r.type!==item.type){result.held.push({...entry,reason:'Institution type conflict',id:r.id});continue;}
    const values={};for(const k of ['state','city','website_url'])if(empty(r[k])&&!empty(item[k]))values[k]=item[k];
+   const problems=fieldIssues(values,constraints,true);if(problems.missing_fields.length||problems.invalid_fields.length){result.held.push({...entry,id:r.id,reason:'Blank-field update exceeds database constraints',...problems});continue;}
    if(Object.keys(values).length){result.updates.push({...entry,id:r.id,values});Object.assign(r,values);}else result.unchanged.push({...entry,id:r.id});
   }else{
    const sameWebsite=rows.filter(r=>host(item.website_url)&&host(item.website_url)===host(r.website_url));
@@ -30,12 +47,14 @@ function plan(current,dataset){
    // A containing institution name is a review hint, never an automatic merge.
    const possible=rows.filter(r=>r.type===item.type&&names.some(n=>Math.min(n.length,norm(r.name).length)>15&&(n.includes(norm(r.name))||norm(r.name).includes(n))));
    if(possible.length){result.held.push({...entry,reason:'Possible alternate name; verify before adding',ids:possible.map(x=>x.id)});continue;}
-   if(empty(item.state)){result.held.push({...entry,reason:'No verified state available'});continue;}
-   if(rows.some(r=>norm(r.short_name)===norm(item.short_name))){result.held.push({...entry,reason:'Reference short name collision'});continue;}
+   const problems=fieldIssues(item,constraints);
+   if(!empty(item.short_name)&&(/^REF[-_]/i.test(item.short_name)||!/^https:\/\//.test(item.short_name_source_url||'')))problems.invalid_fields.push('short_name');
+   if(problems.missing_fields.length||problems.invalid_fields.length){result.held.push({...entry,reason:empty(item.state)?'No verified state available':'Missing verified required fields or invalid field values',...problems});continue;}
+   if(!empty(item.short_name)&&rows.some(r=>norm(r.short_name)===norm(item.short_name))){result.held.push({...entry,reason:'Reference short name collision'});continue;}
    const record={id,name:item.name,short_name:item.short_name,type:item.type,state:item.state,city:item.city||null,website_url:item.website_url||null};
    result.inserts.push({...entry,record});rows.push(record);
   }
  }
  return result;
 }
-module.exports={plan,norm,stableId};
+module.exports={plan,norm,stableId,fieldIssues,defaultConstraints};
