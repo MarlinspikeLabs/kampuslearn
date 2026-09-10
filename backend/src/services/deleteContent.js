@@ -6,7 +6,7 @@ const tables = {material:'course_materials', past_question:'past_questions'};
 const ident = value => '"' + value.replace(/"/g, '""') + '"';
 const fail = (message,status) => Object.assign(new Error(message),{status});
 
-// Refuse cascades: content may already be referenced by questions or student records.
+// Preserve linked questions and student records; derived AI search chunks may cascade.
 module.exports = async function deleteContent(kind,id) {
  const table = Object.hasOwn(tables,kind) ? tables[kind] : null;
  if(!table) throw fail('Invalid content type',400);
@@ -24,6 +24,7 @@ module.exports = async function deleteContent(kind,id) {
    JOIN pg_attribute a ON a.attrelid=c.conrelid AND a.attnum=ANY(c.conkey)
    WHERE c.contype='f' AND c.confrelid=$1::regclass`,[table]);
   for(const r of refs.rows) {
+   if(kind==='material' && r.schema_name==='public' && r.table_name==='ai_material_chunks' && r.column_name==='material_id') continue;
    const used = await client.query(`SELECT 1 FROM ${ident(r.schema_name)}.${ident(r.table_name)} WHERE ${ident(r.column_name)}::text=$1 LIMIT 1`,[id]);
    if(used.rows.length) throw fail('This content has linked records. Unpublish it instead, or resolve its linked records before deleting.',409);
   }

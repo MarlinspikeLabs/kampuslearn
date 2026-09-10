@@ -12,6 +12,11 @@ import toast from 'react-hot-toast';
 // Render markdown-like formatting
 function MessageContent({ content }) {
   const formatted = content
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
     .replace(/\n/g, '<br/>');
@@ -41,6 +46,22 @@ function Message({ msg }) {
         {isUser
           ? <p className="text-sm leading-relaxed">{msg.content}</p>
           : <MessageContent content={msg.content} />}
+        {!isUser && msg.grounding && (
+          <p className="text-xs mt-3 text-gray-500">
+            {msg.grounding === 'legacy_demo' ? 'Earlier demo response · generated before the live tutor was connected.' : msg.grounding === 'course_excerpts' ? 'Course or shared-library excerpts supplied for this answer. Check the references below.' : 'General explanation · no matching library excerpts found.'}
+          </p>
+        )}
+        {!isUser && msg.sources?.length > 0 && (
+          <div className="mt-3 flex flex-wrap gap-2">
+            {msg.sources.map(source => (
+              <a key={source.number} href={`/read?id=${encodeURIComponent(source.material_id)}`}
+                 className="block rounded-lg border border-gray-200 px-2 py-1 text-xs text-teal-700">
+                [{source.number}] {source.title} · page {source.page}
+              </a>
+            ))}
+          </div>
+        )}
+        {!isUser && msg.truncated && <p className="text-xs mt-2 text-gray-500">Ask “continue” for the next part.</p>}
         {msg.created_at && (
           <p className={`text-xs mt-2 ${isUser ? 'text-blue-200' : 'text-gray-400'}`}>
             {new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
@@ -91,6 +112,8 @@ export default function AIChatPage() {
   const [showCourses, setShowCourses] = useState(false);
   const [conversations, setConversations] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [sendError, setSendError] = useState('');
+  const busyRef = useRef(false);
   const messagesEndRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -125,18 +148,22 @@ export default function AIChatPage() {
   useEffect(() => {
     setMessages([{
       role: 'assistant',
-      content: `Hello ${user?.full_name?.split(' ')[0] || ''}! I'm your KampusLearn AI tutor.\n\nI can help you:\n• **Explain** difficult concepts clearly\n• **Quiz** you on any topic\n• **Summarise** lecture notes\n• **Create** an exam crash plan\n• **Identify** your weak areas\n\nWhat would you like to study today?`,
+      content: `Hello ${user?.full_name?.split(' ')[0] || ''}! I'm your study mate.\n\nLet's get you exam-ready. I can explain a difficult concept, give you practice questions, or help you plan your revision.\n\nSelect a course to use matching notes supplied by our academic team. I'll show you when an answer is a general explanation.\n\nWhat would you like to understand today?`,
       created_at: new Date().toISOString()
     }]);
-  }, [user]);
+  }, [user?.id]);
 
   const sendMessage = async (text) => {
     const msg = (text || input).trim();
-    if (!msg || loading) return;
+    if (!msg || busyRef.current) return;
+    if (msg.length > 2000) { setSendError('Please keep your question within 2000 characters.'); return; }
+    busyRef.current = true;
+    setSendError('');
+    const pendingId = `pending-${Date.now()}`;
 
     setInput('');
     setMessages(prev => [...prev, {
-      role: 'user', content: msg, created_at: new Date().toISOString()
+      id: pendingId, role: 'user', content: msg, created_at: new Date().toISOString()
     }]);
     setLoading(true);
 
@@ -145,44 +172,55 @@ export default function AIChatPage() {
         message:         msg,
         conversation_id: convoId || undefined,
         course_id:       selectedCourse || undefined,
-      });
+      }, { timeout: 60000 });
       const data = res.data.data;
       setConvoId(data.conversation_id);
       setMessages(prev => [...prev, {
         role:       'assistant',
         content:    data.reply,
+        sources:    data.sources,
+        grounding:  data.grounding,
+        truncated:  data.truncated,
         created_at: new Date().toISOString()
       }]);
       setUsage(prev => prev ? { ...prev, ...data.usage } : data.usage);
+      api.get('/ai/conversations').then(r => setConversations(r.data.data)).catch(() => {});
     } catch (err) {
       const msg2 = err.response?.data?.message || 'AI service unavailable. Please try again.';
-      if (err.response?.status === 429) {
-        toast.error(msg2);
-      }
-      setMessages(prev => [...prev, {
-        role:       'assistant',
-        content:    `Sorry, I ran into an issue: ${msg2}`,
-        created_at: new Date().toISOString()
-      }]);
+      setMessages(prev => prev.filter(item => item.id !== pendingId));
+      setInput(msg);
+      setSendError(msg2);
+      api.get('/ai/usage').then(r => setUsage(r.data.data)).catch(() => {});
     } finally {
+      busyRef.current = false;
       setLoading(false);
       inputRef.current?.focus();
     }
   };
 
   const loadConversation = async (id) => {
+    if (busyRef.current) return;
+    busyRef.current = true;
+    setLoading(true);
     try {
       const res = await api.get(`/ai/conversations/${id}`);
-      const { messages: msgs } = res.data.data;
+      const { messages: msgs, conversation } = res.data.data;
       setMessages(msgs);
       setConvoId(id);
+      setSelectedCourse(conversation.course_id || '');
+      setSendError('');
       setShowHistory(false);
     } catch {
       toast.error('Failed to load conversation');
+    } finally {
+      busyRef.current = false;
+      setLoading(false);
     }
   };
 
   const newConversation = () => {
+    if (busyRef.current) return;
+    setSendError('');
     setMessages([{
       role: 'assistant',
       content: 'Starting a new conversation. What would you like to study?',
@@ -210,7 +248,7 @@ export default function AIChatPage() {
 
           {/* Course selector */}
           <div className="relative">
-            <button onClick={() => setShowCourses(!showCourses)}
+            <button disabled={loading} onClick={() => setShowCourses(!showCourses)}
                     className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg
                                px-3 py-2 text-sm text-gray-700 hover:border-blue-400 transition-colors">
               <BookOpen className="w-4 h-4 text-blue-600" />
@@ -223,14 +261,16 @@ export default function AIChatPage() {
               <div className="absolute top-full left-0 mt-1 w-72 bg-white border border-gray-200
                               rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
                 <button
-                  onClick={() => { setSelectedCourse(''); setShowCourses(false); }}
+                  disabled={loading}
+                  onClick={() => { newConversation(); setSelectedCourse(''); setShowCourses(false); }}
                   className="w-full text-left px-4 py-2.5 text-sm text-gray-500
                              hover:bg-gray-50 border-b border-gray-100">
                   No specific course
                 </button>
                 {courses.map(c => (
                   <button key={c.id}
-                    onClick={() => { setSelectedCourse(c.id); setShowCourses(false); }}
+                    disabled={loading}
+                    onClick={() => { newConversation(); setSelectedCourse(c.id); setShowCourses(false); }}
                     className={`w-full text-left px-4 py-2.5 text-sm hover:bg-blue-50 transition-colors
                       ${selectedCourse === c.id ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-700'}`}>
                     <span className="font-medium">{c.code}</span> — {c.title}
@@ -249,7 +289,7 @@ export default function AIChatPage() {
           </button>
 
           {/* New chat */}
-          <button onClick={newConversation}
+          <button disabled={loading} onClick={newConversation}
                   className="flex items-center gap-2 bg-blue-600 text-white rounded-lg
                              px-3 py-2 text-sm hover:bg-blue-700 transition-colors ml-auto">
             <Plus className="w-4 h-4" />
@@ -264,7 +304,7 @@ export default function AIChatPage() {
             {conversations.length === 0
               ? <p className="text-sm text-gray-400">No previous conversations</p>
               : conversations.slice(0, 6).map(c => (
-                <button key={c.id} onClick={() => loadConversation(c.id)}
+                <button key={c.id} disabled={loading} onClick={() => loadConversation(c.id)}
                         className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-50
                                    transition-colors text-sm mb-1">
                   <p className="font-medium text-gray-800 truncate">{c.title}</p>
@@ -310,7 +350,7 @@ export default function AIChatPage() {
           {usage && (
             <div className="px-4 py-2 border-t border-gray-200 bg-white">
               <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
-                <span>{usage.messages_today}/{usage.daily_limit} messages today</span>
+                <span>{usage.messages_today}/{usage.daily_limit} requests · last 24 hours</span>
                 <span>{usage.remaining} remaining</span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-1">
@@ -323,11 +363,16 @@ export default function AIChatPage() {
 
           {/* Input */}
           <div className="p-4 border-t border-gray-200 bg-white">
+            <p className="mb-2 text-xs text-gray-500">Free AI pilot · Keep personal and confidential information out of your study questions.</p>
+            {usage?.available === false && <p className="mb-3 text-sm text-gray-600" role="status">Your study mate is being connected. Your course materials and practice are available in Learn.</p>}
+            {sendError && <p className="mb-3 text-sm text-red-700" role="alert">{sendError}</p>}
             <div className="flex gap-3 items-end">
               <div className="flex-1 relative">
                 <textarea
                   ref={inputRef}
                   rows={1}
+                  aria-label="Your study question"
+                  maxLength={2000}
                   value={input}
                   onChange={e => setInput(e.target.value)}
                   onKeyDown={handleKeyDown}
@@ -347,7 +392,8 @@ export default function AIChatPage() {
               </div>
               <button
                 onClick={() => sendMessage()}
-                disabled={loading || !input.trim()}
+                aria-label="Send question"
+                disabled={loading || !input.trim() || usage?.available === false}
                 className="w-11 h-11 bg-blue-600 text-white rounded-xl flex items-center justify-center
                            hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed
                            transition-colors flex-shrink-0">
@@ -365,4 +411,3 @@ export default function AIChatPage() {
     </AppLayout>
   );
 }
-

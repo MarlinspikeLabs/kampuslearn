@@ -1,302 +1,140 @@
-const router  = require('express').Router();
-const { query }              = require('../config/database');
-const { authenticate }       = require('../middleware/auth');
-const { success, error }     = require('../utils/response');
-const { getAIResponse }      = require('../services/ai/aiService');
-
-const FREE_DAILY_LIMIT    = 20;
-const PREMIUM_DAILY_LIMIT = 200;
-
-// ── Get user's daily usage ────────────────────────────────────
-async function getDailyUsage(userId) {
-  const r = await query(`
-    SELECT COUNT(*) AS messages, COALESCE(SUM(tokens_used), 0) AS tokens
-    FROM ai_usage_logs
-    WHERE user_id = $1
-      AND created_at > NOW() - INTERVAL '24 hours'
-      AND feature = 'chat'
-  `, [userId]);
+'use strict';
+const router = require('express').Router();
+const { query, getClient } = require('../config/database');
+const { authenticate } = require('../middleware/auth');
+const { success, error } = require('../utils/response');
+const { requireGemini, getConfig, aiError } = require('../services/ai/config');
+const { prepare } = require('../services/ai/gemini');
+const { getAIResponse } = require('../services/ai/aiService');
+const budget = require('../services/ai/budget');
+const { retrieve, publicSources } = require('../services/ai/materialContext');
+const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+function uuid(value, name, required=false) {
+  if (value == null && !required) return null;
+  if (typeof value !== 'string' || !UUID.test(value)) throw aiError(`Invalid ${name}`,400,'INVALID_INPUT');
+  return value;
+}
+function respondError(res, err) {
+  // Do not log upstream response bodies, API keys, prompts, or student data.
+  console.error('AI request failed:', err.code || 'INTERNAL');
+  if (err.status===429) res.set('Retry-After', ['DAILY_LIMIT','GLOBAL_DAILY_LIMIT'].includes(err.code) ? '3600' : '60');
+  return error(res, err.publicMessage || 'The study service is temporarily unavailable. Please try again.',err.status || 503);
+}
+async function courseFor(user, id) {
+  if (!id) return null;
+  const r = await query(`SELECT c.id,c.code,c.title,c.level,c.level_type
+    FROM courses c WHERE c.id=$1 AND c.is_active=TRUE AND
+    ($3::boolean OR EXISTS (SELECT 1 FROM student_profiles sp WHERE sp.user_id=$2 AND sp.department_id=c.department_id))`,
+    [id,user.id,['admin','super_admin','lecturer'].includes(user.role)]);
+  if (!r.rows.length) throw aiError('Course not found in your academic profile.',404,'COURSE_NOT_FOUND');
   return r.rows[0];
 }
-
-// ── Get user's active plan ────────────────────────────────────
-async function getUserPlan(userId) {
-  const r = await query(`
-    SELECT plan FROM subscriptions
-    WHERE user_id = $1 AND status = 'active'
-    ORDER BY created_at DESC LIMIT 1
-  `, [userId]);
-  return r.rows[0]?.plan || 'free';
+async function ownedConversation(userId,id) {
+  const r = await query('SELECT * FROM ai_conversations WHERE id=$1 AND user_id=$2',[id,userId]);
+  if (!r.rows.length) throw aiError('Conversation not found.',404,'CONVERSATION_NOT_FOUND');
+  return r.rows[0];
 }
-
-// ── Get student's weak topics ─────────────────────────────────
-async function getWeakTopics(userId, courseId) {
-  const r = await query(`
-    SELECT t.name
-    FROM student_knowledge sk
-    LEFT JOIN topics t ON t.id = sk.topic_id
-    WHERE sk.user_id = $1
-      AND ($2::uuid IS NULL OR sk.course_id = $2)
-      AND sk.strength = 'weak'
-    ORDER BY sk.knowledge_level ASC
-    LIMIT 5
-  `, [userId, courseId || null]);
-  return r.rows.map(row => row.name).filter(Boolean);
-}
-
-// ════════════════════════════════════════════════════════════
-// GET /api/ai/conversations
-// List user's conversation history
-// ════════════════════════════════════════════════════════════
-router.get('/conversations', authenticate, async (req, res) => {
+router.use(authenticate);
+router.get('/conversations', async (req,res) => {
   try {
-    const result = await query(`
-      SELECT
-        ac.id, ac.title, ac.created_at, ac.updated_at,
-        c.title AS course_title, c.code AS course_code,
-        (SELECT COUNT(*) FROM ai_messages am WHERE am.conversation_id = ac.id) AS message_count
-      FROM ai_conversations ac
-      LEFT JOIN courses c ON c.id = ac.course_id
-      WHERE ac.user_id = $1
-      ORDER BY ac.updated_at DESC
-      LIMIT 30
-    `, [req.user.id]);
-    return success(res, result.rows);
-  } catch (err) {
-    return error(res, 'Failed to fetch conversations', 500);
-  }
+    const r=await query(`SELECT ac.id,ac.title,ac.created_at,ac.updated_at,c.title AS course_title,c.code AS course_code,
+      (SELECT COUNT(*) FROM ai_messages am WHERE am.conversation_id=ac.id) AS message_count
+      FROM ai_conversations ac LEFT JOIN courses c ON c.id=ac.course_id WHERE ac.user_id=$1 ORDER BY ac.updated_at DESC LIMIT 30`,[req.user.id]);
+    return success(res,r.rows);
+  } catch(err) {return respondError(res,err);}
+});
+router.get('/conversations/:id',async(req,res)=>{
+  try {
+    const id=uuid(req.params.id,'conversation ID',true);
+    const conversation=await ownedConversation(req.user.id,id);
+    const r=await query("SELECT id,role,content,tokens_used,created_at,sources,COALESCE(grounding,CASE WHEN role='assistant' THEN 'legacy_demo' END) AS grounding FROM ai_messages WHERE conversation_id=$1 ORDER BY created_at ASC,id ASC",[id]);
+    return success(res,{conversation,messages:r.rows});
+  }catch(err){return respondError(res,err);}
+});
+router.delete('/conversations/:id',async(req,res)=>{
+  try{
+    const id=uuid(req.params.id,'conversation ID',true);
+    const r=await query('DELETE FROM ai_conversations WHERE id=$1 AND user_id=$2 RETURNING id',[id,req.user.id]);
+    if(!r.rows.length)throw aiError('Conversation not found.',404,'CONVERSATION_NOT_FOUND');
+    return success(res,{},'Conversation deleted');
+  }catch(err){return respondError(res,err);}
+});
+router.get('/usage',async(req,res)=>{
+  try{
+    const config=getConfig();
+    return success(res,{...await budget.dailyUsage(req.user.id,config),
+      available:config.provider==='gemini'&&Boolean(config.apiKey)&&config.model==='gemini-2.5-flash-lite'&&config.billingTier==='free',
+      provider:config.provider==='gemini'?'gemini':'disabled', material_support:'indexed_pdf_text'});
+  }catch(err){return respondError(res,err);}
 });
 
-// ════════════════════════════════════════════════════════════
-// GET /api/ai/conversations/:id
-// Get a conversation with all messages
-// ════════════════════════════════════════════════════════════
-router.get('/conversations/:id', authenticate, async (req, res) => {
+async function generate(req,res,isQuiz) {
+  let reservation;
   try {
-    const convo = await query(`
-      SELECT ac.*, c.title AS course_title, c.code AS course_code
-      FROM ai_conversations ac
-      LEFT JOIN courses c ON c.id = ac.course_id
-      WHERE ac.id = $1 AND ac.user_id = $2
-    `, [req.params.id, req.user.id]);
-
-    if (convo.rows.length === 0) return error(res, 'Conversation not found', 404);
-
-    const messages = await query(`
-      SELECT id, role, content, tokens_used, created_at
-      FROM ai_messages
-      WHERE conversation_id = $1
-      ORDER BY created_at ASC
-    `, [req.params.id]);
-
-    return success(res, { conversation: convo.rows[0], messages: messages.rows });
-  } catch (err) {
-    return error(res, 'Failed to fetch conversation', 500);
-  }
-});
-
-// ════════════════════════════════════════════════════════════
-// POST /api/ai/chat
-// Send a message to the AI tutor
-// Body: { message, conversation_id?, course_id? }
-// ════════════════════════════════════════════════════════════
-router.post('/chat', authenticate, async (req, res) => {
-  try {
-    const { message, conversation_id, course_id } = req.body;
-
-    if (!message || message.trim().length === 0) {
-      return error(res, 'Message is required', 400);
+    const body=req.body || {};
+    const courseId=uuid(body.course_id,'course ID',isQuiz);
+    const conversationId=isQuiz?null:uuid(body.conversation_id,'conversation ID');
+    if(!isQuiz && (typeof body.message!=='string' || !body.message.trim() || body.message.length>2000)) {
+      throw aiError('Enter a question of 1–2000 characters.',400,'INVALID_INPUT');
     }
-    if (message.length > 2000) {
-      return error(res, 'Message too long (max 2000 characters)', 400);
-    }
-
-    // ── Check daily usage limit ───────────────────────────────
-    const plan  = await getUserPlan(req.user.id);
-    const usage = await getDailyUsage(req.user.id);
-    const limit = plan === 'free' ? FREE_DAILY_LIMIT : PREMIUM_DAILY_LIMIT;
-
-    if (parseInt(usage.messages) >= limit) {
-      return error(res,
-        plan === 'free'
-          ? `Daily limit of ${FREE_DAILY_LIMIT} messages reached. Upgrade to Premium for unlimited access.`
-          : `Daily limit of ${PREMIUM_DAILY_LIMIT} messages reached.`,
-        429
-      );
-    }
-
-    // ── Get or create conversation ────────────────────────────
-    let convoId = conversation_id;
-    if (!convoId) {
-      const title = message.length > 80
-        ? message.substring(0, 77) + '...'
-        : message;
-      const newConvo = await query(`
-        INSERT INTO ai_conversations (user_id, course_id, title)
-        VALUES ($1, $2, $3)
-        RETURNING id
-      `, [req.user.id, course_id || null, title]);
-      convoId = newConvo.rows[0].id;
-    }
-
-    // ── Fetch last 10 messages for context ────────────────────
-    const history = await query(`
-      SELECT role, content
-      FROM ai_messages
-      WHERE conversation_id = $1
-      ORDER BY created_at DESC LIMIT 10
-    `, [convoId]);
-    const messageHistory = history.rows.reverse();
-
-    // ── Get course context ────────────────────────────────────
-    let courseContext = null;
-    if (course_id) {
-      const courseResult = await query(
-        'SELECT id, title, code, level, level_type, description FROM courses WHERE id = $1',
-        [course_id]
-      );
-      courseContext = courseResult.rows[0] || null;
-    }
-
-    // ── Get student context (weak topics etc.) ────────────────
-    const weakTopics = await getWeakTopics(req.user.id, course_id);
-    const userContext = {
-      full_name:  req.user.full_name,
-      role:       req.user.role,
-      weakTopics: weakTopics.length > 0 ? weakTopics : null
-    };
-
-    // ── Save user message ─────────────────────────────────────
-    await query(`
-      INSERT INTO ai_messages (conversation_id, role, content)
-      VALUES ($1, 'user', $2)
-    `, [convoId, message.trim()]);
-
-    // ── Call AI service ───────────────────────────────────────
-    const aiResult = await getAIResponse(
-      [...messageHistory, { role: 'user', content: message }],
-      courseContext,
-      userContext
-    );
-
-    // ── Save AI response ──────────────────────────────────────
-    const savedMsg = await query(`
-      INSERT INTO ai_messages (conversation_id, role, content, tokens_used)
-      VALUES ($1, 'assistant', $2, $3)
-      RETURNING id, created_at
-    `, [convoId, aiResult.content, aiResult.tokens_used]);
-
-    // ── Update conversation timestamp ─────────────────────────
-    await query(`
-      UPDATE ai_conversations
-      SET updated_at = NOW()
-      WHERE id = $1
-    `, [convoId]);
-
-    // ── Log usage ─────────────────────────────────────────────
-    await query(`
-      INSERT INTO ai_usage_logs (user_id, tokens_used, feature)
-      VALUES ($1, $2, 'chat')
-    `, [req.user.id, aiResult.tokens_used]);
-
-    return success(res, {
-      conversation_id: convoId,
-      message_id:      savedMsg.rows[0].id,
-      reply:           aiResult.content,
-      provider:        aiResult.provider,
-      usage: {
-        messages_today: parseInt(usage.messages) + 1,
-        limit,
-        remaining: limit - parseInt(usage.messages) - 1,
-        plan
+    if(isQuiz && (body.topic!=null && (typeof body.topic!=='string'||body.topic.length>200)))throw aiError('Topic must be text of at most 200 characters.',400,'INVALID_INPUT');
+    const count=body.count??3;
+    if(isQuiz && (!Number.isInteger(count)||count<1||count>5))throw aiError('Choose between 1 and 5 practice questions.',400,'INVALID_INPUT');
+    const conversation=conversationId?await ownedConversation(req.user.id,conversationId):null;
+    if(conversation && courseId && courseId!==conversation.course_id)throw aiError('Start a new chat to change course.',400,'COURSE_MISMATCH');
+    const effectiveCourse=conversation?conversation.course_id:courseId;
+    const course=await courseFor(req.user,effectiveCourse);
+    const message=isQuiz?`Create ${count} exam-revision practice questions on ${body.topic?.trim()||'the core concepts'} for ${course.title}. Include answers and brief explanations. Label these as generated practice questions.`:body.message.trim();
+    const config=requireGemini();
+    // Fast local quota check before the tokenizer request; reserve() repeats it atomically.
+    const daily=await budget.dailyUsage(req.user.id,config);
+    if(!daily.remaining)throw aiError(`You have used your ${config.dailyLimit} study requests in the last 24 hours. Please return later.`,429,'DAILY_LIMIT');
+    const history=conversationId?(await query("SELECT role,content FROM ai_messages WHERE conversation_id=$1 AND (role='user' OR grounding IS NOT NULL) ORDER BY created_at DESC,id DESC LIMIT 10",[conversationId])).rows.reverse():[];
+    const weak=await query(`SELECT t.name FROM student_knowledge sk LEFT JOIN topics t ON t.id=sk.topic_id
+      WHERE sk.user_id=$1 AND ($2::uuid IS NULL OR sk.course_id=$2) AND sk.strength='weak'
+      ORDER BY sk.knowledge_level ASC LIMIT 5`,[req.user.id,effectiveCourse]);
+    const userContext={weakTopics:weak.rows.map(r=>r.name).filter(Boolean)};
+    const sources=await retrieve(effectiveCourse, isQuiz?(body.topic?.trim()||course.title):message);
+    const sourceLinks=publicSources(sources);
+    const grounding=sources.length?'course_excerpts':'general';
+    const messages=[...history,{role:'user',content:message}];
+    reservation=await budget.reserve(req.user.id,isQuiz?'quiz_gen':'chat',0,config);
+    const prepared=await prepare(messages,course,userContext,sources,config);
+    const result=await getAIResponse(messages,course,userContext,sources,prepared);
+    const client=await getClient();
+    let convoId=conversationId, saved;
+    try {
+      await client.query('BEGIN');
+      if(!isQuiz){
+        if(convoId){
+          // Recheck and lock before persisting: the chat may have been deleted while Gemini ran.
+          const locked=await client.query('SELECT id FROM ai_conversations WHERE id=$1 AND user_id=$2 FOR UPDATE',[convoId,req.user.id]);
+          if(!locked.rows.length)throw aiError('This conversation was deleted. Please start a new chat.',409,'CONVERSATION_DELETED');
+        }else{
+          const r=await client.query('INSERT INTO ai_conversations(user_id,course_id,title) VALUES($1,$2,$3) RETURNING id',[req.user.id,effectiveCourse,message.slice(0,80)]);
+          convoId=r.rows[0].id;
+        }
+        await client.query("INSERT INTO ai_messages(conversation_id,role,content,created_at) VALUES($1,'user',$2,clock_timestamp())",[convoId,message]);
+        saved=(await client.query(`INSERT INTO ai_messages(conversation_id,role,content,tokens_used,sources,grounding,created_at)
+          VALUES($1,'assistant',$2,$3,$4::jsonb,$5,clock_timestamp()) RETURNING id,created_at`,[convoId,result.content,result.tokens_used,JSON.stringify(sourceLinks),grounding])).rows[0];
+        await client.query('UPDATE ai_conversations SET updated_at=NOW() WHERE id=$1',[convoId]);
       }
+      await client.query('INSERT INTO ai_usage_logs(user_id,tokens_used,feature) VALUES($1,$2,$3)',[req.user.id,result.tokens_used,isQuiz?'quiz_gen':'chat']);
+      await client.query("UPDATE ai_generation_requests SET status='completed',cost_micros=$2,tokens_used=$3,updated_at=NOW() WHERE id=$1",[reservation,result.actualMicros,result.tokens_used]);
+      await client.query('COMMIT');
+    }catch(err){await client.query('ROLLBACK');throw err;}
+    finally{client.release();}
+    reservation=null;
+    const usage=await budget.dailyUsage(req.user.id,config);
+    return success(res,{
+      ...(isQuiz?{course,topic:body.topic||'General Revision',content:result.content}:{conversation_id:convoId,message_id:saved.id,reply:result.content,created_at:saved.created_at}),
+      provider:result.provider, sources:sourceLinks, grounding, truncated:result.truncated, usage,
     });
-
-  } catch (err) {
-    console.error('AI chat error:', err.message);
-    return error(res, 'AI service temporarily unavailable', 500);
+  }catch(err){
+    if(reservation)try{await budget.fail(reservation);}catch{console.error('AI reservation retained for reconciliation.');}
+    return respondError(res,err);
   }
-});
-
-// ════════════════════════════════════════════════════════════
-// POST /api/ai/generate-quiz
-// Generate quiz questions for a course/topic
-// Body: { course_id, topic?, count? }
-// ════════════════════════════════════════════════════════════
-router.post('/generate-quiz', authenticate, async (req, res) => {
-  try {
-    const { course_id, topic, count = 5 } = req.body;
-    if (!course_id) return error(res, 'course_id is required', 400);
-
-    const courseResult = await query(
-      'SELECT id, title, code, level, level_type FROM courses WHERE id = $1',
-      [course_id]
-    );
-    if (courseResult.rows.length === 0) return error(res, 'Course not found', 404);
-    const course = courseResult.rows[0];
-
-    const prompt = `generate ${count} practice questions for ${course.title} (${course.code}) on topic: ${topic || 'general revision'}`;
-    const aiResult = await getAIResponse(
-      [{ role: 'user', content: prompt }],
-      course,
-      { full_name: req.user.full_name }
-    );
-
-    await query(`
-      INSERT INTO ai_usage_logs (user_id, tokens_used, feature)
-      VALUES ($1, $2, 'quiz_gen')
-    `, [req.user.id, aiResult.tokens_used]);
-
-    return success(res, {
-      course:  { title: course.title, code: course.code },
-      topic:   topic || 'General Revision',
-      content: aiResult.content,
-      provider: aiResult.provider
-    });
-  } catch (err) {
-    return error(res, 'Quiz generation failed', 500);
-  }
-});
-
-// ════════════════════════════════════════════════════════════
-// GET /api/ai/usage
-// Get current user's AI usage stats
-// ════════════════════════════════════════════════════════════
-router.get('/usage', authenticate, async (req, res) => {
-  try {
-    const plan  = await getUserPlan(req.user.id);
-    const daily = await getDailyUsage(req.user.id);
-    const limit = plan === 'free' ? FREE_DAILY_LIMIT : PREMIUM_DAILY_LIMIT;
-
-    return success(res, {
-      plan,
-      messages_today: parseInt(daily.messages),
-      tokens_today:   parseInt(daily.tokens),
-      daily_limit:    limit,
-      remaining:      Math.max(0, limit - parseInt(daily.messages))
-    });
-  } catch (err) {
-    return error(res, 'Failed to fetch usage', 500);
-  }
-});
-
-// ════════════════════════════════════════════════════════════
-// DELETE /api/ai/conversations/:id
-// Delete a conversation and all its messages
-// ════════════════════════════════════════════════════════════
-router.delete('/conversations/:id', authenticate, async (req, res) => {
-  try {
-    const result = await query(`
-      DELETE FROM ai_conversations
-      WHERE id = $1 AND user_id = $2
-      RETURNING id
-    `, [req.params.id, req.user.id]);
-
-    if (result.rows.length === 0) return error(res, 'Conversation not found', 404);
-    return success(res, {}, 'Conversation deleted');
-  } catch (err) {
-    return error(res, 'Delete failed', 500);
-  }
-});
-
-module.exports = router;
+}
+router.post('/chat',(req,res)=>generate(req,res,false));
+router.post('/generate-quiz',(req,res)=>generate(req,res,true));
+module.exports=router;
