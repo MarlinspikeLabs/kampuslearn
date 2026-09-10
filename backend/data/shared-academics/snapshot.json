@@ -1,0 +1,3893 @@
+{
+  "exported_at": "2026-09-09T22:13:35.071Z",
+  "institutions": [
+    {
+      "id": "020aaff4-d609-4946-968f-212969039ff6",
+      "name": "African University of Science and Technology",
+      "short_name": "AUST",
+      "type": "university",
+      "state": "Federal Capital Territory",
+      "city": "Abuja",
+      "website_url": "http://aust.edu.ng/"
+    },
+    {
+      "id": "02ea1b8f-566b-46c1-a75f-8603d1f87a5b",
+      "name": "Oduduwa University",
+      "short_name": "OUI",
+      "type": "university",
+      "state": "Osun",
+      "city": "Ile Ife",
+      "website_url": "https://www.oduduwauniversity.edu.ng"
+    },
+    {
+      "id": "04c518a1-adfd-43da-a808-e70aab015897",
+      "name": "Wellspring University",
+      "short_name": "WU",
+      "type": "university",
+      "state": "Edo",
+      "city": "Benin City",
+      "website_url": "https://www.wellspringuniversity.net"
+    },
+    {
+      "id": "05a8186d-a7ac-4ead-ae33-d71ef8937244",
+      "name": "Plateau State University",
+      "short_name": "PLASU",
+      "type": "university",
+      "state": "Plateau",
+      "city": "Bokkos",
+      "website_url": "https://www.plasu.edu.ng"
+    },
+    {
+      "id": "07e496b1-7fbd-4100-9a74-daf6a85d61b0",
+      "name": "Madonna University",
+      "short_name": "MAU",
+      "type": "university",
+      "state": "Rivers",
+      "city": "Elele",
+      "website_url": "https://www.madonnauniversity.edu.ng"
+    },
+    {
+      "id": "0d1b50ca-d28a-47d7-8cfe-803201c6b9d3",
+      "name": "University of Jos",
+      "short_name": "UNIJOS",
+      "type": "university",
+      "state": "Plateau",
+      "city": "Jos",
+      "website_url": "https://www.unijos.edu.ng"
+    },
+    {
+      "id": "0e087879-c6cd-4e65-81cd-a36d8130f193",
+      "name": "Baze University",
+      "short_name": "BAZE",
+      "type": "university",
+      "state": "Federal Capital Territory",
+      "city": "Abuja",
+      "website_url": "https://www.bazeuniversity.edu.ng"
+    },
+    {
+      "id": "0fa4b743-5261-409b-bc61-8fead486b676",
+      "name": "Adekunle Ajasin University",
+      "short_name": "AAUA",
+      "type": "university",
+      "state": "Ondo",
+      "city": "Akungba Akoko",
+      "website_url": "https://www.aaua.edu.ng"
+    },
+    {
+      "id": "102fe1ab-62b5-4243-bc5a-ed54e909a098",
+      "name": "Caleb University",
+      "short_name": "CUL",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Imota",
+      "website_url": null
+    },
+    {
+      "id": "11dec1ab-78a6-4d98-9686-fccdd806fb24",
+      "name": "Akwa Ibom State University",
+      "short_name": "AKSU",
+      "type": "university",
+      "state": "Akwa Ibom",
+      "city": "Ikot Akpad",
+      "website_url": "https://www.aksu.edu.ng"
+    },
+    {
+      "id": "148c3998-6879-4682-a972-76f5139e8281",
+      "name": "Al-Ansar University",
+      "short_name": "AL-ANSAR",
+      "type": "university",
+      "state": "Borno",
+      "city": "Maiduguri",
+      "website_url": "https://www.al-ansar.edu.ng"
+    },
+    {
+      "id": "15c6daa5-5e82-492c-85e3-1990c5f510c1",
+      "name": "Crown Hill University",
+      "short_name": "CROWN HILL",
+      "type": "university",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": null
+    },
+    {
+      "id": "17b03b93-9b58-44f3-8dc7-8aa610d071ba",
+      "name": "Federal University of Agriculture, Abeokuta",
+      "short_name": "FUNAAB",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Abeokuta",
+      "website_url": "https://www.unaab.edu.ng"
+    },
+    {
+      "id": "1ae84be8-e16d-4e9e-bbb2-aaabdd7d104f",
+      "name": "Caritas University",
+      "short_name": "CAU",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": "https://www.caritasuni.edu.ng/"
+    },
+    {
+      "id": "1b1378b4-2b40-4651-ba5e-08cb64dcf81c",
+      "name": "Northwest University, Kano",
+      "short_name": "NWU",
+      "type": "university",
+      "state": "Kano",
+      "city": "Kano",
+      "website_url": "https://www.nwu.edu.ng"
+    },
+    {
+      "id": "1b362254-00bf-47b2-8ae8-c686501e3d23",
+      "name": "Al-Qalam University, Katsina",
+      "short_name": "AUK",
+      "type": "university",
+      "state": "Katsina",
+      "city": "Katsina",
+      "website_url": "https://www.auk.edu.ng"
+    },
+    {
+      "id": "1d6507e7-95de-498d-8de4-c39e72a6571a",
+      "name": "Kebbi State University of Science and Technology",
+      "short_name": "KSUSTA",
+      "type": "university",
+      "state": "Kebbi",
+      "city": "Aliero",
+      "website_url": "https://www.ksusta.edu.ng"
+    },
+    {
+      "id": "2160bd3f-37dd-4e41-9eb9-f7b13febf1c9",
+      "name": "Chrisland University",
+      "short_name": "CHU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Abeokuta",
+      "website_url": "https://www.chrislanduniversity.edu.ng"
+    },
+    {
+      "id": "21b61c4f-0014-4d25-bb20-04a58ce10440",
+      "name": "The Technical University",
+      "short_name": "TECH-U",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://tech-u.edu.ng/"
+    },
+    {
+      "id": "22201628-1253-4ee8-93a2-5874f9f46cf6",
+      "name": "Nile University of Nigeria",
+      "short_name": "NTNU",
+      "type": "university",
+      "state": "Federal Capital Territory",
+      "city": "Abuja",
+      "website_url": "https://www.nileuniversity.edu.ng/"
+    },
+    {
+      "id": "24de98c9-d978-467b-8068-93fbc9d896b9",
+      "name": "Ebonyi State University",
+      "short_name": "EBSU",
+      "type": "university",
+      "state": "Ebonyi",
+      "city": "Abakaliki",
+      "website_url": "https://www.ebsu.edu.ng"
+    },
+    {
+      "id": "28d46dbd-b896-40c7-afd3-98a114f7e93a",
+      "name": "Sa'adu Zungur University",
+      "short_name": "SAZUG",
+      "type": "university",
+      "state": "Bauchi",
+      "city": "Gadau",
+      "website_url": "https://www.basug.edu.ng"
+    },
+    {
+      "id": "29a587ee-4c03-45f3-9477-94dba6d1b85a",
+      "name": "Crescent University, Abeokuta",
+      "short_name": "CUAB",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Abeokuta",
+      "website_url": "https://www.crescent-university.edu.ng"
+    },
+    {
+      "id": "2a42b066-1843-4276-b4e6-bf107a024b0f",
+      "name": "Edwin Clark University",
+      "short_name": "ECU",
+      "type": "university",
+      "state": "Delta",
+      "city": "Kiagbodo",
+      "website_url": null
+    },
+    {
+      "id": "35eacc99-0f6c-4e17-8488-a5c88b89af6c",
+      "name": "Eko University of Medical and Health Sciences",
+      "short_name": "EKOUNIVMED",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Ijanikin",
+      "website_url": null
+    },
+    {
+      "id": "3611825a-eae9-4ae1-bf1b-aefa9497a8f2",
+      "name": "Borno State University",
+      "short_name": "BOSU",
+      "type": "university",
+      "state": "Borno",
+      "city": "Maiduguri",
+      "website_url": "https://www.kiu.edu.ng/"
+    },
+    {
+      "id": "36d96a64-f063-4676-9b50-9e3a940d9133",
+      "name": "University of Ilorin",
+      "short_name": "UIL",
+      "type": "university",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": null
+    },
+    {
+      "id": "37f20c01-81b5-4690-8fc1-fdec0d4ddb3d",
+      "name": "Admiralty University of Nigeria",
+      "short_name": "ADUN",
+      "type": "university",
+      "state": "Delta",
+      "city": "Ibusa",
+      "website_url": "https://adun.edu.ng"
+    },
+    {
+      "id": "394ba0a2-1a05-4d78-96b1-0f24ba362843",
+      "name": "Coal City University",
+      "short_name": "CCU",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": "https://www.ccu.edu.ng/"
+    },
+    {
+      "id": "39671de2-558f-4177-801e-bcdb3b44dba7",
+      "name": "Federal University, Lafia",
+      "short_name": "FUL",
+      "type": "university",
+      "state": "Nasarawa",
+      "city": "Lafia",
+      "website_url": null
+    },
+    {
+      "id": "3a011ed4-489d-50f6-a315-a7952e19d858",
+      "name": "Imo State University, Owerri",
+      "short_name": "IMSU",
+      "type": "university",
+      "state": "Imo",
+      "city": "Owerri",
+      "website_url": "https://www.imsu.edu.ng"
+    },
+    {
+      "id": "3cb4bdaa-2b70-468a-989a-5880b4f84f42",
+      "name": "Paul University",
+      "short_name": "PUA",
+      "type": "university",
+      "state": "Anambra",
+      "city": "Awka",
+      "website_url": "https://www.pauluniversity.edu.ng"
+    },
+    {
+      "id": "3e280fb9-7fd8-4cff-baff-9933dd15d27c",
+      "name": "Yobe State University",
+      "short_name": "YSU",
+      "type": "university",
+      "state": "Yobe",
+      "city": "Damaturu",
+      "website_url": "https://www.ysu.edu.ng"
+    },
+    {
+      "id": "414640f5-1aac-4669-a00e-71e3e1c8282f",
+      "name": "Evangel University, Akaeze",
+      "short_name": "EUA",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": "https://www.evangeluniversity.edu.ng"
+    },
+    {
+      "id": "42281415-4273-47b7-9aa2-f1abaf7bf78c",
+      "name": "Bingham University",
+      "short_name": "BHU",
+      "type": "university",
+      "state": "Nasarawa",
+      "city": "Auta Balifi",
+      "website_url": "https://www.binghamuni.edu.ng"
+    },
+    {
+      "id": "42cfdd30-1b91-4be1-86b0-820f98eb322d",
+      "name": "Gombe State University of Science and Technology",
+      "short_name": "GSUST",
+      "type": "university",
+      "state": "Gombe",
+      "city": "Kumo",
+      "website_url": null
+    },
+    {
+      "id": "44e2009b-cc61-4018-9fde-4da8a6b869ad",
+      "name": "Nasarawa State University",
+      "short_name": "NSU",
+      "type": "university",
+      "state": "Nasarawa",
+      "city": "Keffi",
+      "website_url": null
+    },
+    {
+      "id": "4aae573b-52c9-4670-a659-72c2ff3ff49d",
+      "name": "Federal University, Dutsin-Ma",
+      "short_name": "FUDMA",
+      "type": "university",
+      "state": "Katsina",
+      "city": "Dutsin-Ma",
+      "website_url": "https://www.fudutsinma.edu.ng"
+    },
+    {
+      "id": "5639b6b4-aa71-42d2-b41f-b4c46fe53236",
+      "name": "Afe Babalola University",
+      "short_name": "ABUAD",
+      "type": "university",
+      "state": "Ekiti",
+      "city": "Ado-Ekiti",
+      "website_url": "https://www.abuad.edu.ng"
+    },
+    {
+      "id": "579f2bd4-54b4-4b78-b098-a0d7639c40e7",
+      "name": "Federal University of Petroleum Resources",
+      "short_name": "FUPRE",
+      "type": "university",
+      "state": "Delta",
+      "city": "Effurun",
+      "website_url": "https://www.fupre.edu.ng"
+    },
+    {
+      "id": "57c6529c-f004-410d-9b0a-8b3ead25d762",
+      "name": "Hallmark University, Ijebu-Itele",
+      "short_name": "HU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Ijebu-Itele",
+      "website_url": null
+    },
+    {
+      "id": "5875d9ce-0cd6-429f-ad3b-63401e155148",
+      "name": "Anchor University, Lagos",
+      "short_name": "AUL",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Lagos",
+      "website_url": null
+    },
+    {
+      "id": "5ae65e80-a775-4ba9-bb87-fc7386b0434a",
+      "name": "Bamidele Olumilua University of Education, Science and Technology, Ikere-Ekiti",
+      "short_name": "BOUESTI",
+      "type": "university",
+      "state": "Ekiti",
+      "city": "Ikere-Ekiti",
+      "website_url": "https://bouesti.edu.ng/"
+    },
+    {
+      "id": "5c303a9f-6b3b-437b-beb4-57e640e3bd58",
+      "name": "Kwara State University",
+      "short_name": "KWASU",
+      "type": "university",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": null
+    },
+    {
+      "id": "5ebc9079-73bf-57e1-babf-8b2c7b472001",
+      "name": "Kwara State Polytechnic, Ilorin",
+      "short_name": "KWARAPOLY",
+      "type": "polytechnic",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": "https://www.kwarastatepolytechnic.edu.ng/"
+    },
+    {
+      "id": "6219177c-7106-4ecd-956c-163334e60211",
+      "name": "Kingsley Ozumba Mbadiwe University",
+      "short_name": "KOMU",
+      "type": "university",
+      "state": "Imo",
+      "city": "Ideato",
+      "website_url": "https://www.komu.edu.ng/"
+    },
+    {
+      "id": "62cb37c8-d8f0-4a87-8d9f-bfec1ae09291",
+      "name": "Elizade University",
+      "short_name": "ELIZADEU",
+      "type": "university",
+      "state": "Ondo",
+      "city": "Ilara-Mokin",
+      "website_url": "https://www.elizadeuniversity.edu.ng"
+    },
+    {
+      "id": "62ce0e56-2e6c-4273-8d4a-709eb251fb81",
+      "name": "Skyline University Nigeria",
+      "short_name": "SUN",
+      "type": "university",
+      "state": "Kano",
+      "city": "Kano",
+      "website_url": null
+    },
+    {
+      "id": "65d94042-eb72-4444-b489-14549231a0b5",
+      "name": "University of Lagos",
+      "short_name": "UNILAG",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Lagos",
+      "website_url": "https://www.unilag.edu.ng"
+    },
+    {
+      "id": "691883c9-4f3c-4a8d-9292-881b1ed15079",
+      "name": "Joseph Sarwuan Tarkaa University",
+      "short_name": "JOSTUM",
+      "type": "university",
+      "state": "Benue",
+      "city": "Makurdi",
+      "website_url": null
+    },
+    {
+      "id": "6ab70b06-57ef-46d9-9440-426824d7fc68",
+      "name": "Precious Cornerstone University",
+      "short_name": "PCU",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://www.pcu.edu.ng"
+    },
+    {
+      "id": "6cf38063-1a44-484b-83ea-73bbed0e6328",
+      "name": "Augustine University",
+      "short_name": "AUI",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Ilara",
+      "website_url": "https://www.augustineuniversity.edu.ng/"
+    },
+    {
+      "id": "6eafa078-b8e1-44c9-b475-767c6e029fa0",
+      "name": "Taraba State University",
+      "short_name": "TSU",
+      "type": "university",
+      "state": "Taraba",
+      "city": "Jalingo",
+      "website_url": null
+    },
+    {
+      "id": "6f344245-326c-42cb-9c69-0880e5170e0a",
+      "name": "University of Benin",
+      "short_name": "UNIBEN",
+      "type": "university",
+      "state": "Edo",
+      "city": "Benin City",
+      "website_url": "https://www.uniben.edu.ng"
+    },
+    {
+      "id": "6ffcdce1-b36e-4342-8421-3f9bbce19c37",
+      "name": "Obafemi Awolowo University",
+      "short_name": "OAU",
+      "type": "university",
+      "state": "Osun",
+      "city": "Ile Ife",
+      "website_url": "https://www.oauife.edu.ng"
+    },
+    {
+      "id": "7202068c-1aa4-470d-985e-864c68d7a644",
+      "name": "Ritman University",
+      "short_name": "RITMAN",
+      "type": "university",
+      "state": "Akwa Ibom",
+      "city": "Ikot Ekpene",
+      "website_url": "https://www.ritmanuniversity.edu.ng"
+    },
+    {
+      "id": "75d5eefd-8eac-460a-80ca-c99f56187ab8",
+      "name": "Babcock University",
+      "short_name": "BU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Ilishan-Remo",
+      "website_url": "https://www.babcock.edu.ng"
+    },
+    {
+      "id": "76ecd53f-3660-41fc-bd54-625a02766292",
+      "name": "Federal University, Birnin Kebbi",
+      "short_name": "FUBK",
+      "type": "university",
+      "state": "Kebbi",
+      "city": "Birnin Kebbi",
+      "website_url": "https://www.fubk.edu.ng"
+    },
+    {
+      "id": "79101a9d-3894-5e3a-8257-d57efe4cbc68",
+      "name": "National Open University of Nigeria, Abuja",
+      "short_name": "NOUN",
+      "type": "university",
+      "state": "FCT",
+      "city": "Abuja",
+      "website_url": "https://www.nou.edu.ng"
+    },
+    {
+      "id": "7a479784-2ee6-4c16-a2a5-d002fe18a30d",
+      "name": "Veritas University",
+      "short_name": "VU",
+      "type": "university",
+      "state": "Federal Capital Territory",
+      "city": "Abuja",
+      "website_url": "https://www.veritas.edu.ng"
+    },
+    {
+      "id": "7abbc4ee-0367-46c0-9cfb-2c3459c9e85f",
+      "name": "Ekiti State University",
+      "short_name": "EKSU",
+      "type": "university",
+      "state": "Ekiti",
+      "city": "Ado-Ekiti",
+      "website_url": "https://www.eksu.edu.ng"
+    },
+    {
+      "id": "7d39e4c3-38cd-466a-aac3-749b191dfeb5",
+      "name": "Federal University, Lokoja",
+      "short_name": "FUL",
+      "type": "university",
+      "state": "Kogi",
+      "city": "Lokoja",
+      "website_url": null
+    },
+    {
+      "id": "7f4d74b8-9f47-4dc0-8ca1-7164c3d9730a",
+      "name": "Hallmark University, Ijebu-Itele",
+      "short_name": "HU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Ijebu-Itele",
+      "website_url": null
+    },
+    {
+      "id": "7f6b5cd4-4235-470b-b15e-9b0d13f56081",
+      "name": "Bayero University Kano",
+      "short_name": "BUK",
+      "type": "university",
+      "state": "Kano",
+      "city": "Kano",
+      "website_url": "https://www.buk.edu.ng"
+    },
+    {
+      "id": "8222a955-41fe-43d0-9187-6944aed01101",
+      "name": "University of Calabar",
+      "short_name": "UNICAL",
+      "type": "university",
+      "state": "Cross River",
+      "city": "Calabar",
+      "website_url": "https://www.unical.edu.ng"
+    },
+    {
+      "id": "82e5832c-a439-4819-a4e6-0015eb4119e4",
+      "name": "Salem University",
+      "short_name": "SU",
+      "type": "university",
+      "state": "Kogi",
+      "city": "Lokoja",
+      "website_url": null
+    },
+    {
+      "id": "8553ac64-db82-4674-b068-5f450b592c06",
+      "name": "Adeleke University",
+      "short_name": "AU",
+      "type": "university",
+      "state": "Osun",
+      "city": "Ede",
+      "website_url": "https://www.adelekeuniversity.edu.ng"
+    },
+    {
+      "id": "867abcd2-bbb3-4869-b2ca-179283d52a06",
+      "name": "Ambrose Alli University",
+      "short_name": "AAU",
+      "type": "university",
+      "state": "Edo",
+      "city": "Ekpoma",
+      "website_url": "https://www.aauekpoma.edu.ng"
+    },
+    {
+      "id": "869bf2ab-b258-48ad-8c6e-e5341826aaf9",
+      "name": "University of Abuja",
+      "short_name": "UNI ABUJA",
+      "type": "university",
+      "state": "Federal Capital Territory",
+      "city": "Abuja",
+      "website_url": "https://www.uniabuja.edu.ng"
+    },
+    {
+      "id": "89c65a32-a0b7-5670-a2b9-20b11fd62b08",
+      "name": "Federal University, Wukari, Taraba State",
+      "short_name": "FUWUKARI",
+      "type": "university",
+      "state": "Taraba",
+      "city": "Wukari",
+      "website_url": "https://www.fuwukari.edu.ng/"
+    },
+    {
+      "id": "8dd6e6ca-5af8-4907-bab9-04ef6c73de14",
+      "name": "Tai Solarin University of Education",
+      "short_name": "TASUED",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Ijebu-Ode",
+      "website_url": null
+    },
+    {
+      "id": "8f05ec73-087e-42ad-914a-bf1a4ac6909b",
+      "name": "Dominican University, Ibadan",
+      "short_name": "DU",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://www.dui.edu.ng/"
+    },
+    {
+      "id": "94242d26-0d57-4188-bc7f-2f4bbca007d0",
+      "name": "Federal University of Technology, Akure",
+      "short_name": "FUTA",
+      "type": "university",
+      "state": "Ondo",
+      "city": "Akure",
+      "website_url": "https://www.futa.edu.ng"
+    },
+    {
+      "id": "9942f3ac-e4d0-4e46-b007-696c86f42dd1",
+      "name": "Eko University of Medical and Health Sciences",
+      "short_name": "EKOUNIVMED",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Ijanikin",
+      "website_url": null
+    },
+    {
+      "id": "9a07258b-7cf4-4f42-ad85-68633f2f6576",
+      "name": "Al-Hikmah University",
+      "short_name": "HUI",
+      "type": "university",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": null
+    },
+    {
+      "id": "a22d9734-e07c-42ab-bf50-d0a83f260c02",
+      "name": "Peaceland University Enugu",
+      "short_name": "PUE",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": null
+    },
+    {
+      "id": "a5587d28-0e9f-4373-9886-1268dbda1002",
+      "name": "Sule Lamido University",
+      "short_name": "SLU",
+      "type": "university",
+      "state": "Jigawa",
+      "city": "Kafin Hausa",
+      "website_url": null
+    },
+    {
+      "id": "a7abe97f-ea3f-46df-a9b3-85704ac32525",
+      "name": "Lead City University",
+      "short_name": "LCU",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://www.lcu.edu.ng"
+    },
+    {
+      "id": "ac0ef075-52ae-41c1-a98f-d9e4e121b76d",
+      "name": "Prince Abubakar Audu University",
+      "short_name": "PAAU",
+      "type": "university",
+      "state": "Kogi",
+      "city": "Anyigba",
+      "website_url": "https://www.ksu.edu.ng"
+    },
+    {
+      "id": "ac6bb5d9-43e4-48ae-b739-745f1d1ade0b",
+      "name": "Kola Daisi University",
+      "short_name": "KDU",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://www.koladaisiuniversity.edu.ng/"
+    },
+    {
+      "id": "ad06705e-82f7-42f4-8a55-cfa91a514338",
+      "name": "Renaissance University",
+      "short_name": "RNU",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": "https://www.rnu.edu.ng"
+    },
+    {
+      "id": "af04b48e-c722-4ad5-acad-09998a42b96d",
+      "name": "Kaduna State University",
+      "short_name": "KASU",
+      "type": "university",
+      "state": "Nigeria",
+      "city": "Kaduna",
+      "website_url": null
+    },
+    {
+      "id": "b2ca53b7-6bd3-4b74-a9ca-36093098037b",
+      "name": "Olabisi Onabanjo University",
+      "short_name": "OOU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Ago Iwoye",
+      "website_url": "https://www.oouagoiwoye.edu.ng"
+    },
+    {
+      "id": "be0b27a7-ed63-5f43-b533-662b16fea71a",
+      "name": "Federal University, Oye-Ekiti, Ekiti State",
+      "short_name": "FUOYE",
+      "type": "university",
+      "state": "Ekiti",
+      "city": "Oye-Ekiti",
+      "website_url": "https://www.fuoye.edu.ng/"
+    },
+    {
+      "id": "c0095dec-6316-4e23-b063-d0ddb3a560ee",
+      "name": "University of Cross River State",
+      "short_name": "UNICROSS",
+      "type": "university",
+      "state": "Cross River",
+      "city": "Calabar",
+      "website_url": "https://www.crutech.edu.ng"
+    },
+    {
+      "id": "c19f4f15-14bc-4eca-b342-a6eef07d4000",
+      "name": "Umaru Musa Yar'Adua University",
+      "short_name": "UMYU",
+      "type": "university",
+      "state": "Katsina",
+      "city": "Katsina",
+      "website_url": null
+    },
+    {
+      "id": "c3307448-c32c-4bea-ae26-90980a5759f1",
+      "name": "Bowen University",
+      "short_name": "BUI",
+      "type": "university",
+      "state": "Osun",
+      "city": "Iwo",
+      "website_url": null
+    },
+    {
+      "id": "c4d94e26-e18f-4c30-b768-171d93f44f7c",
+      "name": "Alex Ekwueme Federal University",
+      "short_name": "FUNAI",
+      "type": "university",
+      "state": "Ebonyi",
+      "city": "Ikwo",
+      "website_url": "https://www.funai.edu.ng"
+    },
+    {
+      "id": "c77b7945-633f-4312-b370-ef1ae9e15d88",
+      "name": "Benson Idahosa University",
+      "short_name": "BIU",
+      "type": "university",
+      "state": "Edo",
+      "city": "Benin City",
+      "website_url": "https://www.biu.edu.ng/"
+    },
+    {
+      "id": "c78b7224-5a8d-450c-adbe-b34bc24de008",
+      "name": "Federal University, Kashere",
+      "short_name": "FUK",
+      "type": "university",
+      "state": "Gombe",
+      "city": "Kashere",
+      "website_url": null
+    },
+    {
+      "id": "c793a183-0f30-4d96-b252-7f1660f6d70e",
+      "name": "Edo State University Uzairue",
+      "short_name": "EDSU",
+      "type": "university",
+      "state": "Edo",
+      "city": "Iyamho",
+      "website_url": null
+    },
+    {
+      "id": "c8ea4f27-b439-4555-af2c-2437e13ca78c",
+      "name": "Benue State University",
+      "short_name": "BSU",
+      "type": "university",
+      "state": "Benue",
+      "city": "Makurdi",
+      "website_url": null
+    },
+    {
+      "id": "cd7851b9-cbfb-4f09-9283-4316110fbdb0",
+      "name": "Ibrahim Badamasi Babangida University",
+      "short_name": "IBBU",
+      "type": "university",
+      "state": "Niger",
+      "city": "Lapai",
+      "website_url": null
+    },
+    {
+      "id": "cd91525b-d744-4ac2-a22c-70f2ef58e27e",
+      "name": "Rhema University",
+      "short_name": "RU",
+      "type": "university",
+      "state": "Abia",
+      "city": "Aba",
+      "website_url": "https://www.rhemauniversity.edu.ng"
+    },
+    {
+      "id": "cd98fd54-3c52-4ab3-b74f-0fa2278c56e4",
+      "name": "Nnamdi Azikiwe University",
+      "short_name": "NAU",
+      "type": "university",
+      "state": "Anambra",
+      "city": "Awka",
+      "website_url": "https://www.unizik.edu.ng"
+    },
+    {
+      "id": "cda23112-4890-449b-8237-3886f5b07c52",
+      "name": "Moshood Abiola Polytechnic, Abeokuta",
+      "short_name": "MAUSTECH",
+      "type": "polytechnic",
+      "state": "Ogun",
+      "city": "Abeokuta",
+      "website_url": null
+    },
+    {
+      "id": "d2f64cc0-c2cb-4349-8212-ebc4ab8ca3fe",
+      "name": "Gombe State University",
+      "short_name": "GSU",
+      "type": "university",
+      "state": "Gombe",
+      "city": "Gombe",
+      "website_url": "https://www.gsu.edu.ng"
+    },
+    {
+      "id": "d3594ff7-fafb-402b-97ed-771365bdaa3e",
+      "name": "Federal University, Dutse",
+      "short_name": "FUD",
+      "type": "university",
+      "state": "Jigawa",
+      "city": "Dutse",
+      "website_url": "https://www.fud.edu.ng/"
+    },
+    {
+      "id": "d3da0da2-b4ba-40e2-95e4-ad78ae4c88b8",
+      "name": "Clifford University",
+      "short_name": "CLU",
+      "type": "university",
+      "state": "Abia",
+      "city": "Ihie",
+      "website_url": "https://www.clifforduni.edu.ng/"
+    },
+    {
+      "id": "d4c5e2f8-e326-4d29-b06b-d842fdaf97fd",
+      "name": "Redeemer's University",
+      "short_name": "RUN",
+      "type": "university",
+      "state": "Osun",
+      "city": "Ede",
+      "website_url": "https://www.run.edu.ng"
+    },
+    {
+      "id": "d76f9a24-c511-4ed1-971a-a3aa384be4ae",
+      "name": "Arthur Jarvis University",
+      "short_name": "AJU",
+      "type": "university",
+      "state": "Cross River",
+      "city": "Calabar",
+      "website_url": "https://www.arthurjarvisuniversity.edu.ng/"
+    },
+    {
+      "id": "d8930251-525a-465c-9233-6a3ada41c2ee",
+      "name": "Michael and Cecilia Ibru University",
+      "short_name": "MCIU",
+      "type": "university",
+      "state": "Delta",
+      "city": "Agbara-Otor",
+      "website_url": "https://mciu.edu.ng/"
+    },
+    {
+      "id": "dc979f56-2051-4faa-b21d-a572043da2b6",
+      "name": "Federal University, Gashua",
+      "short_name": "FUG",
+      "type": "university",
+      "state": "Yobe",
+      "city": "Gashua",
+      "website_url": "https://www.fugashua.edu.ng"
+    },
+    {
+      "id": "de57f67b-7a89-4989-8a6d-3374cc0cf801",
+      "name": "Mountain Top University",
+      "short_name": "MTU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Makogi Oba",
+      "website_url": "https://www.mtu.edu.ng"
+    },
+    {
+      "id": "e1ee1934-68fa-417c-9710-920cfadfca7b",
+      "name": "Joseph Ayo Babalola University",
+      "short_name": "JABU",
+      "type": "university",
+      "state": "Osun",
+      "city": "Ikeji-Arakeji",
+      "website_url": "https://www.jabu.edu.ng"
+    },
+    {
+      "id": "e78f5cf0-7962-4cfd-9a08-860c33822fac",
+      "name": "University of Ilorin",
+      "short_name": "UIL",
+      "type": "university",
+      "state": "Kwara",
+      "city": "Ilorin",
+      "website_url": null
+    },
+    {
+      "id": "eb7b8011-067f-4e7a-a77d-d37948d92630",
+      "name": "Abubakar Tafawa Balewa University",
+      "short_name": "ATBU",
+      "type": "university",
+      "state": "Bauchi",
+      "city": "Bauchi",
+      "website_url": "https://www.atbu.edu.ng"
+    },
+    {
+      "id": "eecdd71b-b4e3-4474-abc7-1fe7c33aec01",
+      "name": "Pan-Atlantic University",
+      "short_name": "PAU",
+      "type": "university",
+      "state": "Lagos",
+      "city": "Lagos",
+      "website_url": null
+    },
+    {
+      "id": "f0698c05-1168-4416-afa9-5de518597ff6",
+      "name": "Federal University, Gusau",
+      "short_name": "FUGUS",
+      "type": "university",
+      "state": "Zamfara",
+      "city": "Gusau",
+      "website_url": "https://www.fugusau.edu.ng"
+    },
+    {
+      "id": "f0d6dfbc-2c1d-488a-9ea6-65ff04895449",
+      "name": "University of Ibadan",
+      "short_name": "UI",
+      "type": "university",
+      "state": "Oyo",
+      "city": "Ibadan",
+      "website_url": "https://www.ui.edu.ng"
+    },
+    {
+      "id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "University of Maiduguri",
+      "short_name": "UNIMAID",
+      "type": "university",
+      "state": "Borno",
+      "city": "Maiduguri",
+      "website_url": "https://www.unimaid.edu.ng"
+    },
+    {
+      "id": "f23b805b-e126-5324-82b3-e2212dafcd4d",
+      "name": "Federal University, Otuoke, Bayelsa",
+      "short_name": "FUO",
+      "type": "university",
+      "state": "Bayelsa",
+      "city": "Otuoke",
+      "website_url": "https://www.fuotuoke.edu.ng/"
+    },
+    {
+      "id": "f2d4a83b-c215-4ef7-9b9d-407933696842",
+      "name": "Delta State University, Abraka",
+      "short_name": "DELSU",
+      "type": "university",
+      "state": "Delta",
+      "city": "Abraka",
+      "website_url": "https://www.delsu.edu.ng"
+    },
+    {
+      "id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "Ramat Polytechnic",
+      "short_name": "RAMAT",
+      "type": "polytechnic",
+      "state": "Borno",
+      "city": "Maiduguri",
+      "website_url": null
+    },
+    {
+      "id": "f8a5a0b9-668c-5513-af0a-6b3e96278c2f",
+      "name": "Miva Open University, Abuja FCT",
+      "short_name": "Miva",
+      "type": "university",
+      "state": "FCT",
+      "city": "Abuja",
+      "website_url": "https://miva.university/"
+    },
+    {
+      "id": "f9f8aea0-283f-4640-b2ef-2a8e95f86836",
+      "name": "Crawford University",
+      "short_name": "CRU",
+      "type": "university",
+      "state": "Ogun",
+      "city": "Faith City",
+      "website_url": "https://www.crawforduniversity.edu.ng"
+    },
+    {
+      "id": "ffdeb253-7b26-403c-84d2-75948b1aa76d",
+      "name": "Enugu State University of Science and Technology",
+      "short_name": "ESUTECH",
+      "type": "university",
+      "state": "Enugu",
+      "city": "Enugu",
+      "website_url": "https://www.esut.edu.ng"
+    }
+  ],
+  "faculties": [
+    {
+      "id": "002e1563-25b2-4a80-a00e-fb6bff4654c7",
+      "institution_id": "3611825a-eae9-4ae1-bf1b-aefa9497a8f2",
+      "name": "Faculty of Education",
+      "code": "EDU"
+    },
+    {
+      "id": "08c0599c-ae09-54ea-9aa5-f22d8c8d6375",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Basic Medical Sciences",
+      "code": "R08c0599ca"
+    },
+    {
+      "id": "1c67c702-0ef8-4002-ace0-675029c550e4",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Science",
+      "code": "SCI"
+    },
+    {
+      "id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Education",
+      "code": "EDU"
+    },
+    {
+      "id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Basic Clinical Sciences",
+      "code": "R28a8e558f"
+    },
+    {
+      "id": "34669b75-f8f6-4939-9a19-aa39c8fa0981",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Law",
+      "code": "LAW"
+    },
+    {
+      "id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Engineering",
+      "code": "ENG"
+    },
+    {
+      "id": "5bcefe0b-4159-4176-be29-5d05c4166ad8",
+      "institution_id": "3611825a-eae9-4ae1-bf1b-aefa9497a8f2",
+      "name": "Administration and Management",
+      "code": "A&M"
+    },
+    {
+      "id": "5d4734df-c774-4703-9f45-745b115145af",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Medicine",
+      "code": "MED"
+    },
+    {
+      "id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Agriculture",
+      "code": "R71c33a35f"
+    },
+    {
+      "id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Management Sciences",
+      "code": "MGT"
+    },
+    {
+      "id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Arts",
+      "code": "ART"
+    },
+    {
+      "id": "a2e165be-b5c3-5ee7-a44b-b76ad7a8f8b1",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Life Sciences",
+      "code": "Ra2e165beb"
+    },
+    {
+      "id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Pharmacy",
+      "code": "Ra33e1d7f4"
+    },
+    {
+      "id": "aa709151-be5b-51f1-8b0a-479e5bed228a",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Dentistry",
+      "code": "Raa709151b"
+    },
+    {
+      "id": "c1883db4-5a97-4cf4-b0d0-c4d76bdf901f",
+      "institution_id": "f0d6dfbc-2c1d-488a-9ea6-65ff04895449",
+      "name": "Economics and Management Sciences",
+      "code": "EMS"
+    },
+    {
+      "id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Clinical Sciences",
+      "code": "Rc9b6c16dd"
+    },
+    {
+      "id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Environmental Studies",
+      "code": "Rdc2963a30"
+    },
+    {
+      "id": "e37753a8-2d51-4a84-a939-7ed4682b59ff",
+      "institution_id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "Faculty of Social Sciences",
+      "code": "SSC"
+    }
+  ],
+  "schools": [
+    {
+      "id": "5d33102b-a02a-42b9-bec1-8b18ea86ef14",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of General Studies",
+      "code": "SGEN"
+    },
+    {
+      "id": "6b523794-93b2-5306-9788-4e6d4f75aae6",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Vocational/Technical Education",
+      "code": "R6b5237949"
+    },
+    {
+      "id": "8aee1ad6-d582-496b-b797-17d400d4c6a0",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Business Studies",
+      "code": "SBUS"
+    },
+    {
+      "id": "95279dac-3453-489a-a506-3e4be773c2c9",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Information Technology",
+      "code": "SITS"
+    },
+    {
+      "id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Environmental Studies",
+      "code": "SENV"
+    },
+    {
+      "id": "bae35b2b-aecd-409d-85c9-fa8359f288d7",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Agric Tech",
+      "code": "AGT"
+    },
+    {
+      "id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "institution_id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "School of Engineering",
+      "code": "SENG"
+    }
+  ],
+  "departments": [
+    {
+      "id": "08f37f89-bbe1-5197-927f-0f7a30ac3671",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "ENT Surgery",
+      "code": "R08f37f89b"
+    },
+    {
+      "id": "0a1484eb-0f51-5f2b-a08b-986f13edce8e",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Opthalmology",
+      "code": "R0a1484eb0"
+    },
+    {
+      "id": "0a3ad076-1154-51a6-ab2a-3b96b3ac02bd",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Obstetrics and Gynacology",
+      "code": "R0a3ad0761"
+    },
+    {
+      "id": "0ba81707-fe01-4a81-813c-172dcf9d833c",
+      "faculty_id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "school_id": null,
+      "name": "Accounting",
+      "code": "ACC"
+    },
+    {
+      "id": "0eb64186-fac5-57fb-9a8f-22b10041d4fd",
+      "faculty_id": "34669b75-f8f6-4939-9a19-aa39c8fa0981",
+      "school_id": null,
+      "name": "Sharia Law",
+      "code": "R0eb64186f"
+    },
+    {
+      "id": "0f5a5880-6421-44ff-9692-a55fed431c28",
+      "faculty_id": "5bcefe0b-4159-4176-be29-5d05c4166ad8",
+      "school_id": null,
+      "name": "Accounting  ",
+      "code": "ACC  "
+    },
+    {
+      "id": "1371c98e-0525-5225-afa7-a517e9aa9241",
+      "faculty_id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "school_id": null,
+      "name": "Haematology",
+      "code": "R1371c98e0"
+    },
+    {
+      "id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "faculty_id": "1c67c702-0ef8-4002-ace0-675029c550e4",
+      "school_id": null,
+      "name": "Computer Science",
+      "code": "CSC"
+    },
+    {
+      "id": "153ecd2d-4c21-5297-a583-b81b633bc40b",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Survey and Geoinformatics",
+      "code": "R153ecd2d4"
+    },
+    {
+      "id": "1601be7c-2c8c-5d01-8ed4-bb45f3afb98d",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Petroleum and Gas Engineering",
+      "code": "R1601be7c2"
+    },
+    {
+      "id": "176cc958-a176-4db3-8eee-0d60d963dfac",
+      "faculty_id": null,
+      "school_id": "5d33102b-a02a-42b9-bec1-8b18ea86ef14",
+      "name": "General Studies",
+      "code": "GST"
+    },
+    {
+      "id": "1804f7f4-62b3-54ba-9aa7-1e6c090a6129",
+      "faculty_id": "aa709151-be5b-51f1-8b0a-479e5bed228a",
+      "school_id": null,
+      "name": "Preventive Dentistry",
+      "code": "R1804f7f46"
+    },
+    {
+      "id": "1d10d465-a341-5e73-b3bb-c0333d3de792",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Agricultural Economics",
+      "code": "R1d10d465a"
+    },
+    {
+      "id": "1ecc0d2f-59a1-4ab3-9002-4f78186262e5",
+      "faculty_id": "1c67c702-0ef8-4002-ace0-675029c550e4",
+      "school_id": null,
+      "name": "Chemistry",
+      "code": "CHM"
+    },
+    {
+      "id": "1ee1f196-b717-5409-af52-0bdb10f6a16c",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Urban and Regional Planning",
+      "code": "R1ee1f196b"
+    },
+    {
+      "id": "1ee56b24-20bd-5635-9e82-737455cb9d63",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Animal Science",
+      "code": "R1ee56b242"
+    },
+    {
+      "id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "faculty_id": null,
+      "school_id": "8aee1ad6-d582-496b-b797-17d400d4c6a0",
+      "name": "Accountancy",
+      "code": "ACT"
+    },
+    {
+      "id": "243dfc26-688b-5b23-b14d-e59672300c3c",
+      "faculty_id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "school_id": null,
+      "name": "Banking and Finance",
+      "code": "R243dfc266"
+    },
+    {
+      "id": "2a4cbba7-66b9-50e5-a21f-33dc19a05f47",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Continuing Education and Extension Services",
+      "code": "R2a4cbba76"
+    },
+    {
+      "id": "2bb62ff7-780c-5d10-912d-76b12b53056b",
+      "faculty_id": "08c0599c-ae09-54ea-9aa5-f22d8c8d6375",
+      "school_id": null,
+      "name": "Human Anatomy",
+      "code": "R2bb62ff77"
+    },
+    {
+      "id": "2bfaa2f0-823a-580a-bc0d-77c1ba607112",
+      "faculty_id": null,
+      "school_id": "6b523794-93b2-5306-9788-4e6d4f75aae6",
+      "name": "Technical Education",
+      "code": "R2bfaa2f08"
+    },
+    {
+      "id": "2c21d56c-e368-5a8c-96c6-d47b287ebd2d",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Fisheries",
+      "code": "R2c21d56ce"
+    },
+    {
+      "id": "2c74b788-92a2-5ec1-81ba-335a325d97b9",
+      "faculty_id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "school_id": null,
+      "name": "Pharmaceutics & Pharmaceutical Technology",
+      "code": "R2c74b7889"
+    },
+    {
+      "id": "2d7e43fa-6573-5328-853d-e15d8d58903d",
+      "faculty_id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "school_id": null,
+      "name": "Pharmaceutical Chemistry",
+      "code": "R2d7e43fa6"
+    },
+    {
+      "id": "2f992e77-3f21-5535-a08a-5aa5ae18a77b",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Geomatics",
+      "code": "R2f992e773"
+    },
+    {
+      "id": "32c0b0b7-3fd3-4623-9ee6-94a0db728626",
+      "faculty_id": null,
+      "school_id": "8aee1ad6-d582-496b-b797-17d400d4c6a0",
+      "name": "Business Administration",
+      "code": "BAD"
+    },
+    {
+      "id": "358170bc-df91-5a78-8d3c-47389f550e5a",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "Arabic Studies",
+      "code": "R358170bcd"
+    },
+    {
+      "id": "3730f370-f19f-4a51-b342-dd85acd405d5",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Urban & Regional Planning",
+      "code": "URP"
+    },
+    {
+      "id": "422591aa-9e13-5008-accb-dca36fd64961",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "Theatre Arts",
+      "code": "R422591aa9"
+    },
+    {
+      "id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "faculty_id": null,
+      "school_id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "name": "Computer Engineering Technology",
+      "code": "CET"
+    },
+    {
+      "id": "47a1b212-6f60-5f23-9343-5c583c378c71",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Paediatrics",
+      "code": "R47a1b2126"
+    },
+    {
+      "id": "4929946f-ece0-555d-92a9-087993953742",
+      "faculty_id": "aa709151-be5b-51f1-8b0a-479e5bed228a",
+      "school_id": null,
+      "name": "Restorative Dentistry",
+      "code": "R4929946fe"
+    },
+    {
+      "id": "4979c19d-00ad-4a49-a3ca-9e9f104bf6e1",
+      "faculty_id": null,
+      "school_id": "95279dac-3453-489a-a506-3e4be773c2c9",
+      "name": "Computer Science",
+      "code": "CSC"
+    },
+    {
+      "id": "4da4c9f4-4a72-4ca3-835a-f8ec81fdf695",
+      "faculty_id": null,
+      "school_id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "name": "Mechanical Engineering Technology",
+      "code": "MET"
+    },
+    {
+      "id": "4dba920a-7db3-51b2-b124-c0d385921127",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Physical and Health Education",
+      "code": "R4dba920a7"
+    },
+    {
+      "id": "4dfc900a-fbc4-58f5-9b2c-b5521a711af8",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Soil Science",
+      "code": "R4dfc900af"
+    },
+    {
+      "id": "4ee87f4c-a49d-4107-bcf6-0bacfba70a73",
+      "faculty_id": "1c67c702-0ef8-4002-ace0-675029c550e4",
+      "school_id": null,
+      "name": "Mathematics",
+      "code": "MTH"
+    },
+    {
+      "id": "522cf783-8113-56c5-8203-e7a48e52280f",
+      "faculty_id": "08c0599c-ae09-54ea-9aa5-f22d8c8d6375",
+      "school_id": null,
+      "name": "Nutrition and Dietetics",
+      "code": "R522cf7838"
+    },
+    {
+      "id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Electrical Engineering",
+      "code": "EEE"
+    },
+    {
+      "id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "faculty_id": null,
+      "school_id": "95279dac-3453-489a-a506-3e4be773c2c9",
+      "name": "Information Technology",
+      "code": "IFT"
+    },
+    {
+      "id": "55a3defc-39ea-569e-a99c-d219c587a1e8",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Forestry and Wildlife",
+      "code": "R55a3defc3"
+    },
+    {
+      "id": "588e5890-e724-48e6-8bcd-e1040b8ba5ec",
+      "faculty_id": "002e1563-25b2-4a80-a00e-fb6bff4654c7",
+      "school_id": null,
+      "name": "Computer Education",
+      "code": "C.EDU"
+    },
+    {
+      "id": "617091ac-5aed-5f43-b732-0b110d46bd1b",
+      "faculty_id": "a2e165be-b5c3-5ee7-a44b-b76ad7a8f8b1",
+      "school_id": null,
+      "name": "Biotechnology",
+      "code": "R617091ac5"
+    },
+    {
+      "id": "61d68548-6434-5514-ac97-e26fc504de73",
+      "faculty_id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "school_id": null,
+      "name": "Pharmacology and Toxicology",
+      "code": "R61d685486"
+    },
+    {
+      "id": "63c1e7bc-cc1d-49c8-ba20-53fde926bba1",
+      "faculty_id": "1c67c702-0ef8-4002-ace0-675029c550e4",
+      "school_id": null,
+      "name": "Physics",
+      "code": "PHY"
+    },
+    {
+      "id": "678db3a4-b5b5-56e6-9e2f-1665184e42e2",
+      "faculty_id": null,
+      "school_id": "6b523794-93b2-5306-9788-4e6d4f75aae6",
+      "name": "Business Education",
+      "code": "R678db3a4b"
+    },
+    {
+      "id": "6c6e3452-3cb2-5dae-86a5-72a65f2a0e72",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Chemical Engineering",
+      "code": "R6c6e34523"
+    },
+    {
+      "id": "6e48953e-da1e-5e4a-bf0c-a372fbf63a23",
+      "faculty_id": "aa709151-be5b-51f1-8b0a-479e5bed228a",
+      "school_id": null,
+      "name": "Oral & Maxillofacial Surgery & Pathology",
+      "code": "R6e48953ed"
+    },
+    {
+      "id": "701a8e15-1b43-5166-bc2d-b2c85caf0b97",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Mental Health",
+      "code": "R701a8e151"
+    },
+    {
+      "id": "7303861f-5bb3-50cd-90b8-65c138b487e7",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Science Education",
+      "code": "R7303861f5"
+    },
+    {
+      "id": "730814bb-e539-5ebd-878f-a6435c0a2671",
+      "faculty_id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "school_id": null,
+      "name": "Anatomic Pathology and Forensic Medicine",
+      "code": "R730814bbe"
+    },
+    {
+      "id": "7454f91b-c982-5848-aa59-003b5605a908",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Food Science and Technology",
+      "code": "R7454f91bc"
+    },
+    {
+      "id": "74a2f9b2-2a83-5044-bcbb-244df4d25741",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Architecture",
+      "code": "R74a2f9b22"
+    },
+    {
+      "id": "74b26b1f-2431-4ed3-95da-96a6ad1f8048",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Test Department",
+      "code": "TST"
+    },
+    {
+      "id": "799aa633-f714-57d7-b880-1a8eb1b6a8d4",
+      "faculty_id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "school_id": null,
+      "name": "Public Administration",
+      "code": "R799aa633f"
+    },
+    {
+      "id": "7dd4b0ef-7c2f-5e73-a986-ff022501850d",
+      "faculty_id": "aa709151-be5b-51f1-8b0a-479e5bed228a",
+      "school_id": null,
+      "name": "Child Dental Health",
+      "code": "R7dd4b0ef7"
+    },
+    {
+      "id": "7f2759fd-ebed-5bc4-a6fb-33911e530e05",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Quantity Surveying",
+      "code": "R7f2759fde"
+    },
+    {
+      "id": "83168d1a-a28c-46f8-9e3e-e6b2fdfafb1c",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "English & Literary Studies",
+      "code": "ELS"
+    },
+    {
+      "id": "833060d3-41be-5d62-8fa8-2b97d680a58a",
+      "faculty_id": "a2e165be-b5c3-5ee7-a44b-b76ad7a8f8b1",
+      "school_id": null,
+      "name": "Biology",
+      "code": "R833060d34"
+    },
+    {
+      "id": "849268eb-7f2c-5482-a56c-814c48537d53",
+      "faculty_id": null,
+      "school_id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "name": "Civil Engineering",
+      "code": "R849268eb7"
+    },
+    {
+      "id": "883dc073-11ec-5c2c-907e-0e5355d1a438",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "Islamic Studies",
+      "code": "R883dc0731"
+    },
+    {
+      "id": "88e051f6-67d3-585e-a9c1-93157125aa75",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Fine Arts",
+      "code": "R88e051f66"
+    },
+    {
+      "id": "8a83d0c2-891c-4eb5-b810-53aa17f90759",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Civil Engineering",
+      "code": "CVE"
+    },
+    {
+      "id": "8f5b98fc-4568-593d-b3c6-d0d24d2940ad",
+      "faculty_id": "08c0599c-ae09-54ea-9aa5-f22d8c8d6375",
+      "school_id": null,
+      "name": "Human Physiology",
+      "code": "R8f5b98fc4"
+    },
+    {
+      "id": "926ad2dd-7d39-5bbd-9034-6f11b4a90d0b",
+      "faculty_id": "a2e165be-b5c3-5ee7-a44b-b76ad7a8f8b1",
+      "school_id": null,
+      "name": "Microbiology",
+      "code": "R926ad2dd7"
+    },
+    {
+      "id": "931b5dee-3e76-5459-8702-b42e9d5b1366",
+      "faculty_id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "school_id": null,
+      "name": "Marketing",
+      "code": "R931b5dee3"
+    },
+    {
+      "id": "97b6cf54-fa74-5a67-bb33-12645a561482",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Estate Management",
+      "code": "R97b6cf54f"
+    },
+    {
+      "id": "9a03a55c-6362-5928-ba09-5df5fd43ef6b",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Social Science Education",
+      "code": "R9a03a55c6"
+    },
+    {
+      "id": "9a911799-f87a-5aa8-bc31-903bd7e210f3",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Crop Protection",
+      "code": "R9a911799f"
+    },
+    {
+      "id": "9bd6c953-8b5d-55a6-a158-0871928dc123",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Orthopaedics and Trauma",
+      "code": "R9bd6c9538"
+    },
+    {
+      "id": "9f31bac0-b106-5efb-a8d3-b40fc31dd515",
+      "faculty_id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "school_id": null,
+      "name": "Clinical Pharmacy & Pharmacy Administration",
+      "code": "R9f31bac0b"
+    },
+    {
+      "id": "a4722c84-00b9-4f05-83d7-d6164e611217",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "History & International Studies",
+      "code": "HIS"
+    },
+    {
+      "id": "a6a8943e-705f-5e6c-bb2a-decc181ea517",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Crop Production",
+      "code": "Ra6a8943e7"
+    },
+    {
+      "id": "a6ea973d-0cfd-5712-be57-4d50cf1a2d2a",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Industrial Design",
+      "code": "Ra6ea973d0"
+    },
+    {
+      "id": "ab85c34c-9f5b-406b-9376-317011004f34",
+      "faculty_id": "5d4734df-c774-4703-9f45-745b115145af",
+      "school_id": null,
+      "name": "Nursing Science",
+      "code": "NRS"
+    },
+    {
+      "id": "b6e28f29-899d-5166-ac17-85e0dbf5c4c9",
+      "faculty_id": "71c33a35-fc78-50f7-9b6b-d62d0469886f",
+      "school_id": null,
+      "name": "Agricultural Extension",
+      "code": "Rb6e28f298"
+    },
+    {
+      "id": "b86dfe89-dc61-5d09-a6ff-e83c4631f924",
+      "faculty_id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "school_id": null,
+      "name": "Chemical Pathology",
+      "code": "Rb86dfe89d"
+    },
+    {
+      "id": "ba1c8c52-5452-5fa8-9f90-998460fdcd2c",
+      "faculty_id": null,
+      "school_id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "name": "Agric and Bio. Engineering",
+      "code": "Rba1c8c525"
+    },
+    {
+      "id": "bde0871c-6bd9-5408-b709-51cc4fe11807",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Surgery",
+      "code": "Rbde0871c6"
+    },
+    {
+      "id": "c05c99cc-0330-40ba-a635-ae79eb9bf9db",
+      "faculty_id": "5d4734df-c774-4703-9f45-745b115145af",
+      "school_id": null,
+      "name": "Medicine & Surgery",
+      "code": "MBS"
+    },
+    {
+      "id": "c0ecfb52-ac3d-4dff-ae41-92e09ee3c7b8",
+      "faculty_id": "34669b75-f8f6-4939-9a19-aa39c8fa0981",
+      "school_id": null,
+      "name": "Law",
+      "code": "LAW"
+    },
+    {
+      "id": "c13934f4-f7f1-59fd-80e9-80115b6ee15e",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Agricultural and Environmental Resource Engineering",
+      "code": "Rc13934f4f"
+    },
+    {
+      "id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Computer Engineering",
+      "code": "CPE"
+    },
+    {
+      "id": "c36773fc-3f93-42a2-834a-5cb81c72c5cd",
+      "faculty_id": null,
+      "school_id": "8aee1ad6-d582-496b-b797-17d400d4c6a0",
+      "name": "Marketing",
+      "code": "MKT"
+    },
+    {
+      "id": "c5306808-9c5d-47a2-849e-3de7511e6f6a",
+      "faculty_id": "e37753a8-2d51-4a84-a939-7ed4682b59ff",
+      "school_id": null,
+      "name": "Sociology",
+      "code": "SOC"
+    },
+    {
+      "id": "c7de71ee-84d2-5164-b507-1d051c58f3c8",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Anaesthesia",
+      "code": "Rc7de71ee8"
+    },
+    {
+      "id": "cb7e81ac-88af-59ca-932d-e260c32a9c73",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Library and Information Science",
+      "code": "Rcb7e81ac8"
+    },
+    {
+      "id": "d0c04805-62c8-550f-9add-5e6dcfca16a5",
+      "faculty_id": "870be380-0d6e-4b10-a180-70f3fed60982",
+      "school_id": null,
+      "name": "Languages and Linguistics",
+      "code": "Rd0c048056"
+    },
+    {
+      "id": "d742427d-547f-5d4d-a438-d2f03d1df930",
+      "faculty_id": "e37753a8-2d51-4a84-a939-7ed4682b59ff",
+      "school_id": null,
+      "name": "Geography",
+      "code": "Rd742427d5"
+    },
+    {
+      "id": "d95258a3-4216-4f0d-abdd-3e430cd9d85b",
+      "faculty_id": null,
+      "school_id": "f1327ecc-44f9-4192-b8b1-b2f2cf990b69",
+      "name": "Electrical Engineering Technology",
+      "code": "EET"
+    },
+    {
+      "id": "d96103de-6502-52fe-a283-aa0abda91daf",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Radiology",
+      "code": "Rd96103de6"
+    },
+    {
+      "id": "da749850-5ed4-57c9-b573-ddaaa0f78514",
+      "faculty_id": "a2e165be-b5c3-5ee7-a44b-b76ad7a8f8b1",
+      "school_id": null,
+      "name": "Biochemistry",
+      "code": "Rda7498505"
+    },
+    {
+      "id": "db38540d-8daa-55af-a791-f949f9d1526f",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Architectural Technology",
+      "code": "Rdb38540d8"
+    },
+    {
+      "id": "dba533c6-cb05-5ad0-9da9-8fd5728359fb",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Arts Education",
+      "code": "Rdba533c6c"
+    },
+    {
+      "id": "e0646942-8b00-527d-9369-043b29b306ac",
+      "faculty_id": "34669b75-f8f6-4939-9a19-aa39c8fa0981",
+      "school_id": null,
+      "name": "Public Law",
+      "code": "Re06469428"
+    },
+    {
+      "id": "e09bc383-cf75-417e-a648-c5f4005b4181",
+      "faculty_id": "e37753a8-2d51-4a84-a939-7ed4682b59ff",
+      "school_id": null,
+      "name": "Economics",
+      "code": "ECO"
+    },
+    {
+      "id": "e09ed1e7-d219-5314-84eb-7cae5fbf2c7a",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Community Medicine",
+      "code": "Re09ed1e7d"
+    },
+    {
+      "id": "e25f3bb5-6ed5-50b1-886e-ca28def5b4c8",
+      "faculty_id": "a33e1d7f-42df-5c4b-bc5e-bf5e321a8a40",
+      "school_id": null,
+      "name": "Pharmacognosy",
+      "code": "Re25f3bb56"
+    },
+    {
+      "id": "e7ff7e67-d238-52d8-8c23-185647d68ba9",
+      "faculty_id": "e37753a8-2d51-4a84-a939-7ed4682b59ff",
+      "school_id": null,
+      "name": "Political Science",
+      "code": "Re7ff7e67d"
+    },
+    {
+      "id": "ed1db596-c94d-4121-8747-600ba2c41627",
+      "faculty_id": "4d07bb85-534c-472f-b184-77fa9d1f9971",
+      "school_id": null,
+      "name": "Mechanical Engineering",
+      "code": "MEE"
+    },
+    {
+      "id": "ed4aad91-5bf9-4014-86d1-2223ac756349",
+      "faculty_id": "83a64dec-23d6-41dc-856e-eaed816754c1",
+      "school_id": null,
+      "name": "Business Administration",
+      "code": "BAD"
+    },
+    {
+      "id": "ef361c78-d193-5566-b201-9c1163a37267",
+      "faculty_id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "school_id": null,
+      "name": "Medical Microbiology",
+      "code": "Ref361c78d"
+    },
+    {
+      "id": "efcad972-6cd2-55c4-bbf0-c50f78ddbb28",
+      "faculty_id": "c9b6c16d-d736-515d-8220-d07dae579dcf",
+      "school_id": null,
+      "name": "Internal Medicine",
+      "code": "Refcad9726"
+    },
+    {
+      "id": "f8419bfc-9ab7-59a2-8a28-4c4ef4df6836",
+      "faculty_id": "28a8e558-fb23-541a-8f66-2e31908fc480",
+      "school_id": null,
+      "name": "Clinical Pharmacology and Therapeutics",
+      "code": "Rf8419bfc9"
+    },
+    {
+      "id": "f867c285-3886-42d4-9930-25c2fcd92258",
+      "faculty_id": null,
+      "school_id": "a5a22cd4-ecaa-456e-9e6a-0ddc55fc92a9",
+      "name": "Building Technology",
+      "code": "BLT"
+    },
+    {
+      "id": "fb7319e5-36df-5d6e-89d8-2f8dfe09a93e",
+      "faculty_id": "34669b75-f8f6-4939-9a19-aa39c8fa0981",
+      "school_id": null,
+      "name": "Private Law",
+      "code": "Rfb7319e53"
+    },
+    {
+      "id": "fda0cb96-8e8b-56ba-bf15-9b5edae5af3f",
+      "faculty_id": "dc2963a3-0a84-58f2-858e-3f16804999a0",
+      "school_id": null,
+      "name": "Building",
+      "code": "Rfda0cb968"
+    },
+    {
+      "id": "fed81488-3e5a-4ba0-814a-748175b7847e",
+      "faculty_id": "27f91e23-6d77-4b2e-b4b2-360a8f880676",
+      "school_id": null,
+      "name": "Education & Computer Science",
+      "code": "ECS"
+    }
+  ],
+  "courses": [
+    {
+      "id": "03f3e788-1c26-4b0a-baf9-f5a3d2562506",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Principles of Accounting I",
+      "code": "ACT101",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "090abd28-a3db-46dd-9f19-85daadc52317",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Financial Accounting",
+      "code": "ACT202",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "0f78904f-b333-4460-8998-05bc51afd141",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Industrial Automation",
+      "code": "CET401",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "135e07ce-cf09-4764-b714-614568bb068e",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Principles of Accounting II",
+      "code": "ACT103",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "13b656fd-7a30-4965-b6b9-669619cb8ad9",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Introduction to Computer Engineering",
+      "code": "CET101",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "186bb5c6-e388-4bc1-90ab-88e45dbf49b5",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Logic Design",
+      "code": "CPE104",
+      "level": "100",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "1c04fd9b-c466-4568-a3ed-9062fbc4c8a8",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Cost Accounting",
+      "code": "ACT201",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "1d1940f0-47ff-4b31-ac85-8fecf0d39b63",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Electronic Circuits",
+      "code": "CET104",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "1efadfb4-a215-4401-9f89-fb192a9ab8a7",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Introduction to Computing",
+      "code": "CPE101",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "2ac4d480-8929-42d8-b955-25bc483055cf",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Renewable Energy Systems",
+      "code": "EEE402",
+      "level": "400",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "2ad76df6-a840-4552-8f1b-25a8ff2a10ad",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Engineering Mathematics I",
+      "code": "CPE102",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "2d4a9c06-315a-4efa-8905-29b0234a60f6",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Computer Graphics",
+      "code": "CPE403",
+      "level": "400",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "2dffaa4d-e893-45a2-83c5-84c4a09ef066",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Microprocessor Systems",
+      "code": "CET201",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "39ceaceb-04ac-430f-921e-24b2371dc33f",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Computer Programming II",
+      "code": "CET202",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "39fed978-e116-4c75-b718-20b836b209c5",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Business Mathematics",
+      "code": "ACT102",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "3b3be7f6-82c9-4325-af54-e31c2351ad4c",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "ND Project",
+      "code": "CET204",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 4,
+      "is_active": true
+    },
+    {
+      "id": "3d7221a3-3dc1-43b0-a7e2-6443433b0855",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Auditing I",
+      "code": "ACT301",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "44c24c41-76d5-4b1e-9f97-b54ed21b3bcb",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Software Engineering",
+      "code": "CPE304",
+      "level": "300",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "50f47529-154c-44fc-bc78-6403d31c2fac",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Cloud Computing",
+      "code": "IFT401",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "50f7fcce-9fcf-4e8d-af5a-15fe077d894c",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Advanced Microprocessors",
+      "code": "CET301",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "529f1585-d39c-4caf-b6c2-784a2ea8b63a",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Database Management Systems",
+      "code": "CSC301",
+      "level": "300",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "5389cab5-bd5d-43af-b846-979669cc1604",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Data Communications",
+      "code": "CET203",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "5409eb92-7a48-4693-9566-f572678db250",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Data Structures",
+      "code": "CSC202",
+      "level": "200",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "556331a2-25f6-42b3-8d5d-dac82ccf9fc7",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Microprocessors & Interfacing",
+      "code": "CPE401",
+      "level": "400",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "5608608d-bcb7-461c-88d4-a708f57ecabb",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Circuit Theory I",
+      "code": "EEE101",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "56292567-0684-4bbf-b09e-3595a18c087b",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Database Systems",
+      "code": "CPE303",
+      "level": "300",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "59646288-6786-445d-9bf2-589fe893ea32",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "IT Fundamentals",
+      "code": "IFT101",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "61f67c0c-6d6c-4997-bbdf-0ab739c105dc",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Network Fundamentals",
+      "code": "IFT301",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "6225d1a0-184b-458b-9214-c8d962cf4011",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Computer Programming I",
+      "code": "CET103",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "632eb416-5dc6-4407-8d8e-bd20d62e10f1",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Circuit Theory II",
+      "code": "EEE102",
+      "level": "100",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "66180164-e34d-463d-8c8f-b22299db616c",
+      "department_id": "0f5a5880-6421-44ff-9692-a55fed431c28",
+      "title": "Introduction to Financial Accounting I ",
+      "code": "ACC 101 ",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "6d869223-01b6-44b8-8fee-20e6730d9b59",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Data Structures & Algorithms",
+      "code": "CPE201",
+      "level": "200",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "6f30818d-e4ae-4db4-ae1a-d14329ed7db7",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Engineering Mathematics II",
+      "code": "CPE103",
+      "level": "100",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "6f9e8a70-806e-4915-aee6-0310ba60d920",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Taxation",
+      "code": "ACT302",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "75a6571b-e36b-4bc8-bc44-2bc0fa86f2a8",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Electronic Devices & Circuits",
+      "code": "EEE202",
+      "level": "200",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "7b901857-e001-4647-89cd-ea53d38f3541",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Object Oriented Programming",
+      "code": "CPE203",
+      "level": "200",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "7d22ffc5-e357-42ea-a530-993799b5f103",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Computer Architecture",
+      "code": "CPE202",
+      "level": "200",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "7ddb8733-608b-44ec-8271-66b34b013d72",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Networks & Security",
+      "code": "CSC401",
+      "level": "400",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "8074f087-1f03-464b-922f-50e007bbe954",
+      "department_id": "588e5890-e724-48e6-8bcd-e1040b8ba5ec",
+      "title": "General Biology",
+      "code": "BIO 101",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "81b8cccc-5210-43e4-8273-39e95b74f60e",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Test Course",
+      "code": "TST999",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "8a210e71-10b6-4c93-acd9-100a84580f89",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "HND Project",
+      "code": "ACT402",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 6,
+      "is_active": true
+    },
+    {
+      "id": "8b20cf26-de1c-4b2d-ad3b-429664191511",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Web Design Basics",
+      "code": "IFT102",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "90939edb-c2ea-4806-86cd-8b854b63d564",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Final Year Project II",
+      "code": "CPE502",
+      "level": "500",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 6,
+      "is_active": true
+    },
+    {
+      "id": "91d723f5-b3a2-4c76-82e1-99d2c5d05c1d",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Discrete Mathematics",
+      "code": "CPE204",
+      "level": "200",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "9211c175-26c2-4a84-bae3-ab8cb54c4171",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Network Administration",
+      "code": "CET302",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "9649fa40-0d7a-41b2-93b7-e937280cca3c",
+      "department_id": "588e5890-e724-48e6-8bcd-e1040b8ba5ec",
+      "title": "intro to computer",
+      "code": "EDU101",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "a8c29b6c-018c-44cc-8cfe-c87c0d8e3971",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Programming Fundamentals",
+      "code": "CSC102",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "aa673f75-03c8-4238-967d-b58586c78ef8",
+      "department_id": "220e14c0-326f-42cd-b04a-5c05c7ac2e2f",
+      "title": "Advanced Financial Accounting",
+      "code": "ACT401",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "b158fca0-56db-4cf2-ba91-53b5761f1e5d",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Power Systems I",
+      "code": "EEE301",
+      "level": "300",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "b1c2238b-706b-4e59-ab82-c057457a9c0b",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Operating Systems",
+      "code": "CPE302",
+      "level": "300",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "c088989a-d85a-4de7-ba99-5d5bbb5b5e95",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Machine Learning Fundamentals",
+      "code": "CSC402",
+      "level": "400",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "c418369b-349a-43ad-ac0b-681ef1cad77d",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Introduction to Computer Science",
+      "code": "CSC101",
+      "level": "100",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 2,
+      "is_active": true
+    },
+    {
+      "id": "c5f24647-a47c-4081-ac57-5680ad5f783f",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Computer Networks",
+      "code": "CPE301",
+      "level": "300",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "c6cfd47d-609a-4a7a-9482-28864ff3be3b",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Database Fundamentals",
+      "code": "IFT201",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "d0be2623-2d95-4c08-a3b9-1ae6288436c1",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Web Technologies",
+      "code": "CSC201",
+      "level": "200",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "d46f699d-51c9-4a24-9064-85dd7e249c75",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Control Systems",
+      "code": "EEE302",
+      "level": "300",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "db239194-fe4c-4e97-bd36-736bdc966772",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Power Electronics",
+      "code": "EEE401",
+      "level": "400",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "df4320d7-2db7-4191-b008-ef93d17b810d",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "HND Project",
+      "code": "CET402",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 6,
+      "is_active": true
+    },
+    {
+      "id": "df45ad11-c0ab-44e8-91cb-31fb266a2b02",
+      "department_id": "146c2bd5-d5aa-45b3-a9ff-9f257330993e",
+      "title": "Software Engineering",
+      "code": "CSC302",
+      "level": "300",
+      "level_type": "university",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "e362c1c0-58da-4abf-920a-a5cda532b0e4",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Digital Electronics",
+      "code": "CET102",
+      "level": "ND1",
+      "level_type": "polytechnic",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "e4b0b962-7b97-4161-9cc2-b2680df306ed",
+      "department_id": "45070c21-5a6f-457e-8bb6-aab0da35145a",
+      "title": "Embedded Systems",
+      "code": "CET303",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "ed3d65bd-371a-4672-9efe-391cc8795371",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Systems Analysis & Design",
+      "code": "IFT202",
+      "level": "ND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "f2098b2e-ae02-4aa9-990e-fd4b89c762c0",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "Web Application Development",
+      "code": "IFT302",
+      "level": "HND1",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "f3585aa6-a365-4285-9593-8116be953706",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Artificial Intelligence",
+      "code": "CPE402",
+      "level": "400",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "fa56ee71-6e40-475a-ac31-6f67e947e0ac",
+      "department_id": "5324d994-1f67-4931-b62e-1371ab23677d",
+      "title": "IT Project Management",
+      "code": "IFT402",
+      "level": "HND2",
+      "level_type": "polytechnic",
+      "semester": "second",
+      "credit_units": 3,
+      "is_active": true
+    },
+    {
+      "id": "fdef8bd1-3867-42e5-a787-6808e9972d86",
+      "department_id": "c1583ad6-b354-4621-886f-fc7bdb41b717",
+      "title": "Final Year Project I",
+      "code": "CPE501",
+      "level": "500",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 6,
+      "is_active": true
+    },
+    {
+      "id": "fee09b7c-971c-4ab2-b9ee-cb2640429ef3",
+      "department_id": "52f08b78-0b23-4838-a4b4-e087d5cff49e",
+      "title": "Electromagnetic Fields",
+      "code": "EEE201",
+      "level": "200",
+      "level_type": "university",
+      "semester": "first",
+      "credit_units": 3,
+      "is_active": true
+    }
+  ],
+  "coverage": [
+    {
+      "id": "eb7b8011-067f-4e7a-a77d-d37948d92630",
+      "name": "Abubakar Tafawa Balewa University",
+      "short_name": "ATBU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "0fa4b743-5261-409b-bc61-8fead486b676",
+      "name": "Adekunle Ajasin University",
+      "short_name": "AAUA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "8553ac64-db82-4674-b068-5f450b592c06",
+      "name": "Adeleke University",
+      "short_name": "AU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "37f20c01-81b5-4690-8fc1-fdec0d4ddb3d",
+      "name": "Admiralty University of Nigeria",
+      "short_name": "ADUN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "5639b6b4-aa71-42d2-b41f-b4c46fe53236",
+      "name": "Afe Babalola University",
+      "short_name": "ABUAD",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "020aaff4-d609-4946-968f-212969039ff6",
+      "name": "African University of Science and Technology",
+      "short_name": "AUST",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "11dec1ab-78a6-4d98-9686-fccdd806fb24",
+      "name": "Akwa Ibom State University",
+      "short_name": "AKSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "148c3998-6879-4682-a972-76f5139e8281",
+      "name": "Al-Ansar University",
+      "short_name": "AL-ANSAR",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "9a07258b-7cf4-4f42-ad85-68633f2f6576",
+      "name": "Al-Hikmah University",
+      "short_name": "HUI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "1b362254-00bf-47b2-8ae8-c686501e3d23",
+      "name": "Al-Qalam University, Katsina",
+      "short_name": "AUK",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c4d94e26-e18f-4c30-b768-171d93f44f7c",
+      "name": "Alex Ekwueme Federal University",
+      "short_name": "FUNAI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "867abcd2-bbb3-4869-b2ca-179283d52a06",
+      "name": "Ambrose Alli University",
+      "short_name": "AAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "5875d9ce-0cd6-429f-ad3b-63401e155148",
+      "name": "Anchor University, Lagos",
+      "short_name": "AUL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "d76f9a24-c511-4ed1-971a-a3aa384be4ae",
+      "name": "Arthur Jarvis University",
+      "short_name": "AJU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6cf38063-1a44-484b-83ea-73bbed0e6328",
+      "name": "Augustine University",
+      "short_name": "AUI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "75d5eefd-8eac-460a-80ca-c99f56187ab8",
+      "name": "Babcock University",
+      "short_name": "BU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "5ae65e80-a775-4ba9-bb87-fc7386b0434a",
+      "name": "Bamidele Olumilua University of Education, Science and Technology, Ikere-Ekiti",
+      "short_name": "BOUESTI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "7f6b5cd4-4235-470b-b15e-9b0d13f56081",
+      "name": "Bayero University Kano",
+      "short_name": "BUK",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "0e087879-c6cd-4e65-81cd-a36d8130f193",
+      "name": "Baze University",
+      "short_name": "BAZE",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c77b7945-633f-4312-b370-ef1ae9e15d88",
+      "name": "Benson Idahosa University",
+      "short_name": "BIU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c8ea4f27-b439-4555-af2c-2437e13ca78c",
+      "name": "Benue State University",
+      "short_name": "BSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "42281415-4273-47b7-9aa2-f1abaf7bf78c",
+      "name": "Bingham University",
+      "short_name": "BHU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "3611825a-eae9-4ae1-bf1b-aefa9497a8f2",
+      "name": "Borno State University",
+      "short_name": "BOSU",
+      "type": "university",
+      "faculties": 2,
+      "schools": 0,
+      "departments": 2,
+      "courses": 3
+    },
+    {
+      "id": "c3307448-c32c-4bea-ae26-90980a5759f1",
+      "name": "Bowen University",
+      "short_name": "BUI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "102fe1ab-62b5-4243-bc5a-ed54e909a098",
+      "name": "Caleb University",
+      "short_name": "CUL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "1ae84be8-e16d-4e9e-bbb2-aaabdd7d104f",
+      "name": "Caritas University",
+      "short_name": "CAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "2160bd3f-37dd-4e41-9eb9-f7b13febf1c9",
+      "name": "Chrisland University",
+      "short_name": "CHU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "d3da0da2-b4ba-40e2-95e4-ad78ae4c88b8",
+      "name": "Clifford University",
+      "short_name": "CLU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "394ba0a2-1a05-4d78-96b1-0f24ba362843",
+      "name": "Coal City University",
+      "short_name": "CCU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f9f8aea0-283f-4640-b2ef-2a8e95f86836",
+      "name": "Crawford University",
+      "short_name": "CRU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "29a587ee-4c03-45f3-9477-94dba6d1b85a",
+      "name": "Crescent University, Abeokuta",
+      "short_name": "CUAB",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "15c6daa5-5e82-492c-85e3-1990c5f510c1",
+      "name": "Crown Hill University",
+      "short_name": "CROWN HILL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f2d4a83b-c215-4ef7-9b9d-407933696842",
+      "name": "Delta State University, Abraka",
+      "short_name": "DELSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "8f05ec73-087e-42ad-914a-bf1a4ac6909b",
+      "name": "Dominican University, Ibadan",
+      "short_name": "DU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "24de98c9-d978-467b-8068-93fbc9d896b9",
+      "name": "Ebonyi State University",
+      "short_name": "EBSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c793a183-0f30-4d96-b252-7f1660f6d70e",
+      "name": "Edo State University Uzairue",
+      "short_name": "EDSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "2a42b066-1843-4276-b4e6-bf107a024b0f",
+      "name": "Edwin Clark University",
+      "short_name": "ECU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "7abbc4ee-0367-46c0-9cfb-2c3459c9e85f",
+      "name": "Ekiti State University",
+      "short_name": "EKSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "9942f3ac-e4d0-4e46-b007-696c86f42dd1",
+      "name": "Eko University of Medical and Health Sciences",
+      "short_name": "EKOUNIVMED",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "35eacc99-0f6c-4e17-8488-a5c88b89af6c",
+      "name": "Eko University of Medical and Health Sciences",
+      "short_name": "EKOUNIVMED",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "62cb37c8-d8f0-4a87-8d9f-bfec1ae09291",
+      "name": "Elizade University",
+      "short_name": "ELIZADEU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "ffdeb253-7b26-403c-84d2-75948b1aa76d",
+      "name": "Enugu State University of Science and Technology",
+      "short_name": "ESUTECH",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "414640f5-1aac-4669-a00e-71e3e1c8282f",
+      "name": "Evangel University, Akaeze",
+      "short_name": "EUA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "17b03b93-9b58-44f3-8dc7-8aa610d071ba",
+      "name": "Federal University of Agriculture, Abeokuta",
+      "short_name": "FUNAAB",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "579f2bd4-54b4-4b78-b098-a0d7639c40e7",
+      "name": "Federal University of Petroleum Resources",
+      "short_name": "FUPRE",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "94242d26-0d57-4188-bc7f-2f4bbca007d0",
+      "name": "Federal University of Technology, Akure",
+      "short_name": "FUTA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "76ecd53f-3660-41fc-bd54-625a02766292",
+      "name": "Federal University, Birnin Kebbi",
+      "short_name": "FUBK",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "d3594ff7-fafb-402b-97ed-771365bdaa3e",
+      "name": "Federal University, Dutse",
+      "short_name": "FUD",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "4aae573b-52c9-4670-a659-72c2ff3ff49d",
+      "name": "Federal University, Dutsin-Ma",
+      "short_name": "FUDMA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "dc979f56-2051-4faa-b21d-a572043da2b6",
+      "name": "Federal University, Gashua",
+      "short_name": "FUG",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f0698c05-1168-4416-afa9-5de518597ff6",
+      "name": "Federal University, Gusau",
+      "short_name": "FUGUS",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c78b7224-5a8d-450c-adbe-b34bc24de008",
+      "name": "Federal University, Kashere",
+      "short_name": "FUK",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "39671de2-558f-4177-801e-bcdb3b44dba7",
+      "name": "Federal University, Lafia",
+      "short_name": "FUL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "7d39e4c3-38cd-466a-aac3-749b191dfeb5",
+      "name": "Federal University, Lokoja",
+      "short_name": "FUL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f23b805b-e126-5324-82b3-e2212dafcd4d",
+      "name": "Federal University, Otuoke, Bayelsa",
+      "short_name": "FUO",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "be0b27a7-ed63-5f43-b533-662b16fea71a",
+      "name": "Federal University, Oye-Ekiti, Ekiti State",
+      "short_name": "FUOYE",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "89c65a32-a0b7-5670-a2b9-20b11fd62b08",
+      "name": "Federal University, Wukari, Taraba State",
+      "short_name": "FUWUKARI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "d2f64cc0-c2cb-4349-8212-ebc4ab8ca3fe",
+      "name": "Gombe State University",
+      "short_name": "GSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "42cfdd30-1b91-4be1-86b0-820f98eb322d",
+      "name": "Gombe State University of Science and Technology",
+      "short_name": "GSUST",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "7f4d74b8-9f47-4dc0-8ca1-7164c3d9730a",
+      "name": "Hallmark University, Ijebu-Itele",
+      "short_name": "HU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "57c6529c-f004-410d-9b0a-8b3ead25d762",
+      "name": "Hallmark University, Ijebu-Itele",
+      "short_name": "HU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "cd7851b9-cbfb-4f09-9283-4316110fbdb0",
+      "name": "Ibrahim Badamasi Babangida University",
+      "short_name": "IBBU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "3a011ed4-489d-50f6-a315-a7952e19d858",
+      "name": "Imo State University, Owerri",
+      "short_name": "IMSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "e1ee1934-68fa-417c-9710-920cfadfca7b",
+      "name": "Joseph Ayo Babalola University",
+      "short_name": "JABU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "691883c9-4f3c-4a8d-9292-881b1ed15079",
+      "name": "Joseph Sarwuan Tarkaa University",
+      "short_name": "JOSTUM",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "af04b48e-c722-4ad5-acad-09998a42b96d",
+      "name": "Kaduna State University",
+      "short_name": "KASU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "1d6507e7-95de-498d-8de4-c39e72a6571a",
+      "name": "Kebbi State University of Science and Technology",
+      "short_name": "KSUSTA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6219177c-7106-4ecd-956c-163334e60211",
+      "name": "Kingsley Ozumba Mbadiwe University",
+      "short_name": "KOMU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "ac6bb5d9-43e4-48ae-b739-745f1d1ade0b",
+      "name": "Kola Daisi University",
+      "short_name": "KDU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "5ebc9079-73bf-57e1-babf-8b2c7b472001",
+      "name": "Kwara State Polytechnic, Ilorin",
+      "short_name": "KWARAPOLY",
+      "type": "polytechnic",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "5c303a9f-6b3b-437b-beb4-57e640e3bd58",
+      "name": "Kwara State University",
+      "short_name": "KWASU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "a7abe97f-ea3f-46df-a9b3-85704ac32525",
+      "name": "Lead City University",
+      "short_name": "LCU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "07e496b1-7fbd-4100-9a74-daf6a85d61b0",
+      "name": "Madonna University",
+      "short_name": "MAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "d8930251-525a-465c-9233-6a3ada41c2ee",
+      "name": "Michael and Cecilia Ibru University",
+      "short_name": "MCIU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f8a5a0b9-668c-5513-af0a-6b3e96278c2f",
+      "name": "Miva Open University, Abuja FCT",
+      "short_name": "Miva",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "cda23112-4890-449b-8237-3886f5b07c52",
+      "name": "Moshood Abiola Polytechnic, Abeokuta",
+      "short_name": "MAUSTECH",
+      "type": "polytechnic",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "de57f67b-7a89-4989-8a6d-3374cc0cf801",
+      "name": "Mountain Top University",
+      "short_name": "MTU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "44e2009b-cc61-4018-9fde-4da8a6b869ad",
+      "name": "Nasarawa State University",
+      "short_name": "NSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "79101a9d-3894-5e3a-8257-d57efe4cbc68",
+      "name": "National Open University of Nigeria, Abuja",
+      "short_name": "NOUN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "22201628-1253-4ee8-93a2-5874f9f46cf6",
+      "name": "Nile University of Nigeria",
+      "short_name": "NTNU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "cd98fd54-3c52-4ab3-b74f-0fa2278c56e4",
+      "name": "Nnamdi Azikiwe University",
+      "short_name": "NAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "1b1378b4-2b40-4651-ba5e-08cb64dcf81c",
+      "name": "Northwest University, Kano",
+      "short_name": "NWU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6ffcdce1-b36e-4342-8421-3f9bbce19c37",
+      "name": "Obafemi Awolowo University",
+      "short_name": "OAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "02ea1b8f-566b-46c1-a75f-8603d1f87a5b",
+      "name": "Oduduwa University",
+      "short_name": "OUI",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "b2ca53b7-6bd3-4b74-a9ca-36093098037b",
+      "name": "Olabisi Onabanjo University",
+      "short_name": "OOU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "eecdd71b-b4e3-4474-abc7-1fe7c33aec01",
+      "name": "Pan-Atlantic University",
+      "short_name": "PAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "3cb4bdaa-2b70-468a-989a-5880b4f84f42",
+      "name": "Paul University",
+      "short_name": "PUA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "a22d9734-e07c-42ab-bf50-d0a83f260c02",
+      "name": "Peaceland University Enugu",
+      "short_name": "PUE",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "05a8186d-a7ac-4ead-ae33-d71ef8937244",
+      "name": "Plateau State University",
+      "short_name": "PLASU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6ab70b06-57ef-46d9-9440-426824d7fc68",
+      "name": "Precious Cornerstone University",
+      "short_name": "PCU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "ac0ef075-52ae-41c1-a98f-d9e4e121b76d",
+      "name": "Prince Abubakar Audu University",
+      "short_name": "PAAU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f444621b-880a-4c87-bc5f-01f51fd3ea90",
+      "name": "Ramat Polytechnic",
+      "short_name": "RAMAT",
+      "type": "polytechnic",
+      "faculties": 0,
+      "schools": 7,
+      "departments": 19,
+      "courses": 30
+    },
+    {
+      "id": "d4c5e2f8-e326-4d29-b06b-d842fdaf97fd",
+      "name": "Redeemer's University",
+      "short_name": "RUN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "ad06705e-82f7-42f4-8a55-cfa91a514338",
+      "name": "Renaissance University",
+      "short_name": "RNU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "cd91525b-d744-4ac2-a22c-70f2ef58e27e",
+      "name": "Rhema University",
+      "short_name": "RU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "7202068c-1aa4-470d-985e-864c68d7a644",
+      "name": "Ritman University",
+      "short_name": "RITMAN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "28d46dbd-b896-40c7-afd3-98a114f7e93a",
+      "name": "Sa'adu Zungur University",
+      "short_name": "SAZUG",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "82e5832c-a439-4819-a4e6-0015eb4119e4",
+      "name": "Salem University",
+      "short_name": "SU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "62ce0e56-2e6c-4273-8d4a-709eb251fb81",
+      "name": "Skyline University Nigeria",
+      "short_name": "SUN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "a5587d28-0e9f-4373-9886-1268dbda1002",
+      "name": "Sule Lamido University",
+      "short_name": "SLU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "8dd6e6ca-5af8-4907-bab9-04ef6c73de14",
+      "name": "Tai Solarin University of Education",
+      "short_name": "TASUED",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6eafa078-b8e1-44c9-b475-767c6e029fa0",
+      "name": "Taraba State University",
+      "short_name": "TSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "21b61c4f-0014-4d25-bb20-04a58ce10440",
+      "name": "The Technical University",
+      "short_name": "TECH-U",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c19f4f15-14bc-4eca-b342-a6eef07d4000",
+      "name": "Umaru Musa Yar'Adua University",
+      "short_name": "UMYU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "869bf2ab-b258-48ad-8c6e-e5341826aaf9",
+      "name": "University of Abuja",
+      "short_name": "UNI ABUJA",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "6f344245-326c-42cb-9c69-0880e5170e0a",
+      "name": "University of Benin",
+      "short_name": "UNIBEN",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "8222a955-41fe-43d0-9187-6944aed01101",
+      "name": "University of Calabar",
+      "short_name": "UNICAL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "c0095dec-6316-4e23-b063-d0ddb3a560ee",
+      "name": "University of Cross River State",
+      "short_name": "UNICROSS",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f0d6dfbc-2c1d-488a-9ea6-65ff04895449",
+      "name": "University of Ibadan",
+      "short_name": "UI",
+      "type": "university",
+      "faculties": 1,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "36d96a64-f063-4676-9b50-9e3a940d9133",
+      "name": "University of Ilorin",
+      "short_name": "UIL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "e78f5cf0-7962-4cfd-9a08-860c33822fac",
+      "name": "University of Ilorin",
+      "short_name": "UIL",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "0d1b50ca-d28a-47d7-8cfe-803201c6b9d3",
+      "name": "University of Jos",
+      "short_name": "UNIJOS",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "65d94042-eb72-4444-b489-14549231a0b5",
+      "name": "University of Lagos",
+      "short_name": "UNILAG",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "f1f27f30-4a38-4381-876d-df0bc7563e14",
+      "name": "University of Maiduguri",
+      "short_name": "UNIMAID",
+      "type": "university",
+      "faculties": 16,
+      "schools": 0,
+      "departments": 87,
+      "courses": 34
+    },
+    {
+      "id": "7a479784-2ee6-4c16-a2a5-d002fe18a30d",
+      "name": "Veritas University",
+      "short_name": "VU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "04c518a1-adfd-43da-a808-e70aab015897",
+      "name": "Wellspring University",
+      "short_name": "WU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    },
+    {
+      "id": "3e280fb9-7fd8-4cff-baff-9933dd15d27c",
+      "name": "Yobe State University",
+      "short_name": "YSU",
+      "type": "university",
+      "faculties": 0,
+      "schools": 0,
+      "departments": 0,
+      "courses": 0
+    }
+  ],
+  "link_issues": {
+    "departments": [],
+    "courses": [],
+    "faculties": [],
+    "schools": []
+  }
+}

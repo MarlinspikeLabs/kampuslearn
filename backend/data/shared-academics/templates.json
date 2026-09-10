@@ -1,0 +1,1253 @@
+{
+  "version": 1,
+  "description": "Shared editable defaults, not institution-verified curricula. Based on the existing UNIMAID and Ramat catalogue, excluding test records.",
+  "templates": {
+    "university": {
+      "source_name": "University of Maiduguri",
+      "table": "faculties",
+      "units": [
+        {
+          "name": "Faculty of Basic Medical Sciences",
+          "code": "R08c0599ca",
+          "departments": [
+            {
+              "name": "Human Anatomy",
+              "code": "R2bb62ff77",
+              "courses": []
+            },
+            {
+              "name": "Nutrition and Dietetics",
+              "code": "R522cf7838",
+              "courses": []
+            },
+            {
+              "name": "Human Physiology",
+              "code": "R8f5b98fc4",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Science",
+          "code": "SCI",
+          "departments": [
+            {
+              "name": "Computer Science",
+              "code": "CSC",
+              "courses": [
+                {
+                  "code": "CSC301",
+                  "title": "Database Management Systems",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC202",
+                  "title": "Data Structures",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC401",
+                  "title": "Networks & Security",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC102",
+                  "title": "Programming Fundamentals",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC402",
+                  "title": "Machine Learning Fundamentals",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC101",
+                  "title": "Introduction to Computer Science",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC201",
+                  "title": "Web Technologies",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CSC302",
+                  "title": "Software Engineering",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                }
+              ]
+            },
+            {
+              "name": "Chemistry",
+              "code": "CHM",
+              "courses": []
+            },
+            {
+              "name": "Mathematics",
+              "code": "MTH",
+              "courses": []
+            },
+            {
+              "name": "Physics",
+              "code": "PHY",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Education",
+          "code": "EDU",
+          "departments": [
+            {
+              "name": "Continuing Education and Extension Services",
+              "code": "R2a4cbba76",
+              "courses": []
+            },
+            {
+              "name": "Physical and Health Education",
+              "code": "R4dba920a7",
+              "courses": []
+            },
+            {
+              "name": "Science Education",
+              "code": "R7303861f5",
+              "courses": []
+            },
+            {
+              "name": "Social Science Education",
+              "code": "R9a03a55c6",
+              "courses": []
+            },
+            {
+              "name": "Library and Information Science",
+              "code": "Rcb7e81ac8",
+              "courses": []
+            },
+            {
+              "name": "Arts Education",
+              "code": "Rdba533c6c",
+              "courses": []
+            },
+            {
+              "name": "Education & Computer Science",
+              "code": "ECS",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Basic Clinical Sciences",
+          "code": "R28a8e558f",
+          "departments": [
+            {
+              "name": "Haematology",
+              "code": "R1371c98e0",
+              "courses": []
+            },
+            {
+              "name": "Anatomic Pathology and Forensic Medicine",
+              "code": "R730814bbe",
+              "courses": []
+            },
+            {
+              "name": "Chemical Pathology",
+              "code": "Rb86dfe89d",
+              "courses": []
+            },
+            {
+              "name": "Medical Microbiology",
+              "code": "Ref361c78d",
+              "courses": []
+            },
+            {
+              "name": "Clinical Pharmacology and Therapeutics",
+              "code": "Rf8419bfc9",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Law",
+          "code": "LAW",
+          "departments": [
+            {
+              "name": "Sharia Law",
+              "code": "R0eb64186f",
+              "courses": []
+            },
+            {
+              "name": "Law",
+              "code": "LAW",
+              "courses": []
+            },
+            {
+              "name": "Public Law",
+              "code": "Re06469428",
+              "courses": []
+            },
+            {
+              "name": "Private Law",
+              "code": "Rfb7319e53",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Engineering",
+          "code": "ENG",
+          "departments": [
+            {
+              "name": "Petroleum and Gas Engineering",
+              "code": "R1601be7c2",
+              "courses": []
+            },
+            {
+              "name": "Electrical Engineering",
+              "code": "EEE",
+              "courses": [
+                {
+                  "code": "EEE402",
+                  "title": "Renewable Energy Systems",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE101",
+                  "title": "Circuit Theory I",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE102",
+                  "title": "Circuit Theory II",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE202",
+                  "title": "Electronic Devices & Circuits",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE301",
+                  "title": "Power Systems I",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE302",
+                  "title": "Control Systems",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE401",
+                  "title": "Power Electronics",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "EEE201",
+                  "title": "Electromagnetic Fields",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                }
+              ]
+            },
+            {
+              "name": "Chemical Engineering",
+              "code": "R6c6e34523",
+              "courses": []
+            },
+            {
+              "name": "Food Science and Technology",
+              "code": "R7454f91bc",
+              "courses": []
+            },
+            {
+              "name": "Civil Engineering",
+              "code": "CVE",
+              "courses": []
+            },
+            {
+              "name": "Agricultural and Environmental Resource Engineering",
+              "code": "Rc13934f4f",
+              "courses": []
+            },
+            {
+              "name": "Computer Engineering",
+              "code": "CPE",
+              "courses": [
+                {
+                  "code": "CPE104",
+                  "title": "Logic Design",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE101",
+                  "title": "Introduction to Computing",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE102",
+                  "title": "Engineering Mathematics I",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE403",
+                  "title": "Computer Graphics",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE304",
+                  "title": "Software Engineering",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE401",
+                  "title": "Microprocessors & Interfacing",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE303",
+                  "title": "Database Systems",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE201",
+                  "title": "Data Structures & Algorithms",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE103",
+                  "title": "Engineering Mathematics II",
+                  "level": "100",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE203",
+                  "title": "Object Oriented Programming",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE202",
+                  "title": "Computer Architecture",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE502",
+                  "title": "Final Year Project II",
+                  "level": "500",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 6,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE204",
+                  "title": "Discrete Mathematics",
+                  "level": "200",
+                  "level_type": "university",
+                  "semester": "second",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE302",
+                  "title": "Operating Systems",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE301",
+                  "title": "Computer Networks",
+                  "level": "300",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE402",
+                  "title": "Artificial Intelligence",
+                  "level": "400",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CPE501",
+                  "title": "Final Year Project I",
+                  "level": "500",
+                  "level_type": "university",
+                  "semester": "first",
+                  "credit_units": 6,
+                  "is_active": true
+                }
+              ]
+            },
+            {
+              "name": "Mechanical Engineering",
+              "code": "MEE",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Medicine",
+          "code": "MED",
+          "departments": [
+            {
+              "name": "Nursing Science",
+              "code": "NRS",
+              "courses": []
+            },
+            {
+              "name": "Medicine & Surgery",
+              "code": "MBS",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Agriculture",
+          "code": "R71c33a35f",
+          "departments": [
+            {
+              "name": "Agricultural Economics",
+              "code": "R1d10d465a",
+              "courses": []
+            },
+            {
+              "name": "Animal Science",
+              "code": "R1ee56b242",
+              "courses": []
+            },
+            {
+              "name": "Fisheries",
+              "code": "R2c21d56ce",
+              "courses": []
+            },
+            {
+              "name": "Soil Science",
+              "code": "R4dfc900af",
+              "courses": []
+            },
+            {
+              "name": "Forestry and Wildlife",
+              "code": "R55a3defc3",
+              "courses": []
+            },
+            {
+              "name": "Crop Protection",
+              "code": "R9a911799f",
+              "courses": []
+            },
+            {
+              "name": "Crop Production",
+              "code": "Ra6a8943e7",
+              "courses": []
+            },
+            {
+              "name": "Agricultural Extension",
+              "code": "Rb6e28f298",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Management Sciences",
+          "code": "MGT",
+          "departments": [
+            {
+              "name": "Accounting",
+              "code": "ACC",
+              "courses": []
+            },
+            {
+              "name": "Banking and Finance",
+              "code": "R243dfc266",
+              "courses": []
+            },
+            {
+              "name": "Public Administration",
+              "code": "R799aa633f",
+              "courses": []
+            },
+            {
+              "name": "Marketing",
+              "code": "R931b5dee3",
+              "courses": []
+            },
+            {
+              "name": "Business Administration",
+              "code": "BAD",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Arts",
+          "code": "ART",
+          "departments": [
+            {
+              "name": "Arabic Studies",
+              "code": "R358170bcd",
+              "courses": []
+            },
+            {
+              "name": "Theatre Arts",
+              "code": "R422591aa9",
+              "courses": []
+            },
+            {
+              "name": "English & Literary Studies",
+              "code": "ELS",
+              "courses": []
+            },
+            {
+              "name": "Islamic Studies",
+              "code": "R883dc0731",
+              "courses": []
+            },
+            {
+              "name": "History & International Studies",
+              "code": "HIS",
+              "courses": []
+            },
+            {
+              "name": "Languages and Linguistics",
+              "code": "Rd0c048056",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Life Sciences",
+          "code": "Ra2e165beb",
+          "departments": [
+            {
+              "name": "Biotechnology",
+              "code": "R617091ac5",
+              "courses": []
+            },
+            {
+              "name": "Biology",
+              "code": "R833060d34",
+              "courses": []
+            },
+            {
+              "name": "Microbiology",
+              "code": "R926ad2dd7",
+              "courses": []
+            },
+            {
+              "name": "Biochemistry",
+              "code": "Rda7498505",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Pharmacy",
+          "code": "Ra33e1d7f4",
+          "departments": [
+            {
+              "name": "Pharmaceutics & Pharmaceutical Technology",
+              "code": "R2c74b7889",
+              "courses": []
+            },
+            {
+              "name": "Pharmaceutical Chemistry",
+              "code": "R2d7e43fa6",
+              "courses": []
+            },
+            {
+              "name": "Pharmacology and Toxicology",
+              "code": "R61d685486",
+              "courses": []
+            },
+            {
+              "name": "Clinical Pharmacy & Pharmacy Administration",
+              "code": "R9f31bac0b",
+              "courses": []
+            },
+            {
+              "name": "Pharmacognosy",
+              "code": "Re25f3bb56",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Dentistry",
+          "code": "Raa709151b",
+          "departments": [
+            {
+              "name": "Preventive Dentistry",
+              "code": "R1804f7f46",
+              "courses": []
+            },
+            {
+              "name": "Restorative Dentistry",
+              "code": "R4929946fe",
+              "courses": []
+            },
+            {
+              "name": "Oral & Maxillofacial Surgery & Pathology",
+              "code": "R6e48953ed",
+              "courses": []
+            },
+            {
+              "name": "Child Dental Health",
+              "code": "R7dd4b0ef7",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Clinical Sciences",
+          "code": "Rc9b6c16dd",
+          "departments": [
+            {
+              "name": "ENT Surgery",
+              "code": "R08f37f89b",
+              "courses": []
+            },
+            {
+              "name": "Opthalmology",
+              "code": "R0a1484eb0",
+              "courses": []
+            },
+            {
+              "name": "Obstetrics and Gynacology",
+              "code": "R0a3ad0761",
+              "courses": []
+            },
+            {
+              "name": "Paediatrics",
+              "code": "R47a1b2126",
+              "courses": []
+            },
+            {
+              "name": "Mental Health",
+              "code": "R701a8e151",
+              "courses": []
+            },
+            {
+              "name": "Orthopaedics and Trauma",
+              "code": "R9bd6c9538",
+              "courses": []
+            },
+            {
+              "name": "Surgery",
+              "code": "Rbde0871c6",
+              "courses": []
+            },
+            {
+              "name": "Anaesthesia",
+              "code": "Rc7de71ee8",
+              "courses": []
+            },
+            {
+              "name": "Radiology",
+              "code": "Rd96103de6",
+              "courses": []
+            },
+            {
+              "name": "Community Medicine",
+              "code": "Re09ed1e7d",
+              "courses": []
+            },
+            {
+              "name": "Internal Medicine",
+              "code": "Refcad9726",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Environmental Studies",
+          "code": "Rdc2963a30",
+          "departments": [
+            {
+              "name": "Urban and Regional Planning",
+              "code": "R1ee1f196b",
+              "courses": []
+            },
+            {
+              "name": "Geomatics",
+              "code": "R2f992e773",
+              "courses": []
+            },
+            {
+              "name": "Architecture",
+              "code": "R74a2f9b22",
+              "courses": []
+            },
+            {
+              "name": "Fine Arts",
+              "code": "R88e051f66",
+              "courses": []
+            },
+            {
+              "name": "Industrial Design",
+              "code": "Ra6ea973d0",
+              "courses": []
+            },
+            {
+              "name": "Building",
+              "code": "Rfda0cb968",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "Faculty of Social Sciences",
+          "code": "SSC",
+          "departments": [
+            {
+              "name": "Sociology",
+              "code": "SOC",
+              "courses": []
+            },
+            {
+              "name": "Geography",
+              "code": "Rd742427d5",
+              "courses": []
+            },
+            {
+              "name": "Economics",
+              "code": "ECO",
+              "courses": []
+            },
+            {
+              "name": "Political Science",
+              "code": "Re7ff7e67d",
+              "courses": []
+            }
+          ]
+        }
+      ]
+    },
+    "polytechnic": {
+      "source_name": "Ramat Polytechnic",
+      "table": "schools",
+      "units": [
+        {
+          "name": "School of General Studies",
+          "code": "SGEN",
+          "departments": [
+            {
+              "name": "General Studies",
+              "code": "GST",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "School of Vocational/Technical Education",
+          "code": "R6b5237949",
+          "departments": [
+            {
+              "name": "Technical Education",
+              "code": "R2bfaa2f08",
+              "courses": []
+            },
+            {
+              "name": "Business Education",
+              "code": "R678db3a4b",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "School of Business Studies",
+          "code": "SBUS",
+          "departments": [
+            {
+              "name": "Accountancy",
+              "code": "ACT",
+              "courses": [
+                {
+                  "code": "ACT101",
+                  "title": "Principles of Accounting I",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT202",
+                  "title": "Financial Accounting",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT103",
+                  "title": "Principles of Accounting II",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT201",
+                  "title": "Cost Accounting",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT102",
+                  "title": "Business Mathematics",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT301",
+                  "title": "Auditing I",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT302",
+                  "title": "Taxation",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT402",
+                  "title": "HND Project",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 6,
+                  "is_active": true
+                },
+                {
+                  "code": "ACT401",
+                  "title": "Advanced Financial Accounting",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                }
+              ]
+            },
+            {
+              "name": "Business Administration",
+              "code": "BAD",
+              "courses": []
+            },
+            {
+              "name": "Marketing",
+              "code": "MKT",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "School of Information Technology",
+          "code": "SITS",
+          "departments": [
+            {
+              "name": "Computer Science",
+              "code": "CSC",
+              "courses": []
+            },
+            {
+              "name": "Information Technology",
+              "code": "IFT",
+              "courses": [
+                {
+                  "code": "IFT401",
+                  "title": "Cloud Computing",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT101",
+                  "title": "IT Fundamentals",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT301",
+                  "title": "Network Fundamentals",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT102",
+                  "title": "Web Design Basics",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT201",
+                  "title": "Database Fundamentals",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT202",
+                  "title": "Systems Analysis & Design",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT302",
+                  "title": "Web Application Development",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "IFT402",
+                  "title": "IT Project Management",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "School of Environmental Studies",
+          "code": "SENV",
+          "departments": [
+            {
+              "name": "Survey and Geoinformatics",
+              "code": "R153ecd2d4",
+              "courses": []
+            },
+            {
+              "name": "Urban & Regional Planning",
+              "code": "URP",
+              "courses": []
+            },
+            {
+              "name": "Quantity Surveying",
+              "code": "R7f2759fde",
+              "courses": []
+            },
+            {
+              "name": "Estate Management",
+              "code": "R97b6cf54f",
+              "courses": []
+            },
+            {
+              "name": "Architectural Technology",
+              "code": "Rdb38540d8",
+              "courses": []
+            },
+            {
+              "name": "Building Technology",
+              "code": "BLT",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "School of Agric Tech",
+          "code": "AGT",
+          "departments": []
+        },
+        {
+          "name": "School of Engineering",
+          "code": "SENG",
+          "departments": [
+            {
+              "name": "Computer Engineering Technology",
+              "code": "CET",
+              "courses": [
+                {
+                  "code": "CET401",
+                  "title": "Industrial Automation",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET101",
+                  "title": "Introduction to Computer Engineering",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CET104",
+                  "title": "Electronic Circuits",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET201",
+                  "title": "Microprocessor Systems",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET202",
+                  "title": "Computer Programming II",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET204",
+                  "title": "ND Project",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 4,
+                  "is_active": true
+                },
+                {
+                  "code": "CET301",
+                  "title": "Advanced Microprocessors",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET203",
+                  "title": "Data Communications",
+                  "level": "ND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 2,
+                  "is_active": true
+                },
+                {
+                  "code": "CET103",
+                  "title": "Computer Programming I",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET302",
+                  "title": "Network Administration",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET402",
+                  "title": "HND Project",
+                  "level": "HND2",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 6,
+                  "is_active": true
+                },
+                {
+                  "code": "CET102",
+                  "title": "Digital Electronics",
+                  "level": "ND1",
+                  "level_type": "polytechnic",
+                  "semester": "first",
+                  "credit_units": 3,
+                  "is_active": true
+                },
+                {
+                  "code": "CET303",
+                  "title": "Embedded Systems",
+                  "level": "HND1",
+                  "level_type": "polytechnic",
+                  "semester": "second",
+                  "credit_units": 3,
+                  "is_active": true
+                }
+              ]
+            },
+            {
+              "name": "Mechanical Engineering Technology",
+              "code": "MET",
+              "courses": []
+            },
+            {
+              "name": "Civil Engineering",
+              "code": "R849268eb7",
+              "courses": []
+            },
+            {
+              "name": "Agric and Bio. Engineering",
+              "code": "Rba1c8c525",
+              "courses": []
+            },
+            {
+              "name": "Electrical Engineering Technology",
+              "code": "EET",
+              "courses": []
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,6 +1,7 @@
 'use strict';
 const router = require('express').Router();
 const { query, getClient } = require('../config/database');
+const { seedInstitution } = require('../services/academicTemplates');
 const { authenticate, authorize } = require('../middleware/auth');
 const { success, error } = require('../utils/response');
 router.use(authenticate, authorize('admin'));
@@ -25,7 +26,16 @@ function institution(body) {
  if(website && !/^https?:\/\/[^\s]+$/i.test(website)) fail('Website must begin with https:// or http://');
  return [name(body.name),code(body.short_name),type,String(body.state||'').trim()||null,String(body.city||'').trim()||null,website||null];
 }
-router.post('/institutions',run(async(req,res)=>success(res,(await query(`INSERT INTO institutions(name,short_name,type,state,city,website_url,is_verified) VALUES($1,$2,$3,$4,$5,$6,TRUE) RETURNING *`,institution(req.body))).rows[0],'Institution created',201)));
+router.post('/institutions',run(async(req,res)=>{
+ const values=institution(req.body),client=await getClient();
+ try {
+  await client.query('BEGIN');
+  const created=(await client.query(`INSERT INTO institutions(name,short_name,type,state,city,website_url,is_verified) VALUES($1,$2,$3,$4,$5,$6,TRUE) RETURNING *`,values)).rows[0];
+  await seedInstitution(client,created.id);
+  await client.query('COMMIT');
+  success(res,created,'Institution created with editable academic defaults',201);
+ } catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
+}));
 router.patch('/institutions/:id',run(async(req,res)=>{
  const values=institution(req.body);
  const result=await query(`UPDATE institutions SET name=$1,short_name=$2,state=$4,city=$5,website_url=$6 WHERE id=$7 AND type=$3 RETURNING *`,[...values,req.params.id]);
@@ -78,6 +88,8 @@ for(const table of ['institutions','faculties','schools','departments','courses'
   if(!row.rows.length) fail('Record not found',404);
   const refs=await client.query(`SELECT n.nspname AS schema_name,t.relname AS table_name,a.attname AS column_name FROM pg_constraint c JOIN pg_class t ON t.oid=c.conrelid JOIN pg_namespace n ON n.oid=t.relnamespace JOIN pg_attribute a ON a.attrelid=c.conrelid AND a.attnum=ANY(c.conkey) WHERE c.contype='f' AND c.confrelid=$1::regclass`,[table]);
   for(const r of refs.rows) {
+   // Seeding metadata may cascade; actual academic/user records still block deletion.
+   if(table==='institutions' && r.schema_name==='public' && r.table_name==='academic_template_assignments') continue;
    const used=await client.query(`SELECT 1 FROM ${ident(r.schema_name)}.${ident(r.table_name)} WHERE ${ident(r.column_name)}::text=$1 LIMIT 1`,[req.params.id]);
    if(used.rows.length) fail('This record is in use. Move or remove its linked records first.',409);
   }
