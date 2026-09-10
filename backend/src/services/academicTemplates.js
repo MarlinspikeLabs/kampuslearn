@@ -66,6 +66,8 @@ async function seedInstitution(client,institutionId){
  await client.query('SELECT id FROM institutions WHERE id=$1 FOR UPDATE',[institutionId]);
  const result=plan(await readCurrent(client,institutionId));
  await writePlan(client,result);
+ await require('./courseDefaults').seedInstitutionCourses(client,institutionId);
  return result.assignments[0]?.summary||{already_seeded:true};
 }
 module.exports={plan,readCurrent,writePlan,seedInstitution};
+

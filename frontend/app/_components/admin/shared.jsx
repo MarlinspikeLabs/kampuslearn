@@ -5,7 +5,14 @@ import toast from 'react-hot-toast';
 import {X,RefreshCw,Search,ChevronLeft,ChevronRight} from 'lucide-react';
 import s from './Admin.module.css';
 export {api,s};
-export const message=e=>e.response?.data?.message||'Unable to complete the request. Please try again.';
+export const message=e=>{
+ const detail=e.response?.data?.message;
+ if(typeof detail==='string'&&detail.trim())return detail;
+ if(e.response?.status===413)return 'The server rejected this upload because of its size. Files can be up to 50 MB; contact support if a smaller file fails.';
+ if(e.code==='ECONNABORTED'||e.code==='ETIMEDOUT')return 'The request took too long. Check the content library before retrying the upload.';
+ if(!e.response&&e.code==='ERR_NETWORK')return 'Connection interrupted. Check your internet connection and the content library before retrying.';
+ return 'Unable to complete the request. Please try again.';
+};
 export const number=v=>Number(v||0).toLocaleString();
 export const date=v=>v?new Date(v).toLocaleDateString('en-NG',{day:'numeric',month:'short',year:'numeric'}):'—';
 export function useData(url){
@@ -33,3 +40,4 @@ export function Form({fields,initial={},onSave,onCancel,submit='Save changes'}){
 }
 export function Confirm({title,children,onClose,onConfirm}){const [busy,set]=useState(false);const [err,setErr]=useState('');return <Modal title={title} onClose={()=>!busy&&onClose()}><p>{children}</p>{err&&<p role="alert" className={s.error}>{err}</p>}<div className={s.actions}><button disabled={busy} onClick={onClose}>Cancel</button><button className={s.primary} disabled={busy} onClick={async()=>{set(true);try{await onConfirm();onClose();}catch(e){setErr(message(e));}finally{set(false);}}}>{busy?'Working…':'Confirm'}</button></div></Modal>;}
 export function saved(text='Changes saved'){toast.success(text);}
+

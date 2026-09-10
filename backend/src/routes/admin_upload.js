@@ -164,7 +164,8 @@ router.post('/past-question', authenticate, superOnly, upload.single('file'), as
 
 router.use((err, req, res, next) => {
   if (!err) return next();
-  return error(res, err.code === 'LIMIT_FILE_SIZE' ? 'Each file must be 50 MB or smaller' : 'Upload rejected. Use PDF, Word, PowerPoint or text files.', 400);
+  return error(res, err.code === 'LIMIT_FILE_SIZE' ? 'Each file must be 50 MB or smaller' : 'Upload rejected. Use PDF, Word, PowerPoint or text files.', err.code === 'LIMIT_FILE_SIZE' ? 413 : 400);
 });
 
 module.exports = router;
+

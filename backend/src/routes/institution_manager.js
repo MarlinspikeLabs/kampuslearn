@@ -52,7 +52,18 @@ for(const unit of ['faculties','schools']) {
   success(res,r.rows[0],'Academic unit created',201);
  }));
  router.get(`/${unit}/:id/departments`,run(async(req,res)=>success(res,(await query(`SELECT d.*,(SELECT count(*) FROM courses WHERE department_id=d.id) course_count FROM departments d WHERE ${column}=$1 ORDER BY name`,[req.params.id])).rows)));
- router.post(`/${unit}/:id/departments`,run(async(req,res)=>success(res,(await query(`INSERT INTO departments(${column},name,code) VALUES($1,$2,$3) RETURNING *`,[req.params.id,name(req.body.name),code(req.body.code)])).rows[0],'Department created',201)));
+ router.post(`/${unit}/:id/departments`,run(async(req,res)=>{
+  const values=[req.params.id,name(req.body.name),code(req.body.code)],client=await getClient();
+  try {
+   await client.query('BEGIN');
+   const parent=(await client.query(`SELECT institution_id FROM ${unit} WHERE id=$1`,[req.params.id])).rows[0];
+   if(!parent) fail('Academic unit not found',404);
+   await client.query('SELECT id FROM institutions WHERE id=$1 FOR UPDATE',[parent.institution_id]);
+   const created=(await client.query(`INSERT INTO departments(${column},name,code) VALUES($1,$2,$3) RETURNING *`,values)).rows[0];
+   await require('../services/courseDefaults').seedInstitutionCourses(client,parent.institution_id,created.id);
+   await client.query('COMMIT');success(res,created,'Department created with editable starter courses',201);
+  }catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
+ }));
 }
 router.get('/departments/:id/courses',run(async(req,res)=>success(res,(await query('SELECT * FROM courses WHERE department_id=$1 ORDER BY level,semester,code',[req.params.id])).rows)));
 async function courseValues(body,departmentId) {
@@ -90,6 +101,7 @@ for(const table of ['institutions','faculties','schools','departments','courses'
   for(const r of refs.rows) {
    // Seeding metadata may cascade; actual academic/user records still block deletion.
    if(table==='institutions' && r.schema_name==='public' && r.table_name==='academic_template_assignments') continue;
+   if(table==='departments' && r.schema_name==='public' && r.table_name==='course_default_assignments') continue;
    const used=await client.query(`SELECT 1 FROM ${ident(r.schema_name)}.${ident(r.table_name)} WHERE ${ident(r.column_name)}::text=$1 LIMIT 1`,[req.params.id]);
    if(used.rows.length) fail('This record is in use. Move or remove its linked records first.',409);
   }
@@ -98,3 +110,4 @@ for(const table of ['institutions','faculties','schools','departments','courses'
  } catch(e){await client.query('ROLLBACK');throw e;}finally{client.release();}
 }));
 module.exports=router;
+
