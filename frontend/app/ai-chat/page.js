@@ -8,21 +8,75 @@ import {
   Loader2, BookOpen, Zap, AlertCircle, User
 } from 'lucide-react';
 import toast from 'react-hot-toast';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 
-// Render markdown-like formatting
+// Render full Markdown including mathematical notation.
 function MessageContent({ content }) {
-  const formatted = content
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;')
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    .replace(/\n/g, '<br/>');
   return (
-    <div className="text-sm leading-relaxed"
-         dangerouslySetInnerHTML={{ __html: formatted }} />
+    <div className="text-sm leading-relaxed break-words">
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm, remarkMath]}
+        rehypePlugins={[rehypeKatex]}
+        components={{
+          p: ({ children }) => (
+            <p className="mb-3 last:mb-0">{children}</p>
+          ),
+          ul: ({ children }) => (
+            <ul className="list-disc pl-5 mb-3 space-y-1">{children}</ul>
+          ),
+          ol: ({ children }) => (
+            <ol className="list-decimal pl-5 mb-3 space-y-1">{children}</ol>
+          ),
+          li: ({ children }) => <li>{children}</li>,
+          h1: ({ children }) => (
+            <h1 className="text-lg font-semibold mt-4 mb-2">{children}</h1>
+          ),
+          h2: ({ children }) => (
+            <h2 className="text-base font-semibold mt-4 mb-2">{children}</h2>
+          ),
+          h3: ({ children }) => (
+            <h3 className="text-sm font-semibold mt-4 mb-2">{children}</h3>
+          ),
+          blockquote: ({ children }) => (
+            <blockquote className="border-l-4 border-gray-300 pl-3 my-3 text-gray-600">
+              {children}
+            </blockquote>
+          ),
+          code: ({ children }) => (
+            <code className="bg-gray-100 rounded px-1 py-0.5 text-xs">
+              {children}
+            </code>
+          ),
+          pre: ({ children }) => (
+            <pre className="overflow-x-auto bg-gray-900 text-gray-100 rounded-lg p-3 my-3 text-xs">
+              {children}
+            </pre>
+          ),
+          table: ({ children }) => (
+            <div className="overflow-x-auto my-3">
+              <table className="min-w-full border-collapse text-sm">
+                {children}
+              </table>
+            </div>
+          ),
+          th: ({ children }) => (
+            <th className="border border-gray-200 bg-gray-50 px-2 py-1 text-left">
+              {children}
+            </th>
+          ),
+          td: ({ children }) => (
+            <td className="border border-gray-200 px-2 py-1">
+              {children}
+            </td>
+          ),
+        }}
+      >
+        {content}
+      </ReactMarkdown>
+    </div>
   );
 }
 
@@ -144,8 +198,13 @@ export default function AIChatPage() {
     }
   }, [profile]);
 
-  // Welcome message
+  // Reset chat state whenever the authenticated user changes.
+  // Conversation IDs are user-owned and must never carry across sessions.
   useEffect(() => {
+    setConvoId(null);
+    setSelectedCourse('');
+    setConversations([]);
+    setSendError('');
     setMessages([{
       role: 'assistant',
       content: `Hello ${user?.full_name?.split(' ')[0] || ''}! I'm your study mate.\n\nLet's get you exam-ready. I can explain a difficult concept, give you practice questions, or help you plan your revision.\n\nSelect a course to use matching notes supplied by our academic team. I'll show you when an answer is a general explanation.\n\nWhat would you like to understand today?`,
@@ -168,11 +227,28 @@ export default function AIChatPage() {
     setLoading(true);
 
     try {
-      const res = await api.post('/ai/chat', {
-        message:         msg,
+      const payload = {
+        message: msg,
         conversation_id: convoId || undefined,
-        course_id:       selectedCourse || undefined,
-      }, { timeout: 60000 });
+        course_id: selectedCourse || undefined,
+      };
+
+      let res;
+      try {
+        res = await api.post('/ai/chat', payload, { timeout: 60000 });
+      } catch (err) {
+        // Recover once if this browser tab holds a stale conversation ID.
+        if (err.response?.status === 404 && convoId) {
+          setConvoId(null);
+          res = await api.post('/ai/chat', {
+            message: msg,
+            course_id: selectedCourse || undefined,
+          }, { timeout: 60000 });
+        } else {
+          throw err;
+        }
+      }
+
       const data = res.data.data;
       setConvoId(data.conversation_id);
       setMessages(prev => [...prev, {
