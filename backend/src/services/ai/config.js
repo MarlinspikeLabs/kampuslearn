@@ -14,7 +14,7 @@ function getConfig() {
   return {
     provider: env.AI_PROVIDER || 'disabled',
     apiKey: env.GEMINI_API_KEY || '',
-    model: env.GEMINI_MODEL || 'gemini-2.5-flash-lite',
+    model: env.GEMINI_MODEL || 'gemini-3.5-flash-lite',
     billingTier: env.GEMINI_BILLING_TIER || 'free',
     monthlyBudgetMicros: 0,
     globalDailyLimit: Math.floor(number('AI_GLOBAL_DAILY_LIMIT', 20, 1, 10000)),
@@ -32,7 +32,7 @@ function aiError(message, status = 503, code = 'AI_UNAVAILABLE') {
 function requireGemini(config = getConfig()) {
   if (config.provider !== 'gemini' || !config.apiKey) throw aiError('Your study mate is being connected. Please try again shortly.');
   // This release has no paid mode or model fallback. Google project billing is managed in AI Studio.
-  if (config.billingTier !== 'free' || config.model !== 'gemini-2.5-flash-lite') throw aiError('The study service configuration needs attention.');
+  if (config.billingTier !== 'free' || config.model !== 'gemini-3.5-flash-lite') throw aiError('The study service configuration needs attention.');
   return config;
 }
 module.exports = { getConfig, requireGemini, aiError, configPath };

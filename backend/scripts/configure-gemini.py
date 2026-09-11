@@ -10,10 +10,10 @@ target = backend / '.env.gemini'
 print('Use a dedicated Google AI Studio project showing Free tier, with billing disabled.')
 print('This script cannot inspect or change Google billing. Do not use a paid-project key.')
 key = getpass.getpass('Paste your Gemini API key (hidden): ').strip()
-if len(key) < 20 or not all(c.isalnum() or c in '_-' for c in key):
-    raise SystemExit('Key format looks invalid. Configuration was not changed.')
+if len(key) < 20:
+    raise SystemExit('Key looks too short. Configuration was not changed.')
 content = '\n'.join([
-    'AI_PROVIDER=gemini', 'GEMINI_MODEL=gemini-2.5-flash-lite',
+    'AI_PROVIDER=gemini', 'GEMINI_MODEL=gemini-3.5-flash-lite',
     'GEMINI_API_KEY=' + key, 'GEMINI_BILLING_TIER=free',
     'AI_GLOBAL_DAILY_LIMIT=20', 'AI_GLOBAL_MINUTE_LIMIT=4',
     'AI_DAILY_LIMIT=10', 'AI_MAX_CONCURRENT=1', 'AI_MAX_OUTPUT_TOKENS=1024', '',

@@ -63,7 +63,7 @@ router.get('/usage',async(req,res)=>{
   try{
     const config=getConfig();
     return success(res,{...await budget.dailyUsage(req.user.id,config),
-      available:config.provider==='gemini'&&Boolean(config.apiKey)&&config.model==='gemini-2.5-flash-lite'&&config.billingTier==='free',
+      available:config.provider==='gemini'&&Boolean(config.apiKey)&&config.model==='gemini-3.5-flash-lite'&&config.billingTier==='free',
       provider:config.provider==='gemini'?'gemini':'disabled', material_support:'indexed_pdf_text'});
   }catch(err){return respondError(res,err);}
 });

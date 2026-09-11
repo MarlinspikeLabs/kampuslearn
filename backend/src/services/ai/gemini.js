@@ -45,7 +45,7 @@ Keep this answer within about 450 words unless the student requests a short answ
   return {
     contents: history,
     systemInstruction: { parts: [{ text: instructions }] },
-    generationConfig: { temperature: 0.3, candidateCount: 1, maxOutputTokens: config.maxOutput, thinkingConfig: { thinkingBudget: 0 } },
+    generationConfig: { candidateCount: 1, maxOutputTokens: config.maxOutput, thinkingConfig: { thinkingLevel: 'minimal' } },
   };
 }
 async function prepare(messages, course, user, sources, config = requireGemini()) {
