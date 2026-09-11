@@ -93,7 +93,7 @@ function Message({ msg }) {
       </div>
 
       {/* Bubble */}
-      <div className={`max-w-[80%] px-4 py-3 rounded-2xl text-sm
+      <div className={`max-w-[calc(100%-2.75rem)] sm:max-w-[80%] px-3.5 py-3 rounded-2xl text-sm
         ${isUser
           ? 'bg-blue-600 text-white rounded-tr-sm'
           : 'bg-white border border-gray-200 text-gray-800 rounded-tl-sm shadow-sm'}`}>
@@ -207,7 +207,7 @@ export default function AIChatPage() {
     setSendError('');
     setMessages([{
       role: 'assistant',
-      content: `Hello ${user?.full_name?.split(' ')[0] || ''}! I'm your study mate.\n\nLet's get you exam-ready. I can explain a difficult concept, give you practice questions, or help you plan your revision.\n\nSelect a course to use matching notes supplied by our academic team. I'll show you when an answer is a general explanation.\n\nWhat would you like to understand today?`,
+      content: `Hi ${user?.full_name?.split(' ')[0] || 'there'} 👋\n\nWhat are we working on today?\n\nPick a course for answers grounded in your KampusLearn materials, or just ask me anything.`,
       created_at: new Date().toISOString()
     }]);
   }, [user?.id]);
@@ -299,7 +299,7 @@ export default function AIChatPage() {
     setSendError('');
     setMessages([{
       role: 'assistant',
-      content: 'Starting a new conversation. What would you like to study?',
+      content: `Fresh chat, ${user?.full_name?.split(' ')[0] || 'there'} 👋 What do you want to tackle?`,
       created_at: new Date().toISOString()
     }]);
     setConvoId(null);
@@ -317,18 +317,18 @@ export default function AIChatPage() {
 
   return (
     <AppLayout title="AI Tutor">
-      <div className="max-w-4xl mx-auto h-[calc(100vh-8rem)] flex flex-col gap-4">
+      <div className="max-w-4xl mx-auto h-[calc(100dvh-9.5rem)] md:h-[calc(100vh-8rem)] flex flex-col gap-3 md:gap-4">
 
         {/* Controls row */}
-        <div className="flex items-center gap-3 flex-wrap">
+        <div className="grid grid-cols-2 gap-2 md:flex md:items-center md:gap-3 md:flex-wrap">
 
           {/* Course selector */}
-          <div className="relative">
+          <div className="relative col-span-2 md:col-span-1">
             <button disabled={loading} onClick={() => setShowCourses(!showCourses)}
-                    className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg
-                               px-3 py-2 text-sm text-gray-700 hover:border-blue-400 transition-colors">
+                    className="w-full md:w-auto flex items-center gap-2 bg-white border border-gray-200 rounded-xl
+                               px-3 py-2.5 text-sm text-gray-700 hover:border-blue-400 transition-colors">
               <BookOpen className="w-4 h-4 text-blue-600" />
-              <span className="max-w-[180px] truncate">
+              <span className="flex-1 md:flex-none max-w-[240px] text-left truncate">
                 {selectedCourseName || 'Select course (optional)'}
               </span>
               <ChevronDown className="w-4 h-4 text-gray-400" />
@@ -358,16 +358,16 @@ export default function AIChatPage() {
 
           {/* History button */}
           <button onClick={() => setShowHistory(!showHistory)}
-                  className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg
-                             px-3 py-2 text-sm text-gray-700 hover:border-blue-400 transition-colors">
+                  className="w-full flex items-center justify-center gap-2 bg-white border border-gray-200 rounded-xl
+                             px-3 py-2.5 text-sm text-gray-700 hover:border-blue-400 transition-colors md:w-auto">
             <Zap className="w-4 h-4 text-purple-600" />
             History
           </button>
 
           {/* New chat */}
           <button disabled={loading} onClick={newConversation}
-                  className="flex items-center gap-2 bg-blue-600 text-white rounded-lg
-                             px-3 py-2 text-sm hover:bg-blue-700 transition-colors ml-auto">
+                  className="w-full flex items-center justify-center gap-2 bg-teal-600 text-white rounded-xl
+                             px-3 py-2.5 text-sm hover:bg-teal-700 transition-colors md:w-auto md:ml-auto">
             <Plus className="w-4 h-4" />
             New chat
           </button>
@@ -393,11 +393,11 @@ export default function AIChatPage() {
         )}
 
         {/* Chat window */}
-        <div className="flex-1 bg-gray-50 rounded-2xl border border-gray-200 flex flex-col
-                        overflow-hidden min-h-0">
+        <div className="flex-1 bg-gray-50 md:rounded-2xl md:border md:border-gray-200 flex flex-col
+                        overflow-hidden min-h-0 -mx-3 md:mx-0">
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5">
+          <div className="flex-1 overflow-y-auto px-3 py-3 sm:p-6 space-y-4 md:space-y-5">
             {messages.map((msg, i) => (
               <Message key={i} msg={msg} />
             ))}
@@ -407,13 +407,13 @@ export default function AIChatPage() {
 
           {/* Suggestions */}
           {messages.length <= 1 && (
-            <div className="px-4 pb-2">
+            <div className="px-3 pb-3 md:px-4 md:pb-2">
               <p className="text-xs text-gray-400 mb-2">Try asking:</p>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2 overflow-x-auto pb-1 snap-x scrollbar-hide md:flex-wrap md:overflow-visible">
                 {SUGGESTIONS.map(s => (
                   <button key={s} onClick={() => sendMessage(s)}
-                          className="text-xs bg-white border border-gray-200 text-gray-600
-                                     px-3 py-1.5 rounded-full hover:border-blue-400 hover:text-blue-600
+                          className="flex-shrink-0 snap-start whitespace-nowrap text-xs bg-white border border-gray-200 text-gray-600
+                                     px-3 py-2 rounded-full hover:border-blue-400 hover:text-blue-600
                                      transition-colors">
                     {s}
                   </button>
@@ -438,8 +438,8 @@ export default function AIChatPage() {
           )}
 
           {/* Input */}
-          <div className="p-4 border-t border-gray-200 bg-white">
-            <p className="mb-2 text-xs text-gray-500">Free AI pilot · Keep personal and confidential information out of your study questions.</p>
+          <div className="p-3 md:p-4 border-t border-gray-200 bg-white">
+            <p className="hidden sm:block mb-2 text-xs text-gray-500">Free AI pilot · Keep personal and confidential information out of your study questions.</p>
             {usage?.available === false && <p className="mb-3 text-sm text-gray-600" role="status">Your study mate is being connected. Your course materials and practice are available in Learn.</p>}
             {sendError && <p className="mb-3 text-sm text-red-700" role="alert">{sendError}</p>}
             <div className="flex gap-3 items-end">
@@ -478,7 +478,7 @@ export default function AIChatPage() {
                   : <Send className="w-5 h-5" />}
               </button>
             </div>
-            <p className="text-xs text-gray-400 mt-2 text-center">
+            <p className="hidden md:block text-xs text-gray-400 mt-2 text-center">
               Press Enter to send · Shift+Enter for new line
             </p>
           </div>

@@ -93,7 +93,10 @@ async function generate(req,res,isQuiz) {
     const weak=await query(`SELECT t.name FROM student_knowledge sk LEFT JOIN topics t ON t.id=sk.topic_id
       WHERE sk.user_id=$1 AND ($2::uuid IS NULL OR sk.course_id=$2) AND sk.strength='weak'
       ORDER BY sk.knowledge_level ASC LIMIT 5`,[req.user.id,effectiveCourse]);
-    const userContext={weakTopics:weak.rows.map(r=>r.name).filter(Boolean)};
+    const userContext={
+      firstName: req.user.full_name?.trim().split(/\s+/)[0] || '',
+      weakTopics: weak.rows.map(r=>r.name).filter(Boolean)
+    };
     const sources=await retrieve(effectiveCourse, isQuiz?(body.topic?.trim()||course.title):message);
     const sourceLinks=publicSources(sources);
     const grounding=sources.length?'course_excerpts':'general';
