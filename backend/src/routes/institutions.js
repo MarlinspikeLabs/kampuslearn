@@ -48,6 +48,152 @@ router.get('/:id', async (req, res) => {
 });
 
 // ════════════════════════════════════════════════════════════
+// GET /api/institutions/:id/programmes
+// Polytechnic ND/HND programmes
+// Default: active programmes only
+// ?award=ND | ?award=HND
+// ?include_expired=true
+// ════════════════════════════════════════════════════════════
+router.get('/:id/programmes', async (req, res) => {
+  try {
+    const { award, include_expired } = req.query;
+
+    if (award && !['ND', 'HND'].includes(award)) {
+      return error(res, 'award must be ND or HND', 400);
+    }
+
+    const inst = await query(
+      `SELECT id, type
+       FROM institutions
+       WHERE id = $1 AND is_active = TRUE`,
+      [req.params.id]
+    );
+
+    if (inst.rows.length === 0) {
+      return error(res, 'Institution not found', 404);
+    }
+
+    if (inst.rows[0].type !== 'polytechnic') {
+      return error(
+        res,
+        'Programmes endpoint currently supports polytechnics only',
+        400
+      );
+    }
+
+    const params = [req.params.id];
+
+    let sql = `
+      SELECT
+        id,
+        name,
+        award_type,
+        accreditation_status,
+        category,
+        year_granted_text,
+        approved_stream,
+        expiration_date,
+        is_active
+      FROM academic_programmes
+      WHERE institution_id = $1
+        AND (
+      regulator = 'NBTE'
+      OR programme_source = 'generic_seed'
+    )
+    `;
+
+    if (include_expired !== 'true') {
+      sql += ` AND is_active = TRUE`;
+    }
+
+    if (award) {
+      params.push(award);
+      sql += ` AND award_type = $${params.length}`;
+    }
+
+    sql += `
+      ORDER BY
+        CASE award_type
+          WHEN 'ND' THEN 1
+          WHEN 'HND' THEN 2
+          ELSE 9
+        END,
+        name
+    `;
+
+    const result = await query(sql, params);
+
+    return success(res, result.rows);
+
+  } catch (err) {
+    console.error('programmes fetch error:', err.message);
+    return error(res, 'Failed to fetch programmes', 500);
+  }
+});
+
+// ════════════════════════════════════════════════════════════
+// GET /api/institutions/programmes/:programmeId/courses
+// Courses linked to a programme
+// Optional: ?level=ND1
+// ════════════════════════════════════════════════════════════
+router.get('/programmes/:programmeId/courses', async (req, res) => {
+  try {
+    const { level } = req.query;
+
+    const validLevels = ['ND1','ND2','HND1','HND2'];
+
+    if (level && !validLevels.includes(level)) {
+      return error(res, 'Invalid polytechnic level', 400);
+    }
+
+    const params = [req.params.programmeId];
+
+    let sql = `
+      SELECT
+        c.id,
+        c.code,
+        c.title,
+        c.credit_units,
+        pc.level,
+        COALESCE(pc.semester, c.semester) AS semester,
+        c.description,
+        pc.is_core
+      FROM programme_courses pc
+      JOIN courses c
+        ON c.id = pc.course_id
+      WHERE pc.programme_id = $1
+        AND c.is_active = TRUE
+    `;
+
+    if (level) {
+      params.push(level);
+      sql += ` AND pc.level = $${params.length}`;
+    }
+
+    sql += `
+      ORDER BY
+        CASE pc.level
+          WHEN 'ND1' THEN 1
+          WHEN 'ND2' THEN 2
+          WHEN 'HND1' THEN 3
+          WHEN 'HND2' THEN 4
+          ELSE 9
+        END,
+        COALESCE(pc.semester, c.semester),
+        c.code
+    `;
+
+    const result = await query(sql, params);
+
+    return success(res, result.rows);
+
+  } catch (err) {
+    console.error('programme courses fetch error:', err.message);
+    return error(res, 'Failed to fetch programme courses', 500);
+  }
+});
+
+// ════════════════════════════════════════════════════════════
 // GET /api/institutions/:id/faculties
 // Faculties for a university
 // ════════════════════════════════════════════════════════════
@@ -284,8 +430,8 @@ router.get('/departments/:deptId/levels', async (req, res) => {
 router.post('/', authenticate, authorize('admin'), async (req, res) => {
   try {
     const { name, short_name, type, state, city, website_url } = req.body;
-    if (!name || !short_name || !type || !state || !city) {
-      return error(res, 'name, short_name, type, state, city are required', 400);
+    if (!name || !type || !state) {
+      return error(res, 'name, type, and state are required', 400);
     }
     if (!['university', 'polytechnic'].includes(type)) {
       return error(res, 'type must be university or polytechnic', 400);
@@ -294,7 +440,7 @@ router.post('/', authenticate, authorize('admin'), async (req, res) => {
       INSERT INTO institutions (name, short_name, type, state, city, website_url)
       VALUES ($1, $2, $3, $4, $5, $6)
       RETURNING id, name, short_name, type, state, city
-    `, [name, short_name.toUpperCase(), type, state, city, website_url || null]);
+    `, [name, short_name ? short_name.trim().toUpperCase() : null, type, state, city || null, website_url || null]);
 
     return success(res, result.rows[0], 'Institution created', 201);
   } catch (err) {

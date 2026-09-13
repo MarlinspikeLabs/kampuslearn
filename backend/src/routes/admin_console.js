@@ -58,7 +58,23 @@ router.get('/content',run(async(req,res)=>{
  if(req.query.search){p.push('%'+String(req.query.search).slice(0,160)+'%');cond.push(`(x.title ILIKE $${p.length} OR c.code ILIKE $${p.length} OR x.generic_subject ILIKE $${p.length})`);}
  if(req.query.institution){p.push(req.query.institution);cond.push(`(i.id::text=$${p.length} OR x.content_scope='generic')`);}
  if(['institution','generic'].includes(req.query.scope)){p.push(req.query.scope);cond.push(`x.content_scope=$${p.length}`);}
- const from=`FROM (${content}) x LEFT JOIN courses c ON c.id=x.course_id LEFT JOIN departments d ON d.id=c.department_id LEFT JOIN faculties f ON f.id=d.faculty_id LEFT JOIN schools s ON s.id=d.school_id LEFT JOIN institutions i ON i.id=COALESCE(f.institution_id,s.institution_id) LEFT JOIN users u ON u.id=x.uploaded_by WHERE ${cond.join(' AND ')}`;
+ const from=`FROM (${content}) x
+ LEFT JOIN courses c ON c.id=x.course_id
+ LEFT JOIN departments d ON d.id=c.department_id
+ LEFT JOIN faculties f ON f.id=d.faculty_id
+ LEFT JOIN schools s ON s.id=d.school_id
+ LEFT JOIN LATERAL (
+   SELECT ap.institution_id
+   FROM programme_courses pc
+   JOIN academic_programmes ap ON ap.id=pc.programme_id
+   WHERE pc.course_id=c.id
+   ORDER BY ap.is_active DESC,ap.id
+   LIMIT 1
+ ) pi ON TRUE
+ LEFT JOIN institutions i
+   ON i.id=COALESCE(f.institution_id,s.institution_id,pi.institution_id)
+ LEFT JOIN users u ON u.id=x.uploaded_by
+ WHERE ${cond.join(' AND ')}`;
  const total=Number((await query(`SELECT count(*) ${from}`,p)).rows[0].count);
  const r=await query(`SELECT x.*,COALESCE(c.code,'GENERIC') course_code,COALESCE(c.title,x.generic_subject) course_title,CASE WHEN x.content_scope='generic' THEN 'All institutions' ELSE i.name END institution_name,u.full_name uploader ${from} ORDER BY x.created_at DESC,x.id LIMIT $${p.length+1} OFFSET $${p.length+2}`,[...p,limit,(page-1)*limit]);
  success(res,{rows:r.rows,total,page,pages:Math.max(1,Math.ceil(total/limit))});

@@ -10,8 +10,21 @@ import styles from './StudentEntry.module.css';
 import live from './LiveAccount.module.css';
 
 const UNI_LEVELS = ['100','200','300','400','500','600'];
-const POLY_LEVELS = ['ND1','ND2','HND1','HND2'];
-const INITIAL = { full_name:'', email:'', password:'', institution_id:'', parent_id:'', department_id:'', level:'', matric_number:'', referral_code:'' };
+const ND_LEVELS = ['ND1','ND2'];
+const HND_LEVELS = ['HND1','HND2'];
+
+const INITIAL = {
+  full_name:'',
+  email:'',
+  password:'',
+  institution_id:'',
+  parent_id:'',
+  department_id:'',
+  programme_id:'',
+  level:'',
+  matric_number:'',
+  referral_code:''
+};
 
 // Discard late responses when the student changes the parent dropdown or leaves.
 function useOptions(path) {
@@ -64,13 +77,43 @@ export default function LiveAccount({ mode='login' }) {
   const institutions = useOptions(signup ? '/institutions' : null);
   const institution = institutions.items.find(item => item.id === form.institution_id);
   const poly = institution?.type === 'polytechnic';
-  const parentType = poly ? 'schools' : 'faculties';
   const supported = institution && ['university','polytechnic'].includes(institution.type);
-  const parents = useOptions(signup && supported ? `/institutions/${encodeURIComponent(form.institution_id)}/${parentType}` : null);
+
+  const parents = useOptions(
+    signup && supported && !poly
+      ? `/institutions/${encodeURIComponent(form.institution_id)}/faculties`
+      : null
+  );
+
   const parent = parents.items.find(item => item.id === form.parent_id);
-  const departments = useOptions(signup && parent ? `/institutions/${parentType}/${encodeURIComponent(form.parent_id)}/departments` : null);
-  const department = departments.items.find(item => item.id === form.department_id);
-  const levels = poly ? POLY_LEVELS : UNI_LEVELS;
+
+  const departments = useOptions(
+    signup && !poly && parent
+      ? `/institutions/faculties/${encodeURIComponent(form.parent_id)}/departments`
+      : null
+  );
+
+  const department = departments.items.find(
+    item => item.id === form.department_id
+  );
+
+  const programmes = useOptions(
+    signup && supported && poly
+      ? `/institutions/${encodeURIComponent(form.institution_id)}/programmes`
+      : null
+  );
+
+  const programme = programmes.items.find(
+    item => item.id === form.programme_id
+  );
+
+  const levels = poly
+    ? programme?.award_type === 'HND'
+      ? HND_LEVELS
+      : programme?.award_type === 'ND'
+        ? ND_LEVELS
+        : []
+    : UNI_LEVELS;
 
   useEffect(() => {
     mounted.current = true;
@@ -101,9 +144,27 @@ export default function LiveAccount({ mode='login' }) {
     setMessage('');
     setForm(current => {
       const next = { ...current, [key]:value };
-      if (key === 'institution_id') Object.assign(next, { parent_id:'', department_id:'', level:'' });
-      if (key === 'parent_id') Object.assign(next, { department_id:'', level:'' });
-      if (key === 'department_id') next.level = '';
+
+      if (key === 'institution_id') {
+        Object.assign(next, {
+          parent_id:'',
+          department_id:'',
+          programme_id:'',
+          level:''
+        });
+      }
+
+      if (key === 'parent_id') {
+        Object.assign(next, {
+          department_id:'',
+          level:''
+        });
+      }
+
+      if (key === 'department_id' || key === 'programme_id') {
+        next.level = '';
+      }
+
       return next;
     });
   }
@@ -119,10 +180,38 @@ export default function LiveAccount({ mode='login' }) {
   }
   function validateAcademic() {
     const next = {};
-    if (!supported) next.institution_id = 'Choose a university or polytechnic.';
-    if (!parent) next.parent_id = `Choose your ${poly ? 'school' : 'faculty'}.`;
-    if (!department) next.department_id = 'Choose your department.';
-    if (!levels.includes(form.level)) next.level = 'Choose your level.';
+
+    if (!supported) {
+      next.institution_id = 'Choose a university or polytechnic.';
+      return next;
+    }
+
+    if (poly) {
+      if (!programme) {
+        next.programme_id = 'Choose your programme.';
+      }
+
+      if (!levels.includes(form.level)) {
+        next.level = programme
+          ? `Choose your ${programme.award_type} level.`
+          : 'Choose your level.';
+      }
+
+      return next;
+    }
+
+    if (!parent) {
+      next.parent_id = 'Choose your faculty.';
+    }
+
+    if (!department) {
+      next.department_id = 'Choose your department.';
+    }
+
+    if (!levels.includes(form.level)) {
+      next.level = 'Choose your level.';
+    }
+
     return next;
   }
   function navigateAccount(nextMode) {
@@ -155,12 +244,30 @@ export default function LiveAccount({ mode='login' }) {
       let user;
       if (signup) {
         user = await register({
-          full_name:form.full_name.trim(), email:form.email.trim().toLowerCase(), password:form.password,
-          role:'student', institution_id:form.institution_id,
-          ...(poly ? { school_id:form.parent_id } : { faculty_id:form.parent_id }),
-          department_id:form.department_id, level:form.level,
-          ...(form.matric_number.trim() ? { matric_number:form.matric_number.trim() } : {}),
-          ...(form.referral_code.trim() ? { referral_code:form.referral_code.trim().toUpperCase() } : {}),
+          full_name:form.full_name.trim(),
+          email:form.email.trim().toLowerCase(),
+          password:form.password,
+          role:'student',
+          institution_id:form.institution_id,
+
+          ...(poly
+            ? {
+                programme_id:form.programme_id
+              }
+            : {
+                faculty_id:form.parent_id,
+                department_id:form.department_id
+              }),
+
+          level:form.level,
+
+          ...(form.matric_number.trim()
+            ? { matric_number:form.matric_number.trim() }
+            : {}),
+
+          ...(form.referral_code.trim()
+            ? { referral_code:form.referral_code.trim().toUpperCase() }
+            : {}),
         });
       } else {
         ({ user } = await login(form.email.trim().toLowerCase(),form.password));
@@ -209,7 +316,7 @@ export default function LiveAccount({ mode='login' }) {
           </div>}
           {signup && !complete && <ol className={live.steps} aria-label="Registration progress">{['Account','Academic profile','Confirm'].map((label,index) => <li key={label} aria-current={index === step ? 'step' : undefined}><span>{index < step ? <Icon name="check" size={14}/> : index + 1}</span>{label}</li>)}</ol>}
           <h1 ref={titleRef} tabIndex={-1} id="account-heading">{heading}</h1>
-          <p className={styles.authSupport}>{complete ? 'Opening your learning space…' : !signup ? 'Log in to your learning space and pick up where you left off.' : ['Meet your study mate. Choose your courses and start preparing for exams — no material uploads needed.','Choose your institution and department so we can find the right courses for you.','Check your details before creating your account.'][step]}</p>
+          <p className={styles.authSupport}>{complete ? 'Opening your learning space…' : !signup ? 'Log in to your learning space and pick up where you left off.' : ['Meet your study mate. Choose your courses and start preparing for exams — no material uploads needed.','Choose your institution and academic programme so we can personalize your learning space.','Check your details before creating your account.'][step]}</p>
           {complete ? <div className={live.success}><a href={complete}>Continue to {complete === '/admin' ? 'admin' : complete === '/onboarding' ? 'your study setup' : 'your dashboard'} <Icon name="arrow" size={17}/></a></div> : <form className={styles.authForm} onSubmit={submit} noValidate aria-busy={busy}>
             {message && <p ref={errorRef} tabIndex={-1} role="alert" className={styles.error}>{message}</p>}
             {(!signup || step === 0) && <>
@@ -224,21 +331,93 @@ export default function LiveAccount({ mode='login' }) {
             {signup && step === 1 && <>
               <label className={styles.field}>Institution<select {...fieldProps('institution_id')} disabled={busy || institutions.status !== 'ready'}><option value="">Select institution</option>{institutions.items.filter(item => ['university','polytechnic'].includes(item.type)).map(item => <option key={item.id} value={item.id}>{item.name}{item.short_name ? ` (${item.short_name})` : ''}</option>)}</select>{fieldError('institution_id')}</label>
               <ListState list={institutions} label="institutions"/>
-              {supported && <>
-                <label className={styles.field}>{poly ? 'School' : 'Faculty'}<select {...fieldProps('parent_id')} disabled={busy || parents.status !== 'ready' || !parents.items.length}><option value="">Select {poly ? 'school' : 'faculty'}</option>{parents.items.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select>{fieldError('parent_id')}</label>
-                <ListState list={parents} label={parentType}/>
+              {supported && poly && <>
+                <label className={styles.field}>
+                  Programme
+                  <select
+                    {...fieldProps('programme_id')}
+                    disabled={busy || programmes.status !== 'ready' || !programmes.items.length}
+                  >
+                    <option value="">Select programme</option>
+                    {programmes.items.map(item => (
+                      <option key={item.id} value={item.id}>
+                        {item.award_type} · {item.name}
+                      </option>
+                    ))}
+                  </select>
+                  {fieldError('programme_id')}
+                </label>
+                <ListState list={programmes} label="programmes"/>
               </>}
-              {parent && <>
-                <label className={styles.field}>Department<select {...fieldProps('department_id')} disabled={busy || departments.status !== 'ready' || !departments.items.length}><option value="">Select department</option>{departments.items.map(item => <option key={item.id} value={item.id}>{item.name}</option>)}</select>{fieldError('department_id')}</label>
+
+              {supported && !poly && <>
+                <label className={styles.field}>
+                  Faculty
+                  <select
+                    {...fieldProps('parent_id')}
+                    disabled={busy || parents.status !== 'ready' || !parents.items.length}
+                  >
+                    <option value="">Select faculty</option>
+                    {parents.items.map(item => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                  {fieldError('parent_id')}
+                </label>
+                <ListState list={parents} label="faculties"/>
+              </>}
+
+              {!poly && parent && <>
+                <label className={styles.field}>
+                  Department
+                  <select
+                    {...fieldProps('department_id')}
+                    disabled={busy || departments.status !== 'ready' || !departments.items.length}
+                  >
+                    <option value="">Select department</option>
+                    {departments.items.map(item => (
+                      <option key={item.id} value={item.id}>
+                        {item.name}
+                      </option>
+                    ))}
+                  </select>
+                  {fieldError('department_id')}
+                </label>
                 <ListState list={departments} label="departments"/>
               </>}
-              {department && <label className={styles.field}>Level<select {...fieldProps('level')}><option value="">Select level</option>{levels.map(value => <option key={value} value={value}>{value}</option>)}</select>{fieldError('level')}</label>}
+
+              {((poly && programme) || (!poly && department)) && (
+                <label className={styles.field}>
+                  Level
+                  <select {...fieldProps('level')}>
+                    <option value="">Select level</option>
+                    {levels.map(value => (
+                      <option key={value} value={value}>
+                        {value}
+                      </option>
+                    ))}
+                  </select>
+                  {fieldError('level')}
+                </label>
+              )}
               <label className={styles.field}>Matric number <span className={styles.optional}>(optional)</span><input {...fieldProps('matric_number',false)} maxLength={80} placeholder="e.g. 22/ENG/CPE/001"/></label>
               <label className={styles.field}>Referral code <span className={styles.optional}>(optional)</span><input {...fieldProps('referral_code',false)} maxLength={64} autoCapitalize="characters" spellCheck={false} placeholder="Enter a referral code"/></label>
             </>}
             {signup && step === 2 && <dl className={live.review}>{[
-              ['Full name',form.full_name.trim()],['Email',form.email.trim().toLowerCase()],['Institution',institution?.name],
-              [poly ? 'School' : 'Faculty',parent?.name],['Department',department?.name],['Level',form.level],
+              ['Full name',form.full_name.trim()],
+              ['Email',form.email.trim().toLowerCase()],
+              ['Institution',institution?.name],
+              ...(poly
+                ? [
+                    ['Programme',programme ? `${programme.award_type} · ${programme.name}` : '']
+                  ]
+                : [
+                    ['Faculty',parent?.name],
+                    ['Department',department?.name]
+                  ]),
+              ['Level',form.level],
               ...(form.matric_number.trim() ? [['Matric number',form.matric_number.trim()]] : []),
               ...(form.referral_code.trim() ? [['Referral code',form.referral_code.trim().toUpperCase()]] : []),
             ].map(([label,value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>}

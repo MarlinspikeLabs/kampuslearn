@@ -25,12 +25,17 @@ const getFullProfile = async (userId, role) => {
         d.name        AS department_name,
         d.code        AS department_code,
         f.name        AS faculty_name,
-        s.name        AS school_name
+        s.name        AS school_name,
+        ap.id          AS programme_id,
+        ap.name        AS programme_name,
+        ap.award_type  AS programme_award,
+        ap.accreditation_status AS programme_accreditation_status
       FROM student_profiles sp
       JOIN institutions i ON i.id = sp.institution_id
-      JOIN departments  d ON d.id = sp.department_id
+      LEFT JOIN departments d ON d.id = sp.department_id
       LEFT JOIN faculties f ON f.id = sp.faculty_id
-      LEFT JOIN schools   s ON s.id = sp.school_id
+      LEFT JOIN schools s ON s.id = sp.school_id
+      LEFT JOIN academic_programmes ap ON ap.id = sp.programme_id
       WHERE sp.user_id = $1
     `, [userId]);
     return r.rows[0] || null;
@@ -54,7 +59,7 @@ router.post('/register', async (req, res) => {
       role = 'student',
       // Student-specific fields
       institution_id, department_id, faculty_id,
-      school_id, level, matric_number, admission_year,
+      school_id, programme_id, level, matric_number, admission_year,
       referral_code
     } = req.body;
 
@@ -70,8 +75,8 @@ router.post('/register', async (req, res) => {
       return error(res, 'Invalid email address', 400);
     }
     if (role === 'student') {
-      if (!institution_id || !department_id || !level) {
-        return error(res, 'institution_id, department_id, and level are required for students', 400);
+      if (!institution_id || !level) {
+        return error(res, 'institution_id and level are required for students', 400);
       }
     }
 
@@ -83,23 +88,122 @@ router.post('/register', async (req, res) => {
       return error(res, 'An account with this email already exists', 409);
     }
 
-    // ── Validate level against institution type ───────────────
+    // ── Validate academic track against institution type ──────
+    let studentTrack = null;
+
     if (role === 'student') {
       const inst = await query(
-        'SELECT type FROM institutions WHERE id = $1', [institution_id]
+        'SELECT id, type FROM institutions WHERE id = $1 AND is_active = TRUE',
+        [institution_id]
       );
+
       if (inst.rows.length === 0) {
         return error(res, 'Institution not found', 404);
       }
+
       const instType = inst.rows[0].type;
-      const uniLevels  = ['100','200','300','400','500','600'];
+      const uniLevels = ['100','200','300','400','500','600'];
       const polyLevels = ['ND1','ND2','HND1','HND2'];
 
-      if (instType === 'university' && !uniLevels.includes(level)) {
-        return error(res, `University level must be one of: ${uniLevels.join(', ')}`, 400);
+      if (instType === 'university') {
+        if (!department_id) {
+          return error(res, 'department_id is required for university students', 400);
+        }
+
+        if (!uniLevels.includes(level)) {
+          return error(
+            res,
+            `University level must be one of: ${uniLevels.join(', ')}`,
+            400
+          );
+        }
+
+        const dept = await query(`
+          SELECT d.id
+          FROM departments d
+          LEFT JOIN faculties f ON f.id = d.faculty_id
+          LEFT JOIN schools s ON s.id = d.school_id
+          WHERE d.id = $1
+            AND COALESCE(f.institution_id, s.institution_id) = $2
+        `, [department_id, institution_id]);
+
+        if (dept.rows.length === 0) {
+          return error(res, 'Department does not belong to this institution', 400);
+        }
+
+        studentTrack = 'department';
       }
-      if (instType === 'polytechnic' && !polyLevels.includes(level)) {
-        return error(res, `Polytechnic level must be one of: ${polyLevels.join(', ')}`, 400);
+
+      if (instType === 'polytechnic') {
+        if (!polyLevels.includes(level)) {
+          return error(
+            res,
+            `Polytechnic level must be one of: ${polyLevels.join(', ')}`,
+            400
+          );
+        }
+
+        // New programme-based polytechnic journey.
+        if (programme_id) {
+          const programme = await query(`
+            SELECT id, award_type, is_active
+            FROM academic_programmes
+            WHERE id = $1
+              AND institution_id = $2
+              AND (
+                regulator = 'NBTE'
+                OR programme_source = 'generic_seed'
+              )
+          `, [programme_id, institution_id]);
+
+          if (programme.rows.length === 0) {
+            return error(res, 'Programme does not belong to this institution', 400);
+          }
+
+          if (!programme.rows[0].is_active) {
+            return error(res, 'This programme is not currently active', 400);
+          }
+
+          const award = programme.rows[0].award_type;
+
+          if (
+            (award === 'ND' && !['ND1','ND2'].includes(level)) ||
+            (award === 'HND' && !['HND1','HND2'].includes(level))
+          ) {
+            return error(
+              res,
+              `${award} programme requires ${award === 'ND' ? 'ND1 or ND2' : 'HND1 or HND2'}`,
+              400
+            );
+          }
+
+          studentTrack = 'programme';
+
+        // Keep the existing school/department path working
+        // until the frontend migration is complete.
+        } else if (department_id) {
+
+          const dept = await query(`
+            SELECT d.id
+            FROM departments d
+            JOIN schools s ON s.id = d.school_id
+            WHERE d.id = $1
+              AND s.institution_id = $2
+          `, [department_id, institution_id]);
+
+          if (dept.rows.length === 0) {
+            return error(res, 'Department does not belong to this polytechnic', 400);
+          }
+
+          studentTrack = 'department';
+
+        } else {
+          return error(
+            res,
+            'programme_id is required for new polytechnic students',
+            400
+          );
+        }
       }
     }
 
@@ -122,18 +226,31 @@ router.post('/register', async (req, res) => {
 
     // ── Create student profile ────────────────────────────────
     if (role === 'student') {
+      const useProgramme = studentTrack === 'programme';
+
       await query(`
         INSERT INTO student_profiles
-          (user_id, institution_id, department_id, faculty_id, school_id, level, matric_number, admission_year)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
+          (
+            user_id,
+            institution_id,
+            department_id,
+            faculty_id,
+            school_id,
+            programme_id,
+            level,
+            matric_number,
+            admission_year
+          )
+        VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9)
       `, [
         user.id,
         institution_id,
-        department_id,
-        faculty_id || null,
-        school_id  || null,
+        useProgramme ? null : department_id,
+        useProgramme ? null : (faculty_id || null),
+        useProgramme ? null : (school_id || null),
+        useProgramme ? programme_id : null,
         level,
-        matric_number  || null,
+        matric_number || null,
         admission_year || null
       ]);
     }

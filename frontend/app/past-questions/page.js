@@ -87,15 +87,30 @@ export default function PastQuestionsPage() {
   const LIMIT = 12;
 
   useEffect(() => {
-    if (profile?.department_id) {
-      api.get(`/institutions/departments/${profile.department_id}/courses?level=${profile.level}`)
-        .then(r => {
-          setCourses(r.data.data);
-          const requested = new URLSearchParams(window.location.search).get('course_id');
-          if (requested && r.data.data.some(c => c.id === requested)) setCourseFilter(requested);
-        })
-        .catch(() => {});
+    const url = profile?.programme_id
+      ? `/institutions/programmes/${profile.programme_id}/courses?level=${profile.level}`
+      : profile?.department_id
+        ? `/institutions/departments/${profile.department_id}/courses?level=${profile.level}`
+        : null;
+
+    if (!url) {
+      setCourses([]);
+      return;
     }
+
+    api.get(url)
+      .then(r => {
+        const data = r.data.data || [];
+        setCourses(data);
+
+        const requested =
+          new URLSearchParams(window.location.search).get('course_id');
+
+        if (requested && data.some(c => c.id === requested)) {
+          setCourseFilter(requested);
+        }
+      })
+      .catch(() => setCourses([]));
   }, [profile]);
 
   useEffect(() => {

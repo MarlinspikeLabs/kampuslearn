@@ -13,18 +13,98 @@ const run = fn => async (req,res) => { try { await fn(req,res); } catch(e) {
 const fail = (message,status=400) => { throw Object.assign(new Error(message),{status}); };
 const name = x => typeof x === 'string' && x.trim().length && x.trim().length <= 180 ? x.trim() : fail('Enter a name of 1–180 characters');
 const code = x => name(x).toUpperCase();
-router.get('/institutions',run(async(req,res)=>success(res,(await query(`SELECT i.*,
- (SELECT count(*) FROM faculties WHERE institution_id=i.id) faculty_count,
- (SELECT count(*) FROM schools WHERE institution_id=i.id) school_count,
- (SELECT count(*) FROM departments d LEFT JOIN faculties f ON f.id=d.faculty_id LEFT JOIN schools s ON s.id=d.school_id WHERE COALESCE(f.institution_id,s.institution_id)=i.id) dept_count,
- (SELECT count(*) FROM student_profiles WHERE institution_id=i.id) student_count
- FROM institutions i ORDER BY i.name`)).rows)));
+const optionalCode = x => {
+  const value = String(x || '').trim();
+  return value ? code(value) : null;
+};
+router.get('/institutions',run(async(req,res)=>success(res,(await query(`
+ SELECT
+   i.*,
+
+   (SELECT count(*)
+      FROM faculties
+      WHERE institution_id=i.id
+   ) faculty_count,
+
+   (SELECT count(*)
+      FROM schools
+      WHERE institution_id=i.id
+   ) school_count,
+
+   (SELECT count(*)
+      FROM departments d
+      LEFT JOIN faculties f ON f.id=d.faculty_id
+      LEFT JOIN schools s ON s.id=d.school_id
+      WHERE COALESCE(f.institution_id,s.institution_id)=i.id
+   ) dept_count,
+
+   (SELECT count(*)
+      FROM academic_programmes ap
+      WHERE ap.institution_id=i.id
+        AND ap.is_active=TRUE
+   ) programme_count,
+
+   (
+     SELECT count(DISTINCT pc.course_id)
+     FROM academic_programmes ap
+     JOIN programme_courses pc
+       ON pc.programme_id=ap.id
+     JOIN courses c
+       ON c.id=pc.course_id
+     WHERE ap.institution_id=i.id
+       AND ap.is_active=TRUE
+       AND c.is_active=TRUE
+   ) programme_course_count,
+
+   CASE
+     WHEN i.type='polytechnic' THEN
+       (SELECT count(*)
+          FROM academic_programmes ap
+          WHERE ap.institution_id=i.id
+            AND ap.is_active=TRUE)
+     ELSE
+       (SELECT count(*)
+          FROM faculties
+          WHERE institution_id=i.id)
+   END academic_unit_count,
+
+   CASE
+     WHEN i.type='polytechnic' THEN
+       (
+         SELECT count(DISTINCT pc.course_id)
+         FROM academic_programmes ap
+         JOIN programme_courses pc
+           ON pc.programme_id=ap.id
+         JOIN courses c
+           ON c.id=pc.course_id
+         WHERE ap.institution_id=i.id
+           AND ap.is_active=TRUE
+           AND c.is_active=TRUE
+       )
+     ELSE
+       (
+         SELECT count(*)
+         FROM departments d
+         LEFT JOIN faculties f ON f.id=d.faculty_id
+         WHERE f.institution_id=i.id
+       )
+   END academic_item_count,
+
+   (SELECT count(*)
+      FROM student_profiles
+      WHERE institution_id=i.id
+   ) student_count
+
+ FROM institutions i
+ ORDER BY i.name
+`)).rows)));
+
 function institution(body) {
  const type=body.type;
  if(!['university','polytechnic'].includes(type)) fail('Choose university or polytechnic');
  const website=String(body.website_url||'').trim();
  if(website && !/^https?:\/\/[^\s]+$/i.test(website)) fail('Website must begin with https:// or http://');
- return [name(body.name),code(body.short_name),type,String(body.state||'').trim()||null,String(body.city||'').trim()||null,website||null];
+ return [name(body.name),optionalCode(body.short_name),type,String(body.state||'').trim()||null,String(body.city||'').trim()||null,website||null];
 }
 router.post('/institutions',run(async(req,res)=>{
  const values=institution(req.body),client=await getClient();

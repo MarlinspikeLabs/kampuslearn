@@ -82,18 +82,46 @@ export default function CoursesPage() {
   const allLevels  = levelType === 'polytechnic' ? polyLevels : uniLevels;
 
   useEffect(() => {
-    if (!profile?.department_id) return;
-    setLoading(true);
-    const params = new URLSearchParams({ semester });
-    if (levelFilter) params.append('level', levelFilter);
+    if (!profile?.programme_id && !profile?.department_id) {
+      setCourses([]);
+      setLoading(false);
+      return;
+    }
 
-    api.get(`/institutions/departments/${profile.department_id}/courses?${params}`)
+    setLoading(true);
+
+    let url;
+
+    if (profile?.programme_id) {
+      const params = new URLSearchParams();
+      params.append('level', levelFilter || profile.level);
+
+      url =
+        `/institutions/programmes/${profile.programme_id}/courses?${params}`;
+    } else {
+      const params = new URLSearchParams({ semester });
+
+      if (levelFilter) params.append('level', levelFilter);
+
+      url =
+        `/institutions/departments/${profile.department_id}/courses?${params}`;
+    }
+
+    api.get(url)
       .then(r => {
-        const data = r.data.data;
+        let data = r.data.data || [];
+
+        if (profile?.programme_id && semester) {
+          data = data.filter(c => c.semester === semester);
+        }
+
         setCourses(data);
-        // Extract unique levels for filter tabs
+
         const uniqueLevels = [...new Set(data.map(c => c.level))]
-          .sort((a, b) => (LEVEL_ORDER[a] || 0) - (LEVEL_ORDER[b] || 0));
+          .sort((a, b) =>
+            (LEVEL_ORDER[a] || 0) - (LEVEL_ORDER[b] || 0)
+          );
+
         setLevels(uniqueLevels);
       })
       .catch(() => toast.error('Failed to load courses'))

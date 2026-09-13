@@ -10,10 +10,45 @@ router.use(authenticate, (req, res, next) => {
 
 const defaults = () => ({ status: 'draft', step: 0, preferred_name: '', goals: [], course_ids: [], modes: [], daily_minutes: 30, weekly_target: 3 });
 const catalogue = userId => query(`
-  SELECT c.id, c.code, c.title, c.level, c.semester, c.credit_units
-  FROM courses c JOIN student_profiles sp ON sp.department_id = c.department_id
-  WHERE sp.user_id = $1 AND c.is_active = TRUE AND c.level::text = sp.level::text
-  ORDER BY c.code, c.id`, [userId]);
+  SELECT DISTINCT
+    c.id,
+    c.code,
+    c.title,
+    COALESCE(pc.level, c.level) AS level,
+    COALESCE(pc.semester, c.semester) AS semester,
+    c.credit_units
+  FROM student_profiles sp
+  JOIN courses c
+    ON (
+      (
+        sp.programme_id IS NULL
+        AND sp.department_id IS NOT NULL
+        AND c.department_id = sp.department_id
+      )
+      OR
+      (
+        sp.programme_id IS NOT NULL
+        AND EXISTS (
+          SELECT 1
+          FROM programme_courses pc2
+          WHERE pc2.programme_id = sp.programme_id
+            AND pc2.course_id = c.id
+            AND pc2.level = sp.level
+        )
+      )
+    )
+  LEFT JOIN programme_courses pc
+    ON pc.programme_id = sp.programme_id
+   AND pc.course_id = c.id
+   AND pc.level = sp.level
+  WHERE sp.user_id = $1
+    AND c.is_active = TRUE
+    AND (
+      sp.programme_id IS NOT NULL
+      OR c.level::text = sp.level::text
+    )
+  ORDER BY c.code, c.id
+`, [userId]);
 
 router.get('/settings', async (req, res) => {
   try {

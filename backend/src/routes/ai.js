@@ -23,8 +23,35 @@ function respondError(res, err) {
 async function courseFor(user, id) {
   if (!id) return null;
   const r = await query(`SELECT c.id,c.code,c.title,c.level,c.level_type
-    FROM courses c WHERE c.id=$1 AND c.is_active=TRUE AND
-    ($3::boolean OR EXISTS (SELECT 1 FROM student_profiles sp WHERE sp.user_id=$2 AND sp.department_id=c.department_id))`,
+    FROM courses c
+    WHERE c.id=$1
+      AND c.is_active=TRUE
+      AND (
+        $3::boolean
+        OR EXISTS (
+          SELECT 1
+          FROM student_profiles sp
+          WHERE sp.user_id=$2
+            AND (
+              (
+                sp.programme_id IS NULL
+                AND sp.department_id IS NOT NULL
+                AND sp.department_id=c.department_id
+              )
+              OR
+              (
+                sp.programme_id IS NOT NULL
+                AND EXISTS (
+                  SELECT 1
+                  FROM programme_courses pc
+                  WHERE pc.programme_id=sp.programme_id
+                    AND pc.course_id=c.id
+                    AND pc.level=sp.level
+                )
+              )
+            )
+        )
+      )`,
     [id,user.id,['admin','super_admin','lecturer'].includes(user.role)]);
   if (!r.rows.length) throw aiError('Course not found in your academic profile.',404,'COURSE_NOT_FOUND');
   return r.rows[0];

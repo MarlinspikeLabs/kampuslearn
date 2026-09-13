@@ -133,11 +133,26 @@ router.get('/:id', optionalAuth, async (req, res) => {
         COALESCE(c.code, 'GENERIC')       AS course_code,
         c.level      AS course_level,
         c.level_type AS course_level_type,
-        d.name       AS department_name
+        d.name       AS department_name,
+        pi.programme_name,
+        pi.award_type,
+        COALESCE(d.name, pi.programme_name) AS academic_unit_name
       FROM course_materials cm
       JOIN users       u ON u.id = cm.uploaded_by
       LEFT JOIN courses     c ON c.id = cm.course_id
       LEFT JOIN departments d ON d.id = c.department_id
+      LEFT JOIN LATERAL (
+        SELECT
+          ap.name AS programme_name,
+          ap.award_type
+        FROM programme_courses pc
+        JOIN academic_programmes ap
+          ON ap.id = pc.programme_id
+        WHERE pc.course_id = c.id
+          AND ap.is_active = TRUE
+        ORDER BY ap.id
+        LIMIT 1
+      ) pi ON TRUE
       WHERE cm.id = $1 AND cm.is_approved = TRUE
     `, [req.params.id]);
 
