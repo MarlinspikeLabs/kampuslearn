@@ -115,7 +115,19 @@ async function generate(req,res,isQuiz) {
     const config=requireGemini();
     // Fast local quota check before the tokenizer request; reserve() repeats it atomically.
     const daily=await budget.dailyUsage(req.user.id,config);
-    if(!daily.remaining)throw aiError(`You have used your ${config.dailyLimit} study requests in the last 24 hours. Please return later.`,429,'DAILY_LIMIT');
+
+    // The first dailyLimit requests are free. After that,
+    // budget.reserve() atomically charges the student's KP wallet.
+    if(
+      !daily.free_remaining &&
+      daily.kp_balance < daily.kp_per_paid_prompt
+    ){
+      throw aiError(
+        `Your ${config.dailyLimit} free AI requests have been used. Each additional request costs ${daily.kp_per_paid_prompt} KP. Your balance is ${daily.kp_balance} KP.`,
+        402,
+        'INSUFFICIENT_KP'
+      );
+    }
     const history=conversationId?(await query("SELECT role,content FROM ai_messages WHERE conversation_id=$1 AND (role='user' OR grounding IS NOT NULL) ORDER BY created_at DESC,id DESC LIMIT 10",[conversationId])).rows.reverse():[];
     const weak=await query(`SELECT t.name FROM student_knowledge sk LEFT JOIN topics t ON t.id=sk.topic_id
       WHERE sk.user_id=$1 AND ($2::uuid IS NULL OR sk.course_id=$2) AND sk.strength='weak'
@@ -128,7 +140,12 @@ async function generate(req,res,isQuiz) {
     const sourceLinks=publicSources(sources);
     const grounding=sources.length?'course_excerpts':'general';
     const messages=[...history,{role:'user',content:message}];
-    reservation=await budget.reserve(req.user.id,isQuiz?'quiz_gen':'chat',0,config);
+    reservation=await budget.reserve(
+      req.user.id,
+      isQuiz?'quiz_gen':'chat',
+      0,
+      config
+    );
     const prepared=await prepare(messages,course,userContext,sources,config);
     const result=await getAIResponse(messages,course,userContext,sources,prepared);
     const client=await getClient();
@@ -150,7 +167,7 @@ async function generate(req,res,isQuiz) {
         await client.query('UPDATE ai_conversations SET updated_at=NOW() WHERE id=$1',[convoId]);
       }
       await client.query('INSERT INTO ai_usage_logs(user_id,tokens_used,feature) VALUES($1,$2,$3)',[req.user.id,result.tokens_used,isQuiz?'quiz_gen':'chat']);
-      await client.query("UPDATE ai_generation_requests SET status='completed',cost_micros=$2,tokens_used=$3,updated_at=NOW() WHERE id=$1",[reservation,result.actualMicros,result.tokens_used]);
+      await client.query("UPDATE ai_generation_requests SET status='completed',cost_micros=$2,tokens_used=$3,updated_at=NOW() WHERE id=$1",[reservation.id,result.actualMicros,result.tokens_used]);
       await client.query('COMMIT');
     }catch(err){await client.query('ROLLBACK');throw err;}
     finally{client.release();}
@@ -158,7 +175,12 @@ async function generate(req,res,isQuiz) {
     const usage=await budget.dailyUsage(req.user.id,config);
     return success(res,{
       ...(isQuiz?{course,topic:body.topic||'General Revision',content:result.content}:{conversation_id:convoId,message_id:saved.id,reply:result.content,created_at:saved.created_at}),
-      provider:result.provider, sources:sourceLinks, grounding, truncated:result.truncated, usage,
+      provider:result.provider,
+      sources:sourceLinks,
+      grounding,
+      truncated:result.truncated,
+      kp_charged: reservation?.kp_charged || 0,
+      usage,
     });
   }catch(err){
     if(reservation)try{await budget.fail(reservation);}catch{console.error('AI reservation retained for reconciliation.');}

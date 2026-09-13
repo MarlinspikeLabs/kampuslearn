@@ -12,7 +12,7 @@ const EARN = {
 
 // Token spending amounts
 const SPEND = {
-  ai_message:   1,
+  ai_message:   5,
   download:     5,
 };
 

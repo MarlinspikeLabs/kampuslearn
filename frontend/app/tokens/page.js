@@ -195,7 +195,7 @@ function BuyTab({ packages, balance }) {
         <Coins className="w-5 h-5 text-blue-600 flex-shrink-0" />
         <p className="text-blue-800 text-sm">
           <span className="font-bold">Current balance: {balance} KP.</span>{' '}
-          1 AI message costs 1 KP. Tokens never expire.
+          After your 10 free AI requests, each additional AI request costs 5 KP. Tokens never expire.
         </p>
       </div>
 
@@ -228,7 +228,7 @@ function BuyTab({ packages, balance }) {
             <p className="text-2xl font-black text-blue-600">₦{pkg.amount_ngn.toLocaleString()}</p>
             <p className="text-xs text-gray-400 mt-1">
               ₦{(pkg.amount_ngn / pkg.tokens).toFixed(1)} per token ·{' '}
-              ~{pkg.tokens} AI messages
+              ~{Math.floor(pkg.tokens / 5)} paid AI messages
             </p>
             {selected?.id === pkg.id && (
               <div className="mt-3 flex items-center gap-1.5 text-blue-600 text-xs font-semibold">

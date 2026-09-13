@@ -426,8 +426,14 @@ export default function AIChatPage() {
           {usage && (
             <div className="px-4 py-2 border-t border-gray-200 bg-white">
               <div className="flex items-center justify-between text-xs text-gray-500 mb-1">
-                <span>{usage.messages_today}/{usage.daily_limit} requests · last 24 hours</span>
-                <span>{usage.remaining} remaining</span>
+                <span>
+                  {usage.free_used}/{usage.daily_limit} free requests · last 24 hours
+                </span>
+                <span>
+                  {usage.free_remaining > 0
+                    ? `${usage.free_remaining} free remaining`
+                    : `${usage.kp_per_paid_prompt} KP/request · ${usage.kp_balance} KP balance`}
+                </span>
               </div>
               <div className="w-full bg-gray-100 rounded-full h-1">
                 <div className={`h-1 rounded-full transition-all
@@ -439,7 +445,7 @@ export default function AIChatPage() {
 
           {/* Input */}
           <div className="p-3 md:p-4 border-t border-gray-200 bg-white">
-            <p className="hidden sm:block mb-2 text-xs text-gray-500">Free AI pilot · Keep personal and confidential information out of your study questions.</p>
+            <p className="hidden sm:block mb-2 text-xs text-gray-500">10 AI requests free every 24 hours · Additional requests cost 5 KP.</p>
             {usage?.available === false && <p className="mb-3 text-sm text-gray-600" role="status">Your study mate is being connected. Your course materials and practice are available in Learn.</p>}
             {sendError && <p className="mb-3 text-sm text-red-700" role="alert">{sendError}</p>}
             <div className="flex gap-3 items-end">
