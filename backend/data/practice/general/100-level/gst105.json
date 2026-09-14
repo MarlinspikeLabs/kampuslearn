@@ -1,0 +1,1568 @@
+{
+  "course_code": "KL-GST105",
+  "course_title": "History and Philosophy of Science",
+  "level": "100",
+  "semester": "first",
+  "topics": [
+    {
+      "name": "Nature and Meaning of Science",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Science is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A systematic way of investigating the natural world"
+            },
+            {
+              "label": "B",
+              "text": "A collection of personal opinions"
+            },
+            {
+              "label": "C",
+              "text": "A fixed body of beliefs that cannot change"
+            },
+            {
+              "label": "D",
+              "text": "A method used only in laboratories"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Science is a systematic approach to understanding the natural world through observation, evidence, reasoning, and testing.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which feature is most central to scientific knowledge?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It is based on evidence"
+            },
+            {
+              "label": "B",
+              "text": "It never changes"
+            },
+            {
+              "label": "C",
+              "text": "It depends only on authority"
+            },
+            {
+              "label": "D",
+              "text": "It avoids observation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific knowledge is grounded in evidence and can be revised when new evidence appears.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A scientific explanation should ideally be:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Testable"
+            },
+            {
+              "label": "B",
+              "text": "Secret"
+            },
+            {
+              "label": "C",
+              "text": "Based only on tradition"
+            },
+            {
+              "label": "D",
+              "text": "Impossible to question"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific explanations should be testable against observations or experiments.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement best reflects the nature of science?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Scientific knowledge can be refined when new evidence emerges"
+            },
+            {
+              "label": "B",
+              "text": "Scientific conclusions never change"
+            },
+            {
+              "label": "C",
+              "text": "Science depends only on individual belief"
+            },
+            {
+              "label": "D",
+              "text": "Science does not use reasoning"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Science is provisional and self-correcting because conclusions can change with better evidence.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Objectivity in science primarily involves:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Evaluating evidence without deliberately distorting it to fit personal preferences"
+            },
+            {
+              "label": "B",
+              "text": "Ignoring all previous research"
+            },
+            {
+              "label": "C",
+              "text": "Accepting every claim equally"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding measurement"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific objectivity requires fair evaluation of evidence and methods.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is repeatability important in science?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It allows findings to be checked independently"
+            },
+            {
+              "label": "B",
+              "text": "It guarantees every hypothesis is correct"
+            },
+            {
+              "label": "C",
+              "text": "It eliminates the need for evidence"
+            },
+            {
+              "label": "D",
+              "text": "It prevents new discoveries"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Repeatability allows other researchers to test whether findings are reliable.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Scientific Method",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A hypothesis is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A testable proposed explanation"
+            },
+            {
+              "label": "B",
+              "text": "A confirmed scientific law"
+            },
+            {
+              "label": "C",
+              "text": "A laboratory instrument"
+            },
+            {
+              "label": "D",
+              "text": "A measurement error"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A hypothesis is a proposed explanation that can be tested using evidence.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which step commonly follows the formulation of a hypothesis?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Testing it through observation or experiment"
+            },
+            {
+              "label": "B",
+              "text": "Declaring it automatically correct"
+            },
+            {
+              "label": "C",
+              "text": "Ignoring evidence"
+            },
+            {
+              "label": "D",
+              "text": "Publishing before collecting data"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Hypotheses are evaluated through systematic observation or experimentation.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "In an experiment, the variable deliberately changed by the researcher is the:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Independent variable"
+            },
+            {
+              "label": "B",
+              "text": "Dependent variable"
+            },
+            {
+              "label": "C",
+              "text": "Control group"
+            },
+            {
+              "label": "D",
+              "text": "Conclusion"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The independent variable is manipulated to observe its effect on the dependent variable.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The dependent variable is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The outcome that is measured"
+            },
+            {
+              "label": "B",
+              "text": "The variable deliberately changed"
+            },
+            {
+              "label": "C",
+              "text": "Always the same as the control"
+            },
+            {
+              "label": "D",
+              "text": "The researcher's opinion"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The dependent variable is the measured response to changes in the independent variable.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A control group is useful because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Provides a basis for comparison"
+            },
+            {
+              "label": "B",
+              "text": "Always receives the experimental treatment"
+            },
+            {
+              "label": "C",
+              "text": "Removes the need for measurement"
+            },
+            {
+              "label": "D",
+              "text": "Guarantees a positive result"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Controls help isolate the effect of the variable being tested.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should scientific methods be described clearly in a report?",
+          "options": [
+            {
+              "label": "A",
+              "text": "So others can understand and reproduce the investigation"
+            },
+            {
+              "label": "B",
+              "text": "So the experiment cannot be questioned"
+            },
+            {
+              "label": "C",
+              "text": "So results appear more complicated"
+            },
+            {
+              "label": "D",
+              "text": "So evidence can be omitted"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Clear methods allow transparency, evaluation, and replication.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Science in Ancient Civilisations",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Ancient Egyptian scientific achievement included important developments in:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Medicine and mathematics"
+            },
+            {
+              "label": "B",
+              "text": "Quantum physics"
+            },
+            {
+              "label": "C",
+              "text": "Computer programming"
+            },
+            {
+              "label": "D",
+              "text": "Satellite communication"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Ancient Egypt contributed significantly to medicine, mathematics, astronomy, and engineering.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Ancient Mesopotamian scholars made notable contributions to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Astronomy and mathematics"
+            },
+            {
+              "label": "B",
+              "text": "Digital electronics"
+            },
+            {
+              "label": "C",
+              "text": "Modern genetics"
+            },
+            {
+              "label": "D",
+              "text": "Internet technology"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Mesopotamian civilisation developed early mathematical and astronomical systems.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The ancient Greeks are especially associated with:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Systematic philosophical inquiry into nature"
+            },
+            {
+              "label": "B",
+              "text": "The invention of the internet"
+            },
+            {
+              "label": "C",
+              "text": "Modern semiconductor physics"
+            },
+            {
+              "label": "D",
+              "text": "Artificial intelligence"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Greek thinkers developed influential approaches to logic, nature, mathematics, and explanation.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Hippocrates is historically associated with:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Medicine"
+            },
+            {
+              "label": "B",
+              "text": "Astronomy"
+            },
+            {
+              "label": "C",
+              "text": "Computer science"
+            },
+            {
+              "label": "D",
+              "text": "Electrical engineering"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Hippocrates is traditionally associated with early systematic approaches to medicine.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Archimedes is associated with important work in:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Mechanics and mathematics"
+            },
+            {
+              "label": "B",
+              "text": "Genetics"
+            },
+            {
+              "label": "C",
+              "text": "Digital communications"
+            },
+            {
+              "label": "D",
+              "text": "Organic chemistry"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Archimedes made major contributions to mathematics, mechanics, and hydrostatics.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why are ancient scientific traditions important to the history of science?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They provided observations, methods, and ideas that influenced later knowledge"
+            },
+            {
+              "label": "B",
+              "text": "They had no influence on later civilisations"
+            },
+            {
+              "label": "C",
+              "text": "They were identical to modern science"
+            },
+            {
+              "label": "D",
+              "text": "They rejected all mathematics"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Ancient traditions contributed ideas and practices that later societies preserved, criticised, and developed further.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Islamic and African Contributions to Science",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Scholars in the medieval Islamic world contributed significantly to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Mathematics, medicine, astronomy, and optics"
+            },
+            {
+              "label": "B",
+              "text": "Only poetry"
+            },
+            {
+              "label": "C",
+              "text": "Only military history"
+            },
+            {
+              "label": "D",
+              "text": "Only architecture"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scholars working across the Islamic world contributed to mathematics, medicine, astronomy, optics, and other disciplines.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Al-Khwarizmi is strongly associated with the development of:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Algebra"
+            },
+            {
+              "label": "B",
+              "text": "Evolutionary biology"
+            },
+            {
+              "label": "C",
+              "text": "Radio communication"
+            },
+            {
+              "label": "D",
+              "text": "Nuclear physics"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Al-Khwarizmi made foundational contributions to algebra and systematic mathematical methods.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Ibn al-Haytham is well known for contributions to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Optics"
+            },
+            {
+              "label": "B",
+              "text": "Computer networking"
+            },
+            {
+              "label": "C",
+              "text": "Nuclear engineering"
+            },
+            {
+              "label": "D",
+              "text": "Genetics"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Ibn al-Haytham made major contributions to optics, vision, and experimental investigation.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Traditional African knowledge systems often included practical understanding of:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Agriculture, medicine, metallurgy, and the environment"
+            },
+            {
+              "label": "B",
+              "text": "Only written philosophy"
+            },
+            {
+              "label": "C",
+              "text": "Only imported technologies"
+            },
+            {
+              "label": "D",
+              "text": "Only astronomy"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "African societies developed practical knowledge in agriculture, medicine, metallurgy, architecture, and environmental management.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why was the translation of scientific works historically important?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It helped knowledge move between cultures and generations"
+            },
+            {
+              "label": "B",
+              "text": "It prevented the development of new ideas"
+            },
+            {
+              "label": "C",
+              "text": "It removed the need for observation"
+            },
+            {
+              "label": "D",
+              "text": "It made mathematics unnecessary"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Translation and preservation supported intellectual continuity and cross-cultural exchange.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement best reflects the historical development of science?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Scientific knowledge developed through contributions from many civilisations"
+            },
+            {
+              "label": "B",
+              "text": "Science developed entirely within one civilisation"
+            },
+            {
+              "label": "C",
+              "text": "Ancient societies made no technological contributions"
+            },
+            {
+              "label": "D",
+              "text": "Scientific ideas did not move between regions"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The history of science reflects cumulative contributions, exchanges, criticisms, and discoveries across many societies.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Renaissance and the Rise of Modern Science",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The Renaissance encouraged scientific development partly through:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Renewed interest in learning, observation, and inquiry"
+            },
+            {
+              "label": "B",
+              "text": "The rejection of mathematics"
+            },
+            {
+              "label": "C",
+              "text": "The closure of universities"
+            },
+            {
+              "label": "D",
+              "text": "A ban on experimentation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The Renaissance encouraged scholarship, inquiry, and renewed engagement with nature and earlier intellectual traditions.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Nicolaus Copernicus is associated with the idea that:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The planets revolve around the Sun"
+            },
+            {
+              "label": "B",
+              "text": "The Sun revolves around every planet"
+            },
+            {
+              "label": "C",
+              "text": "Gravity does not exist"
+            },
+            {
+              "label": "D",
+              "text": "Light cannot be studied"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Copernicus proposed a heliocentric model in which Earth and other planets orbit the Sun.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Galileo Galilei strengthened scientific investigation by emphasising:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Observation, experiment, and mathematics"
+            },
+            {
+              "label": "B",
+              "text": "Tradition alone"
+            },
+            {
+              "label": "C",
+              "text": "Authority without evidence"
+            },
+            {
+              "label": "D",
+              "text": "The rejection of measurement"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Galileo's work helped demonstrate the power of observation, experimentation, and mathematical analysis.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Johannes Kepler is known for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Laws describing planetary motion"
+            },
+            {
+              "label": "B",
+              "text": "Discovering DNA"
+            },
+            {
+              "label": "C",
+              "text": "Inventing the transistor"
+            },
+            {
+              "label": "D",
+              "text": "Developing vaccination"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Kepler formulated mathematical laws describing planetary orbits.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Isaac Newton made major contributions to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Mechanics and gravitation"
+            },
+            {
+              "label": "B",
+              "text": "Only botany"
+            },
+            {
+              "label": "C",
+              "text": "Only linguistics"
+            },
+            {
+              "label": "D",
+              "text": "Only geology"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Newton developed influential laws of motion and universal gravitation.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why was the Scientific Revolution historically significant?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It strengthened systematic observation, mathematics, and experimentation in explanations of nature"
+            },
+            {
+              "label": "B",
+              "text": "It ended scientific disagreement permanently"
+            },
+            {
+              "label": "C",
+              "text": "It removed the need for theories"
+            },
+            {
+              "label": "D",
+              "text": "It rejected measurement"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The Scientific Revolution transformed methods and explanatory frameworks used to investigate nature.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Major Scientific Revolutions",
+      "order_num": 6,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Charles Darwin is associated with the theory of:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Evolution by natural selection"
+            },
+            {
+              "label": "B",
+              "text": "Relativity"
+            },
+            {
+              "label": "C",
+              "text": "Electromagnetism"
+            },
+            {
+              "label": "D",
+              "text": "Plate tectonics"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Darwin proposed natural selection as a major mechanism of biological evolution.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Albert Einstein is most closely associated with:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Relativity"
+            },
+            {
+              "label": "B",
+              "text": "Cell theory"
+            },
+            {
+              "label": "C",
+              "text": "Germ theory"
+            },
+            {
+              "label": "D",
+              "text": "Periodic classification"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Einstein developed the special and general theories of relativity.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The germ theory of disease established that:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Microorganisms can cause disease"
+            },
+            {
+              "label": "B",
+              "text": "Disease is always caused by weather"
+            },
+            {
+              "label": "C",
+              "text": "All diseases are inherited"
+            },
+            {
+              "label": "D",
+              "text": "Microorganisms cannot affect humans"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Germ theory linked microorganisms with infectious disease.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Understanding the structure of DNA was important because it helped explain:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Genetic information and inheritance"
+            },
+            {
+              "label": "B",
+              "text": "Planetary motion"
+            },
+            {
+              "label": "C",
+              "text": "Weather forecasting"
+            },
+            {
+              "label": "D",
+              "text": "Radio transmission"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "DNA structure provided a molecular basis for understanding genetic information and inheritance.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Quantum theory was developed mainly to explain:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Phenomena at atomic and subatomic scales"
+            },
+            {
+              "label": "B",
+              "text": "Only weather systems"
+            },
+            {
+              "label": "C",
+              "text": "Only geological erosion"
+            },
+            {
+              "label": "D",
+              "text": "Only biological classification"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Quantum theory describes physical behaviour at very small scales.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A scientific revolution is best understood as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A major transformation in scientific concepts or explanatory frameworks"
+            },
+            {
+              "label": "B",
+              "text": "A political election"
+            },
+            {
+              "label": "C",
+              "text": "A routine laboratory measurement"
+            },
+            {
+              "label": "D",
+              "text": "A minor change in terminology"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific revolutions involve substantial changes in dominant scientific concepts, methods, or frameworks.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Philosophy of Science",
+      "order_num": 7,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Philosophy of science examines:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The methods, assumptions, justification, and meaning of scientific knowledge"
+            },
+            {
+              "label": "B",
+              "text": "Only laboratory equipment"
+            },
+            {
+              "label": "C",
+              "text": "Only computer programming"
+            },
+            {
+              "label": "D",
+              "text": "Only engineering design"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Philosophy of science examines how scientific claims are produced, tested, justified, interpreted, and limited.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Empiricism gives particular importance to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Experience and observation"
+            },
+            {
+              "label": "B",
+              "text": "Authority without evidence"
+            },
+            {
+              "label": "C",
+              "text": "Tradition alone"
+            },
+            {
+              "label": "D",
+              "text": "Guesswork"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Empiricism emphasises observation and experience as important sources of knowledge.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Rationalism gives particular importance to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Reason and logical thought"
+            },
+            {
+              "label": "B",
+              "text": "Random experimentation"
+            },
+            {
+              "label": "C",
+              "text": "Political authority"
+            },
+            {
+              "label": "D",
+              "text": "Personal preference"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Rationalism emphasises reason and logical thought in acquiring knowledge.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Karl Popper argued that scientific claims should be:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Falsifiable"
+            },
+            {
+              "label": "B",
+              "text": "Impossible to test"
+            },
+            {
+              "label": "C",
+              "text": "Based only on popularity"
+            },
+            {
+              "label": "D",
+              "text": "Protected from criticism"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Popper argued that scientific propositions should be capable, in principle, of being shown false by evidence.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Thomas Kuhn used the term paradigm to refer to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A broad framework of concepts and practices shared by a scientific community"
+            },
+            {
+              "label": "B",
+              "text": "A laboratory building"
+            },
+            {
+              "label": "C",
+              "text": "A measuring instrument"
+            },
+            {
+              "label": "D",
+              "text": "A type of experimental error"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "For Kuhn, a paradigm is a framework that guides normal scientific research within a community.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is criticism important in science?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It allows claims, evidence, and methods to be scrutinised and improved"
+            },
+            {
+              "label": "B",
+              "text": "It prevents scientific progress"
+            },
+            {
+              "label": "C",
+              "text": "It proves every theory false"
+            },
+            {
+              "label": "D",
+              "text": "It replaces experimentation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Critical scrutiny helps identify weaknesses, errors, and alternative explanations.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Science, Technology and Society",
+      "order_num": 8,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Technology is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The practical application of knowledge and techniques to solve problems"
+            },
+            {
+              "label": "B",
+              "text": "Science without application"
+            },
+            {
+              "label": "C",
+              "text": "Only computer hardware"
+            },
+            {
+              "label": "D",
+              "text": "Only traditional tools"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Technology applies knowledge, skills, techniques, and tools to practical problems.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Science and technology are related because:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Scientific knowledge can support technology, while technology can enable scientific investigation"
+            },
+            {
+              "label": "B",
+              "text": "They never influence one another"
+            },
+            {
+              "label": "C",
+              "text": "Technology eliminates science"
+            },
+            {
+              "label": "D",
+              "text": "Science never uses instruments"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific discoveries can lead to technologies, while new technologies often enable new scientific discoveries.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Vaccination is an example of science affecting society through:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Public health"
+            },
+            {
+              "label": "B",
+              "text": "Architecture"
+            },
+            {
+              "label": "C",
+              "text": "Literary criticism"
+            },
+            {
+              "label": "D",
+              "text": "Navigation only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Vaccination applies biomedical knowledge to the prevention and control of disease.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "One social challenge associated with technology is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Unequal access"
+            },
+            {
+              "label": "B",
+              "text": "Guaranteed equality"
+            },
+            {
+              "label": "C",
+              "text": "Elimination of all risks"
+            },
+            {
+              "label": "D",
+              "text": "The end of ethical debate"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Access to technologies and their benefits may be unevenly distributed.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should society evaluate new technologies?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They may create both benefits and unintended risks"
+            },
+            {
+              "label": "B",
+              "text": "Technology never affects society"
+            },
+            {
+              "label": "C",
+              "text": "Every invention should automatically be rejected"
+            },
+            {
+              "label": "D",
+              "text": "Scientific knowledge is always harmful"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Technology may have economic, social, environmental, ethical, and security consequences.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement best represents responsible innovation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Developing technology while considering safety, ethics, society, and environmental effects"
+            },
+            {
+              "label": "B",
+              "text": "Deploying every technology immediately regardless of risk"
+            },
+            {
+              "label": "C",
+              "text": "Ignoring affected communities"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding all testing"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Responsible innovation considers consequences as well as technical performance.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Science in Nigeria",
+      "order_num": 9,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Scientific development in Nigeria is supported by:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Universities, research institutes, government agencies, and industry"
+            },
+            {
+              "label": "B",
+              "text": "Only foreign organisations"
+            },
+            {
+              "label": "C",
+              "text": "Only secondary schools"
+            },
+            {
+              "label": "D",
+              "text": "Only private individuals"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scientific work in Nigeria involves universities, specialised institutes, public agencies, industry, and other organisations.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Agricultural research can contribute to Nigeria by:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Improving crop production and food security"
+            },
+            {
+              "label": "B",
+              "text": "Eliminating the need for farming"
+            },
+            {
+              "label": "C",
+              "text": "Preventing all climate variation"
+            },
+            {
+              "label": "D",
+              "text": "Replacing every rural occupation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Agricultural research can improve productivity, resilience, disease control, and food security.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Medical research in Nigeria is important for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Understanding and responding to diseases affecting the population"
+            },
+            {
+              "label": "B",
+              "text": "Only designing buildings"
+            },
+            {
+              "label": "C",
+              "text": "Only studying astronomy"
+            },
+            {
+              "label": "D",
+              "text": "Only producing textbooks"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Health research supports understanding, prevention, diagnosis, and treatment of diseases relevant to the population.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Scientific research commonly requires funding for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Equipment, personnel, facilities, and data collection"
+            },
+            {
+              "label": "B",
+              "text": "Only publicity"
+            },
+            {
+              "label": "C",
+              "text": "Only ceremonial events"
+            },
+            {
+              "label": "D",
+              "text": "Only administrative titles"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Research requires human expertise, equipment, infrastructure, materials, data collection, and analysis.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Collaboration between universities and industry can help:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Translate research into practical products, processes, and services"
+            },
+            {
+              "label": "B",
+              "text": "Prevent the use of research"
+            },
+            {
+              "label": "C",
+              "text": "Eliminate entrepreneurship"
+            },
+            {
+              "label": "D",
+              "text": "Reduce knowledge exchange"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "University-industry collaboration can help transform research outcomes into practical innovation.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A major challenge to science and technology development in Nigeria can include:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Insufficient research infrastructure and funding"
+            },
+            {
+              "label": "B",
+              "text": "A total absence of universities"
+            },
+            {
+              "label": "C",
+              "text": "A complete lack of scientific talent"
+            },
+            {
+              "label": "D",
+              "text": "No demand for technological development"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Funding, infrastructure, equipment, research capacity, and coordination can constrain scientific development.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Ethics, Environment and Responsibility in Science",
+      "order_num": 10,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Research ethics primarily concerns:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Responsible conduct in scientific investigation"
+            },
+            {
+              "label": "B",
+              "text": "Increasing publication length"
+            },
+            {
+              "label": "C",
+              "text": "Hiding research methods"
+            },
+            {
+              "label": "D",
+              "text": "Ignoring participant welfare"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Research ethics establishes principles for responsible, fair, and safe research conduct.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Informed consent is especially important when research involves:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Human participants"
+            },
+            {
+              "label": "B",
+              "text": "Only machines"
+            },
+            {
+              "label": "C",
+              "text": "Only mathematical equations"
+            },
+            {
+              "label": "D",
+              "text": "Only public weather records"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Participants should understand relevant aspects of research and voluntarily agree to participate.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Fabricating scientific data means:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Inventing results that were not actually obtained"
+            },
+            {
+              "label": "B",
+              "text": "Correcting a typing error"
+            },
+            {
+              "label": "C",
+              "text": "Citing a source"
+            },
+            {
+              "label": "D",
+              "text": "Repeating an experiment"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Fabrication is the unethical creation of false data or results.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Environmental science helps society understand:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Interactions between human activity and natural systems"
+            },
+            {
+              "label": "B",
+              "text": "Only computer networks"
+            },
+            {
+              "label": "C",
+              "text": "Only historical documents"
+            },
+            {
+              "label": "D",
+              "text": "Only language development"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Environmental science investigates interactions among humans, organisms, ecosystems, resources, and physical environments.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is sustainability relevant to science and technology?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Development should consider long-term environmental and social consequences"
+            },
+            {
+              "label": "B",
+              "text": "Resources are always unlimited"
+            },
+            {
+              "label": "C",
+              "text": "Scientific activity has no environmental effects"
+            },
+            {
+              "label": "D",
+              "text": "Sustainability requires rejecting technology"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Sustainable development considers present needs alongside long-term environmental and social wellbeing.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A scientist finds credible evidence that a widely used product may pose a serious public risk. The most responsible response is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Verify and report the evidence through appropriate scientific and regulatory channels"
+            },
+            {
+              "label": "B",
+              "text": "Hide the evidence"
+            },
+            {
+              "label": "C",
+              "text": "Destroy the data"
+            },
+            {
+              "label": "D",
+              "text": "Publish an unsupported accusation without verification"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Responsible scientific conduct requires careful verification and appropriate communication of credible risks.",
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}

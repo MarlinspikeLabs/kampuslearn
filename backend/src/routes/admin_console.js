@@ -100,4 +100,318 @@ router.delete('/content/:kind/:id',run(async(req,res)=>{
  const result=await require('../services/deleteContent')(req.params.kind,req.params.id);
  success(res,result,'Content deleted');
 }));
+
+
+// ============================================================
+// QUESTION BANK ADMIN
+// ============================================================
+
+router.get('/question-banks',run(async(req,res)=>{
+ const r=await query(`
+   SELECT
+     pcs.source_course_id AS id,
+     source.code,
+     source.title,
+     source.level,
+     source.semester,
+
+     COUNT(DISTINCT pcs.course_id)::int AS mapped_courses,
+
+     COUNT(DISTINCT q.id)::int AS total_questions,
+
+     COUNT(DISTINCT q.id) FILTER (
+       WHERE q.is_approved=TRUE
+     )::int AS approved_questions,
+
+     COUNT(DISTINCT q.id) FILTER (
+       WHERE q.is_approved=FALSE
+     )::int AS draft_questions,
+
+     COUNT(DISTINCT q.topic_id)::int AS topics
+
+   FROM practice_course_question_sources pcs
+
+   JOIN courses source
+     ON source.id=pcs.source_course_id
+
+   LEFT JOIN questions q
+     ON q.course_id=source.id
+
+   GROUP BY
+     pcs.source_course_id,
+     source.code,
+     source.title,
+     source.level,
+     source.semester
+
+   ORDER BY
+     source.level,
+     source.code,
+     source.title
+ `);
+
+ success(res,r.rows);
+}));
+
+router.get('/question-banks/:id/questions',run(async(req,res)=>{
+ const {page,limit}=pagination(req);
+
+ const bank=await query(`
+   SELECT
+     c.id,
+     c.code,
+     c.title,
+     c.level,
+     c.semester,
+     COUNT(DISTINCT pcs.course_id)::int AS mapped_courses
+
+   FROM courses c
+
+   JOIN practice_course_question_sources pcs
+     ON pcs.source_course_id=c.id
+
+   WHERE c.id=$1
+
+   GROUP BY
+     c.id,
+     c.code,
+     c.title,
+     c.level,
+     c.semester
+ `,[req.params.id]);
+
+ if(!bank.rows.length)fail('Question bank not found',404);
+
+ const p=[req.params.id];
+ const cond=['q.course_id=$1'];
+
+ if(req.query.status==='approved'){
+   cond.push('q.is_approved=TRUE');
+ }
+
+ if(req.query.status==='draft'){
+   cond.push('q.is_approved=FALSE');
+ }
+
+ if(['easy','medium','hard'].includes(req.query.difficulty)){
+   p.push(req.query.difficulty);
+   cond.push(`q.difficulty::text=$${p.length}`);
+ }
+
+ if(req.query.topic){
+   p.push(req.query.topic);
+   cond.push(`q.topic_id::text=$${p.length}`);
+ }
+
+ if(req.query.search){
+   p.push('%'+String(req.query.search).slice(0,180)+'%');
+   cond.push(`q.question_text ILIKE $${p.length}`);
+ }
+
+ const where='WHERE '+cond.join(' AND ');
+
+ const total=Number((await query(`
+   SELECT COUNT(*)
+   FROM questions q
+   ${where}
+ `,p)).rows[0].count);
+
+ const rows=await query(`
+   SELECT
+     q.id,
+     q.question_text,
+     q.question_type,
+     q.options,
+     q.correct_answer,
+     q.explanation,
+     q.difficulty,
+     q.marks,
+     q.year,
+     q.is_approved,
+     q.created_at,
+
+     t.id AS topic_id,
+     t.name AS topic_name,
+
+     u.full_name AS created_by_name
+
+   FROM questions q
+
+   LEFT JOIN topics t
+     ON t.id=q.topic_id
+
+   JOIN users u
+     ON u.id=q.created_by
+
+   ${where}
+
+   ORDER BY
+     t.order_num NULLS LAST,
+     t.name NULLS LAST,
+     q.created_at,
+     q.id
+
+   LIMIT $${p.length+1}
+   OFFSET $${p.length+2}
+ `,[...p,limit,(page-1)*limit]);
+
+ const topics=await query(`
+   SELECT
+     t.id,
+     t.name,
+     t.order_num,
+     COUNT(q.id)::int AS questions
+
+   FROM topics t
+
+   LEFT JOIN questions q
+     ON q.topic_id=t.id
+    AND q.course_id=t.course_id
+
+   WHERE t.course_id=$1
+
+   GROUP BY
+     t.id,
+     t.name,
+     t.order_num
+
+   ORDER BY
+     t.order_num,
+     t.name
+ `,[req.params.id]);
+
+ success(res,{
+   bank:bank.rows[0],
+   topics:topics.rows,
+   rows:rows.rows,
+   total,
+   page,
+   pages:Math.max(1,Math.ceil(total/limit))
+ });
+}));
+
+router.patch('/question-bank/questions/:id',run(async(req,res)=>{
+ const existing=await query(`
+   SELECT *
+   FROM questions
+   WHERE id=$1
+ `,[req.params.id]);
+
+ if(!existing.rows.length)fail('Question not found',404);
+
+ const current=existing.rows[0];
+
+ if(typeof req.body.is_approved==='boolean' &&
+    Object.keys(req.body).length===1){
+
+   const r=await query(`
+     UPDATE questions
+     SET is_approved=$1
+     WHERE id=$2
+     RETURNING id,is_approved
+   `,[req.body.is_approved,req.params.id]);
+
+   return success(
+     res,
+     r.rows[0],
+     req.body.is_approved
+       ? 'Question approved'
+       : 'Question returned to draft'
+   );
+ }
+
+ const question_text=String(
+   req.body.question_text ?? current.question_text
+ ).trim();
+
+ const explanation=String(
+   req.body.explanation ?? current.explanation ?? ''
+ ).trim();
+
+ const difficulty=String(
+   req.body.difficulty ?? current.difficulty
+ );
+
+ const correct_answer=String(
+   req.body.correct_answer ?? current.correct_answer
+ ).trim();
+
+ const question_type=String(
+   req.body.question_type ?? current.question_type
+ );
+
+ const options=
+   req.body.options!==undefined
+     ? req.body.options
+     : current.options;
+
+ if(!question_text || question_text.length>5000)
+   fail('Enter valid question text');
+
+ if(!['easy','medium','hard'].includes(difficulty))
+   fail('Invalid difficulty');
+
+ if(!['mcq','true_false'].includes(question_type))
+   fail('Invalid question type');
+
+ if(!correct_answer)
+   fail('Correct answer is required');
+
+ if(question_type==='mcq'){
+   if(!Array.isArray(options)||options.length<2)
+     fail('MCQ questions require at least two options');
+
+   const labels=options.map(x=>
+     String(x?.label||'').trim().toUpperCase()
+   );
+
+   if(labels.some(x=>!x))
+     fail('Every option requires a label');
+
+   if(new Set(labels).size!==labels.length)
+     fail('Option labels must be unique');
+
+   if(options.some(x=>!String(x?.text||'').trim()))
+     fail('Every option requires text');
+
+   if(!labels.includes(correct_answer.toUpperCase()))
+     fail('Correct answer must match an option label');
+ }
+
+ const r=await query(`
+   UPDATE questions
+
+   SET
+     question_text=$1,
+     question_type=$2,
+     options=$3,
+     correct_answer=$4,
+     explanation=$5,
+     difficulty=$6::difficulty_level
+
+   WHERE id=$7
+
+   RETURNING
+     id,
+     question_text,
+     question_type,
+     options,
+     correct_answer,
+     explanation,
+     difficulty,
+     is_approved
+ `,[
+   question_text,
+   question_type,
+   options ? JSON.stringify(options) : null,
+   correct_answer,
+   explanation || null,
+   difficulty,
+   req.params.id
+ ]);
+
+ success(res,r.rows[0],'Question updated');
+}));
+
+
 module.exports=router;

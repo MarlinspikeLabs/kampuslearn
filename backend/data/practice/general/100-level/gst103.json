@@ -1,0 +1,1568 @@
+{
+  "course_code": "KL-GST103",
+  "course_title": "Computer Fundamentals and Information and Communication Technology",
+  "level": "100",
+  "semester": "first",
+  "topics": [
+    {
+      "name": "Introduction to Computers",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A computer is best described as a device that:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Accepts data, processes it, and produces information"
+            },
+            {
+              "label": "B",
+              "text": "Only stores documents"
+            },
+            {
+              "label": "C",
+              "text": "Only performs calculations"
+            },
+            {
+              "label": "D",
+              "text": "Only connects to the internet"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A computer accepts input, processes data according to instructions, stores data, and produces output.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which characteristic of computers refers to their ability to perform tasks very quickly?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Speed"
+            },
+            {
+              "label": "B",
+              "text": "Versatility"
+            },
+            {
+              "label": "C",
+              "text": "Storage"
+            },
+            {
+              "label": "D",
+              "text": "Accuracy"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Speed describes the ability of computers to execute large numbers of operations rapidly.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an example of data?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A student's raw examination scores"
+            },
+            {
+              "label": "B",
+              "text": "A calculated class average"
+            },
+            {
+              "label": "C",
+              "text": "A printed result sheet"
+            },
+            {
+              "label": "D",
+              "text": "A final academic report"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Raw examination scores are unprocessed facts, while averages and reports are forms of processed information.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The process of converting data into meaningful information is called:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Processing"
+            },
+            {
+              "label": "B",
+              "text": "Scanning"
+            },
+            {
+              "label": "C",
+              "text": "Formatting"
+            },
+            {
+              "label": "D",
+              "text": "Booting"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Processing transforms raw data into useful information.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which feature allows a computer to perform different kinds of tasks?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Versatility"
+            },
+            {
+              "label": "B",
+              "text": "Permanence"
+            },
+            {
+              "label": "C",
+              "text": "Manual control"
+            },
+            {
+              "label": "D",
+              "text": "Analogue storage"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Versatility refers to the ability of a computer to handle many different applications and tasks.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A computer can produce incorrect results when:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The input data or instructions are incorrect"
+            },
+            {
+              "label": "B",
+              "text": "The processor is fast"
+            },
+            {
+              "label": "C",
+              "text": "The monitor is large"
+            },
+            {
+              "label": "D",
+              "text": "The keyboard is wireless"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The principle 'garbage in, garbage out' means incorrect input or instructions can lead to incorrect output.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Computer Hardware",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The physical components of a computer system are called:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Hardware"
+            },
+            {
+              "label": "B",
+              "text": "Software"
+            },
+            {
+              "label": "C",
+              "text": "Data"
+            },
+            {
+              "label": "D",
+              "text": "Programs"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Hardware refers to the tangible physical parts of a computer system.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which component is often described as the brain of the computer?",
+          "options": [
+            {
+              "label": "A",
+              "text": "CPU"
+            },
+            {
+              "label": "B",
+              "text": "Monitor"
+            },
+            {
+              "label": "C",
+              "text": "Mouse"
+            },
+            {
+              "label": "D",
+              "text": "Printer"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The CPU executes instructions and controls most computer operations.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which component temporarily stores data and instructions currently being used?",
+          "options": [
+            {
+              "label": "A",
+              "text": "RAM"
+            },
+            {
+              "label": "B",
+              "text": "ROM"
+            },
+            {
+              "label": "C",
+              "text": "Hard disk"
+            },
+            {
+              "label": "D",
+              "text": "Flash drive"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "RAM provides temporary high-speed storage for active data and programs.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which component stores startup instructions that are normally retained when power is removed?",
+          "options": [
+            {
+              "label": "A",
+              "text": "ROM"
+            },
+            {
+              "label": "B",
+              "text": "RAM"
+            },
+            {
+              "label": "C",
+              "text": "Cache only"
+            },
+            {
+              "label": "D",
+              "text": "Keyboard"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "ROM stores non-volatile instructions such as firmware used during startup.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which hardware component supplies electrical power to internal computer components?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Power supply unit"
+            },
+            {
+              "label": "B",
+              "text": "Motherboard"
+            },
+            {
+              "label": "C",
+              "text": "Monitor"
+            },
+            {
+              "label": "D",
+              "text": "Scanner"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The power supply unit converts and distributes electrical power to computer components.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The motherboard is important because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Provides connections that allow major computer components to communicate"
+            },
+            {
+              "label": "B",
+              "text": "Stores every user file permanently"
+            },
+            {
+              "label": "C",
+              "text": "Acts only as an input device"
+            },
+            {
+              "label": "D",
+              "text": "Replaces the operating system"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The motherboard connects the CPU, memory, storage interfaces, and other components.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Input and Output Devices",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an input device?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Keyboard"
+            },
+            {
+              "label": "B",
+              "text": "Monitor"
+            },
+            {
+              "label": "C",
+              "text": "Speaker"
+            },
+            {
+              "label": "D",
+              "text": "Projector"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A keyboard allows users to enter data and commands into a computer.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which device is mainly used to produce a paper copy of information?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Printer"
+            },
+            {
+              "label": "B",
+              "text": "Scanner"
+            },
+            {
+              "label": "C",
+              "text": "Mouse"
+            },
+            {
+              "label": "D",
+              "text": "Microphone"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A printer produces hard-copy output on paper or similar media.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A scanner is used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Convert printed documents or images into digital form"
+            },
+            {
+              "label": "B",
+              "text": "Play sound"
+            },
+            {
+              "label": "C",
+              "text": "Display video"
+            },
+            {
+              "label": "D",
+              "text": "Store files permanently"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A scanner captures physical documents or images and converts them into digital data.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which device can function as both an input and an output device?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Touchscreen"
+            },
+            {
+              "label": "B",
+              "text": "Printer"
+            },
+            {
+              "label": "C",
+              "text": "Speaker"
+            },
+            {
+              "label": "D",
+              "text": "Projector"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A touchscreen displays information and also receives touch input from the user.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A microphone converts:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Sound into digital or electrical input signals"
+            },
+            {
+              "label": "B",
+              "text": "Text into printed output"
+            },
+            {
+              "label": "C",
+              "text": "Video into paper output"
+            },
+            {
+              "label": "D",
+              "text": "Files into folders"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A microphone captures sound and converts it into signals that a computer can process.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which factor is most relevant when choosing an output device for a large classroom presentation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Visibility and display size"
+            },
+            {
+              "label": "B",
+              "text": "Keyboard layout"
+            },
+            {
+              "label": "C",
+              "text": "Mouse sensitivity"
+            },
+            {
+              "label": "D",
+              "text": "File extension"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Large classrooms require output that can be seen clearly by many viewers.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Storage and Memory",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an example of secondary storage?",
+          "options": [
+            {
+              "label": "A",
+              "text": "SSD"
+            },
+            {
+              "label": "B",
+              "text": "RAM"
+            },
+            {
+              "label": "C",
+              "text": "CPU register"
+            },
+            {
+              "label": "D",
+              "text": "Cache memory"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An SSD stores data persistently and is a form of secondary storage.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which unit is larger?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Megabyte"
+            },
+            {
+              "label": "B",
+              "text": "Kilobyte"
+            },
+            {
+              "label": "C",
+              "text": "Byte"
+            },
+            {
+              "label": "D",
+              "text": "Bit"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A megabyte contains more data than a kilobyte, byte, or bit.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "One kilobyte is commonly treated as approximately:",
+          "options": [
+            {
+              "label": "A",
+              "text": "1024 bytes"
+            },
+            {
+              "label": "B",
+              "text": "8 bytes"
+            },
+            {
+              "label": "C",
+              "text": "100 bytes"
+            },
+            {
+              "label": "D",
+              "text": "1 byte"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "In common binary-based computing contexts, one kilobyte is approximately 1024 bytes.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which memory is generally fastest?",
+          "options": [
+            {
+              "label": "A",
+              "text": "CPU register"
+            },
+            {
+              "label": "B",
+              "text": "Hard disk"
+            },
+            {
+              "label": "C",
+              "text": "Optical disc"
+            },
+            {
+              "label": "D",
+              "text": "USB flash drive"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "CPU registers are extremely fast storage locations located within the processor.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is RAM called volatile memory?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Its contents are usually lost when power is removed"
+            },
+            {
+              "label": "B",
+              "text": "It cannot be written to"
+            },
+            {
+              "label": "C",
+              "text": "It is permanently built into every disk"
+            },
+            {
+              "label": "D",
+              "text": "It stores data for decades"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "RAM normally loses stored data when power is switched off.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which storage strategy best protects important academic files?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Keeping multiple copies in separate reliable locations"
+            },
+            {
+              "label": "B",
+              "text": "Keeping only one copy on one laptop"
+            },
+            {
+              "label": "C",
+              "text": "Renaming the file daily without backup"
+            },
+            {
+              "label": "D",
+              "text": "Deleting all older copies"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Multiple independent copies reduce the risk of total data loss.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Operating Systems",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "An operating system is a type of:",
+          "options": [
+            {
+              "label": "A",
+              "text": "System software"
+            },
+            {
+              "label": "B",
+              "text": "Application software"
+            },
+            {
+              "label": "C",
+              "text": "Peripheral device"
+            },
+            {
+              "label": "D",
+              "text": "Programming language"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An operating system is system software that manages hardware and provides services to applications.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an operating system?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Linux"
+            },
+            {
+              "label": "B",
+              "text": "Microsoft Word"
+            },
+            {
+              "label": "C",
+              "text": "PowerPoint"
+            },
+            {
+              "label": "D",
+              "text": "Google Docs"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Linux is an operating system, while the others are application programs.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The operating system manages:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Hardware resources and software execution"
+            },
+            {
+              "label": "B",
+              "text": "Only printed documents"
+            },
+            {
+              "label": "C",
+              "text": "Only internet websites"
+            },
+            {
+              "label": "D",
+              "text": "Only passwords"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The operating system coordinates hardware resources and application execution.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The process of starting a computer and loading the operating system is called:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Booting"
+            },
+            {
+              "label": "B",
+              "text": "Scanning"
+            },
+            {
+              "label": "C",
+              "text": "Formatting"
+            },
+            {
+              "label": "D",
+              "text": "Compiling"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Booting is the startup process that loads the operating system into memory.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A graphical user interface allows users to interact using:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Windows, icons, menus, and pointers"
+            },
+            {
+              "label": "B",
+              "text": "Only machine code"
+            },
+            {
+              "label": "C",
+              "text": "Only electrical signals"
+            },
+            {
+              "label": "D",
+              "text": "Only printed commands"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A GUI uses visual elements such as windows, icons, menus, and pointers.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which task is typically performed by an operating system rather than a word processor?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Managing memory allocation"
+            },
+            {
+              "label": "B",
+              "text": "Writing an essay"
+            },
+            {
+              "label": "C",
+              "text": "Creating a presentation slide"
+            },
+            {
+              "label": "D",
+              "text": "Editing a paragraph"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Memory management is a core operating-system responsibility.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "File Management",
+      "order_num": 6,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A file is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A named collection of stored data"
+            },
+            {
+              "label": "B",
+              "text": "A physical keyboard key"
+            },
+            {
+              "label": "C",
+              "text": "A computer monitor"
+            },
+            {
+              "label": "D",
+              "text": "An internet cable"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A file is a named unit of stored data.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Folders are mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Organise files"
+            },
+            {
+              "label": "B",
+              "text": "Increase CPU speed"
+            },
+            {
+              "label": "C",
+              "text": "Change monitor brightness"
+            },
+            {
+              "label": "D",
+              "text": "Print documents"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Folders provide a logical structure for organising files and other folders.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which extension commonly represents a text document created in Microsoft Word?",
+          "options": [
+            {
+              "label": "A",
+              "text": ".docx"
+            },
+            {
+              "label": "B",
+              "text": ".mp3"
+            },
+            {
+              "label": "C",
+              "text": ".jpg"
+            },
+            {
+              "label": "D",
+              "text": ".exe"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The .docx extension is commonly used by modern Microsoft Word documents.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What happens when a file is moved from one folder to another?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Its storage location changes"
+            },
+            {
+              "label": "B",
+              "text": "Its contents are automatically deleted"
+            },
+            {
+              "label": "C",
+              "text": "Its file type always changes"
+            },
+            {
+              "label": "D",
+              "text": "It becomes read-only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Moving a file changes its location without necessarily changing its contents.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which filename is most useful for academic organisation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "GST103_Assignment1_Usman.docx"
+            },
+            {
+              "label": "B",
+              "text": "document1.docx"
+            },
+            {
+              "label": "C",
+              "text": "newfile.docx"
+            },
+            {
+              "label": "D",
+              "text": "stuff.docx"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Descriptive filenames make documents easier to identify and retrieve.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is it risky to save every important file only on the desktop of one computer?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A single device failure could cause major data loss"
+            },
+            {
+              "label": "B",
+              "text": "Desktop files cannot be opened"
+            },
+            {
+              "label": "C",
+              "text": "Desktop files cannot contain text"
+            },
+            {
+              "label": "D",
+              "text": "Operating systems prohibit desktop storage"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Relying on a single storage location creates a single point of failure.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Computer Networks and Internet",
+      "order_num": 7,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A computer network is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A group of connected devices that can communicate and share resources"
+            },
+            {
+              "label": "B",
+              "text": "A single computer program"
+            },
+            {
+              "label": "C",
+              "text": "A type of keyboard"
+            },
+            {
+              "label": "D",
+              "text": "A printed document"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A network connects devices so they can exchange data and share resources.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "LAN stands for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Local Area Network"
+            },
+            {
+              "label": "B",
+              "text": "Large Access Node"
+            },
+            {
+              "label": "C",
+              "text": "Logical Application Network"
+            },
+            {
+              "label": "D",
+              "text": "Linked Academic Network"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "LAN stands for Local Area Network.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which device commonly connects different networks and directs traffic between them?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Router"
+            },
+            {
+              "label": "B",
+              "text": "Keyboard"
+            },
+            {
+              "label": "C",
+              "text": "Monitor"
+            },
+            {
+              "label": "D",
+              "text": "Scanner"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A router forwards data between networks.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Wi-Fi allows devices to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Connect to a network wirelessly"
+            },
+            {
+              "label": "B",
+              "text": "Print without electricity"
+            },
+            {
+              "label": "C",
+              "text": "Store unlimited data"
+            },
+            {
+              "label": "D",
+              "text": "Replace the operating system"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Wi-Fi provides wireless network connectivity using radio signals.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The World Wide Web is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A collection of interlinked resources accessed over the Internet"
+            },
+            {
+              "label": "B",
+              "text": "The same thing as computer RAM"
+            },
+            {
+              "label": "C",
+              "text": "A type of printer"
+            },
+            {
+              "label": "D",
+              "text": "A programming language"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The web is a system of linked resources accessed through internet technologies.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement correctly distinguishes the Internet from the Web?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The Internet is the underlying network infrastructure, while the Web is one service that uses it"
+            },
+            {
+              "label": "B",
+              "text": "They are completely unrelated"
+            },
+            {
+              "label": "C",
+              "text": "The Web exists without networks"
+            },
+            {
+              "label": "D",
+              "text": "The Internet is only a browser"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The Internet is the global network infrastructure; the Web is an information service that operates over it.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Information and Communication Technology",
+      "order_num": 8,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "ICT stands for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Information and Communication Technology"
+            },
+            {
+              "label": "B",
+              "text": "Integrated Computer Terminal"
+            },
+            {
+              "label": "C",
+              "text": "Internet Communication Transfer"
+            },
+            {
+              "label": "D",
+              "text": "Information Coding Tool"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "ICT stands for Information and Communication Technology.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which is an example of ICT use in education?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Online learning platforms"
+            },
+            {
+              "label": "B",
+              "text": "Manual typewriters only"
+            },
+            {
+              "label": "C",
+              "text": "Chalkboards only"
+            },
+            {
+              "label": "D",
+              "text": "Printed books only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Online learning platforms use digital communication and information technologies to support education.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Video conferencing enables users to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Communicate using live audio and video over a network"
+            },
+            {
+              "label": "B",
+              "text": "Store files without electricity"
+            },
+            {
+              "label": "C",
+              "text": "Replace all operating systems"
+            },
+            {
+              "label": "D",
+              "text": "Print remotely without a printer"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Video conferencing supports real-time audio-visual communication over networks.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Cloud computing allows users to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Access computing resources and services over a network"
+            },
+            {
+              "label": "B",
+              "text": "Use computers without processors"
+            },
+            {
+              "label": "C",
+              "text": "Store information only on paper"
+            },
+            {
+              "label": "D",
+              "text": "Avoid all security risks"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Cloud computing provides remote access to storage, applications, and computing resources.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which is an example of digital communication?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Email"
+            },
+            {
+              "label": "B",
+              "text": "Handwritten note only"
+            },
+            {
+              "label": "C",
+              "text": "Printed poster only"
+            },
+            {
+              "label": "D",
+              "text": "Physical notice board only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Email transmits messages electronically using digital networks.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A major benefit of ICT in organisations is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Faster communication and improved information handling"
+            },
+            {
+              "label": "B",
+              "text": "Guaranteed elimination of all errors"
+            },
+            {
+              "label": "C",
+              "text": "Removal of all security concerns"
+            },
+            {
+              "label": "D",
+              "text": "No need for staff training"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "ICT can improve communication, productivity, access to information, and coordination.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Computer Applications",
+      "order_num": 9,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A word processor is mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Create and edit text documents"
+            },
+            {
+              "label": "B",
+              "text": "Design computer hardware"
+            },
+            {
+              "label": "C",
+              "text": "Route network packets"
+            },
+            {
+              "label": "D",
+              "text": "Scan for radio signals"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Word-processing software is designed for creating and formatting text documents.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A spreadsheet is especially useful for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Calculations and tabular data"
+            },
+            {
+              "label": "B",
+              "text": "Playing only audio files"
+            },
+            {
+              "label": "C",
+              "text": "Repairing computer hardware"
+            },
+            {
+              "label": "D",
+              "text": "Creating operating systems"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spreadsheets are designed for numerical calculations and structured tabular data.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Presentation software is mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Create slide-based presentations"
+            },
+            {
+              "label": "B",
+              "text": "Manage CPU registers"
+            },
+            {
+              "label": "C",
+              "text": "Encrypt all files"
+            },
+            {
+              "label": "D",
+              "text": "Replace the operating system"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Presentation applications are used to prepare and display slides.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A database application is primarily designed to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Store, organise, and retrieve structured data"
+            },
+            {
+              "label": "B",
+              "text": "Increase monitor size"
+            },
+            {
+              "label": "C",
+              "text": "Replace a keyboard"
+            },
+            {
+              "label": "D",
+              "text": "Create internet cables"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Database systems organise structured data and support efficient retrieval and management.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which software category includes web browsers?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Application software"
+            },
+            {
+              "label": "B",
+              "text": "Firmware only"
+            },
+            {
+              "label": "C",
+              "text": "Hardware"
+            },
+            {
+              "label": "D",
+              "text": "Memory"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Web browsers are application programs used by end users.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which application would be most suitable for analysing a table of student scores and calculating averages?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Spreadsheet"
+            },
+            {
+              "label": "B",
+              "text": "Presentation software"
+            },
+            {
+              "label": "C",
+              "text": "Media player"
+            },
+            {
+              "label": "D",
+              "text": "Paint program"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spreadsheet software provides formulas and functions suitable for numerical analysis.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Digital Safety and Responsible Use",
+      "order_num": 10,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Malware is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Software designed to cause harm or perform unwanted actions"
+            },
+            {
+              "label": "B",
+              "text": "A type of monitor"
+            },
+            {
+              "label": "C",
+              "text": "A storage unit"
+            },
+            {
+              "label": "D",
+              "text": "A word-processing feature"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Malware includes harmful software such as viruses, worms, ransomware, and spyware.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which password is strongest?",
+          "options": [
+            {
+              "label": "A",
+              "text": "T9#pL2!xQ7"
+            },
+            {
+              "label": "B",
+              "text": "password"
+            },
+            {
+              "label": "C",
+              "text": "12345678"
+            },
+            {
+              "label": "D",
+              "text": "student2026"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Long, unpredictable passwords with varied characters are generally harder to guess.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Phishing attacks often attempt to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Trick users into revealing sensitive information"
+            },
+            {
+              "label": "B",
+              "text": "Improve computer performance"
+            },
+            {
+              "label": "C",
+              "text": "Increase storage capacity"
+            },
+            {
+              "label": "D",
+              "text": "Repair operating systems"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Phishing uses deception to steal credentials or other sensitive information.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should software updates be installed regularly?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They may fix security vulnerabilities and software defects"
+            },
+            {
+              "label": "B",
+              "text": "They always delete user files"
+            },
+            {
+              "label": "C",
+              "text": "They make passwords unnecessary"
+            },
+            {
+              "label": "D",
+              "text": "They remove the need for backups"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Updates often patch security weaknesses and correct software problems.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Copyright protects:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Creators' rights over original works"
+            },
+            {
+              "label": "B",
+              "text": "Only computer passwords"
+            },
+            {
+              "label": "C",
+              "text": "Only internet cables"
+            },
+            {
+              "label": "D",
+              "text": "Only hardware manufacturers"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Copyright gives creators legal rights over original works such as books, software, music, and other content.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which behaviour demonstrates responsible digital citizenship?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Respecting privacy, intellectual property, and acceptable-use rules"
+            },
+            {
+              "label": "B",
+              "text": "Sharing another person's password"
+            },
+            {
+              "label": "C",
+              "text": "Copying assignments without acknowledgement"
+            },
+            {
+              "label": "D",
+              "text": "Opening every unknown attachment"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Responsible digital citizenship involves ethical, safe, and respectful use of digital technologies.",
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}

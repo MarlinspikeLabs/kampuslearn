@@ -1,0 +1,168 @@
+{
+  "course_code": "KL-GST101",
+  "course_title": "Use of English and Communication Skills",
+  "level": "100",
+  "semester": "first",
+  "topics": [
+    {
+      "name": "Listening and Note-Taking",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which activity best demonstrates effective listening during a lecture?",
+          "options": [
+            {"label":"A","text":"Writing down every word spoken"},
+            {"label":"B","text":"Identifying the main ideas and important supporting points"},
+            {"label":"C","text":"Waiting only for definitions"},
+            {"label":"D","text":"Ignoring examples used by the lecturer"}
+          ],
+          "correct_answer": "B",
+          "explanation": "Effective listening focuses on identifying main ideas and relevant supporting details rather than attempting to record every spoken word.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What is the main purpose of note-taking during an academic lecture?",
+          "options": [
+            {"label":"A","text":"To reproduce the lecturer's speech word for word"},
+            {"label":"B","text":"To record important information for understanding and later review"},
+            {"label":"C","text":"To avoid participating in the lecture"},
+            {"label":"D","text":"To replace all recommended textbooks"}
+          ],
+          "correct_answer": "B",
+          "explanation": "Academic notes help students capture important ideas in a form that supports comprehension, revision, and recall.",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Reading Comprehension",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "When answering a reading comprehension question, the best first step is to:",
+          "options": [
+            {"label":"A","text":"Choose the longest option"},
+            {"label":"B","text":"Identify what the question is asking and locate relevant information in the passage"},
+            {"label":"C","text":"Ignore the passage and rely on prior knowledge"},
+            {"label":"D","text":"Read only the final sentence"}
+          ],
+          "correct_answer": "B",
+          "explanation": "Good comprehension requires understanding the question and relating it to evidence and ideas contained in the passage.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "An inference in reading is:",
+          "options": [
+            {"label":"A","text":"A conclusion drawn from information provided in a text"},
+            {"label":"B","text":"A word copied directly from a dictionary"},
+            {"label":"C","text":"The title of every paragraph"},
+            {"label":"D","text":"An unrelated personal opinion"}
+          ],
+          "correct_answer": "A",
+          "explanation": "An inference is a reasoned conclusion reached from clues or evidence presented in a text.",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Skimming and Scanning",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Skimming is most useful when a reader wants to:",
+          "options": [
+            {"label":"A","text":"Understand the general idea of a text quickly"},
+            {"label":"B","text":"Find one specific telephone number"},
+            {"label":"C","text":"Memorize every word in a passage"},
+            {"label":"D","text":"Correct every punctuation mark"}
+          ],
+          "correct_answer": "A",
+          "explanation": "Skimming involves rapid reading to obtain the overall meaning, structure, or main idea of a text.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Scanning is best described as reading in order to:",
+          "options": [
+            {"label":"A","text":"Appreciate the literary beauty of every sentence"},
+            {"label":"B","text":"Locate a particular piece of information quickly"},
+            {"label":"C","text":"Rewrite an entire passage"},
+            {"label":"D","text":"Determine the author's biography"}
+          ],
+          "correct_answer": "B",
+          "explanation": "Scanning is a rapid reading technique used to locate specific information such as names, dates, figures, or keywords.",
+          "difficulty": "easy"
+        }
+      ]
+    },
+    {
+      "name": "Academic Vocabulary",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The meaning of an unfamiliar word in an academic passage can often be inferred from:",
+          "options": [
+            {"label":"A","text":"Its colour on the page"},
+            {"label":"B","text":"The surrounding words and sentences"},
+            {"label":"C","text":"The number of letters alone"},
+            {"label":"D","text":"The page number"}
+          ],
+          "correct_answer": "B",
+          "explanation": "Context clues in nearby words and sentences often provide information that helps a reader infer the meaning of unfamiliar vocabulary.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which word is closest in meaning to 'concise' in academic writing?",
+          "options": [
+            {"label":"A","text":"Brief"},
+            {"label":"B","text":"Confusing"},
+            {"label":"C","text":"Decorative"},
+            {"label":"D","text":"Repetitive"}
+          ],
+          "correct_answer": "A",
+          "explanation": "Concise writing communicates ideas clearly and briefly without unnecessary words.",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Sentence Structure",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is a complete sentence?",
+          "options": [
+            {"label":"A","text":"Because the examination was difficult."},
+            {"label":"B","text":"The students revised carefully before the examination."},
+            {"label":"C","text":"After reading in the library."},
+            {"label":"D","text":"Although she arrived early."}
+          ],
+          "correct_answer": "B",
+          "explanation": "A complete sentence expresses a complete thought and normally contains a subject and a finite verb.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "In the sentence 'The diligent student completed the assignment early,' the subject is:",
+          "options": [
+            {"label":"A","text":"completed"},
+            {"label":"B","text":"assignment"},
+            {"label":"C","text":"The diligent student"},
+            {"label":"D","text":"early"}
+          ],
+          "correct_answer": "C",
+          "explanation": "The subject identifies who or what performs the action; here, 'The diligent student' performs the action of completing.",
+          "difficulty": "medium"
+        }
+      ]
+    }
+  ]
+}

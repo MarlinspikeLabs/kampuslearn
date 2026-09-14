@@ -1,0 +1,1568 @@
+{
+  "course_code": "KL-GST104",
+  "course_title": "Use of Library and Study Skills",
+  "level": "100",
+  "semester": "second",
+  "topics": [
+    {
+      "name": "Introduction to Libraries",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The primary purpose of an academic library is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Support teaching, learning, and research"
+            },
+            {
+              "label": "B",
+              "text": "Sell textbooks"
+            },
+            {
+              "label": "C",
+              "text": "Conduct examinations"
+            },
+            {
+              "label": "D",
+              "text": "Provide accommodation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Academic libraries support teaching, learning, research, and access to scholarly information.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A library is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "An organised collection of information resources and services"
+            },
+            {
+              "label": "B",
+              "text": "A building containing only textbooks"
+            },
+            {
+              "label": "C",
+              "text": "A place used only for silent reading"
+            },
+            {
+              "label": "D",
+              "text": "A computer laboratory only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A library combines organised information resources, services, systems, and facilities.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which group is commonly served by a university library?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Students, lecturers, researchers, and staff"
+            },
+            {
+              "label": "B",
+              "text": "Only visitors from outside the university"
+            },
+            {
+              "label": "C",
+              "text": "Only final-year students"
+            },
+            {
+              "label": "D",
+              "text": "Only librarians"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "University libraries primarily support members of the academic community.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which activity is normally part of library service?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Helping users locate relevant information"
+            },
+            {
+              "label": "B",
+              "text": "Setting university examination questions only"
+            },
+            {
+              "label": "C",
+              "text": "Issuing student identity cards"
+            },
+            {
+              "label": "D",
+              "text": "Teaching every departmental course"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Reference and information assistance are core library services.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A library user's ability to locate and use resources effectively is known as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Library literacy"
+            },
+            {
+              "label": "B",
+              "text": "Hardware maintenance"
+            },
+            {
+              "label": "C",
+              "text": "Computer programming"
+            },
+            {
+              "label": "D",
+              "text": "Typesetting"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Library literacy involves understanding how to find and use library resources and services.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why are libraries important to independent learning?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They provide organised access to diverse sources beyond classroom teaching"
+            },
+            {
+              "label": "B",
+              "text": "They replace all lecturers"
+            },
+            {
+              "label": "C",
+              "text": "They guarantee every source is correct"
+            },
+            {
+              "label": "D",
+              "text": "They eliminate the need for studying"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Libraries broaden access to information and support self-directed study and research.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Types of Libraries",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A library established mainly to support a university is called a:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Academic library"
+            },
+            {
+              "label": "B",
+              "text": "Public library"
+            },
+            {
+              "label": "C",
+              "text": "National library"
+            },
+            {
+              "label": "D",
+              "text": "School library"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Academic libraries serve universities, colleges, and other tertiary institutions.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A public library primarily serves:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Members of the general public"
+            },
+            {
+              "label": "B",
+              "text": "Only university lecturers"
+            },
+            {
+              "label": "C",
+              "text": "Only government ministers"
+            },
+            {
+              "label": "D",
+              "text": "Only researchers"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Public libraries provide information and reading services to the wider community.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The National Library of a country commonly has responsibility for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Preserving the nation's published heritage"
+            },
+            {
+              "label": "B",
+              "text": "Teaching undergraduate courses"
+            },
+            {
+              "label": "C",
+              "text": "Running private businesses"
+            },
+            {
+              "label": "D",
+              "text": "Issuing examination results"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "National libraries preserve and document a country's published intellectual heritage.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A special library is usually established to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Serve the specialised information needs of an organisation or profession"
+            },
+            {
+              "label": "B",
+              "text": "Serve every citizen equally"
+            },
+            {
+              "label": "C",
+              "text": "Replace national archives"
+            },
+            {
+              "label": "D",
+              "text": "Teach primary school pupils only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Special libraries focus on particular subject areas, organisations, or professional groups.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which library is most closely associated with a secondary school?",
+          "options": [
+            {
+              "label": "A",
+              "text": "School library"
+            },
+            {
+              "label": "B",
+              "text": "National library"
+            },
+            {
+              "label": "C",
+              "text": "Corporate law library"
+            },
+            {
+              "label": "D",
+              "text": "Research institute library"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "School libraries support pupils and teachers within primary or secondary schools.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A research institute requiring highly specialised scientific journals would most likely depend on a:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Special library"
+            },
+            {
+              "label": "B",
+              "text": "Children's library"
+            },
+            {
+              "label": "C",
+              "text": "Mobile public library only"
+            },
+            {
+              "label": "D",
+              "text": "School library"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Special libraries are designed around focused professional or research information needs.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Library Organisation and Classification",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Library classification is used mainly to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Arrange resources systematically by subject"
+            },
+            {
+              "label": "B",
+              "text": "Determine the price of books"
+            },
+            {
+              "label": "C",
+              "text": "Translate books"
+            },
+            {
+              "label": "D",
+              "text": "Replace catalogues"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Classification groups materials by subject so they can be arranged and retrieved systematically.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A call number is used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Identify the location of a library item on the shelves"
+            },
+            {
+              "label": "B",
+              "text": "Show the selling price of a book"
+            },
+            {
+              "label": "C",
+              "text": "Identify only the author"
+            },
+            {
+              "label": "D",
+              "text": "Indicate a student's registration number"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A call number represents the item's classified location in the library.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which classification system is widely used in libraries?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Dewey Decimal Classification"
+            },
+            {
+              "label": "B",
+              "text": "HTML"
+            },
+            {
+              "label": "C",
+              "text": "ASCII"
+            },
+            {
+              "label": "D",
+              "text": "TCP/IP"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The Dewey Decimal Classification is a widely used library classification system.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "In a classified library, books on similar subjects are generally:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Shelved near one another"
+            },
+            {
+              "label": "B",
+              "text": "Placed randomly"
+            },
+            {
+              "label": "C",
+              "text": "Kept only at the circulation desk"
+            },
+            {
+              "label": "D",
+              "text": "Stored by colour"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Classification groups related subjects together to support browsing and retrieval.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is classification useful to a student?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It helps locate materials and browse related subjects"
+            },
+            {
+              "label": "B",
+              "text": "It automatically writes assignments"
+            },
+            {
+              "label": "C",
+              "text": "It prevents books from being borrowed"
+            },
+            {
+              "label": "D",
+              "text": "It replaces referencing"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Classification provides predictable locations and groups related subject material.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Two books with similar call numbers are most likely to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Cover related subject areas"
+            },
+            {
+              "label": "B",
+              "text": "Have the same author"
+            },
+            {
+              "label": "C",
+              "text": "Have identical publication dates"
+            },
+            {
+              "label": "D",
+              "text": "Belong to the same borrower"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Call numbers principally reflect subject classification, so similar numbers often indicate related subjects.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Library Catalogues",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A library catalogue is primarily used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Find materials held by a library"
+            },
+            {
+              "label": "B",
+              "text": "Calculate examination scores"
+            },
+            {
+              "label": "C",
+              "text": "Create presentation slides"
+            },
+            {
+              "label": "D",
+              "text": "Repair books"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A catalogue provides searchable records of resources owned or accessible through a library.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A catalogue search by author is most useful when:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The writer's name is known"
+            },
+            {
+              "label": "B",
+              "text": "Only the subject is known"
+            },
+            {
+              "label": "C",
+              "text": "No details are known"
+            },
+            {
+              "label": "D",
+              "text": "The book has no author"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An author search retrieves works associated with a known creator.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "OPAC stands for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Online Public Access Catalogue"
+            },
+            {
+              "label": "B",
+              "text": "Open Publication and Citation"
+            },
+            {
+              "label": "C",
+              "text": "Online Programme Access Centre"
+            },
+            {
+              "label": "D",
+              "text": "Official Printed Academic Catalogue"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "OPAC means Online Public Access Catalogue.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A subject search in an OPAC helps a user:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Find materials related to a topic"
+            },
+            {
+              "label": "B",
+              "text": "Locate only books by one author"
+            },
+            {
+              "label": "C",
+              "text": "Find a student's record"
+            },
+            {
+              "label": "D",
+              "text": "Determine library opening hours only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Subject searching retrieves catalogue records associated with a topic or subject heading.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which catalogue field is useful when the exact name of a book is known?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Title"
+            },
+            {
+              "label": "B",
+              "text": "Publisher address only"
+            },
+            {
+              "label": "C",
+              "text": "Shelf colour"
+            },
+            {
+              "label": "D",
+              "text": "Borrower's name"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A title search is appropriate when the exact or partial title is known.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is keyword searching often broader than subject-heading searching?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Keywords may occur in several record fields and are not limited to controlled vocabulary"
+            },
+            {
+              "label": "B",
+              "text": "Keywords can only be numbers"
+            },
+            {
+              "label": "C",
+              "text": "Subject headings contain no words"
+            },
+            {
+              "label": "D",
+              "text": "Keywords search only authors"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Keyword searches may match words across titles, subjects, notes, and other fields.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Reference and Information Sources",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A dictionary is mainly used to find:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Word meanings and usage"
+            },
+            {
+              "label": "B",
+              "text": "Detailed maps"
+            },
+            {
+              "label": "C",
+              "text": "Historical census data only"
+            },
+            {
+              "label": "D",
+              "text": "Journal impact factors"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Dictionaries provide definitions, spelling, pronunciation, and usage information.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "An encyclopedia is useful for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Obtaining background information on a topic"
+            },
+            {
+              "label": "B",
+              "text": "Finding only word spellings"
+            },
+            {
+              "label": "C",
+              "text": "Borrowing fiction"
+            },
+            {
+              "label": "D",
+              "text": "Sending email"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Encyclopedias provide introductory or overview information across subjects.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which source is most appropriate for locating geographical places?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Atlas"
+            },
+            {
+              "label": "B",
+              "text": "Dictionary"
+            },
+            {
+              "label": "C",
+              "text": "Thesaurus"
+            },
+            {
+              "label": "D",
+              "text": "Bibliography"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An atlas contains maps and geographical information.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A bibliography is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A list of books or other sources"
+            },
+            {
+              "label": "B",
+              "text": "A collection of maps"
+            },
+            {
+              "label": "C",
+              "text": "A dictionary of synonyms"
+            },
+            {
+              "label": "D",
+              "text": "A library membership card"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A bibliography lists sources relating to a work, author, or subject.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A thesaurus is particularly useful for finding:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Synonyms and related terms"
+            },
+            {
+              "label": "B",
+              "text": "Map coordinates"
+            },
+            {
+              "label": "C",
+              "text": "Book call numbers only"
+            },
+            {
+              "label": "D",
+              "text": "Publication dates only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A thesaurus provides synonyms, antonyms, and semantically related words.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student beginning research on an unfamiliar topic should often start with:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A reliable overview or reference source"
+            },
+            {
+              "label": "B",
+              "text": "An unrelated social-media post"
+            },
+            {
+              "label": "C",
+              "text": "A random advertisement"
+            },
+            {
+              "label": "D",
+              "text": "An anonymous message"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Reliable reference sources provide foundational context and vocabulary for deeper research.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Information Retrieval",
+      "order_num": 6,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Information retrieval refers to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Finding relevant information from organised sources"
+            },
+            {
+              "label": "B",
+              "text": "Printing every document"
+            },
+            {
+              "label": "C",
+              "text": "Deleting old files"
+            },
+            {
+              "label": "D",
+              "text": "Writing examination questions"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Information retrieval involves locating information that matches a user's need.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which search term combination is likely to produce more focused results?",
+          "options": [
+            {
+              "label": "A",
+              "text": "climate change AND agriculture"
+            },
+            {
+              "label": "B",
+              "text": "climate"
+            },
+            {
+              "label": "C",
+              "text": "information"
+            },
+            {
+              "label": "D",
+              "text": "study"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Combining specific concepts narrows retrieval toward relevant records.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The Boolean operator AND generally:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Narrows a search by requiring both terms"
+            },
+            {
+              "label": "B",
+              "text": "Expands a search to unrelated topics"
+            },
+            {
+              "label": "C",
+              "text": "Deletes search results"
+            },
+            {
+              "label": "D",
+              "text": "Searches only authors"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "AND retrieves records containing all specified concepts.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The Boolean operator OR is useful for:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Combining synonyms or related terms"
+            },
+            {
+              "label": "B",
+              "text": "Removing every result"
+            },
+            {
+              "label": "C",
+              "text": "Searching only dates"
+            },
+            {
+              "label": "D",
+              "text": "Preventing keyword searches"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "OR broadens retrieval by accepting either of the connected terms.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Quotation marks in many search systems are used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Search for an exact phrase"
+            },
+            {
+              "label": "B",
+              "text": "Exclude a word automatically"
+            },
+            {
+              "label": "C",
+              "text": "Search only numbers"
+            },
+            {
+              "label": "D",
+              "text": "Sort results by date"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Quotation marks commonly tell a search engine to preserve phrase order.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student searching 'renewable energy Nigeria' receives thousands of results. Which action would best improve precision?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Add more specific concepts related to the research question"
+            },
+            {
+              "label": "B",
+              "text": "Remove all meaningful keywords"
+            },
+            {
+              "label": "C",
+              "text": "Search only the word 'the'"
+            },
+            {
+              "label": "D",
+              "text": "Use random characters"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Adding relevant concepts narrows the result set toward the specific information need.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Study Skills and Time Management",
+      "order_num": 7,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A study timetable is useful because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Helps allocate time systematically to academic tasks"
+            },
+            {
+              "label": "B",
+              "text": "Guarantees examination success"
+            },
+            {
+              "label": "C",
+              "text": "Eliminates the need for rest"
+            },
+            {
+              "label": "D",
+              "text": "Replaces course materials"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A timetable helps organise available time around priorities and study goals.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which study method is generally more effective for long-term retention?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Spaced practice"
+            },
+            {
+              "label": "B",
+              "text": "One very long session before the examination"
+            },
+            {
+              "label": "C",
+              "text": "Repeated passive rereading only"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding self-testing"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spaced practice distributes learning over time and supports durable retention.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Active recall involves:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Trying to retrieve information from memory"
+            },
+            {
+              "label": "B",
+              "text": "Reading notes without testing yourself"
+            },
+            {
+              "label": "C",
+              "text": "Copying every page"
+            },
+            {
+              "label": "D",
+              "text": "Highlighting every sentence"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Active recall strengthens memory by practising retrieval rather than recognition alone.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A realistic study goal should be:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Specific and achievable"
+            },
+            {
+              "label": "B",
+              "text": "Impossible to measure"
+            },
+            {
+              "label": "C",
+              "text": "Unrelated to the course"
+            },
+            {
+              "label": "D",
+              "text": "Changed every few minutes"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Specific achievable goals provide direction and allow progress to be monitored.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The Pomodoro-style approach is based on:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Alternating focused work periods with short breaks"
+            },
+            {
+              "label": "B",
+              "text": "Studying continuously without rest"
+            },
+            {
+              "label": "C",
+              "text": "Reading only at night"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding planning"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Time-blocking methods such as Pomodoro divide work into focused intervals separated by breaks.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which strategy best addresses procrastination on a large assignment?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Break the task into smaller scheduled steps and begin with a manageable action"
+            },
+            {
+              "label": "B",
+              "text": "Wait until the deadline becomes urgent"
+            },
+            {
+              "label": "C",
+              "text": "Ignore the assignment"
+            },
+            {
+              "label": "D",
+              "text": "Attempt the whole project without planning"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Breaking large tasks into manageable steps reduces friction and makes progress easier to start.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Note-Making and Reading Strategies",
+      "order_num": 8,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Good notes should mainly capture:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Key ideas and important supporting details"
+            },
+            {
+              "label": "B",
+              "text": "Every spoken word"
+            },
+            {
+              "label": "C",
+              "text": "Only page numbers"
+            },
+            {
+              "label": "D",
+              "text": "Only unfamiliar words"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Effective notes focus on the main ideas and useful supporting information.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Skimming is used mainly to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Obtain the general idea of a text quickly"
+            },
+            {
+              "label": "B",
+              "text": "Find one exact date only"
+            },
+            {
+              "label": "C",
+              "text": "Memorise every sentence"
+            },
+            {
+              "label": "D",
+              "text": "Correct grammar"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Skimming is rapid reading for overall meaning and structure.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Scanning is used mainly to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Locate specific information quickly"
+            },
+            {
+              "label": "B",
+              "text": "Understand every argument deeply"
+            },
+            {
+              "label": "C",
+              "text": "Rewrite a passage"
+            },
+            {
+              "label": "D",
+              "text": "Evaluate an author's philosophy"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scanning is used to locate specific items such as names, dates, or keywords.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A concept map helps students:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Represent relationships among ideas visually"
+            },
+            {
+              "label": "B",
+              "text": "Increase internet speed"
+            },
+            {
+              "label": "C",
+              "text": "Replace textbooks"
+            },
+            {
+              "label": "D",
+              "text": "Avoid revision"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Concept maps visually organise ideas and the connections between them.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Paraphrasing involves:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Restating an idea in new wording while preserving its meaning"
+            },
+            {
+              "label": "B",
+              "text": "Copying a sentence exactly"
+            },
+            {
+              "label": "C",
+              "text": "Deleting the main idea"
+            },
+            {
+              "label": "D",
+              "text": "Changing only punctuation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Paraphrasing expresses source material genuinely in different wording.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is reviewing notes shortly after a lecture useful?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It helps reinforce learning and identify missing or unclear points while the material is still fresh"
+            },
+            {
+              "label": "B",
+              "text": "It guarantees all notes are correct"
+            },
+            {
+              "label": "C",
+              "text": "It replaces future revision completely"
+            },
+            {
+              "label": "D",
+              "text": "It prevents further reading"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Early review strengthens memory and allows unclear sections to be corrected while recall is fresh.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Referencing and Citation",
+      "order_num": 9,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The main purpose of a citation is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Acknowledge the source of information or ideas"
+            },
+            {
+              "label": "B",
+              "text": "Increase word count"
+            },
+            {
+              "label": "C",
+              "text": "Hide the author's identity"
+            },
+            {
+              "label": "D",
+              "text": "Replace the bibliography"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Citations credit sources and allow readers to trace supporting material.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A reference list normally contains:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Sources cited in the work"
+            },
+            {
+              "label": "B",
+              "text": "Every book in the library"
+            },
+            {
+              "label": "C",
+              "text": "Only dictionaries"
+            },
+            {
+              "label": "D",
+              "text": "Only websites"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A reference list identifies works cited in the academic document.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should direct quotations usually include a citation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Because the exact words come from another source"
+            },
+            {
+              "label": "B",
+              "text": "Because quotations are always incorrect"
+            },
+            {
+              "label": "C",
+              "text": "Because citations reduce marks"
+            },
+            {
+              "label": "D",
+              "text": "Because quotations cannot contain punctuation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Directly reproduced words must be attributed to their original source.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which information is commonly required when referencing a book?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Author, title, publication details, and year"
+            },
+            {
+              "label": "B",
+              "text": "The reader's matriculation number"
+            },
+            {
+              "label": "C",
+              "text": "The library opening time"
+            },
+            {
+              "label": "D",
+              "text": "The book's shelf colour"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Book references normally identify the author, title, publisher information, and publication year.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Consistent referencing style is important because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Makes source information clear and predictable"
+            },
+            {
+              "label": "B",
+              "text": "Changes the facts in the source"
+            },
+            {
+              "label": "C",
+              "text": "Eliminates the need to cite"
+            },
+            {
+              "label": "D",
+              "text": "Guarantees a high grade"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Consistency helps readers interpret citations and locate sources efficiently.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student paraphrases an author's argument but provides no citation. Why can this still be plagiarism?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The underlying idea still belongs to the original author and requires acknowledgement"
+            },
+            {
+              "label": "B",
+              "text": "Paraphrasing can never require citation"
+            },
+            {
+              "label": "C",
+              "text": "Only quotations need attribution"
+            },
+            {
+              "label": "D",
+              "text": "The words are different, so ownership no longer matters"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Paraphrasing changes wording, not ownership of the underlying idea.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Academic Integrity and Ethical Information Use",
+      "order_num": 10,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Plagiarism is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Presenting another person's work or ideas without proper acknowledgement"
+            },
+            {
+              "label": "B",
+              "text": "Reading several sources"
+            },
+            {
+              "label": "C",
+              "text": "Using a library catalogue"
+            },
+            {
+              "label": "D",
+              "text": "Writing a reference list"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Plagiarism misrepresents another person's intellectual work as one's own.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which practice demonstrates academic integrity?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Citing sources used in an assignment"
+            },
+            {
+              "label": "B",
+              "text": "Copying another student's work"
+            },
+            {
+              "label": "C",
+              "text": "Inventing research results"
+            },
+            {
+              "label": "D",
+              "text": "Buying an assignment"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Proper attribution is a core element of academic integrity.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Fabrication in academic work means:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Inventing data or information"
+            },
+            {
+              "label": "B",
+              "text": "Correctly citing a source"
+            },
+            {
+              "label": "C",
+              "text": "Using a library database"
+            },
+            {
+              "label": "D",
+              "text": "Summarising evidence"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Fabrication involves making up data, results, or sources that do not exist.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Collusion becomes academically improper when students:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Cooperate on work that is required to be completed independently"
+            },
+            {
+              "label": "B",
+              "text": "Study together before an examination"
+            },
+            {
+              "label": "C",
+              "text": "Discuss lecture topics"
+            },
+            {
+              "label": "D",
+              "text": "Share recommended reading"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Unauthorised collaboration on independently assessed work can constitute academic misconduct.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Copyright is relevant to students because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Protects creators' rights over original works"
+            },
+            {
+              "label": "B",
+              "text": "Makes all online material free to copy"
+            },
+            {
+              "label": "C",
+              "text": "Applies only to physical books"
+            },
+            {
+              "label": "D",
+              "text": "Removes the need for citation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Copyright protects original creative works and governs how they may be copied or reused.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which action best demonstrates ethical use of online information?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Evaluate the source, respect usage rights, and provide attribution where required"
+            },
+            {
+              "label": "B",
+              "text": "Copy material because it is publicly accessible"
+            },
+            {
+              "label": "C",
+              "text": "Remove the author's name before submission"
+            },
+            {
+              "label": "D",
+              "text": "Assume every website is public domain"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Online availability does not remove intellectual-property or attribution obligations.",
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}

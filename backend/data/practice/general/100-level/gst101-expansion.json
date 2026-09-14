@@ -1,0 +1,1318 @@
+{
+  "course_code": "KL-GST101",
+  "course_title": "Use of English and Communication Skills",
+  "level": "100",
+  "semester": "first",
+  "topics": [
+    {
+      "name": "Listening and Note-Taking",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "In a lecture, expressions such as 'firstly', 'in contrast', and 'to conclude' are useful because they:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Indicate the organisation and direction of the lecture"
+            },
+            {
+              "label": "B",
+              "text": "Replace the need for note-taking"
+            },
+            {
+              "label": "C",
+              "text": "Show that the lecturer is changing the subject randomly"
+            },
+            {
+              "label": "D",
+              "text": "Identify words that should be ignored"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Signposting expressions help listeners recognise relationships between ideas and follow the structure of a lecture.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which note-taking practice is most efficient during a fast lecture?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Writing every sentence in full"
+            },
+            {
+              "label": "B",
+              "text": "Using abbreviations, symbols, and key phrases"
+            },
+            {
+              "label": "C",
+              "text": "Waiting until the lecture ends before writing anything"
+            },
+            {
+              "label": "D",
+              "text": "Recording only unfamiliar words"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Abbreviations, symbols, and key phrases allow important information to be captured quickly without attempting verbatim transcription.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student who records only the lecturer's major arguments, definitions, and important examples is practising:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Selective note-taking"
+            },
+            {
+              "label": "B",
+              "text": "Mechanical copying"
+            },
+            {
+              "label": "C",
+              "text": "Proofreading"
+            },
+            {
+              "label": "D",
+              "text": "Scanning"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Selective note-taking involves identifying and recording information that is most relevant to understanding and revision.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which situation is most likely to interfere with effective listening?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Predicting how ideas may be connected"
+            },
+            {
+              "label": "B",
+              "text": "Distinguishing main points from supporting details"
+            },
+            {
+              "label": "C",
+              "text": "Concentrating on preparing a reply instead of following the speaker"
+            },
+            {
+              "label": "D",
+              "text": "Noting unfamiliar terms for later clarification"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Focusing on one's own response before the speaker finishes divides attention and can cause important information to be missed.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Reading Comprehension",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The main idea of a paragraph is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The central point the writer wants to communicate"
+            },
+            {
+              "label": "B",
+              "text": "The longest sentence in the paragraph"
+            },
+            {
+              "label": "C",
+              "text": "Every example given by the writer"
+            },
+            {
+              "label": "D",
+              "text": "The first difficult word in the paragraph"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The main idea expresses the central message around which the supporting details of a paragraph are organised.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "In reading comprehension, a pronoun such as 'it' or 'they' can often be understood by identifying its:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Punctuation mark"
+            },
+            {
+              "label": "B",
+              "text": "Antecedent"
+            },
+            {
+              "label": "C",
+              "text": "Syllable count"
+            },
+            {
+              "label": "D",
+              "text": "Dictionary page"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "An antecedent is the noun or noun phrase to which a pronoun refers.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A writer's tone refers primarily to the writer's:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Attitude toward the subject or audience"
+            },
+            {
+              "label": "B",
+              "text": "Handwriting style"
+            },
+            {
+              "label": "C",
+              "text": "Paragraph length"
+            },
+            {
+              "label": "D",
+              "text": "Use of page numbers"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Tone communicates a writer's attitude, which may be approving, critical, humorous, neutral, persuasive, or another stance.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement best distinguishes a fact from an opinion?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A fact can normally be verified, while an opinion expresses a judgement or belief"
+            },
+            {
+              "label": "B",
+              "text": "A fact is always longer than an opinion"
+            },
+            {
+              "label": "C",
+              "text": "An opinion must contain statistics"
+            },
+            {
+              "label": "D",
+              "text": "A fact can never appear in an argumentative passage"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Facts are claims that can generally be checked against evidence, whereas opinions express evaluations, beliefs, or judgements.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Skimming and Scanning",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "When skimming a textbook chapter, which features are especially useful for obtaining its overall structure?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Headings, subheadings, introductions, and summaries"
+            },
+            {
+              "label": "B",
+              "text": "Only footnotes"
+            },
+            {
+              "label": "C",
+              "text": "Only page numbers"
+            },
+            {
+              "label": "D",
+              "text": "Every word in every paragraph"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Structural features such as headings and summaries quickly reveal the organisation and major ideas of a chapter.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student looking for the date of a particular historical event in a long passage should primarily use:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Scanning"
+            },
+            {
+              "label": "B",
+              "text": "Extensive reading"
+            },
+            {
+              "label": "C",
+              "text": "Proofreading"
+            },
+            {
+              "label": "D",
+              "text": "Memorisation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Scanning is designed for rapidly locating a specific item such as a date, name, number, or keyword.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Skimming would be least appropriate when a student needs to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Preview a chapter before a lecture"
+            },
+            {
+              "label": "B",
+              "text": "Determine the general argument of an article"
+            },
+            {
+              "label": "C",
+              "text": "Understand detailed instructions for a laboratory procedure"
+            },
+            {
+              "label": "D",
+              "text": "Decide whether a source is relevant"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Detailed procedural instructions require careful reading because missing a small detail may affect the outcome.",
+          "difficulty": "hard"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "While searching a chapter for the definition of 'communication', the most efficient approach is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Read the chapter aloud from beginning to end"
+            },
+            {
+              "label": "B",
+              "text": "Scan for the keyword and related formatting cues"
+            },
+            {
+              "label": "C",
+              "text": "Memorise the table of contents"
+            },
+            {
+              "label": "D",
+              "text": "Read only the references"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Scanning for the target word and visual cues such as bold text allows a reader to locate specific information efficiently.",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Academic Vocabulary",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "In the word 'unpredictable', the prefix 'un-' primarily indicates:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Negation"
+            },
+            {
+              "label": "B",
+              "text": "Repetition"
+            },
+            {
+              "label": "C",
+              "text": "Time"
+            },
+            {
+              "label": "D",
+              "text": "Plurality"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The prefix 'un-' commonly expresses negation or the absence of the quality expressed by the base word.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "If a passage says, 'The terrain was arid; almost no vegetation could survive there,' the context suggests that 'arid' means:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Very dry"
+            },
+            {
+              "label": "B",
+              "text": "Highly populated"
+            },
+            {
+              "label": "C",
+              "text": "Extremely cold"
+            },
+            {
+              "label": "D",
+              "text": "Heavily forested"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The clue that almost no vegetation could survive indicates extremely dry conditions.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The difference between denotation and connotation is that:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Denotation is the literal meaning, while connotation includes associated meanings or feelings"
+            },
+            {
+              "label": "B",
+              "text": "Denotation applies only to verbs"
+            },
+            {
+              "label": "C",
+              "text": "Connotation is always found in a dictionary definition"
+            },
+            {
+              "label": "D",
+              "text": "They mean exactly the same thing"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Denotation refers to literal dictionary meaning, whereas connotation includes additional cultural or emotional associations.",
+          "difficulty": "hard"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which expression is the most natural academic collocation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Conduct research"
+            },
+            {
+              "label": "B",
+              "text": "Do a research strongly"
+            },
+            {
+              "label": "C",
+              "text": "Make research hardly"
+            },
+            {
+              "label": "D",
+              "text": "Build an evidence"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A collocation is a conventional combination of words; 'conduct research' is a standard academic collocation.",
+          "difficulty": "medium"
+        }
+      ]
+    },
+    {
+      "name": "Sentence Structure",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which option is a sentence fragment?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The experiment produced unexpected results."
+            },
+            {
+              "label": "B",
+              "text": "Although the experiment produced unexpected results."
+            },
+            {
+              "label": "C",
+              "text": "The researchers repeated the experiment."
+            },
+            {
+              "label": "D",
+              "text": "The results were published later."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "The subordinating word 'although' makes the clause dependent, so it does not express a complete thought by itself.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence contains a run-on error?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The lecture ended, and the students left."
+            },
+            {
+              "label": "B",
+              "text": "The lecture ended the students left immediately."
+            },
+            {
+              "label": "C",
+              "text": "After the lecture ended, the students left."
+            },
+            {
+              "label": "D",
+              "text": "The students left because the lecture had ended."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Two independent clauses have been joined without appropriate punctuation or a conjunction.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence is complex?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The students studied and revised."
+            },
+            {
+              "label": "B",
+              "text": "The students studied, and they passed."
+            },
+            {
+              "label": "C",
+              "text": "The students passed because they studied carefully."
+            },
+            {
+              "label": "D",
+              "text": "Study carefully."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "A complex sentence contains an independent clause and at least one dependent clause.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence demonstrates correct subject-verb agreement?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The list of recommended books are available."
+            },
+            {
+              "label": "B",
+              "text": "The results of the experiment indicates a change."
+            },
+            {
+              "label": "C",
+              "text": "Each of the students has submitted the assignment."
+            },
+            {
+              "label": "D",
+              "text": "Neither the lecturer nor the tutor were available."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "The subject 'each' is singular and correctly takes the singular verb 'has'.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Parts of Speech and Grammar",
+      "order_num": 6,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "In the sentence 'She completed the assignment quickly,' the word 'quickly' is a:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Noun"
+            },
+            {
+              "label": "B",
+              "text": "Adverb"
+            },
+            {
+              "label": "C",
+              "text": "Adjective"
+            },
+            {
+              "label": "D",
+              "text": "Pronoun"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "The word 'quickly' modifies the verb 'completed' and therefore functions as an adverb.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which word is a preposition in the sentence 'The book is on the table'?",
+          "options": [
+            {
+              "label": "A",
+              "text": "book"
+            },
+            {
+              "label": "B",
+              "text": "is"
+            },
+            {
+              "label": "C",
+              "text": "on"
+            },
+            {
+              "label": "D",
+              "text": "table"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "The word 'on' expresses the relationship between the book and the table.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Choose the grammatically correct sentence.",
+          "options": [
+            {
+              "label": "A",
+              "text": "She have completed the assignment."
+            },
+            {
+              "label": "B",
+              "text": "She has completed the assignment."
+            },
+            {
+              "label": "C",
+              "text": "She having completed the assignment."
+            },
+            {
+              "label": "D",
+              "text": "She has complete the assignment."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "The present perfect construction requires 'has' plus the past participle 'completed'.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which pronoun correctly completes the sentence: 'The lecturer gave Musa and ___ the materials'?",
+          "options": [
+            {
+              "label": "A",
+              "text": "I"
+            },
+            {
+              "label": "B",
+              "text": "me"
+            },
+            {
+              "label": "C",
+              "text": "my"
+            },
+            {
+              "label": "D",
+              "text": "mine"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "The pronoun functions as an object of the verb 'gave', so the objective form 'me' is required.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence uses tense consistently?",
+          "options": [
+            {
+              "label": "A",
+              "text": "She entered the room and greets the lecturer."
+            },
+            {
+              "label": "B",
+              "text": "She enters the room and greeted the lecturer."
+            },
+            {
+              "label": "C",
+              "text": "She entered the room and greeted the lecturer."
+            },
+            {
+              "label": "D",
+              "text": "She entering the room and greeted the lecturer."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Both coordinated actions are correctly expressed in the simple past tense.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence contains a misplaced modifier?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Walking to class, Musa saw the library."
+            },
+            {
+              "label": "B",
+              "text": "The student carefully answered the question."
+            },
+            {
+              "label": "C",
+              "text": "Covered in dust, the researcher cleaned the equipment."
+            },
+            {
+              "label": "D",
+              "text": "She submitted the carefully prepared report."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "As written, 'covered in dust' appears to modify 'the researcher' rather than the equipment, creating an unintended meaning.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Paragraph Development",
+      "order_num": 7,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The primary function of a topic sentence is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "State the central idea of a paragraph"
+            },
+            {
+              "label": "B",
+              "text": "Provide the bibliography"
+            },
+            {
+              "label": "C",
+              "text": "List every example"
+            },
+            {
+              "label": "D",
+              "text": "End the entire essay"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A topic sentence introduces or expresses the central idea that the remaining sentences develop.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Paragraph unity is achieved when:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Every sentence relates to the controlling idea"
+            },
+            {
+              "label": "B",
+              "text": "Every sentence has the same length"
+            },
+            {
+              "label": "C",
+              "text": "The paragraph contains many quotations"
+            },
+            {
+              "label": "D",
+              "text": "Each sentence begins with the same word"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A unified paragraph contains supporting sentences that all contribute to its central idea.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which word is most suitable for introducing a contrasting idea?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Furthermore"
+            },
+            {
+              "label": "B",
+              "text": "However"
+            },
+            {
+              "label": "C",
+              "text": "Therefore"
+            },
+            {
+              "label": "D",
+              "text": "Similarly"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "The transition 'however' signals contrast between ideas.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which element contributes most directly to coherence in a paragraph?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Logical organisation and appropriate transitions"
+            },
+            {
+              "label": "B",
+              "text": "Using as many technical words as possible"
+            },
+            {
+              "label": "C",
+              "text": "Making every sentence very long"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding pronouns completely"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Coherence results when ideas follow a logical sequence and their relationships are clearly signalled.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A supporting sentence should primarily:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Develop or provide evidence for the paragraph's main idea"
+            },
+            {
+              "label": "B",
+              "text": "Introduce an unrelated issue"
+            },
+            {
+              "label": "C",
+              "text": "Repeat the topic sentence word for word"
+            },
+            {
+              "label": "D",
+              "text": "Provide only the writer's name"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Supporting sentences explain, illustrate, justify, or provide evidence for the controlling idea.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which concluding sentence is most effective for an academic paragraph?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A sentence that introduces an entirely unrelated topic"
+            },
+            {
+              "label": "B",
+              "text": "A sentence that reinforces the paragraph's main point without merely repeating it"
+            },
+            {
+              "label": "C",
+              "text": "A sentence containing only a citation"
+            },
+            {
+              "label": "D",
+              "text": "A sentence apologising for the paragraph"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "An effective concluding sentence provides closure by reinforcing the main idea or its significance.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Punctuation and Mechanics",
+      "order_num": 8,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence correctly uses an apostrophe to show possession?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The students book is missing."
+            },
+            {
+              "label": "B",
+              "text": "The student's book is missing."
+            },
+            {
+              "label": "C",
+              "text": "The students' is book missing."
+            },
+            {
+              "label": "D",
+              "text": "The student,s book is missing."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "For one student, possession is shown by adding an apostrophe followed by 's'.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence uses a comma correctly after an introductory expression?",
+          "options": [
+            {
+              "label": "A",
+              "text": "However the experiment continued."
+            },
+            {
+              "label": "B",
+              "text": "However, the experiment continued."
+            },
+            {
+              "label": "C",
+              "text": "However the, experiment continued."
+            },
+            {
+              "label": "D",
+              "text": "However the experiment, continued."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "A comma normally follows an introductory conjunctive adverb such as 'however'.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A semicolon is appropriately used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Join closely related independent clauses"
+            },
+            {
+              "label": "B",
+              "text": "Replace every full stop"
+            },
+            {
+              "label": "C",
+              "text": "Separate a subject from its verb"
+            },
+            {
+              "label": "D",
+              "text": "Mark possession"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A semicolon can connect independent clauses that are closely related in meaning.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence uses a colon appropriately?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The experiment required: three materials."
+            },
+            {
+              "label": "B",
+              "text": "The experiment required three materials: water, salt, and a measuring cylinder."
+            },
+            {
+              "label": "C",
+              "text": "The: experiment required three materials."
+            },
+            {
+              "label": "D",
+              "text": "The experiment: required three materials yesterday."
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "A colon may introduce a list after a complete independent clause.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which sentence is capitalised correctly?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The university of maiduguri is in Borno state."
+            },
+            {
+              "label": "B",
+              "text": "The University Of Maiduguri is in borno State."
+            },
+            {
+              "label": "C",
+              "text": "The University of Maiduguri is in Borno State."
+            },
+            {
+              "label": "D",
+              "text": "the University of maiduguri is in Borno state."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Proper names such as 'University of Maiduguri' and 'Borno State' require appropriate capital letters.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which punctuation is normally used to enclose a direct quotation in ordinary prose?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Quotation marks"
+            },
+            {
+              "label": "B",
+              "text": "Apostrophes only"
+            },
+            {
+              "label": "C",
+              "text": "Brackets only"
+            },
+            {
+              "label": "D",
+              "text": "Semicolons"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Quotation marks conventionally indicate words reproduced directly from a speaker or source.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Summary Writing",
+      "order_num": 9,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A good summary should primarily contain:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The main ideas of the original text"
+            },
+            {
+              "label": "B",
+              "text": "Every example in the original text"
+            },
+            {
+              "label": "C",
+              "text": "New arguments introduced by the student"
+            },
+            {
+              "label": "D",
+              "text": "Personal stories unrelated to the passage"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A summary condenses a source by retaining its essential ideas while omitting unnecessary detail.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "When writing a summary, detailed examples from the original passage should generally be:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Expanded"
+            },
+            {
+              "label": "B",
+              "text": "Omitted unless essential to the main idea"
+            },
+            {
+              "label": "C",
+              "text": "Copied word for word"
+            },
+            {
+              "label": "D",
+              "text": "Placed before the main idea"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Most examples and minor details are omitted because the purpose of a summary is compression.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which practice best helps avoid plagiarism when summarising?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Changing one or two words only"
+            },
+            {
+              "label": "B",
+              "text": "Expressing the source's ideas accurately in your own wording"
+            },
+            {
+              "label": "C",
+              "text": "Copying complete sentences without acknowledgement"
+            },
+            {
+              "label": "D",
+              "text": "Adding unrelated personal opinions"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "A proper summary restates ideas genuinely in the writer's own language while preserving the original meaning.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Before writing a summary of a passage, a student should first:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Identify the central and major supporting ideas"
+            },
+            {
+              "label": "B",
+              "text": "Count every punctuation mark"
+            },
+            {
+              "label": "C",
+              "text": "Replace every noun with a pronoun"
+            },
+            {
+              "label": "D",
+              "text": "Copy the first sentence"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Understanding the hierarchy of ideas is necessary before deciding what should be retained in a summary.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement about summary writing is correct?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A summary should introduce evidence not found in the source"
+            },
+            {
+              "label": "B",
+              "text": "A summary should preserve the essential meaning while reducing length"
+            },
+            {
+              "label": "C",
+              "text": "A summary must always be exactly half the original length"
+            },
+            {
+              "label": "D",
+              "text": "A summary should reproduce every quotation"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Summary writing requires compression without distorting the author's central meaning.",
+          "difficulty": "hard"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "If a 600-word passage is reduced to its essential ideas without losing its central meaning, the process demonstrates:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Expansion"
+            },
+            {
+              "label": "B",
+              "text": "Compression"
+            },
+            {
+              "label": "C",
+              "text": "Digression"
+            },
+            {
+              "label": "D",
+              "text": "Transcription"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Compression is the reduction of material to a shorter form while retaining essential information.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Critical Reading and Interpretation",
+      "order_num": 10,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A critical reader should evaluate an author's claim mainly by considering:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The evidence and reasoning supporting it"
+            },
+            {
+              "label": "B",
+              "text": "The length of the author's name"
+            },
+            {
+              "label": "C",
+              "text": "The number of pages in the document"
+            },
+            {
+              "label": "D",
+              "text": "Whether the title is attractive"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Critical reading requires examining the quality and relevance of evidence and the logic connecting evidence to conclusions.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Bias in a text refers to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A tendency to favour a particular viewpoint in a way that may affect presentation"
+            },
+            {
+              "label": "B",
+              "text": "Any use of punctuation"
+            },
+            {
+              "label": "C",
+              "text": "The number of paragraphs in a passage"
+            },
+            {
+              "label": "D",
+              "text": "A spelling mistake"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Bias occurs when a perspective or preference influences how information is selected, interpreted, or presented.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "An assumption is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "An idea accepted as true without being explicitly demonstrated"
+            },
+            {
+              "label": "B",
+              "text": "A fully proven scientific law"
+            },
+            {
+              "label": "C",
+              "text": "A bibliography entry"
+            },
+            {
+              "label": "D",
+              "text": "A direct quotation"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An assumption is an underlying belief or proposition taken for granted within an argument.",
+          "difficulty": "hard"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which source would generally have the strongest academic credibility?",
+          "options": [
+            {
+              "label": "A",
+              "text": "An anonymous social-media post"
+            },
+            {
+              "label": "B",
+              "text": "A peer-reviewed article supported by evidence and references"
+            },
+            {
+              "label": "C",
+              "text": "An unsigned advertisement"
+            },
+            {
+              "label": "D",
+              "text": "An unverified forwarded message"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Peer review, transparent evidence, and references provide stronger grounds for evaluating academic reliability.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "If an author concludes that a policy failed because participation declined after its introduction, a critical reader should ask:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Whether other factors could also explain the decline"
+            },
+            {
+              "label": "B",
+              "text": "Whether the paragraph contains enough commas"
+            },
+            {
+              "label": "C",
+              "text": "Whether the author's surname is short"
+            },
+            {
+              "label": "D",
+              "text": "Whether the article uses coloured headings"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Critical analysis considers alternative explanations rather than assuming that sequence alone establishes causation.",
+          "difficulty": "hard"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement represents an inference rather than an explicitly stated fact?",
+          "options": [
+            {
+              "label": "A",
+              "text": "The report states that attendance fell by 20 percent."
+            },
+            {
+              "label": "B",
+              "text": "The table contains data from 2024."
+            },
+            {
+              "label": "C",
+              "text": "The declining attendance may suggest reduced student interest."
+            },
+            {
+              "label": "D",
+              "text": "The survey included 500 respondents."
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "The suggestion about reduced interest is an interpretation drawn from the stated data rather than a directly reported fact.",
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}

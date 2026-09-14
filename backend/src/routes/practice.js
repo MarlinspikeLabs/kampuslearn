@@ -46,6 +46,27 @@ async function studentCanAccessCourse(userId, courseId) {
 }
 
 // ============================================================
+// Helper: resolve the question-bank source for a course.
+// Normal courses resolve to themselves.
+// Shared courses such as GST101 resolve to their canonical bank.
+// ============================================================
+async function resolveQuestionSourceCourse(courseId) {
+  const result = await query(`
+    SELECT COALESCE(
+      (
+        SELECT pcs.source_course_id
+        FROM practice_course_question_sources pcs
+        WHERE pcs.course_id = $1
+        LIMIT 1
+      ),
+      $1::uuid
+    ) AS source_course_id
+  `, [courseId]);
+
+  return result.rows[0].source_course_id;
+}
+
+// ============================================================
 // Helper: recalculate and update student mastery
 // V1:
 // correct   +5
@@ -195,8 +216,14 @@ router.get('/courses', authenticate, async (req, res) => {
 
       FROM accessible_courses ac
 
+      LEFT JOIN practice_course_question_sources pcs
+        ON pcs.course_id = ac.id
+
       LEFT JOIN questions q
-        ON q.course_id = ac.id
+        ON q.course_id = COALESCE(
+          pcs.source_course_id,
+          ac.id
+        )
 
       GROUP BY
         ac.id,
@@ -233,6 +260,10 @@ router.get('/courses/:courseId/topics', authenticate, async (req, res) => {
       return error(res, 'You do not have access to this course', 403);
     }
 
+    const sourceCourseId = await resolveQuestionSourceCourse(
+      req.params.courseId
+    );
+
     const result = await query(`
       SELECT
         t.id,
@@ -260,7 +291,7 @@ router.get('/courses/:courseId/topics', authenticate, async (req, res) => {
       ORDER BY
         t.order_num,
         t.name
-    `, [req.params.courseId]);
+    `, [sourceCourseId]);
 
     return success(res, result.rows);
 
@@ -337,13 +368,17 @@ router.post('/sessions', authenticate, async (req, res) => {
       return error(res, 'You do not have access to this course', 403);
     }
 
+    const sourceCourseId = await resolveQuestionSourceCourse(
+      course_id
+    );
+
     if (topic_id) {
       const topic = await query(`
         SELECT id
         FROM topics
         WHERE id = $1
           AND course_id = $2
-      `, [topic_id, course_id]);
+      `, [topic_id, sourceCourseId]);
 
       if (topic.rows.length === 0) {
         return error(res, 'Topic does not belong to this course', 400);
@@ -351,7 +386,7 @@ router.post('/sessions', authenticate, async (req, res) => {
     }
 
     const params = [
-      course_id,
+      sourceCourseId,
       req.user.id
     ];
 
@@ -902,6 +937,7 @@ router.get('/history', authenticate, async (req, res) => {
         ps.id,
         ps.mode,
         ps.difficulty,
+        ps.status,
         ps.question_count,
         ps.answered_count,
         ps.correct_count,
@@ -957,7 +993,23 @@ router.get('/weak-areas', authenticate, async (req, res) => {
 
         sk.knowledge_level,
         sk.strength,
-        sk.last_practiced_at
+        sk.last_practiced_at,
+
+        (
+          SELECT COUNT(*)::int
+          FROM questions q
+          WHERE q.course_id = COALESCE(
+            (
+              SELECT pcs.source_course_id
+              FROM practice_course_question_sources pcs
+              WHERE pcs.course_id = sk.course_id
+              LIMIT 1
+            ),
+            sk.course_id
+          )
+            AND q.topic_id = sk.topic_id
+            AND q.is_approved = TRUE
+        ) AS question_count
 
       FROM student_knowledge sk
 

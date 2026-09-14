@@ -1,0 +1,1568 @@
+{
+  "course_code": "KL-GST102",
+  "course_title": "Digital Literacy and Study Skills",
+  "level": "100",
+  "semester": "first",
+  "topics": [
+    {
+      "name": "Computer Fundamentals",
+      "order_num": 1,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which component performs most arithmetic and logical operations in a computer?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Central Processing Unit"
+            },
+            {
+              "label": "B",
+              "text": "Monitor"
+            },
+            {
+              "label": "C",
+              "text": "Keyboard"
+            },
+            {
+              "label": "D",
+              "text": "Printer"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The CPU executes instructions and performs arithmetic and logical operations.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following best describes data?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Processed information only"
+            },
+            {
+              "label": "B",
+              "text": "Raw facts that can be processed"
+            },
+            {
+              "label": "C",
+              "text": "A computer program"
+            },
+            {
+              "label": "D",
+              "text": "A storage device"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Data consists of raw facts that can be processed into useful information.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "One byte is equal to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "2 bits"
+            },
+            {
+              "label": "B",
+              "text": "4 bits"
+            },
+            {
+              "label": "C",
+              "text": "8 bits"
+            },
+            {
+              "label": "D",
+              "text": "16 bits"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "A byte conventionally consists of eight bits.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which number system uses only 0 and 1?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Decimal"
+            },
+            {
+              "label": "B",
+              "text": "Binary"
+            },
+            {
+              "label": "C",
+              "text": "Octal"
+            },
+            {
+              "label": "D",
+              "text": "Hexadecimal"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Binary represents values using the two digits 0 and 1.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Software is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The physical parts of a computer"
+            },
+            {
+              "label": "B",
+              "text": "Programs and instructions used by a computer"
+            },
+            {
+              "label": "C",
+              "text": "Only internet cables"
+            },
+            {
+              "label": "D",
+              "text": "Electrical power supplied to a computer"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Software consists of programs and instructions that direct computer operations.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which statement correctly distinguishes information from data?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Information is processed data with meaning"
+            },
+            {
+              "label": "B",
+              "text": "Data is always more useful than information"
+            },
+            {
+              "label": "C",
+              "text": "Information cannot be stored"
+            },
+            {
+              "label": "D",
+              "text": "Data and information are unrelated"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Information is data that has been processed or organised into a meaningful form.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Hardware and Peripheral Devices",
+      "order_num": 2,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which device is primarily used for entering text into a computer?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Keyboard"
+            },
+            {
+              "label": "B",
+              "text": "Monitor"
+            },
+            {
+              "label": "C",
+              "text": "Speaker"
+            },
+            {
+              "label": "D",
+              "text": "Projector"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A keyboard is an input device commonly used to enter text and commands.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an output device?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Mouse"
+            },
+            {
+              "label": "B",
+              "text": "Scanner"
+            },
+            {
+              "label": "C",
+              "text": "Monitor"
+            },
+            {
+              "label": "D",
+              "text": "Microphone"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "A monitor displays visual output produced by the computer.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which device can convert printed documents into digital form?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Scanner"
+            },
+            {
+              "label": "B",
+              "text": "Speaker"
+            },
+            {
+              "label": "C",
+              "text": "Router"
+            },
+            {
+              "label": "D",
+              "text": "Projector"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A scanner captures printed text or images and converts them into digital data.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "RAM is mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Store data permanently without power"
+            },
+            {
+              "label": "B",
+              "text": "Hold data and programs currently in use"
+            },
+            {
+              "label": "C",
+              "text": "Print documents"
+            },
+            {
+              "label": "D",
+              "text": "Connect directly to a projector"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "RAM temporarily holds active programs and data for fast processor access.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which storage device normally has no moving mechanical parts?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Solid-state drive"
+            },
+            {
+              "label": "B",
+              "text": "Optical disc drive"
+            },
+            {
+              "label": "C",
+              "text": "Magnetic tape drive"
+            },
+            {
+              "label": "D",
+              "text": "Floppy disk drive"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "SSDs use flash memory and generally contain no moving mechanical parts.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A peripheral device is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A device connected to a computer to provide input, output, storage, or communication functions"
+            },
+            {
+              "label": "B",
+              "text": "The operating system kernel"
+            },
+            {
+              "label": "C",
+              "text": "The CPU instruction set"
+            },
+            {
+              "label": "D",
+              "text": "A programming language"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Peripherals extend the capabilities of a computer through input, output, storage, or communication.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Operating Systems and File Management",
+      "order_num": 3,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The main purpose of an operating system is to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Manage computer hardware and provide services for applications"
+            },
+            {
+              "label": "B",
+              "text": "Replace the CPU"
+            },
+            {
+              "label": "C",
+              "text": "Create internet content automatically"
+            },
+            {
+              "label": "D",
+              "text": "Function only as antivirus software"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "An operating system manages hardware resources and provides an environment for applications.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which of the following is an operating system?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Microsoft Word"
+            },
+            {
+              "label": "B",
+              "text": "Windows"
+            },
+            {
+              "label": "C",
+              "text": "Google Chrome"
+            },
+            {
+              "label": "D",
+              "text": "Adobe Reader"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Windows is an operating system, while the others are application programs.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A folder is mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Organise files and other folders"
+            },
+            {
+              "label": "B",
+              "text": "Increase processor speed"
+            },
+            {
+              "label": "C",
+              "text": "Connect a computer to electricity"
+            },
+            {
+              "label": "D",
+              "text": "Display websites"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Folders help users organise files and subfolders logically.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which file extension commonly represents a PDF document?",
+          "options": [
+            {
+              "label": "A",
+              "text": ".pdf"
+            },
+            {
+              "label": "B",
+              "text": ".mp3"
+            },
+            {
+              "label": "C",
+              "text": ".exe"
+            },
+            {
+              "label": "D",
+              "text": ".jpg"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The .pdf extension commonly identifies Portable Document Format files.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What is the main purpose of a file path?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To identify the location of a file or folder"
+            },
+            {
+              "label": "B",
+              "text": "To increase file size"
+            },
+            {
+              "label": "C",
+              "text": "To encrypt every document"
+            },
+            {
+              "label": "D",
+              "text": "To measure processor temperature"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A file path describes where a file or directory is located within a storage hierarchy.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is a clear file-naming convention useful in academic work?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It makes files easier to identify, sort, and retrieve"
+            },
+            {
+              "label": "B",
+              "text": "It automatically improves internet speed"
+            },
+            {
+              "label": "C",
+              "text": "It prevents every form of data loss"
+            },
+            {
+              "label": "D",
+              "text": "It removes the need for backups"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Consistent file naming improves organisation and retrieval, especially when many documents are involved.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Internet and Web Technologies",
+      "order_num": 4,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "The Internet is best described as:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A global network of interconnected computer networks"
+            },
+            {
+              "label": "B",
+              "text": "A single website"
+            },
+            {
+              "label": "C",
+              "text": "A word-processing application"
+            },
+            {
+              "label": "D",
+              "text": "A type of printer"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The Internet links many computer networks around the world.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which application is primarily used to access websites?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Web browser"
+            },
+            {
+              "label": "B",
+              "text": "Spreadsheet"
+            },
+            {
+              "label": "C",
+              "text": "File compressor"
+            },
+            {
+              "label": "D",
+              "text": "Calculator"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A web browser retrieves and displays web resources.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What does URL stand for?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Uniform Resource Locator"
+            },
+            {
+              "label": "B",
+              "text": "Universal Reading Language"
+            },
+            {
+              "label": "C",
+              "text": "User Routing Link"
+            },
+            {
+              "label": "D",
+              "text": "Unified Resource Level"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "URL stands for Uniform Resource Locator and identifies the location of a resource on the web.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "HTTPS is generally preferred to HTTP because it:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Encrypts communication between browser and server"
+            },
+            {
+              "label": "B",
+              "text": "Guarantees every website is truthful"
+            },
+            {
+              "label": "C",
+              "text": "Removes the need for passwords"
+            },
+            {
+              "label": "D",
+              "text": "Makes every download free"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "HTTPS uses encryption to protect data in transit between a browser and a server.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A search engine is used primarily to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Find information and resources on the web"
+            },
+            {
+              "label": "B",
+              "text": "Create operating systems"
+            },
+            {
+              "label": "C",
+              "text": "Replace computer memory"
+            },
+            {
+              "label": "D",
+              "text": "Scan printed documents"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Search engines index web content and help users locate relevant resources.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which search query would usually give the most focused academic results?",
+          "options": [
+            {
+              "label": "A",
+              "text": "science"
+            },
+            {
+              "label": "B",
+              "text": "climate change renewable energy Nigeria university study"
+            },
+            {
+              "label": "C",
+              "text": "internet"
+            },
+            {
+              "label": "D",
+              "text": "everything about technology"
+            }
+          ],
+          "correct_answer": "B",
+          "explanation": "Specific keywords and concepts usually produce more focused and relevant search results.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Email and Digital Communication",
+      "order_num": 5,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which field identifies the main recipient of an email?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To"
+            },
+            {
+              "label": "B",
+              "text": "Subject"
+            },
+            {
+              "label": "C",
+              "text": "Attachment"
+            },
+            {
+              "label": "D",
+              "text": "Signature"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "The To field contains the primary recipient's email address.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The subject line of an email should ideally:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Briefly describe the purpose of the message"
+            },
+            {
+              "label": "B",
+              "text": "Contain only the sender's name"
+            },
+            {
+              "label": "C",
+              "text": "Always be left blank"
+            },
+            {
+              "label": "D",
+              "text": "Repeat the entire email"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A clear subject line helps the recipient understand the purpose of the message quickly.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "BCC is useful when:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Recipients should not see one another's email addresses"
+            },
+            {
+              "label": "B",
+              "text": "An email must be deleted immediately"
+            },
+            {
+              "label": "C",
+              "text": "A file needs to be compressed"
+            },
+            {
+              "label": "D",
+              "text": "The computer has no internet connection"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "BCC hides recipients' addresses from the other recipients of the same message.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which behaviour is most appropriate in a formal academic email?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Using a clear greeting, concise message, and appropriate closing"
+            },
+            {
+              "label": "B",
+              "text": "Using only slang and abbreviations"
+            },
+            {
+              "label": "C",
+              "text": "Leaving the subject blank"
+            },
+            {
+              "label": "D",
+              "text": "Writing entirely in capital letters"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Professional email communication should be clear, respectful, and appropriately structured.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "An email attachment is:",
+          "options": [
+            {
+              "label": "A",
+              "text": "A file sent together with an email message"
+            },
+            {
+              "label": "B",
+              "text": "The subject of the message"
+            },
+            {
+              "label": "C",
+              "text": "The recipient's password"
+            },
+            {
+              "label": "D",
+              "text": "A type of browser"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Attachments allow files such as documents or images to accompany an email.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should unexpected email attachments be treated cautiously?",
+          "options": [
+            {
+              "label": "A",
+              "text": "They may contain malicious software or phishing content"
+            },
+            {
+              "label": "B",
+              "text": "They always reduce screen brightness"
+            },
+            {
+              "label": "C",
+              "text": "They automatically delete the operating system"
+            },
+            {
+              "label": "D",
+              "text": "They cannot be downloaded"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Unexpected attachments can carry malware or form part of phishing attacks.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Word Processing",
+      "order_num": 6,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which application is primarily designed for creating and editing text documents?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Word processor"
+            },
+            {
+              "label": "B",
+              "text": "Media player"
+            },
+            {
+              "label": "C",
+              "text": "Calculator"
+            },
+            {
+              "label": "D",
+              "text": "Web server"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Word processors are designed for creating, formatting, and editing text documents.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which formatting feature changes the appearance of characters?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Font"
+            },
+            {
+              "label": "B",
+              "text": "Worksheet"
+            },
+            {
+              "label": "C",
+              "text": "Slide transition"
+            },
+            {
+              "label": "D",
+              "text": "Cell formula"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Font settings affect typeface, size, style, and related character appearance.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What is the main purpose of spell-checking software?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Identify possible spelling errors"
+            },
+            {
+              "label": "B",
+              "text": "Encrypt a document"
+            },
+            {
+              "label": "C",
+              "text": "Create spreadsheet formulas"
+            },
+            {
+              "label": "D",
+              "text": "Connect to Wi-Fi"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spell checkers identify words that may be misspelled and suggest corrections.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Using styles in a long document is useful because styles:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Provide consistent formatting for headings and other elements"
+            },
+            {
+              "label": "B",
+              "text": "Delete all images"
+            },
+            {
+              "label": "C",
+              "text": "Disable page numbering"
+            },
+            {
+              "label": "D",
+              "text": "Prevent saving"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Styles make formatting consistent and help structure long documents efficiently.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A page break is used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Force subsequent content to begin on a new page"
+            },
+            {
+              "label": "B",
+              "text": "Delete the previous page"
+            },
+            {
+              "label": "C",
+              "text": "Change a file extension"
+            },
+            {
+              "label": "D",
+              "text": "Send a document by email"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A page break explicitly moves following content to the next page.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is using automatic headings preferable to manually making headings bold in a long academic document?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Automatic headings support consistent formatting and features such as navigation and tables of contents"
+            },
+            {
+              "label": "B",
+              "text": "Bold text cannot be printed"
+            },
+            {
+              "label": "C",
+              "text": "Manual headings cannot contain words"
+            },
+            {
+              "label": "D",
+              "text": "Automatic headings reduce every document to one page"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Structured heading styles support consistency and document-navigation features.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Spreadsheets",
+      "order_num": 7,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "A spreadsheet organises data mainly into:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Rows and columns"
+            },
+            {
+              "label": "B",
+              "text": "Slides and transitions"
+            },
+            {
+              "label": "C",
+              "text": "Paragraphs and chapters"
+            },
+            {
+              "label": "D",
+              "text": "Folders and directories only"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spreadsheet worksheets organise information into rows and columns.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "The intersection of a row and a column is called a:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Cell"
+            },
+            {
+              "label": "B",
+              "text": "Slide"
+            },
+            {
+              "label": "C",
+              "text": "Record player"
+            },
+            {
+              "label": "D",
+              "text": "Folder"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "A cell is formed where a row and column intersect.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which symbol usually begins a spreadsheet formula?",
+          "options": [
+            {
+              "label": "A",
+              "text": "="
+            },
+            {
+              "label": "B",
+              "text": "#"
+            },
+            {
+              "label": "C",
+              "text": "@"
+            },
+            {
+              "label": "D",
+              "text": "&"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Spreadsheet formulas normally begin with an equals sign.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "What does the formula =SUM(A1:A5) do?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Adds the values in cells A1 through A5"
+            },
+            {
+              "label": "B",
+              "text": "Deletes cells A1 through A5"
+            },
+            {
+              "label": "C",
+              "text": "Sorts A1 through A5 alphabetically"
+            },
+            {
+              "label": "D",
+              "text": "Changes the cells to text"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "SUM adds the numerical values within the specified range.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which chart is often suitable for comparing values across categories?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Bar chart"
+            },
+            {
+              "label": "B",
+              "text": "Paragraph"
+            },
+            {
+              "label": "C",
+              "text": "Footnote"
+            },
+            {
+              "label": "D",
+              "text": "Folder tree"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Bar charts are effective for comparing quantities across discrete categories.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why is an absolute cell reference useful in a spreadsheet?",
+          "options": [
+            {
+              "label": "A",
+              "text": "It keeps a referenced cell fixed when a formula is copied"
+            },
+            {
+              "label": "B",
+              "text": "It prevents a workbook from being opened"
+            },
+            {
+              "label": "C",
+              "text": "It converts every number to text"
+            },
+            {
+              "label": "D",
+              "text": "It removes the need for formulas"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Absolute references, such as $A$1, remain fixed when formulas are copied to other cells.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Presentation Software",
+      "order_num": 8,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Presentation software is mainly used to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Create and display slide-based presentations"
+            },
+            {
+              "label": "B",
+              "text": "Manage operating-system files"
+            },
+            {
+              "label": "C",
+              "text": "Repair computer hardware"
+            },
+            {
+              "label": "D",
+              "text": "Compile source code"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Presentation software helps create visual slide-based presentations.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A slide layout controls:",
+          "options": [
+            {
+              "label": "A",
+              "text": "The arrangement of placeholders and content on a slide"
+            },
+            {
+              "label": "B",
+              "text": "The computer's processor speed"
+            },
+            {
+              "label": "C",
+              "text": "The internet connection type"
+            },
+            {
+              "label": "D",
+              "text": "The file system format"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Slide layouts determine how titles, text, images, and other placeholders are arranged.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which practice usually improves presentation readability?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Using concise text and sufficiently large fonts"
+            },
+            {
+              "label": "B",
+              "text": "Filling every slide with long paragraphs"
+            },
+            {
+              "label": "C",
+              "text": "Using many unrelated fonts"
+            },
+            {
+              "label": "D",
+              "text": "Removing all headings"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Concise text and readable fonts make presentation content easier for an audience to follow.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A slide transition controls:",
+          "options": [
+            {
+              "label": "A",
+              "text": "How one slide changes to the next"
+            },
+            {
+              "label": "B",
+              "text": "How a spreadsheet formula is calculated"
+            },
+            {
+              "label": "C",
+              "text": "How files are stored on disk"
+            },
+            {
+              "label": "D",
+              "text": "How an email recipient is selected"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Transitions determine the visual effect used when moving between slides.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should animations be used selectively in academic presentations?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Excessive animation can distract from the content"
+            },
+            {
+              "label": "B",
+              "text": "Animations always corrupt files"
+            },
+            {
+              "label": "C",
+              "text": "Animations prevent text from being displayed"
+            },
+            {
+              "label": "D",
+              "text": "All academic presentations prohibit animations"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Animations can support communication, but excessive use can distract the audience.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which approach best supports an oral presentation?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Slides summarise key points while the presenter explains them"
+            },
+            {
+              "label": "B",
+              "text": "The presenter reads every word from densely packed slides"
+            },
+            {
+              "label": "C",
+              "text": "Every slide contains several full textbook pages"
+            },
+            {
+              "label": "D",
+              "text": "The presenter avoids explaining visual information"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Slides should support rather than replace the speaker's explanation.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Information Literacy and Online Research",
+      "order_num": 9,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Information literacy involves the ability to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Find, evaluate, and use information effectively"
+            },
+            {
+              "label": "B",
+              "text": "Type faster than every other user"
+            },
+            {
+              "label": "C",
+              "text": "Repair every computer fault"
+            },
+            {
+              "label": "D",
+              "text": "Create social-media accounts"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Information literacy includes locating, evaluating, and responsibly using information.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which source is generally most appropriate for academic research?",
+          "options": [
+            {
+              "label": "A",
+              "text": "A relevant peer-reviewed journal article"
+            },
+            {
+              "label": "B",
+              "text": "An anonymous forwarded message"
+            },
+            {
+              "label": "C",
+              "text": "An advertisement with no evidence"
+            },
+            {
+              "label": "D",
+              "text": "An unidentified social-media rumour"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Peer-reviewed research is generally more suitable for academic work because its methods and claims are scrutinised.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Why should the publication date of an online source be checked?",
+          "options": [
+            {
+              "label": "A",
+              "text": "To assess whether the information is current enough for the topic"
+            },
+            {
+              "label": "B",
+              "text": "To determine the colour of the website"
+            },
+            {
+              "label": "C",
+              "text": "To find the author's password"
+            },
+            {
+              "label": "D",
+              "text": "To increase download speed"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Publication date helps determine whether information is sufficiently current for the research question.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A citation is used primarily to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Acknowledge the source of information or ideas"
+            },
+            {
+              "label": "B",
+              "text": "Hide the identity of the author"
+            },
+            {
+              "label": "C",
+              "text": "Increase the size of a document"
+            },
+            {
+              "label": "D",
+              "text": "Replace a conclusion"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Citations acknowledge sources and help readers locate the referenced material.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Plagiarism occurs when a student:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Presents another person's words or ideas as their own without proper acknowledgement"
+            },
+            {
+              "label": "B",
+              "text": "Uses a library catalogue"
+            },
+            {
+              "label": "C",
+              "text": "Checks a spelling mistake"
+            },
+            {
+              "label": "D",
+              "text": "Writes an original conclusion"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Plagiarism involves using another person's work without appropriate attribution.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "When evaluating a website for academic use, which combination is most important?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Authority, evidence, relevance, currency, and purpose"
+            },
+            {
+              "label": "B",
+              "text": "Background colour and logo size"
+            },
+            {
+              "label": "C",
+              "text": "Number of advertisements only"
+            },
+            {
+              "label": "D",
+              "text": "Whether the page loads quickly"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Credibility depends on who produced the information, the supporting evidence, relevance, currency, and purpose.",
+          "difficulty": "hard"
+        }
+      ]
+    },
+    {
+      "name": "Cybersecurity, Digital Safety and Study Productivity",
+      "order_num": 10,
+      "questions": [
+        {
+          "question_type": "mcq",
+          "question_text": "Which password is generally strongest?",
+          "options": [
+            {
+              "label": "A",
+              "text": "password123"
+            },
+            {
+              "label": "B",
+              "text": "usman2026"
+            },
+            {
+              "label": "C",
+              "text": "T7!qP9#zL2@r"
+            },
+            {
+              "label": "D",
+              "text": "12345678"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "A strong password is long, unpredictable, and uses a varied combination of characters.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Phishing is an attempt to:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Trick users into revealing sensitive information"
+            },
+            {
+              "label": "B",
+              "text": "Increase monitor resolution"
+            },
+            {
+              "label": "C",
+              "text": "Improve battery life"
+            },
+            {
+              "label": "D",
+              "text": "Organise files into folders"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Phishing uses deceptive messages or websites to obtain passwords, financial information, or other sensitive data.",
+          "difficulty": "easy"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Two-factor authentication improves account security by:",
+          "options": [
+            {
+              "label": "A",
+              "text": "Requiring an additional verification factor beyond the password"
+            },
+            {
+              "label": "B",
+              "text": "Removing the need for any login credentials"
+            },
+            {
+              "label": "C",
+              "text": "Publishing the user's password"
+            },
+            {
+              "label": "D",
+              "text": "Allowing anyone to access the account"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Two-factor authentication requires more than one form of verification.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which backup practice provides better protection against data loss?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Keeping copies in more than one reliable location"
+            },
+            {
+              "label": "B",
+              "text": "Saving the only copy on one device"
+            },
+            {
+              "label": "C",
+              "text": "Never naming files"
+            },
+            {
+              "label": "D",
+              "text": "Deleting older versions immediately"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Multiple reliable copies reduce the risk that a single device failure will destroy important work.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "Which study strategy is generally more effective than repeatedly rereading the same notes?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Active recall and spaced practice"
+            },
+            {
+              "label": "B",
+              "text": "Studying continuously without breaks for many hours"
+            },
+            {
+              "label": "C",
+              "text": "Copying notes word for word repeatedly"
+            },
+            {
+              "label": "D",
+              "text": "Avoiding self-testing"
+            }
+          ],
+          "correct_answer": "A",
+          "explanation": "Active recall and spaced practice strengthen retrieval and long-term retention.",
+          "difficulty": "medium"
+        },
+        {
+          "question_type": "mcq",
+          "question_text": "A student receives a message claiming to be from the university and requesting an immediate password reset through an unfamiliar link. What is the safest response?",
+          "options": [
+            {
+              "label": "A",
+              "text": "Open the link immediately"
+            },
+            {
+              "label": "B",
+              "text": "Reply with the current password"
+            },
+            {
+              "label": "C",
+              "text": "Verify the request through an official university channel before taking action"
+            },
+            {
+              "label": "D",
+              "text": "Forward the link to classmates"
+            }
+          ],
+          "correct_answer": "C",
+          "explanation": "Unexpected credential requests should be independently verified through a trusted official channel before any sensitive information is entered.",
+          "difficulty": "hard"
+        }
+      ]
+    }
+  ]
+}
