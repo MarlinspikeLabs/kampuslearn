@@ -39,7 +39,7 @@ export default function StudentShell({ children, title, legacy = false }) {
   const [theme, setTheme] = useStudentTheme();
   const pathname = usePathname();
   const router = useRouter();
-  const nav = [['Home','home','/dashboard'],['Learn','book','/learn'],['Practice','check','/exams'],['AI','spark','/ai-chat'],['More','more','/more']];
+  const nav = [['Home','home','/dashboard'],['Learn','book','/learn'],['Practice','check','/practice'],['AI','spark','/ai-chat'],['More','more','/more']];
   const active = ['/learn','/courses','/materials','/past-questions','/read'].includes(pathname) ? '/learn' : ['/tokens','/profile','/notifications','/onboarding','/marketplace'].includes(pathname) ? '/more' : pathname;
   const navigation = () => nav.map(([label,icon,href]) => <Link key={href} href={href} className={`${styles.navItem} ${active === href ? styles.active : ''}`} aria-current={active === href ? 'page' : undefined}><Icon name={icon}/><span>{label}</span></Link>);
   if (loading) return <div className={styles.app}><p className={styles.loading} role="status">Opening your learning space…</p></div>;

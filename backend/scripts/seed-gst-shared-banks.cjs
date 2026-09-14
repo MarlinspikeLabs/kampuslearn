@@ -54,7 +54,7 @@ async function ensureCourseRows(client, gst) {
       source_url
     )
     SELECT
-      base.department_id,
+      d.id,
       $1::varchar,
       $2::varchar,
       2,
@@ -66,21 +66,29 @@ async function ensureCourseRows(client, gst) {
       'generic_seed',
       FALSE,
       NULL
-    FROM courses base
-    WHERE base.code='KL-GST101'
-      AND base.level='100'
-      AND base.level_type='university'
-      AND base.is_active=TRUE
+    FROM departments d
+    WHERE EXISTS (
+      SELECT 1
+      FROM courses uc
+      WHERE uc.department_id = d.id
+        AND uc.level_type = 'university'
+        AND uc.is_active = TRUE
+    )
       AND NOT EXISTS (
         SELECT 1
         FROM courses existing
-        WHERE existing.department_id=base.department_id
-          AND existing.code=$2::varchar
-          AND existing.level='100'
-          AND existing.level_type='university'
+        WHERE existing.department_id = d.id
+          AND existing.code = $2::varchar
+          AND existing.level = '100'
+          AND existing.level_type = 'university'
       )
     RETURNING id
-  `, [gst.title, gst.code, gst.semester, gst.description]);
+  `, [
+    gst.title,
+    gst.code,
+    gst.semester,
+    gst.description
+  ]);
 
   return r.rowCount;
 }
