@@ -102,6 +102,26 @@ export default function PracticePage() {
 
   const currentWeakArea = weakAreas[0] || null;
 
+  const quickPracticeCourse = useMemo(() => {
+    if (currentWeakArea) {
+      const weakCourse = courses.find(
+        c =>
+          c.id === currentWeakArea.course_id &&
+          Number(c.question_count) > 0
+      );
+
+      if (weakCourse) {
+        return weakCourse;
+      }
+    }
+
+    return availableCourses[0] || null;
+  }, [
+    currentWeakArea,
+    courses,
+    availableCourses
+  ]);
+
   const openCourse = (course, topic = null, mode = 'quick') => {
     setSelectedCourse({
       ...course,
@@ -681,9 +701,9 @@ export default function PracticePage() {
   return (
     <AppLayout title="Practice">
       <div className="mx-auto max-w-5xl space-y-8 pb-8">
-        <section className="overflow-hidden rounded-3xl bg-gray-950 p-6 text-white sm:p-8">
+        <section className="overflow-hidden rounded-3xl border border-emerald-900/10 bg-[radial-gradient(circle_at_95%_0%,rgba(20,111,97,0.62),transparent_48%),linear-gradient(135deg,#142344_0%,#173d45_100%)] p-6 text-white shadow-sm sm:p-8">
           <div className="max-w-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-blue-100">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-emerald-100">
               <Sparkles className="h-3.5 w-3.5" />
               Adaptive Practice
             </div>
@@ -698,9 +718,9 @@ export default function PracticePage() {
               where you need more practice.
             </p>
 
-            {availableCourses.length > 0 && (
+            {quickPracticeCourse && (
               <button
-                onClick={() => openCourse(availableCourses[0])}
+                onClick={() => openCourse(quickPracticeCourse)}
                 className="mt-6 inline-flex items-center gap-2 rounded-2xl bg-white px-4 py-3 text-sm font-semibold !text-gray-950"
               >
                 <Play className="h-4 w-4" />
@@ -856,7 +876,18 @@ export default function PracticePage() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-3">
-            <div className="rounded-3xl border border-blue-100 bg-blue-50 p-5">
+            <button
+              type="button"
+              onClick={() => {
+                if (!quickPracticeCourse) {
+                  toast.error('No practice questions are available yet');
+                  return;
+                }
+
+                openCourse(quickPracticeCourse);
+              }}
+              className="rounded-3xl border border-blue-100 bg-blue-50 p-5 text-left transition hover:-translate-y-0.5 hover:border-blue-200 hover:shadow-md"
+            >
               <Brain className="h-6 w-6 text-blue-600" />
               <p className="mt-4 font-bold text-gray-950">
                 Quick Practice
@@ -864,7 +895,7 @@ export default function PracticePage() {
               <p className="mt-1 text-sm leading-5 text-gray-600">
                 Immediate grading and explanations after every question.
               </p>
-            </div>
+            </button>
 
             <a
               href="/exams"
